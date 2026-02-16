@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 11%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 18% 11%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 170 60% 50%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 170 60% 50%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 170 60% 50%;
+
+    --radius: 0.75rem;
+
+    /* Section accent colors */
+    --orange: 25 95% 55%;
+    --orange-foreground: 25 95% 95%;
+    --orange-muted: 25 60% 15%;
+
+    --violet: 270 50% 25%;
+    --violet-foreground: 270 80% 85%;
+    --violet-muted: 270 40% 10%;
+    --violet-deep: 270 50% 6%;
+
+    --cyan: 190 70% 50%;
+    --cyan-foreground: 190 80% 90%;
+    --cyan-muted: 190 50% 12%;
+
+    /* Glassmorphism */
+    --glass-bg: 220 20% 12% / 0.6;
+    --glass-border: 220 15% 25% / 0.5;
+    --glass-shadow: 0 8px 32px 0 hsla(220, 20%, 3%, 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsla(var(--glass-bg));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .pixel-image {
+    @apply rounded-xl shadow-2xl;
+    image-rendering: auto;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-glow-primary {
+    text-shadow: 0 0 20px hsla(var(--primary) / 0.4);
+  }
+
+  .text-glow-orange {
+    text-shadow: 0 0 20px hsla(var(--orange) / 0.4);
+  }
+
+  .text-glow-violet {
+    text-shadow: 0 0 20px hsla(var(--violet-foreground) / 0.3);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 20px hsla(var(--cyan) / 0.4);
+  }
+}
