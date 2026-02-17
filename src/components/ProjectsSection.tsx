@@ -1,19 +1,20 @@
-import { ExternalLink, Github } from "lucide-react";
+import { useI18n } from "@/i18n";
+import { ExternalLink } from "lucide-react";
+import { GithubIcon } from "./icons";
 
 interface Project {
-  readonly title: string;
-  readonly description: string;
+  readonly titleKey: string;
+  readonly descriptionKey: string;
   readonly tags: readonly string[];
   readonly type?: "pro";
   readonly link?: string;
   readonly github?: string;
 }
 
-const projects: readonly Project[] = [
+const proProjects: readonly Project[] = [
   {
-    title: "Application interne Orange",
-    description:
-      "Développement d'une application de gestion interne avec Angular et NestJS, déployée sur CloudFoundry.",
+    titleKey: "projects.proProjects.orangeTitle",
+    descriptionKey: "projects.proProjects.orangeDesc",
     tags: ["Angular", "NestJS", "TypeScript", "Docker"],
     type: "pro",
   },
@@ -21,22 +22,38 @@ const projects: readonly Project[] = [
 
 const personalProjects: readonly Project[] = [
   {
-    title: "Portfolio personnel",
-    description:
-      "Ce portfolio en React avec un design retro-futuriste, mode sombre et pixel art.",
+    titleKey: "projects.persoProjects.portfolioTitle",
+    descriptionKey: "projects.persoProjects.portfolioDesc",
     tags: ["React", "TypeScript", "Tailwind CSS"],
     link: "#",
   },
   {
-    title: "Bot Discord",
-    description:
-      "Bot communautaire avec commandes personnalisées et intégration d'APIs externes.",
+    titleKey: "projects.persoProjects.botTitle",
+    descriptionKey: "projects.persoProjects.botDesc",
     tags: ["Node.js", "TypeScript", "Docker"],
     github: "#",
   },
 ];
 
-const ProjectCard = ({ title, description, tags, link, github }: Project) => (
+interface ProjectCardProps {
+  readonly title: string;
+  readonly description: string;
+  readonly tags: readonly string[];
+  readonly link?: string;
+  readonly github?: string;
+  readonly sourceCodeAria: string;
+  readonly viewProjectAria: string;
+}
+
+const ProjectCard = ({
+  title,
+  description,
+  tags,
+  link,
+  github,
+  sourceCodeAria,
+  viewProjectAria,
+}: ProjectCardProps) => (
   <div className="glass-card rounded-xl p-6 border-primary/10 space-y-4 hover:border-primary/30 transition-colors">
     <div className="flex items-start justify-between">
       <h3 className="text-lg font-semibold text-foreground">{title}</h3>
@@ -47,9 +64,9 @@ const ProjectCard = ({ title, description, tags, link, github }: Project) => (
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
-            aria-label={`Code source de ${title}`}
+            aria-label={`${sourceCodeAria} ${title}`}
           >
-            <Github className="w-4 h-4" />
+            <GithubIcon className="w-4 h-4" />
           </a>
         )}
         {link && (
@@ -58,7 +75,7 @@ const ProjectCard = ({ title, description, tags, link, github }: Project) => (
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
-            aria-label={`Voir le projet ${title}`}
+            aria-label={`${viewProjectAria} ${title}`}
           >
             <ExternalLink className="w-4 h-4" />
           </a>
@@ -85,9 +102,19 @@ interface ProjectGroupProps {
   readonly title: string;
   readonly items: readonly Project[];
   readonly dotColor: string;
+  readonly sourceCodeAria: string;
+  readonly viewProjectAria: string;
+  readonly t: (key: string) => string;
 }
 
-const ProjectGroup = ({ title, items, dotColor }: ProjectGroupProps) => (
+const ProjectGroup = ({
+  title,
+  items,
+  dotColor,
+  sourceCodeAria,
+  viewProjectAria,
+  t,
+}: ProjectGroupProps) => (
   <div className="mb-16 last:mb-0">
     <div className="flex items-center gap-3 mb-8">
       <div className={`w-2 h-2 rounded-full ${dotColor}`} />
@@ -98,34 +125,53 @@ const ProjectGroup = ({ title, items, dotColor }: ProjectGroupProps) => (
     </div>
     <div className="grid md:grid-cols-2 gap-6">
       {items.map((p) => (
-        <ProjectCard key={p.title} {...p} />
+        <ProjectCard
+          key={p.titleKey}
+          title={t(p.titleKey)}
+          description={t(p.descriptionKey)}
+          tags={p.tags}
+          link={p.link}
+          github={p.github}
+          sourceCodeAria={sourceCodeAria}
+          viewProjectAria={viewProjectAria}
+        />
       ))}
     </div>
   </div>
 );
 
-const ProjectsSection = () => (
-  <section id="projects" className="relative">
-    <div className="section-container">
-      <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
-        Réalisations
-      </p>
-      <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
-        Projets
-      </h2>
+const ProjectsSection = () => {
+  const { t } = useI18n();
 
-      <ProjectGroup
-        title="Projets professionnels"
-        items={projects}
-        dotColor="bg-orange"
-      />
-      <ProjectGroup
-        title="Projets personnels"
-        items={personalProjects}
-        dotColor="bg-cyan"
-      />
-    </div>
-  </section>
-);
+  return (
+    <section id="projects" className="relative">
+      <div className="section-container">
+        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
+          {t("projects.sectionLabel")}
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
+          {t("projects.title")}
+        </h2>
+
+        <ProjectGroup
+          title={t("projects.professional")}
+          items={proProjects}
+          dotColor="bg-orange"
+          sourceCodeAria={t("projects.sourceCodeAria")}
+          viewProjectAria={t("projects.viewProjectAria")}
+          t={t}
+        />
+        <ProjectGroup
+          title={t("projects.personal")}
+          items={personalProjects}
+          dotColor="bg-cyan"
+          sourceCodeAria={t("projects.sourceCodeAria")}
+          viewProjectAria={t("projects.viewProjectAria")}
+          t={t}
+        />
+      </div>
+    </section>
+  );
+};
 
 export default ProjectsSection;

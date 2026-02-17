@@ -1,17 +1,20 @@
+import { useI18n } from "@/i18n";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-
-const navLinks = [
-  { href: "#experience", label: "Expérience" },
-  { href: "#formation", label: "Formation" },
-  { href: "#past", label: "Parcours" },
-  { href: "#projects", label: "Projets" },
-  { href: "#stack", label: "Stack" },
-  { href: "#contact", label: "Contact" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useI18n();
+
+  const navLinks = [
+    { href: "#experience", label: t("nav.experience") },
+    { href: "#formation", label: t("nav.formation") },
+    { href: "#past", label: t("nav.past") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#stack", label: t("nav.stack") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50">
@@ -20,8 +23,8 @@ const Navbar = () => {
           {"<QB/>"}
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* Desktop links — centered */}
+        <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -33,18 +36,26 @@ const Navbar = () => {
           ))}
         </div>
 
+        {/* Desktop language switcher — right */}
+        <div className="hidden md:block">
+          <LanguageSwitcher />
+        </div>
+
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-muted-foreground hover:text-foreground"
-          aria-label="Menu"
-        >
-          {mobileOpen ? (
-            <X className="w-5 h-5" />
-          ) : (
-            <Menu className="w-5 h-5" />
-          )}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-muted-foreground hover:text-foreground"
+            aria-label="Menu"
+          >
+            {mobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

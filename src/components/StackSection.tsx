@@ -1,3 +1,5 @@
+import { useI18n } from "@/i18n";
+
 interface TechItem {
   readonly name: string;
   readonly logo: string;
@@ -118,29 +120,33 @@ const StackGroup = ({
   </div>
 );
 
-const StackSection = () => (
-  <section id="stack" className="relative">
-    <div className="section-container">
-      <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
-        Compétences
-      </p>
-      <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
-        Stack Technique
-      </h2>
+const StackSection = () => {
+  const { t } = useI18n();
 
-      <StackGroup
-        title="Stack principale"
-        items={coreStack}
-        dotColor="bg-primary"
-      />
-      <StackGroup
-        title="Compétences transversales"
-        items={transversalStack}
-        dotColor="bg-muted-foreground"
-        titleColor="text-muted-foreground"
-      />
-    </div>
-  </section>
-);
+  return (
+    <section id="stack" className="relative">
+      <div className="section-container">
+        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
+          {t("stack.sectionLabel")}
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
+          {t("stack.title")}
+        </h2>
+
+        <StackGroup
+          title={t("stack.core")}
+          items={coreStack}
+          dotColor="bg-primary"
+        />
+        <StackGroup
+          title={t("stack.transversal")}
+          items={transversalStack}
+          dotColor="bg-muted-foreground"
+          titleColor="text-muted-foreground"
+        />
+      </div>
+    </section>
+  );
+};
 
 export default StackSection;
