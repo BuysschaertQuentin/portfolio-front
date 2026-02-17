@@ -1,7 +1,16 @@
 import bootcampImg from "@/assets/bootcamp_o_clock.png";
 
 const FormationSection = () => {
-  const skills = ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "SQL", "API REST", "Git"];
+  const skills = [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "SQL",
+    "API REST",
+    "Git",
+  ];
 
   return (
     <section id="formation" className="relative bg-violet-deep">
@@ -12,8 +21,7 @@ const FormationSection = () => {
           Formation
         </p>
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-violet">
-          Bootcamp{" "}
-          <span className="text-violet-foreground">O'clock</span>
+          Bootcamp <span className="text-violet-foreground">O'clock</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -22,6 +30,9 @@ const FormationSection = () => {
               src={bootcampImg}
               alt="Étudiant en bootcamp O'clock apprenant HTML, CSS et JavaScript, style pixel art"
               className="pixel-image w-full max-w-md"
+              width={448}
+              height={448}
+              loading="lazy"
             />
           </div>
           <div className="glass-card rounded-xl p-8 border-violet/30 space-y-6 md:order-2">
@@ -32,10 +43,17 @@ const FormationSection = () => {
               </span>
             </div>
             <p className="text-secondary-foreground leading-relaxed">
-              Une immersion totale dans le développement web. 6 mois de formation intensive 
-              pour maîtriser les fondamentaux du front-end et du back-end. Un rythme exigeant 
-              qui a forgé ma <span className="text-violet-foreground font-medium">rigueur</span> et 
-              confirmé ma <span className="text-violet-foreground font-medium">passion</span> pour le code.
+              Une immersion totale dans le développement web. 6 mois de
+              formation intensive pour maîtriser les fondamentaux du front-end
+              et du back-end. Un rythme exigeant qui a forgé ma{" "}
+              <span className="text-violet-foreground font-medium">
+                rigueur
+              </span>{" "}
+              et confirmé ma{" "}
+              <span className="text-violet-foreground font-medium">
+                passion
+              </span>{" "}
+              pour le code.
             </p>
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (

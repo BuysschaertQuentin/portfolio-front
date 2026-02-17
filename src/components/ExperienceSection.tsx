@@ -1,7 +1,14 @@
 import orangeImg from "@/assets/developpeur_alternance_orange.png";
 
 const ExperienceSection = () => {
-  const stack = ["Angular", "NestJS", "TypeScript", "PostgreSQL", "Git", "Docker"];
+  const stack = [
+    "Angular",
+    "NestJS",
+    "TypeScript",
+    "PostgreSQL",
+    "Git",
+    "Docker",
+  ];
 
   return (
     <section id="experience" className="relative">
@@ -13,8 +20,7 @@ const ExperienceSection = () => {
           Expérience actuelle
         </p>
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-orange">
-          Développeur Fullstack —{" "}
-          <span className="text-orange">Orange</span>
+          Développeur Fullstack — <span className="text-orange">Orange</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -26,9 +32,10 @@ const ExperienceSection = () => {
               </span>
             </div>
             <p className="text-secondary-foreground leading-relaxed">
-              En alternance chez Orange, je participe au développement d'applications internes 
-              en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, 
-              contribuant à la conception et l'implémentation de fonctionnalités front et back.
+              En alternance chez Orange, je participe au développement
+              d'applications internes en utilisant des technologies modernes. Je
+              travaille au sein d'une équipe agile, contribuant à la conception
+              et l'implémentation de fonctionnalités front et back.
             </p>
             <div className="flex flex-wrap gap-2">
               {stack.map((tech) => (
@@ -46,6 +53,9 @@ const ExperienceSection = () => {
               src={orangeImg}
               alt="Développeur en alternance chez Orange travaillant sur Angular et NestJS, style pixel art"
               className="pixel-image w-full max-w-md"
+              width={448}
+              height={448}
+              loading="lazy"
             />
           </div>
         </div>
