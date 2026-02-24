@@ -16,6 +16,18 @@
     />
     <meta property="og:type" content="website" />
 
+    <!-- SPA fallback: restore the path encoded by 404.html for React Router -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get("p");
+        if (p) {
+          var decoded = decodeURIComponent(p).replace(/~/, "?");
+          window.history.replaceState(null, "", decoded);
+        }
+      })();
+    </script>
+
     <!-- Preconnect to Google Fonts (breaks critical chain) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
