@@ -16,22 +16,6 @@
     />
     <meta property="og:type" content="website" />
 
-    <!-- SPA fallback: restore the path encoded by 404.html for React Router -->
-    <script>
-      (function () {
-        var params = new URLSearchParams(window.location.search);
-        var p = params.get("p");
-        if (p) {
-          var base = "/portfolio-front";
-          var decoded = decodeURIComponent(p).replace(/~/, "?");
-          // Rebuild the full path including the repo base so React Router
-          // (basename="/portfolio-front/") can correctly match routes.
-          var fullPath = decoded === "/" ? base + "/" : base + decoded;
-          window.history.replaceState(null, "", fullPath);
-        }
-      })();
-    </script>
-
     <!-- Preconnect to Google Fonts (breaks critical chain) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

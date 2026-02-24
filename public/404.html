@@ -4,21 +4,19 @@
     <meta charset="utf-8" />
     <title>Portfolio</title>
     <!--
-      GitHub Pages serves 404.html when a route is not found.
-      This script redirects to index.html while preserving the path
-      so React Router can handle it client-side.
-      Technique: https://github.com/rafgraph/spa-github-pages
+      GitHub Pages serves 404.html for unknown routes.
+      Redirect to index.html so React Router handles client-side routing.
     -->
     <script>
-      const repo = "/portfolio-front";
-      const path = window.location.pathname.replace(repo, "") || "/";
-      const search = window.location.search;
-      const hash = window.location.hash;
-      const redirect =
-        repo +
+      var path = window.location.pathname || "/";
+      var search = window.location.search;
+      var hash = window.location.hash;
+      window.location.replace(
         "/?p=" +
-        encodeURIComponent(path + (search ? "~" + search.slice(1) : "") + hash);
-      window.location.replace(redirect);
+          encodeURIComponent(
+            path + (search ? "~" + search.slice(1) : "") + hash,
+          ),
+      );
     </script>
   </head>
   <body></body>

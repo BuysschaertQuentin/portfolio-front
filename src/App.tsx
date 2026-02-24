@@ -7,7 +7,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
   <I18nProvider>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route
