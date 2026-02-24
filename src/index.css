@@ -1,113 +1,221 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ============================
+   Theme configuration (TW v4)
+   ============================ */
+@theme {
+  /* Font families */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-@layer base {
-  :root {
-    --background: 220 20% 7%;
-    --foreground: 210 20% 92%;
+  /* Border radius */
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
 
-    --card: 220 18% 11%;
-    --card-foreground: 210 20% 92%;
+  /* Custom colors */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-    --popover: 220 18% 11%;
-    --popover-foreground: 210 20% 92%;
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-    --primary: 170 60% 50%;
-    --primary-foreground: 220 20% 7%;
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 85%;
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 215 15% 55%;
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
-    --accent: 170 60% 50%;
-    --accent-foreground: 220 20% 7%;
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 170 60% 50%;
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
 
-    --radius: 0.75rem;
+  --color-orange: hsl(var(--orange));
+  --color-orange-foreground: hsl(var(--orange-foreground));
+  --color-orange-muted: hsl(var(--orange-muted));
 
-    /* Section accent colors */
-    --orange: 25 95% 55%;
-    --orange-foreground: 25 95% 95%;
-    --orange-muted: 25 60% 15%;
+  --color-violet: hsl(var(--violet));
+  --color-violet-foreground: hsl(var(--violet-foreground));
+  --color-violet-muted: hsl(var(--violet-muted));
+  --color-violet-deep: hsl(var(--violet-deep));
 
-    --violet: 270 50% 25%;
-    --violet-foreground: 270 80% 85%;
-    --violet-muted: 270 40% 10%;
-    --violet-deep: 270 50% 6%;
+  --color-cyan: hsl(var(--cyan));
+  --color-cyan-foreground: hsl(var(--cyan-foreground));
+  --color-cyan-muted: hsl(var(--cyan-muted));
 
-    --cyan: 190 70% 50%;
-    --cyan-foreground: 190 80% 90%;
-    --cyan-muted: 190 50% 12%;
+  /* Keyframes */
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-float: float 6s ease-in-out infinite;
 
-    /* Glassmorphism */
-    --glass-bg: 220 20% 12% / 0.6;
-    --glass-border: 220 15% 25% / 0.5;
-    --glass-shadow: 0 8px 32px 0 hsla(220, 20%, 3%, 0.4);
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* ============================
+   CSS custom properties
+   ============================ */
+:root {
+  --background: 220 20% 7%;
+  --foreground: 210 20% 92%;
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
+  --card: 220 18% 11%;
+  --card-foreground: 210 20% 92%;
 
-  h1, h2, h3 {
-    font-family: 'JetBrains Mono', monospace;
-  }
+  --popover: 220 18% 11%;
+  --popover-foreground: 210 20% 92%;
+
+  --primary: 170 60% 50%;
+  --primary-foreground: 220 20% 7%;
+
+  --secondary: 220 15% 18%;
+  --secondary-foreground: 210 20% 85%;
+
+  --muted: 220 15% 15%;
+  --muted-foreground: 215 15% 55%;
+
+  --accent: 170 60% 50%;
+  --accent-foreground: 220 20% 7%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 220 15% 20%;
+  --input: 220 15% 20%;
+  --ring: 170 60% 50%;
+
+  /* Section accent colors */
+  --orange: 25 95% 55%;
+  --orange-foreground: 25 95% 95%;
+  --orange-muted: 25 60% 15%;
+
+  --violet: 270 50% 25%;
+  --violet-foreground: 270 80% 85%;
+  --violet-muted: 270 40% 10%;
+  --violet-deep: 270 50% 6%;
+
+  --cyan: 190 70% 50%;
+  --cyan-foreground: 190 80% 90%;
+  --cyan-muted: 190 50% 12%;
+
+  /* Glassmorphism */
+  --glass-bg: 220 20% 12% / 0.6;
+  --glass-border: 220 15% 25% / 0.5;
+  --glass-shadow: 0 8px 32px 0 hsla(220, 20%, 3%, 0.4);
 }
 
-@layer components {
-  .glass-card {
-    background: hsla(var(--glass-bg));
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid hsla(var(--glass-border));
-    box-shadow: var(--glass-shadow);
-  }
+* {
+  border-color: var(--color-border);
+}
 
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-mono);
+}
+
+/* ============================
+   Custom utilities
+   ============================ */
+@utility glass-card {
+  background: hsla(var(--glass-bg));
+  backdrop-filter: blur(16px);
+  border: 1px solid hsla(var(--glass-border));
+  box-shadow: var(--glass-shadow);
+}
+
+@utility pixel-image {
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  image-rendering: auto;
+}
+
+@utility gradient-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-glow-primary {
+  text-shadow: 0 0 20px hsla(var(--primary) / 0.4);
+}
+
+@utility text-glow-orange {
+  text-shadow: 0 0 20px hsla(var(--orange) / 0.4);
+}
+
+@utility text-glow-violet {
+  text-shadow: 0 0 20px hsla(var(--violet-foreground) / 0.3);
+}
+
+@utility text-glow-cyan {
+  text-shadow: 0 0 20px hsla(var(--cyan) / 0.4);
+}
+
+/* section-container as plain class (responsive padding requires @media, not supported in @utility) */
+.section-container {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 640px) {
   .section-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
-  }
-
-  .pixel-image {
-    @apply rounded-xl shadow-2xl;
-    image-rendering: auto;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
-@layer utilities {
-  .text-glow-primary {
-    text-shadow: 0 0 20px hsla(var(--primary) / 0.4);
+@media (min-width: 768px) {
+  .section-container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
+}
 
-  .text-glow-orange {
-    text-shadow: 0 0 20px hsla(var(--orange) / 0.4);
-  }
-
-  .text-glow-violet {
-    text-shadow: 0 0 20px hsla(var(--violet-foreground) / 0.3);
-  }
-
-  .text-glow-cyan {
-    text-shadow: 0 0 20px hsla(var(--cyan) / 0.4);
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
