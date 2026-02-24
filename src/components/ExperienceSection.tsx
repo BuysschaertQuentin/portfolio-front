@@ -1,17 +1,19 @@
 import orangeImg from "@/assets/developpeur_alternance_orange.png";
+import orangeLogo from "@/assets/orange.png";
 import { useI18n } from "@/i18n";
+import { Card } from "./ui/Card";
+
+const STACK = [
+  "Angular",
+  "NestJS",
+  "TypeScript",
+  "PostgreSQL",
+  "Git",
+  "Docker",
+] as const;
 
 const ExperienceSection = () => {
   const { t } = useI18n();
-
-  const stack = [
-    "Angular",
-    "NestJS",
-    "TypeScript",
-    "PostgreSQL",
-    "Git",
-    "Docker",
-  ];
 
   return (
     <section id="experience" className="relative">
@@ -28,18 +30,32 @@ const ExperienceSection = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="glass-card rounded-xl p-8 border-orange/20 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-orange animate-pulse" />
-              <span className="text-sm text-muted-foreground font-mono">
-                {t("experience.status")}
-              </span>
+          <Card className="rounded-xl p-8 border-orange/20 space-y-6">
+            {/* Logo + company name */}
+            <div className="flex items-center gap-4">
+              <img
+                src={orangeLogo}
+                alt=""
+                className="w-10 h-10 object-contain"
+                width={40}
+                height={40}
+                loading="lazy"
+              />
+              <div>
+                <span className="text-foreground font-semibold">
+                  {t("experience.company")}
+                </span>
+                <p className="text-xs text-muted-foreground font-mono">
+                  {t("experience.status")}
+                </p>
+              </div>
             </div>
+
             <p className="text-secondary-foreground leading-relaxed">
               {t("experience.description")}
             </p>
             <div className="flex flex-wrap gap-2">
-              {stack.map((tech) => (
+              {STACK.map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 text-xs font-mono rounded-full bg-orange-muted text-orange-foreground border border-orange/20"
@@ -48,7 +64,7 @@ const ExperienceSection = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </Card>
           <div className="flex justify-center">
             <img
               src={orangeImg}

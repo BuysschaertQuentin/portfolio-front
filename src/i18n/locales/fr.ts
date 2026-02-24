@@ -8,9 +8,14 @@ const fr: Translations = {
     projects: "Projets",
     stack: "Stack",
     contact: "Contact",
+    skipToContent: "Aller au contenu principal",
+    about: "À propos",
+    competences: "Compétences",
+    realisations: "Réalisations",
+    parcours: "Parcours",
   },
   hero: {
-    subtitle: "Portfolio // 2025",
+    subtitle: "Portfolio // 2026",
     title: "Développeur",
     titleHighlight: "Fullstack",
     description:
@@ -28,7 +33,7 @@ const fr: Translations = {
     sectionLabel: "Expérience actuelle",
     title: "Développeur Fullstack —",
     company: "Orange",
-    status: "En alternance — Depuis 2024",
+    status: "Alternance — Nov. 2023 à Mars 2027",
     description:
       "En alternance chez Orange, je participe au développement d'applications internes en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, contribuant à la conception et l'implémentation de fonctionnalités front et back.",
     imgAlt:
@@ -38,7 +43,7 @@ const fr: Translations = {
     sectionLabel: "Formation",
     title: "Bootcamp",
     school: "O'clock",
-    duration: "Formation intensive — 6 mois",
+    duration: "Formation intensive — Jan. à Juin 2023 (Transitions Pro)",
     description:
       "Une immersion totale dans le développement web. 6 mois de formation intensive pour maîtriser les fondamentaux du front-end et du back-end. Un rythme exigeant qui a forgé ma",
     quality1: "rigueur",
@@ -51,9 +56,9 @@ const fr: Translations = {
   past: {
     sectionLabel: "Parcours précédent",
     title: "Auxiliaire de vie —",
-    titleHighlight: "8 ans d'humanité",
+    titleHighlight: "9 ans d'humanité",
     description:
-      "Pendant 8 ans, j'ai accompagné des personnes vulnérables au quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
+      "D'octobre 2014 à septembre 2023, j'ai accompagné des personnes vulnérables au quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
     imgAlt: "Auxiliaire de vie accompagnant une personne âgée, style pixel art",
     empathy: "Empathie",
     empathyDesc: "Écoute active et bienveillance au quotidien",
@@ -105,12 +110,35 @@ const fr: Translations = {
     send: "Envoyer",
   },
   footer: {
-    copyright: "— Développeur Fullstack",
+    copyright: "Quentin Buysschaert — Développeur Fullstack",
   },
   notFound: {
     title: "404",
     message: "Oups ! Page introuvable",
     backHome: "Retour à l'accueil",
+  },
+  a11y: {
+    newTab: "(s'ouvre dans un nouvel onglet)",
+  },
+  about: {
+    title: "À propos",
+    placeholder: "Contenu à venir...",
+  },
+  competences: {
+    title: "Compétences",
+    placeholder: "Contenu à venir...",
+    detailTitle: "Compétence",
+    detailPlaceholder: "Contenu détaillé à venir...",
+  },
+  realisations: {
+    title: "Réalisations",
+    placeholder: "Contenu à venir...",
+    detailTitle: "Réalisation",
+    detailPlaceholder: "Contenu détaillé à venir...",
+  },
+  parcours: {
+    title: "Parcours professionnel",
+    placeholder: "Contenu à venir...",
   },
 };
 

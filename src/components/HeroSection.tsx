@@ -1,6 +1,9 @@
 import heroImg from "@/assets/nouvelles_opportunite.png";
+import profileImg from "@/assets/photo_profil.jpg";
+import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Download } from "lucide-react";
+import { Button } from "./ui/Button";
 
 const HeroSection = () => {
   const { t } = useI18n();
@@ -13,6 +16,21 @@ const HeroSection = () => {
       <div className="section-container relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-center md:text-left">
+            {/* Profile photo + name */}
+            <div className="flex items-center gap-4 justify-center md:justify-start">
+              <img
+                src={profileImg}
+                alt={PERSONAL.fullName}
+                className="w-16 h-16 rounded-full object-cover border-2 border-primary/50"
+                width={64}
+                height={64}
+                fetchPriority="high"
+              />
+              <span className="text-lg font-semibold text-foreground">
+                {PERSONAL.fullName}
+              </span>
+            </div>
+
             <p className="text-primary font-mono text-sm tracking-widest uppercase">
               {t("hero.subtitle")}
             </p>
@@ -36,19 +54,13 @@ const HeroSection = () => {
               .
             </p>
             <div className="flex gap-4 justify-center md:justify-start">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity"
-              >
-                <Download className="w-4 h-4" />
+              <Button href={PERSONAL.cvPath} download variant="primary">
+                <Download className="w-4 h-4" aria-hidden="true" />
                 {t("hero.downloadCv")}
-              </a>
-              <a
-                href="#experience"
-                className="inline-flex items-center px-6 py-3 border border-border text-foreground font-medium rounded-lg hover:bg-secondary transition-colors"
-              >
+              </Button>
+              <Button href="#experience" variant="secondary">
                 {t("hero.discoverPath")}
-              </a>
+              </Button>
             </div>
           </div>
           <div className="flex justify-center">

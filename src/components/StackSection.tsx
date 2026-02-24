@@ -1,8 +1,14 @@
 import { useI18n } from "@/i18n";
+import { type ComponentPropsWithoutRef, type ComponentType, memo } from "react";
+import { CloudFoundryIcon } from "./icons";
+import { Card } from "./ui/Card";
 
 interface TechItem {
   readonly name: string;
-  readonly logo: string;
+  /** URL to an external logo image */
+  readonly logo?: string;
+  /** Custom SVG icon component (takes priority over logo URL) */
+  readonly iconComponent?: ComponentType<ComponentPropsWithoutRef<"svg">>;
 }
 
 const coreStack: readonly TechItem[] = [
@@ -36,7 +42,7 @@ const coreStack: readonly TechItem[] = [
   },
   {
     name: "CloudFoundry",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudfoundry/cloudfoundry-original.svg",
+    iconComponent: CloudFoundryIcon,
   },
 ];
 
@@ -75,21 +81,33 @@ const transversalStack: readonly TechItem[] = [
   },
 ];
 
-const TechCard = ({ name, logo }: TechItem) => (
-  <div className="group glass-card rounded-xl p-5 border-primary/10 flex flex-col items-center gap-3 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_20px_hsla(var(--primary)/0.15)] hover:-translate-y-1">
-    <img
-      src={logo}
-      alt={`${name} logo`}
-      className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
-      loading="lazy"
-      width={40}
-      height={40}
-    />
+const TechCard = memo(({ name, logo, iconComponent: Icon }: TechItem) => (
+  <Card
+    className="group rounded-xl p-5 border-primary/10 flex flex-col items-center gap-3 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_20px_hsla(var(--primary)/0.15)] hover:-translate-y-1"
+    aria-label={name}
+  >
+    {Icon ? (
+      <Icon
+        className="w-10 h-10 transition-transform duration-300 group-hover:scale-110 text-muted-foreground group-hover:text-foreground"
+        aria-hidden="true"
+      />
+    ) : (
+      <img
+        src={logo}
+        alt=""
+        className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        width={40}
+        height={40}
+      />
+    )}
     <span className="text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors">
       {name}
     </span>
-  </div>
-);
+  </Card>
+));
+
+TechCard.displayName = "TechCard";
 
 interface StackGroupProps {
   readonly title: string;
@@ -106,11 +124,11 @@ const StackGroup = ({
 }: StackGroupProps) => (
   <div className="mb-16 last:mb-0">
     <div className="flex items-center gap-3 mb-8">
-      <div className={`w-2 h-2 rounded-full ${dotColor}`} />
+      <div className={`w-2 h-2 rounded-full ${dotColor}`} aria-hidden="true" />
       <h3 className={`text-lg font-mono font-semibold ${titleColor}`}>
         {title}
       </h3>
-      <div className="flex-1 h-px bg-border" />
+      <div className="flex-1 h-px bg-border" aria-hidden="true" />
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
       {items.map((tech) => (

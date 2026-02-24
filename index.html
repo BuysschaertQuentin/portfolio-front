@@ -20,22 +20,6 @@
     />
     <meta property="og:type" content="website" />
 
-    <!-- SPA route restoration: reads the encoded route set by 404.html -->
-    <script>
-      (function () {
-        var params = new URLSearchParams(window.location.search);
-        var route = params.get("route");
-        if (route) {
-          // Restore the full URL so React Router can match it
-          window.history.replaceState(
-            null,
-            "",
-            "/portfolio-front" + decodeURIComponent(route),
-          );
-        }
-      })();
-    </script>
-
     <!-- Preconnect to Google Fonts (breaks critical chain) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1,7 +1,16 @@
+import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Mail, Send } from "lucide-react";
-import { type ChangeEvent, type FormEvent, useCallback, useState } from "react";
+import {
+  type ChangeEvent,
+  type FormEvent,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
+import { ExternalLink } from "./a11y/ExternalLink";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import { Button } from "./ui/Button";
 
 interface ContactFormData {
   readonly name: string;
@@ -19,26 +28,29 @@ const ContactSection = () => {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA);
   const { t } = useI18n();
 
-  const socialLinks = [
-    {
-      href: "mailto:contact@example.com",
-      icon: Mail,
-      label: "contact@example.com",
-      external: false,
-    },
-    {
-      href: "https://linkedin.com",
-      icon: LinkedinIcon,
-      label: "LinkedIn",
-      external: true,
-    },
-    {
-      href: "https://github.com",
-      icon: GithubIcon,
-      label: "GitHub",
-      external: true,
-    },
-  ] as const;
+  const socialLinks = useMemo(
+    () => [
+      {
+        href: `mailto:${PERSONAL.email}`,
+        icon: Mail,
+        label: PERSONAL.email,
+        external: false,
+      },
+      {
+        href: PERSONAL.linkedIn,
+        icon: LinkedinIcon,
+        label: "LinkedIn",
+        external: true,
+      },
+      {
+        href: PERSONAL.github,
+        icon: GithubIcon,
+        label: "GitHub",
+        external: true,
+      },
+    ],
+    [],
+  );
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -51,7 +63,7 @@ const ContactSection = () => {
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      window.location.href = `mailto:contact@example.com?subject=Contact de ${formData.name}&body=${encodeURIComponent(formData.message)}`;
+      window.location.href = `mailto:${PERSONAL.email}?subject=Contact de ${formData.name}&body=${encodeURIComponent(formData.message)}`;
     },
     [formData.name, formData.message],
   );
@@ -72,24 +84,24 @@ const ContactSection = () => {
             <p className="text-muted-foreground leading-relaxed">
               {t("contact.description")}
             </p>
-            <div className="space-y-4">
-              {socialLinks.map(({ href, icon: Icon, label, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external && {
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <div className="p-2 rounded-md bg-secondary">
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm">{label}</span>
-                </a>
-              ))}
-            </div>
+            <ul className="space-y-4" role="list">
+              {socialLinks.map(({ href, icon: Icon, label, external }) => {
+                const LinkComponent = external ? ExternalLink : "a";
+                return (
+                  <li key={label}>
+                    <LinkComponent
+                      href={href}
+                      className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <div className="p-2 rounded-md bg-secondary">
+                        <Icon className="w-4 h-4" aria-hidden="true" />
+                      </div>
+                      <span className="text-sm">{label}</span>
+                    </LinkComponent>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
           {/* Form */}
@@ -151,13 +163,10 @@ const ContactSection = () => {
                 placeholder={t("contact.messagePlaceholder")}
               />
             </div>
-            <button
-              type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity"
-            >
-              <Send className="w-4 h-4" />
+            <Button type="submit" variant="primary" className="w-full">
+              <Send className="w-4 h-4" aria-hidden="true" />
               {t("contact.send")}
-            </button>
+            </Button>
           </form>
         </div>
       </div>

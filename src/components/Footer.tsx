@@ -1,27 +1,36 @@
+import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Mail } from "lucide-react";
+import { useMemo } from "react";
+import { ExternalLink } from "./a11y/ExternalLink";
 import { GithubIcon, LinkedinIcon } from "./icons";
-
-const footerLinks = [
-  {
-    href: "https://linkedin.com",
-    icon: LinkedinIcon,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com",
-    icon: GithubIcon,
-    label: "GitHub",
-  },
-  {
-    href: "mailto:contact@example.com",
-    icon: Mail,
-    label: "Email",
-  },
-] as const;
 
 const Footer = () => {
   const { t } = useI18n();
+
+  const footerLinks = useMemo(
+    () => [
+      {
+        href: PERSONAL.linkedIn,
+        icon: LinkedinIcon,
+        label: "LinkedIn",
+        external: true,
+      },
+      {
+        href: PERSONAL.github,
+        icon: GithubIcon,
+        label: "GitHub",
+        external: true,
+      },
+      {
+        href: `mailto:${PERSONAL.email}`,
+        icon: Mail,
+        label: "Email",
+        external: false,
+      },
+    ],
+    [],
+  );
 
   return (
     <footer className="border-t border-border">
@@ -30,20 +39,24 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground font-mono">
             © {new Date().getFullYear()} {t("footer.copyright")}
           </p>
-          <div className="flex items-center gap-6">
-            {footerLinks.map(({ href, icon: Icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label={label}
-              >
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
+          <nav aria-label="Social links">
+            <ul className="flex items-center gap-6" role="list">
+              {footerLinks.map(({ href, icon: Icon, label, external }) => {
+                const LinkComponent = external ? ExternalLink : "a";
+                return (
+                  <li key={label}>
+                    <LinkComponent
+                      href={href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={label}
+                    >
+                      <Icon className="w-5 h-5" aria-hidden="true" />
+                    </LinkComponent>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

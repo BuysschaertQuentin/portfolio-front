@@ -8,9 +8,14 @@ const en: Translations = {
     projects: "Projects",
     stack: "Stack",
     contact: "Contact",
+    skipToContent: "Skip to main content",
+    about: "About",
+    competences: "Skills",
+    realisations: "Achievements",
+    parcours: "Career",
   },
   hero: {
-    subtitle: "Portfolio // 2025",
+    subtitle: "Portfolio // 2026",
     title: "Developer",
     titleHighlight: "Fullstack",
     description: "From human support to code, I build web solutions with",
@@ -26,7 +31,7 @@ const en: Translations = {
     sectionLabel: "Current experience",
     title: "Fullstack Developer —",
     company: "Orange",
-    status: "Work-study program — Since 2024",
+    status: "Work-study program — Nov. 2023 to Mar. 2027",
     description:
       "On a work-study program at Orange, I participate in the development of internal applications using modern technologies. I work within an agile team, contributing to the design and implementation of front-end and back-end features.",
     imgAlt:
@@ -36,7 +41,7 @@ const en: Translations = {
     sectionLabel: "Education",
     title: "Bootcamp",
     school: "O'clock",
-    duration: "Intensive training — 6 months",
+    duration: "Intensive training — Jan. to Jun. 2023 (Transitions Pro)",
     description:
       "A total immersion in web development. 6 months of intensive training to master front-end and back-end fundamentals. A demanding pace that forged my",
     quality1: "rigor",
@@ -49,9 +54,9 @@ const en: Translations = {
   past: {
     sectionLabel: "Previous background",
     title: "Care assistant —",
-    titleHighlight: "8 years of humanity",
+    titleHighlight: "9 years of humanity",
     description:
-      "For 8 years, I supported vulnerable people on a daily basis. This deeply human experience gave me cross-cutting skills that are now my strength as a developer.",
+      "From October 2014 to September 2023, I supported vulnerable people on a daily basis. This deeply human experience gave me cross-cutting skills that are now my strength as a developer.",
     imgAlt: "Care assistant helping an elderly person, pixel art style",
     empathy: "Empathy",
     empathyDesc: "Active listening and daily kindness",
@@ -103,12 +108,35 @@ const en: Translations = {
     send: "Send",
   },
   footer: {
-    copyright: "— Fullstack Developer",
+    copyright: "Quentin Buysschaert — Fullstack Developer",
   },
   notFound: {
     title: "404",
     message: "Oops! Page not found",
     backHome: "Return to Home",
+  },
+  a11y: {
+    newTab: "(opens in a new tab)",
+  },
+  about: {
+    title: "About Me",
+    placeholder: "Content coming soon...",
+  },
+  competences: {
+    title: "Skills",
+    placeholder: "Content coming soon...",
+    detailTitle: "Skill",
+    detailPlaceholder: "Detailed content coming soon...",
+  },
+  realisations: {
+    title: "Achievements",
+    placeholder: "Content coming soon...",
+    detailTitle: "Achievement",
+    detailPlaceholder: "Detailed content coming soon...",
+  },
+  parcours: {
+    title: "Career Path",
+    placeholder: "Content coming soon...",
   },
 };
 

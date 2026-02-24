@@ -147,6 +147,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  /* Navbar overlap compensation */
+}
+
+/* Base Accessibility / Keyboard Navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus if mouse is used, only apply focus-visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 h1,
 h2,
 h3 {
