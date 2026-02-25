@@ -1,3 +1,4 @@
+import profileImg from "@/assets/photo_profil.jpg";
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Menu, X } from "lucide-react";
@@ -121,7 +122,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
         <Link
           to="/"
-          className="font-mono text-sm font-bold text-primary"
+          className="flex items-center gap-2 font-mono text-sm font-bold text-primary"
           aria-label={`${PERSONAL.fullName} — Home`}
           onClick={(e) => {
             if (isHome) {
@@ -130,6 +131,13 @@ const Navbar = () => {
             }
           }}
         >
+          <img
+            src={profileImg}
+            alt=""
+            className="w-7 h-7 rounded-full object-cover border border-primary/50"
+            width={28}
+            height={28}
+          />
           {`<${PERSONAL.fullName}/>`}
         </Link>
 

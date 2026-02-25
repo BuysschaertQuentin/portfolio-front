@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/Card";
+import { CONTEXT_COLORS, REALISATIONS } from "@/constants/realisations";
 import { findSkillBySlug } from "@/constants/skills";
 import { useI18n } from "@/i18n";
 import {
@@ -71,7 +72,14 @@ const CompetenceDetail = () => {
 
   const i18nKey = slug ? SLUG_TO_KEY[slug] : undefined;
 
-  // Redirect to 404 if skill not found
+  // Find all realisations that reference this skill
+  const linkedRealisations = useMemo(
+    () =>
+      slug ? REALISATIONS.filter((r) => r.linkedSkills.includes(slug)) : [],
+    [slug],
+  );
+
+  // Redirect to overview if skill not found
   if (!skill || !i18nKey) {
     return <Navigate to="/competences" replace />;
   }
@@ -149,7 +157,7 @@ const CompetenceDetail = () => {
         />
       </div>
 
-      {/* Linked achievements placeholder */}
+      {/* Linked realisations — bidirectional navigation */}
       <div>
         <div className="flex items-center gap-3 mb-4">
           <div className="w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
@@ -159,9 +167,41 @@ const CompetenceDetail = () => {
           </h2>
           <div className="flex-1 h-px bg-border" aria-hidden="true" />
         </div>
-        <p className="text-sm text-muted-foreground italic">
-          Les liens vers les réalisations seront ajoutés en Phase 7.
-        </p>
+        {linkedRealisations.length > 0 ? (
+          <div className="flex flex-wrap gap-3">
+            {linkedRealisations.map((r) => {
+              const RIcon = r.icon;
+              const color = CONTEXT_COLORS[r.context];
+              return (
+                <Link
+                  key={r.slug}
+                  to={`/realisations/${r.slug}`}
+                  className="group"
+                >
+                  <Card
+                    className={`rounded-lg px-4 py-2 border-${color}/10 flex items-center gap-2
+                      hover:border-${color}/30 transition-all duration-200`}
+                    focusable={false}
+                  >
+                    <RIcon
+                      className={`w-4 h-4 text-muted-foreground group-hover:text-${color} transition-colors`}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={`text-sm font-mono text-muted-foreground group-hover:text-${color} transition-colors`}
+                    >
+                      {t(r.titleKey)}
+                    </span>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground italic">
+            Aucune réalisation liée pour le moment.
+          </p>
+        )}
       </div>
     </section>
   );
