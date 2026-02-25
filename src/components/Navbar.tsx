@@ -2,39 +2,35 @@ import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 interface NavItem {
-  readonly href: string;
   readonly label: string;
-  /** If true, uses an anchor link (<a>) instead of React Router <Link> */
-  readonly isAnchor?: boolean;
+  /** React Router path for page links */
+  readonly to?: string;
+  /** Anchor ID for home section links (e.g. "experience") */
+  readonly sectionId?: string;
 }
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { t } = useI18n();
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
 
   const navLinks: readonly NavItem[] = useMemo(
     () => [
-      // Anchor links — visible only on home
-      ...(isHome
-        ? [
-            { href: "#experience", label: t("nav.experience"), isAnchor: true },
-            { href: "#formation", label: t("nav.formation"), isAnchor: true },
-            { href: "#contact", label: t("nav.contact"), isAnchor: true },
-          ]
-        : []),
-      // Route links — always visible
-      { href: "/about", label: t("nav.about") },
-      { href: "/competences", label: t("nav.competences") },
-      { href: "/realisations", label: t("nav.realisations") },
-      { href: "/parcours", label: t("nav.parcours") },
+      { sectionId: "experience", label: t("nav.experience") },
+      { sectionId: "formation", label: t("nav.formation") },
+      { sectionId: "contact", label: t("nav.contact") },
+      { to: "/about", label: t("nav.about") },
+      { to: "/competences", label: t("nav.competences") },
+      { to: "/realisations", label: t("nav.realisations") },
+      { to: "/parcours", label: t("nav.parcours") },
     ],
-    [t, isHome],
+    [t],
   );
 
   // Close mobile menu on Escape key press
@@ -48,7 +44,74 @@ const Navbar = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileOpen]);
 
+  // Scroll to hash target after navigation to home
+  useEffect(() => {
+    if (isHome && location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        // Small delay to let the DOM render after route change
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" }));
+      }
+    }
+  }, [isHome, location.hash]);
+
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  /**
+   * Handle section link clicks.
+   * If already on home, smooth scroll. Otherwise, navigate to /#sectionId.
+   */
+  const handleSectionClick = useCallback(
+    (sectionId: string) => {
+      closeMobile();
+      if (isHome) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(`/#${sectionId}`);
+      }
+    },
+    [isHome, navigate, closeMobile],
+  );
+
+  const renderNavItem = (item: NavItem, isMobile: boolean) => {
+    const baseClass = isMobile
+      ? "block text-sm font-mono transition-colors"
+      : "text-xs font-mono transition-colors";
+
+    if (item.sectionId) {
+      return (
+        <button
+          key={item.sectionId}
+          type="button"
+          onClick={() => handleSectionClick(item.sectionId!)}
+          className={`${baseClass} text-muted-foreground hover:text-foreground cursor-pointer`}
+        >
+          {item.label}
+        </button>
+      );
+    }
+
+    const isActive = location.pathname === item.to;
+    return (
+      <Link
+        key={item.to}
+        to={item.to!}
+        onClick={closeMobile}
+        className={`${baseClass} ${
+          isActive
+            ? "text-primary font-semibold"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        aria-current={isActive ? "page" : undefined}
+      >
+        {item.label}
+      </Link>
+    );
+  };
 
   return (
     <nav
@@ -60,36 +123,19 @@ const Navbar = () => {
           to="/"
           className="font-mono text-sm font-bold text-primary"
           aria-label={`${PERSONAL.fullName} — Home`}
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
         >
           {`<${PERSONAL.fullName}/>`}
         </Link>
 
         {/* Desktop links — centered */}
         <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
-          {navLinks.map((l) =>
-            l.isAnchor ? (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.href}
-                to={l.href}
-                className={`text-xs font-mono transition-colors ${
-                  location.pathname === l.href
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                aria-current={location.pathname === l.href ? "page" : undefined}
-              >
-                {l.label}
-              </Link>
-            ),
-          )}
+          {navLinks.map((item) => renderNavItem(item, false))}
         </div>
 
         {/* Desktop language switcher — right */}
@@ -123,32 +169,7 @@ const Navbar = () => {
           id="mobile-menu"
           className="md:hidden glass-card border-t border-border/50 px-4 py-4 space-y-3"
         >
-          {navLinks.map((l) =>
-            l.isAnchor ? (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={closeMobile}
-                className="block text-sm font-mono text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.href}
-                to={l.href}
-                onClick={closeMobile}
-                className={`block text-sm font-mono transition-colors ${
-                  location.pathname === l.href
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                aria-current={location.pathname === l.href ? "page" : undefined}
-              >
-                {l.label}
-              </Link>
-            ),
-          )}
+          {navLinks.map((item) => renderNavItem(item, true))}
         </div>
       )}
     </nav>
