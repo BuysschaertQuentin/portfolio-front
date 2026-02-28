@@ -18,28 +18,28 @@ const NotFound = lazy(() => import("./pages/NotFound"));
  */
 const App = () => (
   <I18nProvider>
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio-front">
       <Routes>
         <Route element={<Layout />}>
           {/* Home — one-page portfolio */}
-          <Route path=\"/\" element={<Index />} />
+          <Route path="/" element={<Index />} />
 
           {/* About */}
-          <Route path=\"/about\" element={<About />} />
+          <Route path="/about" element={<About />} />
 
           {/* Skills */}
-          <Route path=\"/competences\" element={<Competences />} />
-          <Route path=\"/competences/:slug\" element={<CompetenceDetail />} />
+          <Route path="/competences" element={<Competences />} />
+          <Route path="/competences/:slug" element={<CompetenceDetail />} />
 
           {/* Achievements */}
-          <Route path=\"/realisations\" element={<Realisations />} />
-          <Route path=\"/realisations/:slug\" element={<RealisationDetail />} />
+          <Route path="/realisations" element={<Realisations />} />
+          <Route path="/realisations/:slug" element={<RealisationDetail />} />
 
           {/* Career timeline */}
-          <Route path=\"/parcours\" element={<Parcours />} />
+          <Route path="/parcours" element={<Parcours />} />
 
           {/* 404 fallback */}
-          <Route path=\"*\" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
