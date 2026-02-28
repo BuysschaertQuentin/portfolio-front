@@ -17,4 +17,33 @@ const NotFound = lazy(() => import("./pages/NotFound"));
  * All routes (except index) are lazy-loaded and wrapped in a central Suspense via Layout.
  */
 const App = () => (
-  <I18nProvider>\n    <BrowserRouter basename=\"/portfolio-front\">\n      <Routes>\n        <Route element={<Layout />}>\n          {/* Home — one-page portfolio */}\n          <Route path=\"/\" element={<Index />} />\n\n          {/* About */}\n          <Route path=\"/about\" element={<About />} />\n\n          {/* Skills */}\n          <Route path=\"/competences\" element={<Competences />} />\n          <Route path=\"/competences/:slug\" element={<CompetenceDetail />} />\n\n          {/* Achievements */}\n          <Route path=\"/realisations\" element={<Realisations />} />\n          <Route path=\"/realisations/:slug\" element={<RealisationDetail />} />\n\n          {/* Career timeline */}\n          <Route path=\"/parcours\" element={<Parcours />} />\n\n          {/* 404 fallback */}\n          <Route path=\"*\" element={<NotFound />} />\n        </Route>\n      </Routes>\n    </BrowserRouter>\n  </I18nProvider>\n);\n\nexport default App;\n
+  <I18nProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          {/* Home — one-page portfolio */}
+          <Route path=\"/\" element={<Index />} />
+
+          {/* About */}
+          <Route path=\"/about\" element={<About />} />
+
+          {/* Skills */}
+          <Route path=\"/competences\" element={<Competences />} />
+          <Route path=\"/competences/:slug\" element={<CompetenceDetail />} />
+
+          {/* Achievements */}
+          <Route path=\"/realisations\" element={<Realisations />} />
+          <Route path=\"/realisations/:slug\" element={<RealisationDetail />} />
+
+          {/* Career timeline */}
+          <Route path=\"/parcours\" element={<Parcours />} />
+
+          {/* 404 fallback */}
+          <Route path=\"*\" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </I18nProvider>
+);
+
+export default App;
