@@ -1,14 +1,22 @@
 import { useI18n } from "@/i18n";
-import { Outlet } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 /**
  * Shared layout wrapper for all pages.
  * Renders the persistent Navbar, skip-to-content link, and Footer.
+ * Centralizes Suspense for lazy-loaded pages and manages route transition behaviors.
  */
 const Layout = () => {
   const { t } = useI18n();
+  const { pathname } = useLocation();
+
+  // Reset scroll on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
@@ -24,7 +32,9 @@ const Layout = () => {
         className="min-h-screen bg-background text-foreground overflow-x-hidden"
         tabIndex={-1}
       >
-        <Outlet />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </>
