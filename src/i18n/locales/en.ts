@@ -48,8 +48,7 @@ const en: Translations = {
     and: "and confirmed my",
     quality2: "passion",
     forCode: "for code.",
-    imgAlt:
-      "Student at O'clock bootcamp learning HTML, CSS, and JavaScript, pixel art style",
+    imgAlt: "Student at O'clock bootcamp learning HTML, CSS, and JavaScript, pixel art style",
   },
   past: {
     sectionLabel: "Previous background",
@@ -84,8 +83,7 @@ const en: Translations = {
       portfolioDesc:
         "This portfolio in React with a retro-futuristic design, dark mode, and pixel art.",
       botTitle: "Discord Bot",
-      botDesc:
-        "Community bot with custom commands and external API integrations.",
+      botDesc: "Community bot with custom commands and external API integrations.",
     },
   },
   stack: {
@@ -127,8 +125,7 @@ const en: Translations = {
     persoProjectTitle: "Personal project",
     persoProjectDesc: "[TO WRITE]",
     softSkillsTitle: "Human qualities",
-    softSkillsSubtitle:
-      "Overview of my main qualities — details on the Skills page.",
+    softSkillsSubtitle: "Overview of my main qualities — details on the Skills page.",
     seeMore: "Learn more →",
     interestsTitle: "Interests",
     interests: {
@@ -265,9 +262,40 @@ const en: Translations = {
       linkedSkillsTitle: "Skills involved",
     },
     items: {
-      orange: {
-        title: "[Evocative name — Orange]",
-        shortDesc: "[TO WRITE] — Short description of the Orange project.",
+      portailRh: {
+        title: "HR Redirection Portal",
+        shortDesc:
+          "Portal centralizing Orange HR tools via a URL redirection system — Angular, NestJS, MySQL, CloudFoundry.",
+        definition: "[TO WRITE]",
+        framing: "[TO WRITE]",
+        action: "[TO WRITE]",
+        results: "[TO WRITE]",
+        critical: "[TO WRITE]",
+      },
+      reposComp: {
+        title: "Compensatory Leave Management",
+        shortDesc:
+          "Compensatory leave management application for all Orange France employees — Angular, Java, microservices.",
+        definition: "[TO WRITE]",
+        framing: "[TO WRITE]",
+        action: "[TO WRITE]",
+        results: "[TO WRITE]",
+        critical: "[TO WRITE]",
+      },
+      mobileComp: {
+        title: "Skills Mobile App",
+        shortDesc:
+          "Mobile and web application for centralizing team skills — Flutter, Dart, Supabase.",
+        definition: "[TO WRITE]",
+        framing: "[TO WRITE]",
+        action: "[TO WRITE]",
+        results: "[TO WRITE]",
+        critical: "[TO WRITE]",
+      },
+      ovoyage: {
+        title: "O'voyage",
+        shortDesc:
+          "O'Clock bootcamp final project — travel application built as a team with Vue.js and NestJS.",
         definition: "[TO WRITE]",
         framing: "[TO WRITE]",
         action: "[TO WRITE]",
@@ -276,35 +304,7 @@ const en: Translations = {
       },
       portfolio: {
         title: "Personal portfolio",
-        shortDesc:
-          "React portfolio with retro-futuristic design, dark mode and pixel art.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
-      bot: {
-        title: "[Evocative name — Discord Bot]",
-        shortDesc: "[TO WRITE] — Short description of the bot.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
-      formation1: {
-        title: "[O'Clock project #1]",
-        shortDesc: "[TO WRITE] — Short description.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
-      formation2: {
-        title: "[O'Clock project #2]",
-        shortDesc: "[TO WRITE] — Short description.",
+        shortDesc: "React portfolio with retro-futuristic design, dark mode and pixel art.",
         definition: "[TO WRITE]",
         framing: "[TO WRITE]",
         action: "[TO WRITE]",
@@ -318,38 +318,56 @@ const en: Translations = {
     subtitle: "Anti-chronological timeline — most recent first",
     experienceTitle: "Professional experience",
     formationTitle: "Education",
-    certificationTitle: "Certifications & tests",
+    certificationTitle: "Certifications & degrees",
     showDetails: "Show details",
     hideDetails: "Hide details",
     entries: {
-      orange: {
-        period: "Nov. 2023 — Mar. 2027",
-        title: "Fullstack Developer",
-        place: "Orange",
-        status: "Work-study program",
-        missions: "[TO WRITE] — Detailed missions at Orange.",
+      orange2: {
+        period: "Mar. 2025 — Mar. 2027",
+        title: "Fullstack Developer — Master's in Software Engineering",
+        place: "Orange Business Services",
+        status: "Work-study program (2nd year)",
+        missions: "[TO WRITE] — Detailed missions (Flutter mobile app, compensatory leave).",
+        vision: "[TO WRITE] — Company vision.",
+      },
+      orange1: {
+        period: "Nov. 2023 — Dec. 2024",
+        title: "Fullstack Developer — Bachelor's in Application Design",
+        place: "Orange Business Services",
+        status: "Work-study program (1st year)",
+        missions: "[TO WRITE] — Detailed missions (HR portal).",
         vision: "[TO WRITE] — Company vision.",
       },
       oclock: {
         period: "Jan. 2023 — Jun. 2023",
-        title: "Fullstack Web Developer Bootcamp",
+        title: "Fullstack JavaScript Web Developer Bootcamp",
         place: "O'clock",
-        presentation: "[TO WRITE] — Training overview.",
-        vision: "[TO WRITE] — Pedagogy vision.",
+        presentation:
+          "Intensive 6-month training via Transitions Pro Hauts-de-France. 476h core curriculum (HTML/CSS, JavaScript, Node.js, SQL, MVC architecture) followed by a 168h Data specialization (advanced SQL, NoSQL, MongoDB, Redis, GraphQL, Data Science). Final team project 'O'voyage' with defense.",
+        vision: "[TO WRITE] — O'Clock pedagogy vision.",
       },
       care: {
-        period: "Oct. 2014 — Sep. 2023",
-        title: "Care Assistant",
-        place: "[TO WRITE] — Location(s)",
+        period: "Oct. 2014 — Aug. 2023",
+        title: "Home Care Assistant",
+        place: "APF France Handicap — Villeneuve d'Ascq",
         status: "Permanent contract",
-        missions: "[TO WRITE] — Detailed missions.",
-        vision: "[TO WRITE] — Job vision.",
+        missions:
+          "Daily support for people with motor and cognitive disabilities. Endotracheal aspiration training (2017) enabling care for patients with neuromuscular diseases (ALS). Autonomous planning of interventions, collaboration with families and healthcare teams.",
+        vision: "[TO WRITE] — What this experience brought you.",
       },
     },
     certifications: {
-      rncpDev: {
-        date: "[Date]",
-        title: "[TO WRITE] — RNCP certification title",
+      master: {
+        date: "Mar. 2027 (expected)",
+        title: "Master's in Software Engineering — RNCP 35419 (Level 7) 🔄 In progress",
+      },
+      cda: {
+        date: "Dec. 2024",
+        title: "Professional Title 'Application Designer & Developer' — RNCP 31678 (Level 6)",
+      },
+      dwwm: {
+        date: "Jun. 2023",
+        title: "Professional Title 'Web and Mobile Web Developer' — RNCP 31114 (Level 5)",
       },
     },
   },

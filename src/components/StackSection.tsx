@@ -72,6 +72,18 @@ const transversalStack: readonly TechItem[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   },
   {
+    name: "Vue.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+  },
+  {
+    name: "Flutter",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+  },
+  {
+    name: "Supabase",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+  },
+  {
     name: "VS Code",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
   },
@@ -83,25 +95,25 @@ const transversalStack: readonly TechItem[] = [
 
 const TechCard = memo(({ name, logo, iconComponent: Icon }: TechItem) => (
   <Card
-    className="group rounded-xl p-5 border-primary/10 flex flex-col items-center gap-3 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_20px_hsla(var(--primary)/0.15)] hover:-translate-y-1"
+    className="group border-primary/10 hover:border-primary/40 flex flex-col items-center gap-3 rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_hsla(var(--primary)/0.15)]"
     aria-label={name}
   >
     {Icon ? (
       <Icon
-        className="w-10 h-10 transition-transform duration-300 group-hover:scale-110 text-muted-foreground group-hover:text-foreground"
+        className="text-muted-foreground group-hover:text-foreground h-10 w-10 transition-transform duration-300 group-hover:scale-110"
         aria-hidden="true"
       />
     ) : (
       <img
         src={logo}
         alt=""
-        className="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+        className="h-10 w-10 transition-transform duration-300 group-hover:scale-110"
         loading="lazy"
         width={40}
         height={40}
       />
     )}
-    <span className="text-xs font-mono text-muted-foreground group-hover:text-foreground transition-colors">
+    <span className="text-muted-foreground group-hover:text-foreground font-mono text-xs transition-colors">
       {name}
     </span>
   </Card>
@@ -123,14 +135,12 @@ const StackGroup = ({
   titleColor = "text-foreground",
 }: StackGroupProps) => (
   <div className="mb-16 last:mb-0">
-    <div className="flex items-center gap-3 mb-8">
-      <div className={`w-2 h-2 rounded-full ${dotColor}`} aria-hidden="true" />
-      <h3 className={`text-lg font-mono font-semibold ${titleColor}`}>
-        {title}
-      </h3>
-      <div className="flex-1 h-px bg-border" aria-hidden="true" />
+    <div className="mb-8 flex items-center gap-3">
+      <div className={`h-2 w-2 rounded-full ${dotColor}`} aria-hidden="true" />
+      <h3 className={`font-mono text-lg font-semibold ${titleColor}`}>{title}</h3>
+      <div className="bg-border h-px flex-1" aria-hidden="true" />
     </div>
-    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
       {items.map((tech) => (
         <TechCard key={tech.name} {...tech} />
       ))}
@@ -144,18 +154,14 @@ const StackSection = () => {
   return (
     <section id="stack" className="relative">
       <div className="section-container">
-        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
+        <p className="text-primary mb-2 text-center font-mono text-sm tracking-widest uppercase">
           {t("stack.sectionLabel")}
         </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
+        <h2 className="text-glow-primary mb-16 text-center text-3xl font-bold sm:text-4xl">
           {t("stack.title")}
         </h2>
 
-        <StackGroup
-          title={t("stack.core")}
-          items={coreStack}
-          dotColor="bg-primary"
-        />
+        <StackGroup title={t("stack.core")} items={coreStack} dotColor="bg-primary" />
         <StackGroup
           title={t("stack.transversal")}
           items={transversalStack}
