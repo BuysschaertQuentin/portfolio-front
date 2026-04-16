@@ -1,0 +1,44 @@
+import { ChevronDown } from "lucide-react";
+
+interface SectionChevronProps {
+  targetId: string;
+  label: string;
+}
+
+const SectionChevron = ({ targetId, label }: SectionChevronProps) => {
+  const scrollToTarget = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      // Use center to ensure the whole block is vertically centered
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Update URL hash for accessibility/history without jumping
+      history.pushState(null, "", `#${targetId}`);
+    }
+  };
+
+  return (
+    <div className="animate-fade-in relative z-20 mt-4 flex flex-col items-center gap-4 pb-4">
+      <span className="text-primary/80 font-mono text-[11px] font-medium tracking-[0.2em] uppercase drop-shadow-[0_0_8px_hsla(var(--primary)/0.3)]">
+        {label}
+      </span>
+      <a
+        href={`#${targetId}`}
+        onClick={scrollToTarget}
+        className="group border-primary/20 bg-background/50 hover:border-primary/50 hover:bg-primary/10 focus-visible:ring-primary relative flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_15px_hsla(var(--primary)/0.3)] focus:outline-none focus-visible:ring-2"
+        aria-label={`Aller à la section : ${label}`}
+      >
+        <ChevronDown
+          className="text-primary h-6 w-6 transition-transform duration-300 group-hover:translate-y-1"
+          aria-hidden="true"
+          strokeWidth={2.5}
+        />
+        {/* Subtle glowing ping effect */}
+        <span className="border-primary/30 absolute inset-0 animate-[ping_3s_ease-in-out_infinite] rounded-full border" />
+      </a>
+    </div>
+  );
+};
+
+export default SectionChevron;

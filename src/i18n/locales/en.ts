@@ -36,6 +36,7 @@ const en: Translations = {
       "On a work-study program at Orange, I participate in the development of internal applications using modern technologies. I work within an agile team, contributing to the design and implementation of front-end and back-end features.",
     imgAlt:
       "Developer on a work-study program at Orange working on Angular and NestJS, pixel art style",
+    cta: "View my achievements",
   },
   formation: {
     sectionLabel: "Education",
@@ -49,6 +50,7 @@ const en: Translations = {
     quality2: "passion",
     forCode: "for code.",
     imgAlt: "Student at O'clock bootcamp learning HTML, CSS, and JavaScript, pixel art style",
+    cta: "Discover my detailed career path",
   },
   past: {
     sectionLabel: "Previous background",
@@ -65,6 +67,7 @@ const en: Translations = {
     prioritiesDesc: "Rigorous organization and autonomy",
     teamwork: "Teamwork",
     teamworkDesc: "Collaboration with families and professionals",
+    cta: "Explore my human skills",
   },
   projects: {
     sectionLabel: "Achievements",
@@ -73,6 +76,8 @@ const en: Translations = {
     personal: "Personal projects",
     sourceCodeAria: "Source code of",
     viewProjectAria: "View the project",
+    cta: "View all detailed projects",
+    detailsCta: "Project details",
     proProjects: {
       orangeTitle: "Orange internal application",
       orangeDesc:
@@ -91,6 +96,7 @@ const en: Translations = {
     title: "Tech Stack",
     core: "Core stack",
     transversal: "Transversal skills",
+    cta: "Explore my technical & human skills",
   },
   contact: {
     sectionLabel: "Let's chat",

@@ -1,99 +1,59 @@
+import { REALISATIONS } from "@/constants/realisations";
+import { getTechItem } from "@/constants/stack";
 import { useI18n } from "@/i18n";
-import { ExternalLink as ExternalLinkIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { memo } from "react";
-import { ExternalLink } from "./a11y/ExternalLink";
-import { GithubIcon } from "./icons";
+import SectionChevron from "./SectionChevron";
+import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 
-interface Project {
-  readonly titleKey: string;
-  readonly descriptionKey: string;
-  readonly tags: readonly string[];
-  readonly type?: "pro";
-  readonly link?: string;
-  readonly github?: string;
-}
-
-const proProjects: readonly Project[] = [
-  {
-    titleKey: "projects.proProjects.orangeTitle",
-    descriptionKey: "projects.proProjects.orangeDesc",
-    tags: ["Angular", "NestJS", "TypeScript", "Docker"],
-    type: "pro",
-  },
-];
-
-const personalProjects: readonly Project[] = [
-  {
-    titleKey: "projects.persoProjects.portfolioTitle",
-    descriptionKey: "projects.persoProjects.portfolioDesc",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
-    link: "#",
-  },
-  {
-    titleKey: "projects.persoProjects.botTitle",
-    descriptionKey: "projects.persoProjects.botDesc",
-    tags: ["Node.js", "TypeScript", "Docker"],
-    github: "#",
-  },
-];
-
 interface ProjectCardProps {
+  readonly slug: string;
   readonly title: string;
   readonly description: string;
   readonly tags: readonly string[];
-  readonly link?: string;
-  readonly github?: string;
-  readonly sourceCodeAria: string;
-  readonly viewProjectAria: string;
+  readonly context: string;
+  readonly detailsCta: string;
 }
 
 const ProjectCard = memo(
-  ({
-    title,
-    description,
-    tags,
-    link,
-    github,
-    sourceCodeAria,
-    viewProjectAria,
-  }: ProjectCardProps) => (
-    <Card className="rounded-xl p-6 border-primary/10 space-y-4 hover:border-primary/30 transition-colors">
-      <div className="flex items-start justify-between">
-        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-        <div className="flex gap-2">
-          {github && (
-            <ExternalLink
-              href={github}
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label={`${sourceCodeAria} ${title}`}
-            >
-              <GithubIcon className="w-4 h-4" aria-hidden="true" />
-            </ExternalLink>
-          )}
-          {link && (
-            <ExternalLink
-              href={link}
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label={`${viewProjectAria} ${title}`}
-            >
-              <ExternalLinkIcon className="w-4 h-4" aria-hidden="true" />
-            </ExternalLink>
-          )}
+  ({ slug, title, description, tags, context, detailsCta }: ProjectCardProps) => (
+    <Card className="border-primary/10 hover:border-primary/30 flex flex-col justify-between space-y-3 rounded-xl p-5 transition-all duration-300">
+      <div className="space-y-3">
+        <div className="flex items-start justify-between">
+          <h4 className="text-foreground text-base leading-tight font-semibold">{title}</h4>
+          <span className="border-primary/20 text-primary/70 rounded border px-2 py-0.5 font-mono text-[9px] tracking-wider uppercase">
+            {context}
+          </span>
+        </div>
+        <p className="text-muted-foreground text-sm leading-relaxed italic">{description}</p>
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => {
+            const tech = getTechItem(tag);
+            return (
+              <div
+                key={tag}
+                className="bg-secondary/50 border-border/50 flex items-center gap-1.5 rounded border py-1 pr-2 pl-1.5"
+                title={tag}
+              >
+                {tech?.iconComponent ? (
+                  <tech.iconComponent className="text-foreground h-3 w-3" aria-hidden="true" />
+                ) : tech?.logo ? (
+                  <img src={tech.logo} alt="" className="h-3 w-3" loading="lazy" />
+                ) : null}
+                <span className="text-secondary-foreground font-mono text-[9px] tracking-wider uppercase">
+                  {tag}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {description}
-      </p>
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-2 py-0.5 text-xs font-mono rounded-full bg-secondary text-secondary-foreground border border-border"
-          >
-            {tag}
-          </span>
-        ))}
+      <div className="flex justify-end pt-3">
+        <Button to={`/realisations/${slug}`} variant="secondary" className="h-7 px-3 text-[10px]">
+          {detailsCta}
+          <ArrowRight className="ml-2 h-3 w-3" />
+        </Button>
       </div>
     </Card>
   ),
@@ -101,85 +61,63 @@ const ProjectCard = memo(
 
 ProjectCard.displayName = "ProjectCard";
 
-interface ProjectGroupProps {
-  readonly title: string;
-  readonly items: readonly Project[];
-  readonly dotColor: string;
-  readonly sourceCodeAria: string;
-  readonly viewProjectAria: string;
-  readonly t: (key: string) => string;
-}
-
-const ProjectGroup = memo(
-  ({
-    title,
-    items,
-    dotColor,
-    sourceCodeAria,
-    viewProjectAria,
-    t,
-  }: ProjectGroupProps) => (
-    <div className="mb-16 last:mb-0">
-      <div className="flex items-center gap-3 mb-8">
-        <div
-          className={`w-2 h-2 rounded-full ${dotColor}`}
-          aria-hidden="true"
-        />
-        <h3 className="text-lg font-mono font-semibold text-foreground">
-          {title}
-        </h3>
-        <div className="flex-1 h-px bg-border" aria-hidden="true" />
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        {items.map((p) => (
-          <ProjectCard
-            key={p.titleKey}
-            title={t(p.titleKey)}
-            description={t(p.descriptionKey)}
-            tags={p.tags}
-            link={p.link}
-            github={p.github}
-            sourceCodeAria={sourceCodeAria}
-            viewProjectAria={viewProjectAria}
-          />
-        ))}
-      </div>
-    </div>
-  ),
-);
-
-ProjectGroup.displayName = "ProjectGroup";
-
 const ProjectsSection = () => {
   const { t } = useI18n();
 
-  return (
-    <section id="projects" className="relative">
-      <div className="section-container">
-        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
-          {t("projects.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
-          {t("projects.title")}
-        </h2>
+  // Mapping slugs to tags (could be moved to constants/realisations if needed)
+  const tagsMap: Record<string, string[]> = {
+    "portail-rh": ["Angular", "NestJS", "MySQL", "CloudFoundry"],
+    "repos-compensateurs": ["Angular", "Java", "Spring Boot", "Microservices"],
+    "app-mobile-competences": ["Flutter", "Dart", "Supabase"],
+    "o-voyage": ["Vue.js", "NestJS", "SQL", "Teamwork"],
+    portfolio: ["React", "TypeScript", "Tailwind CSS"],
+  };
 
-        <ProjectGroup
-          title={t("projects.professional")}
-          items={proProjects}
-          dotColor="bg-orange"
-          sourceCodeAria={t("projects.sourceCodeAria")}
-          viewProjectAria={t("projects.viewProjectAria")}
-          t={t}
-        />
-        <ProjectGroup
-          title={t("projects.personal")}
-          items={personalProjects}
-          dotColor="bg-cyan"
-          sourceCodeAria={t("projects.sourceCodeAria")}
-          viewProjectAria={t("projects.viewProjectAria")}
-          t={t}
-        />
+  return (
+    <section
+      id="projects"
+      className="relative flex h-dvh w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+    >
+      <div className="section-container no-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2">
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-4">
+            <span className="text-primary font-mono text-xl opacity-50">05 /</span>
+            <p className="text-primary font-mono text-sm tracking-widest uppercase">
+              {t("projects.sectionLabel")}
+            </p>
+          </div>
+          <h2 className="text-glow-primary text-center text-2xl font-bold sm:text-3xl">
+            {t("projects.title")}
+          </h2>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {REALISATIONS.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              slug={project.slug}
+              title={t(project.titleKey)}
+              description={t(project.shortDescKey)}
+              tags={tagsMap[project.slug] || []}
+              context={project.context}
+              detailsCta={t("projects.detailsCta")}
+            />
+          ))}
+        </div>
+
+        <div className="mt-6 flex justify-center pb-4">
+          <Button
+            to="/realisations"
+            variant="secondary"
+            className="border-primary/20 hover:border-primary/40"
+          >
+            {t("projects.cta")}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       </div>
+
+      <SectionChevron targetId="contact" label={t("nav.contact") || "Contact"} />
     </section>
   );
 };

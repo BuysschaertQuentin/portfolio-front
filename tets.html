@@ -1,0 +1,3531 @@
+Estce que tu peux me séparer ce HTML en plusieurs
+
+
+
+<!-- Design System -->
+
+<!DOCTYPE html>
+
+
+
+<html class="light" lang="fr"><head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Ethereal Atelier | Atelier de Prompts &amp; Bibliothèque</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+
+      tailwind.config = {
+
+        darkMode: "class",
+
+        theme: {
+
+          extend: {
+
+            colors: {
+
+              "on-error-container": "#6e0523",
+
+              "primary-fixed-dim": "#ac9aef",
+
+              "surface-container-lowest": "#ffffff",
+
+              "secondary-fixed": "#e6deff",
+
+              "on-primary-fixed-variant": "#3f2d7b",
+
+              "on-surface": "#2d3335",
+
+              "secondary-fixed-dim": "#d9ceff",
+
+              "secondary-container": "#e6deff",
+
+              "on-primary-fixed": "#1e035a",
+
+              "outline-variant": "#adb3b5",
+
+              "inverse-on-surface": "#9b9d9e",
+
+              "surface-bright": "#f8f9fa",
+
+              "tertiary-fixed": "#fecbf1",
+
+              "surface-variant": "#dee3e6",
+
+              "error-dim": "#6b0221",
+
+              "tertiary-fixed-dim": "#efbde2",
+
+              "on-secondary-fixed-variant": "#5e548b",
+
+              "on-primary": "#fdf7ff",
+
+              "on-tertiary-fixed": "#512e4c",
+
+              "on-tertiary": "#fff7f9",
+
+              "on-primary-container": "#362472",
+
+              "error-container": "#f97386",
+
+              "on-secondary-container": "#544a80",
+
+              "inverse-surface": "#0c0f10",
+
+              "primary-dim": "#584695",
+
+              "surface-container-low": "#f1f4f5",
+
+              "secondary-dim": "#564b81",
+
+              "on-tertiary-container": "#66405f",
+
+              "on-error": "#fff7f7",
+
+              "tertiary-dim": "#6d4666",
+
+              "surface-container-highest": "#dee3e6",
+
+              "primary-container": "#baa7fe",
+
+              "outline": "#767c7e",
+
+              "on-background": "#2d3335",
+
+              "secondary": "#62578e",
+
+              "error": "#a8364b",
+
+              "surface-tint": "#6453a2",
+
+              "primary-fixed": "#baa7fe",
+
+              "on-tertiary-fixed-variant": "#704969",
+
+              "on-secondary-fixed": "#41376c",
+
+              "inverse-primary": "#baa7fe",
+
+              "on-secondary": "#fcf7ff",
+
+              "primary": "#6453a2",
+
+              "tertiary": "#7a5272",
+
+              "surface": "#f8f9fa",
+
+              "on-surface-variant": "#5a6062",
+
+              "background": "#f8f9fa",
+
+              "surface-dim": "#d5dbdd",
+
+              "surface-container": "#ebeef0",
+
+              "tertiary-container": "#fecbf1",
+
+              "surface-container-high": "#e5e9eb"
+
+            },
+
+            fontFamily: {
+
+              "headline": ["Public Sans"],
+
+              "body": ["Public Sans"],
+
+              "label": ["Public Sans"]
+
+            },
+
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+
+          },
+
+        },
+
+      }
+
+    </script>
+
+<style>
+
+      .material-symbols-outlined {
+
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+      }
+
+      body {
+
+        font-family: 'Public Sans', sans-serif;
+
+      }
+
+      .glass-card {
+
+        background: rgba(255, 255, 255, 0.8);
+
+        backdrop-filter: blur(20px);
+
+      }
+
+      .ambient-shadow {
+
+        box-shadow: 0 4px 20px -2px rgba(100, 83, 162, 0.04), 0 12px 40px -8px rgba(100, 83, 162, 0.08);
+
+      }
+
+    </style>
+
+</head>
+
+<body class="bg-surface text-on-surface">
+
+<!-- TopNavBar -->
+
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white/80 backdrop-blur-xl dark:bg-slate-950/80 shadow-[0_4px_20px_-2px_rgba(100,83,162,0.04)] font-public-sans antialiased">
+
+<div class="flex items-center gap-4">
+
+<span class="text-xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">Ethereal Atelier</span>
+
+</div>
+
+<div class="flex items-center gap-6">
+
+<div class="hidden md:flex gap-8 items-center mr-8">
+
+<a class="text-slate-500 dark:text-slate-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors px-3 py-1 rounded-lg" href="#">Dashboard</a>
+
+<a class="text-purple-700 dark:text-purple-300 font-bold hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors px-3 py-1 rounded-lg" href="#">Activity Library</a>
+
+<a class="text-slate-500 dark:text-slate-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors px-3 py-1 rounded-lg" href="#">Reporting</a>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<span class="material-symbols-outlined text-slate-600 cursor-pointer p-2 hover:bg-purple-50 rounded-full transition-colors" data-icon="notifications">notifications</span>
+
+<span class="material-symbols-outlined text-slate-600 cursor-pointer p-2 hover:bg-purple-50 rounded-full transition-colors" data-icon="settings">settings</span>
+
+<div class="w-8 h-8 rounded-full overflow-hidden bg-purple-100">
+
+<img alt="Manager Profile" data-alt="Close up portrait of a professional healthcare manager with a kind smile, clean studio lighting, soft lavender background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2br5dVnlfQP9-eZghmLM0Nwe0db3F6VrwGraL57gX8NWyqHylRQq6WIwIGXP0yGTkyKzGCiN9OoZZRIic5fszotyVqVOdphHs3WBrmYt6JaNaDn6JV0yPdk0qlMVljqTtRlN9_Vt-CbWTbUA4RSJIJyoD27PKqpuqHMthlecAeJ6QR9hI5P5h2kcWLSIp0CQNI2hNgnaIxyHKr1OljFXn3E1NDVEILL90NG9vQYRESQPQ4DjzG7dLznQpbqwSQ87yxlFA4JJWxtvQ"/>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- SideNavBar -->
+
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-slate-50 dark:bg-slate-900 h-screen w-72 rounded-r-[32px] shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)] font-public-sans text-sm tracking-wide">
+
+<div class="px-8 mb-12">
+
+<div class="flex items-center gap-3 mb-2">
+
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+
+<span class="material-symbols-outlined" data-icon="local_library" style="font-variation-settings: 'FILL' 1;">local_library</span>
+
+</div>
+
+<div>
+
+<h2 class="text-lg font-bold text-purple-800 dark:text-purple-300 leading-tight">Breathable Workspace</h2>
+
+<p class="text-[10px] uppercase tracking-widest text-slate-400">Nursing Management</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="flex flex-col gap-1 flex-1">
+
+<a class="flex items-center gap-4 px-6 py-3 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+
+<span>Dashboard</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-6 py-3 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+
+<span>Planning</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-6 py-3 bg-white dark:bg-slate-800 text-purple-700 dark:text-purple-300 shadow-sm rounded-2xl mx-4 font-semibold hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+
+<span>Activity Library</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-6 py-3 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+
+<span>Reporting</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-6 py-3 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+
+<span>Logistics</span>
+
+</a>
+
+<div class="mt-8 px-8">
+
+<button class="w-full bg-gradient-to-r from-primary to-primary-dim text-white py-4 rounded-xl font-semibold shadow-lg shadow-purple-200 flex items-center justify-center gap-2 hover:scale-[0.98] transition-transform">
+
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+
+                    New Animation
+
+                </button>
+
+</div>
+
+</div>
+
+<div class="mt-auto px-6 border-t border-slate-100 pt-6 space-y-2">
+
+<p class="px-2 text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-2">External AI Labs</p>
+
+<a class="flex items-center gap-4 px-4 py-2 text-slate-500 hover:text-primary transition-colors" href="https://chatgpt.com" target="_blank">
+
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+
+<span>ChatGPT</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-4 py-2 text-slate-500 hover:text-primary transition-colors" href="https://claude.ai" target="_blank">
+
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+
+<span>Claude</span>
+
+</a>
+
+<a class="flex items-center gap-4 px-4 py-2 text-slate-500 hover:text-primary transition-colors" href="https://gemini.google.com" target="_blank">
+
+<span class="material-symbols-outlined" data-icon="shimmer">star_shine</span>
+
+<span>Gemini</span>
+
+</a>
+
+</div>
+
+</aside>
+
+<!-- Main Content Canvas -->
+
+<main class="ml-72 pt-24 px-12 pb-12">
+
+<!-- Header Section -->
+
+<section class="mb-16">
+
+<span class="text-label-md text-primary font-medium tracking-[0.2em] uppercase mb-4 block">Ethereal Atelier</span>
+
+<h1 class="text-[3.5rem] font-bold tracking-tight text-on-surface leading-tight mb-4">Bibliothèque d'Activités</h1>
+
+<p class="text-body-lg text-on-surface-variant max-w-2xl">
+
+                Explorez notre collection d'animations structurées ou utilisez l'atelier pour générer un programme sur mesure pour vos résidents.
+
+            </p>
+
+</section>
+
+<!-- Activity Cards Horizontal Scroll -->
+
+<section class="mb-20">
+
+<div class="flex items-center justify-between mb-8">
+
+<h2 class="text-2xl font-semibold text-on-surface">Recommandations du jour</h2>
+
+<button class="text-primary font-medium flex items-center gap-2 hover:underline">
+
+                    Tout voir <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+
+</button>
+
+</div>
+
+<div class="flex gap-8 overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
+
+<!-- Card 1 -->
+
+<div class="min-w-[320px] bg-white rounded-xl p-6 ambient-shadow hover:-translate-y-2 transition-transform duration-500">
+
+<div class="h-40 rounded-lg overflow-hidden mb-6">
+
+<img class="w-full h-full object-cover" data-alt="Hands of elderly person and young person playing cards together, warm domestic lighting, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAflBUr1JUHb9CmLotOGRf6lIYbMbah7fVR8Gf7Xd-E73NX5XnZukBNbSN2QX3_5T9B6jIRutQ_2KJwHAxvJH3pbe6kHqitkdQQvl62ybpd8Eq7_TFaT1hA8lntIBomFyxZj1Wh0Pu5WcAoK6mCIHyhzejQmBwLjVj7r8m-44pMp-0g4O8akbZ2y4d5RO1w3PnwEinlMomhGlHfFP1a_EakN2biQbpVFzim4eWkTiyS7DSVW8koXDONIym8pE7j0UXHRaj3Li9yTI5"/>
+
+</div>
+
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Mémoire</span>
+
+<h3 class="text-xl font-bold mt-3 text-on-surface">Atelier de Réminiscence</h3>
+
+<p class="text-sm text-on-surface-variant mt-2 mb-6">Partage de souvenirs à travers des objets d'époque et de la musique d'antan.</p>
+
+<div class="flex items-center justify-between">
+
+<div class="flex items-center gap-1 text-on-surface-variant">
+
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+
+<span class="text-xs">45 min</span>
+
+</div>
+
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Card 2 -->
+
+<div class="min-w-[320px] bg-white rounded-xl p-6 ambient-shadow hover:-translate-y-2 transition-transform duration-500">
+
+<div class="h-40 rounded-lg overflow-hidden mb-6">
+
+<img class="w-full h-full object-cover" data-alt="Group of seniors doing light yoga in a bright studio with large windows and plants, soft ethereal lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoZMx7MLZ3Zvn05o3mrtsWLV9nXGulPpiezsjQfHhesM1AoQ-V0gi_06UDk20tEFT6micltD2gsxXhVMumeKlOLsSfUXPnfYoqRUPsnHIbl44CkhK8BtmacZLhXUA3JpGWWHCJ9yUESdMtk3OiBzbqA6AflTca7-L-SVYxqhXvUAmu_jWpyAZekaNwEN_5C4kTrmtb95y1TpBVNPRaC-WELapODKWdMu9lR9A-FK1byzs-AMlB1vBju_rw79DLN7CBQrJb1N9DecrI"/>
+
+</div>
+
+<span class="px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Mobilité</span>
+
+<h3 class="text-xl font-bold mt-3 text-on-surface">Gymnastique Douce</h3>
+
+<p class="text-sm text-on-surface-variant mt-2 mb-6">Mouvements adaptés pour maintenir la souplesse et l'équilibre en position assise.</p>
+
+<div class="flex items-center justify-between">
+
+<div class="flex items-center gap-1 text-on-surface-variant">
+
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+
+<span class="text-xs">30 min</span>
+
+</div>
+
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Card 3 -->
+
+<div class="min-w-[320px] bg-white rounded-xl p-6 ambient-shadow hover:-translate-y-2 transition-transform duration-500">
+
+<div class="h-40 rounded-lg overflow-hidden mb-6">
+
+<img class="w-full h-full object-cover" data-alt="Vibrant painting of colorful flowers on a white canvas, artistic brushes and paints nearby, creative studio atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRu_7U0eMj2x8l8TEJI_wRFj-tQ3tIVDIShoGtN4lUJ30XdAvMHRNq4Cv619YnGyUAi40R-rXPCmkf16v_jxWBtERQ9TCND5pS-b-Ipl81Gzu44Zxn4PHPrRPIyUVBiDxIjeOcdMzfvFIbW8HEAWHvVqYHxF-13441bDmNWuxYbzOy_sKwLH5Y9p0mkrYvxc_mOtQrX62b9bWC1SbU1hyQcDHBbYQzjk4kFhbXXdF3ELbDIJa_S2BgrJOxokVOYd7W8z61jGDQcyn4"/>
+
+</div>
+
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-wider rounded-full">Créativité</span>
+
+<h3 class="text-xl font-bold mt-3 text-on-surface">Art-Thérapie Florale</h3>
+
+<p class="text-sm text-on-surface-variant mt-2 mb-6">Expression sensorielle à travers la manipulation de fleurs et la composition de bouquets.</p>
+
+<div class="flex items-center justify-between">
+
+<div class="flex items-center gap-1 text-on-surface-variant">
+
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+
+<span class="text-xs">60 min</span>
+
+</div>
+
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Prompt Workshop Section -->
+
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+<div class="lg:col-span-5 bg-white rounded-xl p-10 ambient-shadow">
+
+<div class="mb-10">
+
+<h2 class="text-3xl font-bold text-on-surface mb-2 tracking-tight">Atelier de Prompts</h2>
+
+<p class="text-on-surface-variant text-sm">Configurez les paramètres pour obtenir un prompt optimisé pour votre IA.</p>
+
+</div>
+
+<form class="space-y-8">
+
+<!-- Theme -->
+
+<div class="space-y-2">
+
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Thématique de l'activité</label>
+
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all placeholder:text-slate-300" placeholder="Ex: Jardinage thérapeutique, Music-hall..." type="text"/>
+
+</div>
+
+<!-- Grid for Duration and Budget -->
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="space-y-2">
+
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Durée estimée</label>
+
+<select class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all">
+
+<option>30 minutes</option>
+
+<option>45 minutes</option>
+
+<option>60 minutes</option>
+
+<option>90 minutes</option>
+
+</select>
+
+</div>
+
+<div class="space-y-2">
+
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Budget</label>
+
+<select class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all">
+
+<option>0€ (Récupération)</option>
+
+<option>Petit (&lt; 20€)</option>
+
+<option>Moyen (20-50€)</option>
+
+<option>Libre</option>
+
+</select>
+
+</div>
+
+</div>
+
+<!-- Dependency Level -->
+
+<div class="space-y-2">
+
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Niveau de dépendance (GIR)</label>
+
+<div class="flex gap-2">
+
+<button class="flex-1 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold text-xs" type="button">GIR 1-2</button>
+
+<button class="flex-1 py-3 bg-surface-container-low text-on-surface-variant rounded-lg font-bold text-xs hover:bg-slate-200 transition-colors" type="button">GIR 3-4</button>
+
+<button class="flex-1 py-3 bg-surface-container-low text-on-surface-variant rounded-lg font-bold text-xs hover:bg-slate-200 transition-colors" type="button">GIR 5-6</button>
+
+</div>
+
+</div>
+
+<!-- Main Goal -->
+
+<div class="space-y-2">
+
+<label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Objectif principal</label>
+
+<textarea class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all placeholder:text-slate-300" placeholder="Quel est le but recherché ? (Socialisation, motricité fine, détente...)" rows="3"></textarea>
+
+</div>
+
+<button class="w-full bg-gradient-to-br from-primary to-primary-dim text-white py-5 rounded-xl font-bold text-lg shadow-xl shadow-purple-100 hover:scale-[0.99] active:scale-[0.97] transition-all flex items-center justify-center gap-3" type="button">
+
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+
+                        Générer mon Prompt
+
+                    </button>
+
+</form>
+
+</div>
+
+<div class="lg:col-span-7">
+
+<div class="bg-surface-container-low rounded-xl p-1 border-2 border-dashed border-slate-200 min-h-[600px] flex flex-col">
+
+<div class="bg-white rounded-lg p-8 flex-1 ambient-shadow relative overflow-hidden">
+
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+
+<div class="flex items-center justify-between mb-8">
+
+<div class="flex items-center gap-3">
+
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+
+</div>
+
+<h3 class="text-lg font-bold text-on-surface">Prompt Structuré</h3>
+
+</div>
+
+<button class="bg-surface-container-low hover:bg-surface-container-high text-primary px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2 transition-colors">
+
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+
+                                Copier le Prompt
+
+                            </button>
+
+</div>
+
+<div class="prose prose-slate max-w-none">
+
+<p class="text-on-surface-variant leading-relaxed">
+
+<span class="text-primary font-bold">Act en tant qu'Animateur Expert en Gérontologie.</span><br/><br/>
+
+                                Tu dois concevoir une activité détaillée pour un groupe de résidents en EHPAD présentant un niveau de dépendance <span class="bg-primary-container/30 px-1 rounded">GIR 1-2</span>.<br/><br/>
+
+<span class="font-bold text-on-surface">Thème :</span> [Thème saisi]<br/>
+
+<span class="font-bold text-on-surface">Durée :</span> [Durée choisie]<br/>
+
+<span class="font-bold text-on-surface">Budget :</span> [Budget choisi]<br/>
+
+<span class="font-bold text-on-surface">Objectif :</span> [Objectif saisi]<br/><br/>
+
+<span class="font-bold text-on-surface">Structure de ta réponse :</span><br/>
+
+                                1. Titre accrocheur et bienveillant.<br/>
+
+                                2. Matériel nécessaire (respectant le budget).<br/>
+
+                                3. Déroulement étape par étape (Introduction, Corps de séance, Retour au calme).<br/>
+
+                                4. Adaptations spécifiques pour les troubles cognitifs sévères.<br/>
+
+                                5. Indicateurs de réussite (Comment évaluer si l'objectif est atteint ?).<br/><br/>
+
+                                
+
+                                Utilise un ton empathique, encourageant et professionnel. Priorise la sécurité et le maintien de la dignité des résidents.
+
+                            </p>
+
+</div>
+
+<div class="mt-12 p-6 bg-slate-50 rounded-xl border border-slate-100 italic text-slate-400 text-sm flex gap-4">
+
+<span class="material-symbols-outlined text-slate-300" data-icon="info">info</span>
+
+                            Copiez ce texte et collez-le dans ChatGPT, Claude ou Gemini via les liens de la barre latérale pour obtenir votre programme complet.
+
+                        </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</body></html>
+
+
+
+<!-- Atelier de Prompts & Bibliothèque -->
+
+<!DOCTYPE html>
+
+
+
+<html class="light" lang="fr"><head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Ethereal Atelier | Suivi &amp; Rapports EHPAD</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+
+        tailwind.config = {
+
+            darkMode: "class",
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        "on-error-container": "#6e0523",
+
+                        "primary-fixed-dim": "#ac9aef",
+
+                        "surface-container-lowest": "#ffffff",
+
+                        "secondary-fixed": "#e6deff",
+
+                        "on-primary-fixed-variant": "#3f2d7b",
+
+                        "on-surface": "#2d3335",
+
+                        "secondary-fixed-dim": "#d9ceff",
+
+                        "secondary-container": "#e6deff",
+
+                        "on-primary-fixed": "#1e035a",
+
+                        "outline-variant": "#adb3b5",
+
+                        "inverse-on-surface": "#9b9d9e",
+
+                        "surface-bright": "#f8f9fa",
+
+                        "tertiary-fixed": "#fecbf1",
+
+                        "surface-variant": "#dee3e6",
+
+                        "error-dim": "#6b0221",
+
+                        "tertiary-fixed-dim": "#efbde2",
+
+                        "on-secondary-fixed-variant": "#5e548b",
+
+                        "on-primary": "#fdf7ff",
+
+                        "on-tertiary-fixed": "#512e4c",
+
+                        "on-tertiary": "#fff7f9",
+
+                        "on-primary-container": "#362472",
+
+                        "error-container": "#f97386",
+
+                        "on-secondary-container": "#544a80",
+
+                        "inverse-surface": "#0c0f10",
+
+                        "primary-dim": "#584695",
+
+                        "surface-container-low": "#f1f4f5",
+
+                        "secondary-dim": "#564b81",
+
+                        "on-tertiary-container": "#66405f",
+
+                        "on-error": "#fff7f7",
+
+                        "tertiary-dim": "#6d4666",
+
+                        "surface-container-highest": "#dee3e6",
+
+                        "primary-container": "#baa7fe",
+
+                        "outline": "#767c7e",
+
+                        "on-background": "#2d3335",
+
+                        "secondary": "#62578e",
+
+                        "error": "#a8364b",
+
+                        "surface-tint": "#6453a2",
+
+                        "primary-fixed": "#baa7fe",
+
+                        "on-tertiary-fixed-variant": "#704969",
+
+                        "on-secondary-fixed": "#41376c",
+
+                        "inverse-primary": "#baa7fe",
+
+                        "on-secondary": "#fcf7ff",
+
+                        "primary": "#6453a2",
+
+                        "tertiary": "#7a5272",
+
+                        "surface": "#f8f9fa",
+
+                        "on-surface-variant": "#5a6062",
+
+                        "background": "#f8f9fa",
+
+                        "surface-dim": "#d5dbdd",
+
+                        "surface-container": "#ebeef0",
+
+                        "surface-container-high": "#e5e9eb"
+
+                    },
+
+                    fontFamily: {
+
+                        "headline": ["Public Sans"],
+
+                        "body": ["Public Sans"],
+
+                        "label": ["Public Sans"]
+
+                    },
+
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+
+                },
+
+            },
+
+        }
+
+    </script>
+
+<style>
+
+        .material-symbols-outlined {
+
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        }
+
+        body { font-family: 'Public Sans', sans-serif; }
+
+        .glass-panel {
+
+            background: rgba(255, 255, 255, 0.8);
+
+            backdrop-filter: blur(20px);
+
+        }
+
+        .editorial-shadow {
+
+            box-shadow: 0 4px 20px -2px rgba(100, 83, 162, 0.04), 0 12px 40px -8px rgba(100, 83, 162, 0.08);
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-surface text-on-surface min-h-screen">
+
+<!-- TopNavBar -->
+
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white/80 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(100,83,162,0.04)] font-public-sans antialiased">
+
+<div class="flex items-center gap-4">
+
+<span class="text-xl font-semibold tracking-tight text-slate-800">Ethereal Atelier</span>
+
+</div>
+
+<div class="hidden md:flex items-center gap-8">
+
+<a class="text-slate-500 hover:bg-purple-50 transition-colors px-3 py-1 rounded-lg" href="#">Dashboard</a>
+
+<a class="text-purple-700 font-bold px-3 py-1 rounded-lg" href="#">Reporting</a>
+
+<a class="text-slate-500 hover:bg-purple-50 transition-colors px-3 py-1 rounded-lg" href="#">Logistics</a>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<button class="material-symbols-outlined text-slate-500 hover:bg-purple-50 p-2 rounded-full transition-all">notifications</button>
+
+<button class="material-symbols-outlined text-slate-500 hover:bg-purple-50 p-2 rounded-full transition-all">settings</button>
+
+<div class="w-8 h-8 rounded-full overflow-hidden">
+
+<img alt="Manager Profile" data-alt="Professional profile portrait of a female nursing home manager with a friendly expression and soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfdTFqLOE7vJyHryehZq6u-9ksDTNCjCtbns3bN8CzU4XYQ4ZKDSfZzOGlmBFzY-xcOeb1zdKmp81Oxmjau4VWqMsGSaLj6idUjik87cqWE1i_sXVSer-wSQAbXSclzyOo7YtrXDrIZ5-OaSfNxKXPljA9ZlTSjbnOwAa27DBU9xfpDTEYSCGMmtHOsiww29mUVK8v-mEGRIWrLDdxr5V8UaMw5brRVfTRJ3mwaNFwPSWuAg1wi-S-2M9AGGP8hnK4qBGDji8G5Oxt"/>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- SideNavBar (Desktop Only) -->
+
+<aside class="fixed left-0 top-0 h-full hidden md:flex flex-col py-8 z-40 bg-slate-50 w-72 rounded-r-[32px] shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)] font-public-sans text-sm tracking-wide">
+
+<div class="px-8 mb-12">
+
+<div class="flex items-center gap-3 mb-2">
+
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+
+</div>
+
+<div>
+
+<h2 class="text-lg font-bold text-purple-800">Breathable Workspace</h2>
+
+<p class="text-[10px] uppercase tracking-widest text-slate-400">Nursing Management</p>
+
+</div>
+
+</div>
+
+</div>
+
+<nav class="flex-1 space-y-2">
+
+<a class="flex items-center gap-4 py-3 px-4 mx-4 text-slate-600 hover:bg-purple-100/50 rounded-2xl transition-all group" href="#">
+
+<span class="material-symbols-outlined">dashboard</span>
+
+<span>Dashboard</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 mx-4 text-slate-600 hover:bg-purple-100/50 rounded-2xl transition-all group" href="#">
+
+<span class="material-symbols-outlined">calendar_month</span>
+
+<span>Planning</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 mx-4 text-slate-600 hover:bg-purple-100/50 rounded-2xl transition-all group" href="#">
+
+<span class="material-symbols-outlined">local_library</span>
+
+<span>Activity Library</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 bg-white text-purple-700 shadow-sm rounded-2xl mx-4 font-semibold" href="#">
+
+<span class="material-symbols-outlined">analytics</span>
+
+<span>Reporting</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 mx-4 text-slate-600 hover:bg-purple-100/50 rounded-2xl transition-all group" href="#">
+
+<span class="material-symbols-outlined">payments</span>
+
+<span>Logistics</span>
+
+</a>
+
+</nav>
+
+<div class="px-8 mt-auto pt-8 border-t border-slate-200/50 space-y-4">
+
+<div class="flex items-center gap-3 text-slate-400 text-xs">
+
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+
+<span>ChatGPT integration</span>
+
+</div>
+
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-dim text-white rounded-xl font-semibold editorial-shadow active:scale-95 transition-all">
+
+                New Animation
+
+            </button>
+
+</div>
+
+</aside>
+
+<!-- Main Content Canvas -->
+
+<main class="md:ml-72 pt-24 px-6 pb-12 min-h-screen">
+
+<div class="max-w-6xl mx-auto space-y-12">
+
+<!-- Header Section -->
+
+<header class="space-y-2">
+
+<p class="text-xs font-medium text-primary tracking-[0.2em] uppercase">Monitoring &amp; Analytics</p>
+
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">Suivi &amp; Synthèse</h1>
+
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">Gérez la traçabilité de vos activités et générez des rapports conformes aux attentes de l'ARS en quelques secondes grâce à notre assistant contextuel.</p>
+
+</header>
+
+<!-- Attendance Bento Grid Section -->
+
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<!-- Recent Attendance Card -->
+
+<div class="lg:col-span-2 bg-white rounded-xl editorial-shadow p-8">
+
+<div class="flex justify-between items-center mb-8">
+
+<div>
+
+<h3 class="text-xl font-bold">Dernières Présences</h3>
+
+<p class="text-sm text-on-surface-variant">Saisie rapide des participants par séance</p>
+
+</div>
+
+<button class="text-primary text-sm font-semibold flex items-center gap-2 hover:underline">
+
+                            Voir l'historique <span class="material-symbols-outlined text-sm">arrow_forward</span>
+
+</button>
+
+</div>
+
+<div class="overflow-x-auto">
+
+<table class="w-full text-left">
+
+<thead>
+
+<tr class="text-xs uppercase tracking-wider text-slate-400 border-b border-surface-container">
+
+<th class="pb-4 font-medium">Activité</th>
+
+<th class="pb-4 font-medium">Participants</th>
+
+<th class="pb-4 font-medium">Statut</th>
+
+<th class="pb-4 font-medium text-right">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody class="divide-y divide-surface-container-low">
+
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+
+<td class="py-5">
+
+<div class="flex flex-col">
+
+<span class="font-semibold text-on-surface">Atelier Mémoire</span>
+
+<span class="text-xs text-slate-400">14 Oct, 10:30</span>
+
+</div>
+
+</td>
+
+<td class="py-5">
+
+<div class="flex -space-x-2">
+
+<div class="w-8 h-8 rounded-full bg-primary-container text-[10px] flex items-center justify-center border-2 border-white font-bold text-on-primary-container">R1</div>
+
+<div class="w-8 h-8 rounded-full bg-secondary-container text-[10px] flex items-center justify-center border-2 border-white font-bold text-on-secondary-container">R4</div>
+
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-[10px] flex items-center justify-center border-2 border-white font-bold text-on-tertiary-container">R9</div>
+
+<div class="w-8 h-8 rounded-full bg-slate-100 text-[10px] flex items-center justify-center border-2 border-white font-bold text-slate-500">+5</div>
+
+</div>
+
+</td>
+
+<td class="py-5">
+
+<span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Validé</span>
+
+</td>
+
+<td class="py-5 text-right">
+
+<button class="material-symbols-outlined text-slate-300 hover:text-primary transition-colors">edit_square</button>
+
+</td>
+
+</tr>
+
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+
+<td class="py-5">
+
+<div class="flex flex-col">
+
+<span class="font-semibold text-on-surface">Gym Douce</span>
+
+<span class="text-xs text-slate-400">Ce matin, 09:00</span>
+
+</div>
+
+</td>
+
+<td class="py-5">
+
+<div class="flex -space-x-2">
+
+<div class="w-8 h-8 rounded-full bg-primary-container text-[10px] flex items-center justify-center border-2 border-white font-bold text-on-primary-container">R2</div>
+
+<div class="w-8 h-8 rounded-full bg-secondary-container text-[10px] flex items-center justify-center border-2 border-white font-bold text-on-secondary-container">R5</div>
+
+<div class="w-8 h-8 rounded-full bg-slate-100 text-[10px] flex items-center justify-center border-2 border-white font-bold text-slate-500">+12</div>
+
+</div>
+
+</td>
+
+<td class="py-5">
+
+<span class="px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold rounded-full">En cours</span>
+
+</td>
+
+<td class="py-5 text-right">
+
+<button class="material-symbols-outlined text-slate-300 hover:text-primary transition-colors">edit_square</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- Stats Summary -->
+
+<div class="bg-primary text-white rounded-xl editorial-shadow p-8 flex flex-col justify-between overflow-hidden relative">
+
+<div class="relative z-10">
+
+<span class="material-symbols-outlined text-4xl mb-4 opacity-50">trending_up</span>
+
+<h3 class="text-2xl font-bold mb-1">Participation Hebdo</h3>
+
+<p class="text-white/70 text-sm">Moyenne de 14 résidents / session</p>
+
+</div>
+
+<div class="mt-8 relative z-10">
+
+<div class="text-5xl font-extrabold tracking-tighter">+12%</div>
+
+<p class="text-xs uppercase tracking-widest text-white/50 mt-2">vs. Mois dernier</p>
+
+</div>
+
+<div class="absolute -right-8 -bottom-8 opacity-10">
+
+<span class="material-symbols-outlined text-[180px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Report Builder Form -->
+
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-10">
+
+<div class="xl:col-span-7 bg-white rounded-xl editorial-shadow p-8 lg:p-12">
+
+<h2 class="text-2xl font-bold mb-8">Rapport d'Activité Builder</h2>
+
+<form class="space-y-8">
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div class="space-y-2">
+
+<label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 px-1">Durée (Minutes)</label>
+
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all" placeholder="ex: 60" type="number"/>
+
+</div>
+
+<div class="space-y-2">
+
+<label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 px-1">Nombre de Participants</label>
+
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all" placeholder="ex: 12" type="number"/>
+
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div class="space-y-2">
+
+<label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 px-1">Niveau de Dépendance Cible (GIR)</label>
+
+<select class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all">
+
+<option>GIR 1-2 (Elevé)</option>
+
+<option>GIR 3-4 (Moyen)</option>
+
+<option>GIR 5-6 (Autonome)</option>
+
+<option>Mixte</option>
+
+</select>
+
+</div>
+
+<div class="space-y-2">
+
+<label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 px-1">Budget Consommé (€)</label>
+
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all" placeholder="ex: 45.00" type="number"/>
+
+</div>
+
+</div>
+
+<div class="space-y-2">
+
+<label class="text-[10px] uppercase tracking-widest font-bold text-slate-400 px-1">Notes Qualitatives (Observations)</label>
+
+<textarea class="w-full bg-surface-container-low border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary-container transition-all" placeholder="Ambiance générale, difficultés rencontrées, succès notables..." rows="4"></textarea>
+
+</div>
+
+<div class="pt-4">
+
+<button class="group flex items-center justify-center gap-3 w-full py-5 bg-primary text-white rounded-xl font-bold editorial-shadow hover:bg-primary-dim transition-all active:scale-[0.98]" type="button">
+
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+
+                                Générer le Prompt de Rapport ARS
+
+                            </button>
+
+</div>
+
+</form>
+
+</div>
+
+<!-- AI Output Preview -->
+
+<div class="xl:col-span-5 flex flex-col">
+
+<div class="bg-surface-container-low rounded-xl p-8 flex-1 flex flex-col relative overflow-hidden">
+
+<div class="flex items-center justify-between mb-6">
+
+<h3 class="text-sm font-bold uppercase tracking-widest text-primary-dim flex items-center gap-2">
+
+<span class="material-symbols-outlined text-lg">psychology</span>
+
+                                Synthèse de Sortie
+
+                            </h3>
+
+<button class="bg-white p-2 rounded-lg shadow-sm hover:text-primary transition-colors group">
+
+<span class="material-symbols-outlined text-sm">content_copy</span>
+
+</button>
+
+</div>
+
+<div class="flex-1 space-y-4 text-sm text-on-surface-variant leading-relaxed font-body italic">
+
+<p class="p-4 bg-white/50 rounded-lg border border-primary-container/20">
+
+                                "Rédige un compte-rendu technique pour l'ARS concernant l'activité 'Gym Douce' de ce jour. Inclus les KPIs suivants : 14 participants (principalement GIR 3-4), durée 60min, budget matériel 12€. Souligne le maintien des capacités motrices et le lien social favorisé..."
+
+                            </p>
+
+<p class="text-xs text-slate-400">Le texte ci-dessus est formaté pour être copié directement dans votre outil d'IA préféré (ChatGPT, Claude, etc.) pour une rédaction administrative parfaite.</p>
+
+</div>
+
+<!-- Aesthetic Decoration -->
+
+<div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none">
+
+<span class="material-symbols-outlined text-[240px]">description</span>
+
+</div>
+
+</div>
+
+<!-- Guidelines -->
+
+<div class="mt-6 flex items-start gap-4 p-5 rounded-xl border border-dashed border-outline-variant/30 text-xs text-on-surface-variant">
+
+<span class="material-symbols-outlined text-primary">info</span>
+
+<p>Les rapports ARS doivent respecter la nomenclature de la circulaire n°DGOS/R4/2012/200. Le prompt généré inclut automatiquement les tags sémantiques requis.</p>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+<!-- Success Confirmation UI (Visual context for the user) -->
+
+<div class="fixed bottom-8 right-8 z-50">
+
+<div class="flex items-center gap-4 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-2xl border-l-4 border-primary">
+
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+
+</div>
+
+<div>
+
+<p class="text-xs font-bold text-on-surface">Prêt pour transfert</p>
+
+<p class="text-[10px] text-on-surface-variant">Prompt ARS copié dans le presse-papier</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body></html>
+
+
+
+<!-- Suivi & Rapports - Anonymisé -->
+
+<!DOCTYPE html>
+
+
+
+<html class="light" lang="fr"><head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<script id="tailwind-config">
+
+      tailwind.config = {
+
+        darkMode: "class",
+
+        theme: {
+
+          extend: {
+
+            colors: {
+
+              "on-error-container": "#6e0523",
+
+              "primary-fixed-dim": "#ac9aef",
+
+              "surface-container-lowest": "#ffffff",
+
+              "secondary-fixed": "#e6deff",
+
+              "on-primary-fixed-variant": "#3f2d7b",
+
+              "on-surface": "#2d3335",
+
+              "secondary-fixed-dim": "#d9ceff",
+
+              "secondary-container": "#e6deff",
+
+              "on-primary-fixed": "#1e035a",
+
+              "outline-variant": "#adb3b5",
+
+              "inverse-on-surface": "#9b9d9e",
+
+              "surface-bright": "#f8f9fa",
+
+              "tertiary-fixed": "#fecbf1",
+
+              "surface-variant": "#dee3e6",
+
+              "error-dim": "#6b0221",
+
+              "tertiary-fixed-dim": "#efbde2",
+
+              "on-secondary-fixed-variant": "#5e548b",
+
+              "on-primary": "#fdf7ff",
+
+              "on-tertiary-fixed": "#512e4c",
+
+              "on-tertiary": "#fff7f9",
+
+              "on-primary-container": "#362472",
+
+              "error-container": "#f97386",
+
+              "on-secondary-container": "#544a80",
+
+              "inverse-surface": "#0c0f10",
+
+              "primary-dim": "#584695",
+
+              "surface-container-low": "#f1f4f5",
+
+              "secondary-dim": "#564b81",
+
+              "on-tertiary-container": "#66405f",
+
+              "on-error": "#fff7f7",
+
+              "tertiary-dim": "#6d4666",
+
+              "surface-container-highest": "#dee3e6",
+
+              "primary-container": "#baa7fe",
+
+              "outline": "#767c7e",
+
+              "on-background": "#2d3335",
+
+              "secondary": "#62578e",
+
+              "error": "#a8364b",
+
+              "surface-tint": "#6453a2",
+
+              "primary-fixed": "#baa7fe",
+
+              "on-tertiary-fixed-variant": "#704969",
+
+              "on-secondary-fixed": "#41376c",
+
+              "inverse-primary": "#baa7fe",
+
+              "on-secondary": "#fcf7ff",
+
+              "primary": "#6453a2",
+
+              "tertiary": "#7a5272",
+
+              "surface": "#f8f9fa",
+
+              "on-surface-variant": "#5a6062",
+
+              "background": "#f8f9fa",
+
+              "surface-dim": "#d5dbdd",
+
+              "surface-container": "#ebeef0",
+
+              "tertiary-container": "#fecbf1",
+
+              "surface-container-high": "#e5e9eb"
+
+            },
+
+            fontFamily: {
+
+              "headline": ["Public Sans"],
+
+              "body": ["Public Sans"],
+
+              "label": ["Public Sans"]
+
+            },
+
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+
+          },
+
+        },
+
+      }
+
+    </script>
+
+<style>
+
+        .material-symbols-outlined {
+
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        }
+
+        body {
+
+            font-family: 'Public Sans', sans-serif;
+
+            background-color: #f8f9fa;
+
+        }
+
+        .glass-card {
+
+            background: rgba(255, 255, 255, 0.8);
+
+            backdrop-filter: blur(20px);
+
+        }
+
+    </style>
+
+</head>
+
+<body class="text-on-surface antialiased">
+
+<!-- SideNavBar (Authority: Shared Components JSON) -->
+
+<nav class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-slate-50 dark:bg-slate-900 h-screen w-72 rounded-r-[32px] shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)] font-public-sans text-sm tracking-wide">
+
+<!-- Header -->
+
+<div class="px-8 mb-10 flex items-center gap-3">
+
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
+
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+
+</div>
+
+<div>
+
+<h1 class="text-lg font-bold text-purple-800 dark:text-purple-300 leading-none">Breathable Workspace</h1>
+
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Nursing Management</p>
+
+</div>
+
+</div>
+
+<!-- Navigation Tabs -->
+
+<div class="flex-1 space-y-2">
+
+<!-- Active Item: Dashboard -->
+
+<a class="flex items-center gap-4 py-3 bg-white dark:bg-slate-800 text-purple-700 dark:text-purple-300 shadow-sm rounded-2xl mx-4 font-semibold transition-all translate-x-1 duration-300 px-4" href="#">
+
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+
+<span>Dashboard</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 text-slate-600 dark:text-slate-400 mx-4 px-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+
+<span>Planning</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 text-slate-600 dark:text-slate-400 mx-4 px-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+
+<span>Activity Library</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 text-slate-600 dark:text-slate-400 mx-4 px-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+
+<span>Reporting</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 text-slate-600 dark:text-slate-400 mx-4 px-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+
+<span>Logistics</span>
+
+</a>
+
+</div>
+
+<!-- CTA -->
+
+<div class="px-8 mb-8">
+
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-dim text-white rounded-xl font-semibold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+<span>New Animation</span>
+
+</button>
+
+</div>
+
+<!-- Footer Tabs (AI Assistants) -->
+
+<div class="border-t border-slate-200/50 dark:border-slate-800/50 pt-6 px-4 space-y-1">
+
+<p class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">IA Assistants</p>
+
+<a class="flex items-center gap-4 py-2 text-slate-500 dark:text-slate-400 px-4 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-all" href="#">
+
+<span class="material-symbols-outlined text-purple-400" data-icon="smart_toy">smart_toy</span>
+
+<span>ChatGPT</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-2 text-slate-500 dark:text-slate-400 px-4 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-all" href="#">
+
+<span class="material-symbols-outlined text-purple-400" data-icon="psychology">psychology</span>
+
+<span>Claude</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-2 text-slate-500 dark:text-slate-400 px-4 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-all" href="#">
+
+<span class="material-symbols-outlined text-purple-400" data-icon="shimmer">star_shine</span>
+
+<span>Gemini</span>
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- TopNavBar (Authority: Shared Components JSON) -->
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white/80 backdrop-blur-xl dark:bg-slate-950/80 shadow-[0_4px_20px_-2px_rgba(100,83,162,0.04)] pl-80">
+
+<div class="flex items-center gap-4 flex-1">
+
+<div class="relative w-96">
+
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm" data-icon="search">search</span>
+
+<input class="w-full bg-slate-50/50 border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 placeholder-slate-400" placeholder="Rechercher un résident ou une activité..." type="text"/>
+
+</div>
+
+</div>
+
+<div class="flex items-center gap-6">
+
+<div class="flex items-center gap-2">
+
+<button class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-purple-50 rounded-full transition-colors">
+
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+
+</button>
+
+<button class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-purple-50 rounded-full transition-colors">
+
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+
+</button>
+
+</div>
+
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200">
+
+<div class="text-right">
+
+<p class="text-xs font-bold text-slate-800">Sophie Lefebvre</p>
+
+<p class="text-[10px] text-slate-500">Animatrice Senior</p>
+
+</div>
+
+<img alt="Manager Profile" class="w-9 h-9 rounded-full object-cover" data-alt="close-up portrait of a professional woman with a friendly smile in a modern bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm65Ig3Waq5tth78_-HiozDwVtmar2FXnCtYTsIFBXyF73OQUjdBFiUQKrL27QSnV6HB5ZrBvPk9OqJMfLsw4kRXinkGz4i7CQzZSZD7MQB_frV7g2-Is51jG-15CYQbwjaomw8q1qS4RmZZCwkhQyJkpgcpDSXUA3dItiYHnAm4uoAwzCPKDS3D5qrnW1PEG1gzQNbjisQe3mKBRpyM7KUzO-6OILfubzQYsgmwADGai0M385F5RG4Y-94XIBvQJT7SHsoJbOceLS"/>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- Main Content Canvas -->
+
+<main class="ml-72 pt-24 px-12 pb-12 min-h-screen">
+
+<!-- Hero Section: Display Typography -->
+
+<section class="mb-12">
+
+<h2 class="text-[3.5rem] font-headline font-extrabold tracking-tight text-on-surface leading-[1.1] mb-2">Bonjour, Sophie.</h2>
+
+<p class="text-lg text-on-surface-variant max-w-2xl font-body leading-relaxed">Le calme s'installe à l'atelier. Voici l'aperçu de la journée pour vos résidents.</p>
+
+</section>
+
+<!-- Bento Grid Stats Section -->
+
+<div class="grid grid-cols-12 gap-8 mb-16">
+
+<!-- Main Stat Card -->
+
+<div class="col-span-12 md:col-span-5 bg-white p-10 rounded-xl shadow-md border-none flex flex-col justify-between overflow-hidden relative group">
+
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/20 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary-container/40 transition-colors"></div>
+
+<div>
+
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-4 block">Impact Journalier</span>
+
+<div class="flex items-baseline gap-2">
+
+<span class="text-7xl font-extrabold text-on-surface">18</span>
+
+<span class="text-xl font-medium text-on-surface-variant">résidents</span>
+
+</div>
+
+<p class="mt-4 text-on-surface-variant font-medium">Participation moyenne record cette semaine.</p>
+
+</div>
+
+<div class="mt-12 flex items-center gap-4">
+
+<div class="flex -space-x-3">
+
+<img class="w-10 h-10 rounded-full border-4 border-white object-cover" data-alt="portrait of an elderly man with kind eyes and silver hair smiling gently" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDobjkyHlzXKbxmzwD6L66WxapfDvLjn10Hooc-zO8l2ZNAtge4N2HelIFJx1GgLH87SOTBHCgWuX374jHE9CT-k0xIYeGVqiOMXtIXBA-mIh_Njb0UTlsUfWJuIwHe8OFnZfOMCAKsXXnZjGiNfhd-OdXDN0cfxSs6-Rvcy67yqoFWni3APqmRKVgsCrK9NoTWgc4LHlzW15q7cTh9O9ZCpFcUBwK7ASRhLZxQzkIjB3k57jwxkNvHtPMUDQFFIidInf8Q0GDR7gj6"/>
+
+<img class="w-10 h-10 rounded-full border-4 border-white object-cover" data-alt="portrait of a senior woman with glasses in a soft wool sweater laughing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpBfXT7n51rx6ma3tM27WiwOXE2PZUhhhCtYwezaj0KZd3UNBP453qXVGsbIXmNGdit0oHOagzPlPwGKOTuN29PKPvhVn_i0XqwXEScZdJeOKHf6sKKBSJaS1E0rYLFCWYEHilwCr5DZfsjrrTF79YntQIduZEMCLALeKcttjvFg0epzKIjQJZ-0ZnijwBms5JMQJ1b_ltB-ALf6FDdSlGXXnww6bYJf2fj-kiNTHd64rPj_E4o9KYTyTSyPotbl93ZKiX4EKUxr3j"/>
+
+<img class="w-10 h-10 rounded-full border-4 border-white object-cover" data-alt="portrait of an elderly woman with silver hair looking contemplative in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEDfROjQOl8_J7qw7e7V6ngL7EPu-mdIDIAaoPjWb-LFXzOpk77g1-vPJA_UO3Xg2KEvrXjELTlmcyWpNyoJKkeLJfT65kUCWiMQLihm7e5TOhI9MFO8EXcON-CJwPFhzih2drhbMVmMiozsgnVcGpCsWZ8hVomvQ-M9YGPxz6ujRjK8seJJW9hQj4x2THiXoKtZi1jzrDj8iVoLboRx_Y9Y62jwOSCAoPCyUoIDi5TojCEbQsnxSG0q8yZGrWyazDi79JVa5R_Iyx"/>
+
+<div class="w-10 h-10 rounded-full border-4 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold text-primary">+15</div>
+
+</div>
+
+<span class="text-xs text-on-surface-variant font-medium">Inscrits aujourd'hui</span>
+
+</div>
+
+</div>
+
+<!-- Secondary Stats Stack -->
+
+<div class="col-span-12 md:col-span-3 space-y-8">
+
+<!-- Progress Card -->
+
+<div class="bg-surface-container-low p-8 rounded-xl h-full flex flex-col justify-between">
+
+<div>
+
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4 block">Taux d'engagement</span>
+
+<div class="text-5xl font-extrabold text-primary">76%</div>
+
+</div>
+
+<div class="mt-8">
+
+<div class="w-full h-2 bg-white rounded-full overflow-hidden">
+
+<div class="h-full bg-primary rounded-full" style="width: 76%"></div>
+
+</div>
+
+<p class="text-[11px] text-on-surface-variant mt-3 font-medium flex justify-between">
+
+<span>Objectif: 80%</span>
+
+<span>+4% vs hier</span>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Tertiary Stats (Editorial Image Card) -->
+
+<div class="col-span-12 md:col-span-4 rounded-xl overflow-hidden relative min-h-[300px] shadow-md">
+
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="close up of hands of an elderly person and a young person working together on a colorful painting in a sunlit art studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC87RpnxZKC7cZkChus6FPcb8AcznS5u1hjTuRTi_ReyoRhxrdEXl_6diaacVYhB3jP1v8b3GHIoEHz0ON2TosDTkbOvPcaO-9_HmINqSYbNk5G58aad6lXpzvSsPYa-z808SI2MGufXrfUGA41Rb3BKczvK5NofAwXOWApj5tszGqzuS08ah5KOrYNom4Ofh4FPR8-GBnACKZfcrvyw4jAHlm0ogRSSIaKA1Jq1XRPqEGvXPihIpZvtRkiPlrXX74ZeVDvpfjCxhX0"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-8">
+
+<span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] text-white font-bold uppercase tracking-widest mb-3 self-start">Focus Bien-être</span>
+
+<h3 class="text-white text-xl font-bold leading-tight">Atelier Peinture &amp; Mémoire prévu à 14:00</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Today's Agenda: Vertical Flow Timeline -->
+
+<section class="mt-20">
+
+<div class="flex justify-between items-end mb-12">
+
+<div>
+
+<h2 class="text-[1.75rem] font-headline font-semibold text-on-surface">Today's Agenda</h2>
+
+<p class="text-on-surface-variant mt-1">Séquence d'animations pour le Mercredi 24 Mai</p>
+
+</div>
+
+<button class="text-sm font-semibold text-primary flex items-center gap-2 hover:underline">
+
+                    Voir tout le planning
+
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+
+</button>
+
+</div>
+
+<div class="space-y-6 relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container">
+
+<!-- Event 1 (Past) -->
+
+<div class="relative group">
+
+<div class="absolute -left-10 top-6 w-4 h-4 rounded-full border-4 border-background bg-secondary shadow-sm"></div>
+
+<div class="bg-secondary-container p-8 rounded-xl flex items-center justify-between opacity-70">
+
+<div class="flex gap-8 items-center">
+
+<div class="text-on-secondary-container">
+
+<span class="text-[10px] font-bold uppercase tracking-widest block mb-1">Terminé</span>
+
+<span class="text-xl font-extrabold">09:30</span>
+
+</div>
+
+<div>
+
+<h4 class="text-lg font-bold text-on-secondary-container">Gymnastique Douce</h4>
+
+<p class="text-sm text-on-secondary-container/80">Salle de Rééducation • 12 participants</p>
+
+</div>
+
+</div>
+
+<div class="flex gap-2">
+
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="check_circle">check_circle</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Event 2 (Upcoming - Primary Focus) -->
+
+<div class="relative group">
+
+<div class="absolute -left-10 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 border-background bg-primary shadow-lg scale-125"></div>
+
+<div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-between border-l-8 border-primary group-hover:translate-x-1 transition-transform">
+
+<div class="flex gap-8 items-center">
+
+<div class="text-primary">
+
+<span class="text-[10px] font-bold uppercase tracking-widest block mb-1">En cours</span>
+
+<span class="text-3xl font-extrabold leading-none">10:45</span>
+
+</div>
+
+<div>
+
+<h4 class="text-xl font-bold text-on-surface">Atelier Chant &amp; Chorale</h4>
+
+<p class="text-sm text-on-surface-variant">Grand Salon • Intervenant: Marc D.</p>
+
+<div class="mt-4 flex gap-2">
+
+<span class="px-3 py-1 bg-primary-container/20 text-primary text-[10px] font-bold rounded-full uppercase">Cognition</span>
+
+<span class="px-3 py-1 bg-primary-container/20 text-primary text-[10px] font-bold rounded-full uppercase">Social</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="flex flex-col items-end gap-3">
+
+<div class="flex -space-x-2">
+
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="elderly person smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI-9L_O_6Sv_-a3qeMpKlkbMhMI3E9Wj7qzd-IGHHV-xgoeIhom2yUdG5MHy1RwTtFArpbqzsye_KCYhofHE6Fme1VwOKmbWaoJAYEJTn1Myj3IdtohW2Zt4l9TIp7H73QzEjlUOTd8aQrrOSXmxwgMsN5O8m3Icp0_O1JnDrJwXcZrxsHr4j_BCscskR840Gz_SmwZtqwg2O2xXhcPoXtmgPdlMjSxRqr7KGrWy5stJeTXEsELRxFWw2ReZtPsoYmLcWKSuGnum0t"/>
+
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="professional person smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-MT8A-EUqYXwEvUz2HyZbVNCWXXNfMJLuR38DPqEQ_DaqJS1czws6DEVo6zdMmlzSWpW5nMinrC-ML9Xjup7YzoVSdxISkdbhTBqOBltXJ-PxIYcYhPYohWZvLMSQOogDtmY4ivr4pAjqwNT00yjd-cFD62GMLt5ufEmI03OW4mYXs22_y7q5v0Rm9WBdkdKvJzG24mvEuyJyA9BA5vPtGTwhIF6H-KqftWTNDclP6H_cAFxSwJRMgGnfzYUQL-9sk8qttnhSBIAe"/>
+
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[8px] font-bold text-white">+8</div>
+
+</div>
+
+<button class="px-6 py-2 bg-primary text-white text-xs font-bold rounded-full shadow-md">Pointer</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Event 3 (Future) -->
+
+<div class="relative group">
+
+<div class="absolute -left-10 top-6 w-4 h-4 rounded-full border-4 border-background bg-surface-container shadow-sm"></div>
+
+<div class="bg-surface-container-low p-8 rounded-xl flex items-center justify-between border-none">
+
+<div class="flex gap-8 items-center">
+
+<div class="text-on-surface-variant">
+
+<span class="text-[10px] font-bold uppercase tracking-widest block mb-1">Suivant</span>
+
+<span class="text-xl font-extrabold">14:00</span>
+
+</div>
+
+<div>
+
+<h4 class="text-lg font-bold text-on-surface">Atelier Peinture &amp; Mémoire</h4>
+
+<p class="text-sm text-on-surface-variant">Atelier Créatif • 8 résidents inscrits</p>
+
+</div>
+
+</div>
+
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white transition-colors text-slate-400">
+
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Insights / Reporting Section (Editorial Layout) -->
+
+<section class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12">
+
+<div class="bg-white p-12 rounded-xl shadow-md flex flex-col justify-center">
+
+<span class="text-primary font-bold text-[10px] uppercase tracking-widest mb-4">Note de l'Équipe</span>
+
+<blockquote class="text-2xl font-light italic text-on-surface leading-snug">
+
+                    "La participation aux activités manuelles a augmenté de 12% ce mois-ci. Les résidents de l'aile Sud semblent particulièrement réceptifs à la musicothérapie matinale."
+
+                </blockquote>
+
+<div class="mt-8 flex items-center gap-4">
+
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+
+</div>
+
+<div>
+
+<p class="text-sm font-bold text-on-surface">IA Insight Assistant</p>
+
+<p class="text-xs text-on-surface-variant">Généré à partir des rapports hebdomadaires</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="flex flex-col gap-6">
+
+<div class="bg-tertiary-container/30 p-8 rounded-xl border-none">
+
+<div class="flex items-start justify-between mb-4">
+
+<h5 class="font-bold text-on-tertiary-container">Action Requise</h5>
+
+<span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
+
+</div>
+
+<p class="text-sm text-on-tertiary-container/90 leading-relaxed">
+
+                        Le matériel pour l'atelier "Cuisine Thérapeutique" de demain n'a pas encore été validé par la logistique.
+
+                    </p>
+
+<button class="mt-4 text-xs font-bold text-tertiary underline decoration-2 underline-offset-4">Régulariser maintenant</button>
+
+</div>
+
+<div class="bg-white p-8 rounded-xl shadow-md flex items-center gap-6">
+
+<div class="w-16 h-16 rounded-2xl bg-surface-container-low flex items-center justify-center">
+
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_download">cloud_download</span>
+
+</div>
+
+<div class="flex-1">
+
+<h5 class="font-bold text-on-surface">Rapport Mensuel</h5>
+
+<p class="text-xs text-on-surface-variant">Prêt pour téléchargement (Avril 2024)</p>
+
+</div>
+
+<button class="w-10 h-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg">
+
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FAB: Contextual Action (Authority: Logic Guidelines) -->
+
+<div class="fixed bottom-12 right-12 z-50">
+
+<button class="w-16 h-16 bg-gradient-to-br from-primary to-primary-dim text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform active:scale-95 group">
+
+<span class="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
+
+<span class="absolute right-full mr-4 bg-on-surface text-white text-[10px] font-bold px-3 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+
+                Action Rapide
+
+            </span>
+
+</button>
+
+</div>
+
+</body></html>
+
+
+
+<!-- Tableau de Bord - Epuré -->
+
+<!DOCTYPE html>
+
+
+
+<html class="light" lang="fr"><head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Ethereal Atelier - Planning de la Semaine</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+
+      tailwind.config = {
+
+        darkMode: "class",
+
+        theme: {
+
+          extend: {
+
+            colors: {
+
+              "on-error-container": "#6e0523",
+
+              "primary-fixed-dim": "#ac9aef",
+
+              "surface-container-lowest": "#ffffff",
+
+              "secondary-fixed": "#e6deff",
+
+              "on-primary-fixed-variant": "#3f2d7b",
+
+              "on-surface": "#2d3335",
+
+              "secondary-fixed-dim": "#d9ceff",
+
+              "secondary-container": "#e6deff",
+
+              "on-primary-fixed": "#1e035a",
+
+              "outline-variant": "#adb3b5",
+
+              "inverse-on-surface": "#9b9d9e",
+
+              "surface-bright": "#f8f9fa",
+
+              "tertiary-fixed": "#fecbf1",
+
+              "surface-variant": "#dee3e6",
+
+              "error-dim": "#6b0221",
+
+              "tertiary-fixed-dim": "#efbde2",
+
+              "on-secondary-fixed-variant": "#5e548b",
+
+              "on-primary": "#fdf7ff",
+
+              "on-tertiary-fixed": "#512e4c",
+
+              "on-tertiary": "#fff7f9",
+
+              "on-primary-container": "#362472",
+
+              "error-container": "#f97386",
+
+              "on-secondary-container": "#544a80",
+
+              "inverse-surface": "#0c0f10",
+
+              "primary-dim": "#584695",
+
+              "surface-container-low": "#f1f4f5",
+
+              "secondary-dim": "#564b81",
+
+              "on-tertiary-container": "#66405f",
+
+              "on-error": "#fff7f7",
+
+              "tertiary-dim": "#6d4666",
+
+              "surface-container-highest": "#dee3e6",
+
+              "primary-container": "#baa7fe",
+
+              "outline": "#767c7e",
+
+              "on-background": "#2d3335",
+
+              "secondary": "#62578e",
+
+              "error": "#a8364b",
+
+              "surface-tint": "#6453a2",
+
+              "primary-fixed": "#baa7fe",
+
+              "on-tertiary-fixed-variant": "#704969",
+
+              "on-secondary-fixed": "#41376c",
+
+              "inverse-primary": "#baa7fe",
+
+              "on-secondary": "#fcf7ff",
+
+              "primary": "#6453a2",
+
+              "tertiary": "#7a5272",
+
+              "surface": "#f8f9fa",
+
+              "on-surface-variant": "#5a6062",
+
+              "background": "#f8f9fa",
+
+              "surface-dim": "#d5dbdd",
+
+              "surface-container": "#ebeef0",
+
+              "tertiary-container": "#fecbf1",
+
+              "surface-container-high": "#e5e9eb"
+
+            },
+
+            fontFamily: {
+
+              "headline": ["Public Sans"],
+
+              "body": ["Public Sans"],
+
+              "label": ["Public Sans"]
+
+            },
+
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+
+          },
+
+        },
+
+      }
+
+    </script>
+
+<style>
+
+        body { font-family: 'Public Sans', sans-serif; }
+
+        .material-symbols-outlined {
+
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+            vertical-align: middle;
+
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dee3e6; border-radius: 10px; }
+
+    </style>
+
+</head>
+
+<body class="bg-surface text-on-surface antialiased flex overflow-hidden">
+
+<!-- SideNavBar (Authority: JSON) -->
+
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-slate-50 dark:bg-slate-900 h-screen w-72 rounded-r-[32px] shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)] font-public-sans text-sm tracking-wide">
+
+<div class="px-8 mb-10">
+
+<div class="flex items-center gap-3">
+
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+
+<span class="material-symbols-outlined">spa</span>
+
+</div>
+
+<div>
+
+<h2 class="text-lg font-bold text-purple-800 dark:text-purple-300 leading-tight">Breathable Workspace</h2>
+
+<p class="text-[10px] uppercase tracking-widest text-slate-400">Nursing Management</p>
+
+</div>
+
+</div>
+
+</div>
+
+<nav class="flex-1 space-y-2">
+
+<!-- Active Tab: Planning -->
+
+<a class="flex items-center gap-4 py-3 px-4 bg-white dark:bg-slate-800 text-purple-700 dark:text-purple-300 shadow-sm rounded-2xl mx-4 font-semibold transition-all hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+
+<span>Planning</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 text-slate-600 dark:text-slate-400 mx-4 transition-all hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+
+<span>Dashboard</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 text-slate-600 dark:text-slate-400 mx-4 transition-all hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+
+<span>Activity Library</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 text-slate-600 dark:text-slate-400 mx-4 transition-all hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+
+<span>Reporting</span>
+
+</a>
+
+<a class="flex items-center gap-4 py-3 px-4 text-slate-600 dark:text-slate-400 mx-4 transition-all hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl hover:translate-x-1 duration-300" href="#">
+
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+
+<span>Logistics</span>
+
+</a>
+
+</nav>
+
+<div class="px-8 mt-auto pt-8 border-t border-slate-200/50 dark:border-slate-800/50">
+
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-dim text-white rounded-2xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 font-bold transition-all active:scale-95">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+                New Animation
+
+            </button>
+
+<div class="mt-8 space-y-4">
+
+<div class="flex items-center gap-3 text-xs text-slate-500">
+
+<span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
+
+<span>ChatGPT</span>
+
+</div>
+
+<div class="flex items-center gap-3 text-xs text-slate-500">
+
+<span class="material-symbols-outlined text-sm" data-icon="psychology">psychology</span>
+
+<span>Claude</span>
+
+</div>
+
+</div>
+
+</div>
+
+</aside>
+
+<!-- Main Content Canvas -->
+
+<main class="flex-1 ml-72 min-h-screen bg-surface relative overflow-y-auto custom-scrollbar">
+
+<!-- TopAppBar (Authority: JSON) -->
+
+<header class="fixed top-0 right-0 left-72 z-50 flex justify-between items-center px-8 h-16 bg-white/80 backdrop-blur-xl dark:bg-slate-950/80 shadow-[0_4px_20px_-2px_rgba(100,83,162,0.04)] font-public-sans antialiased">
+
+<div class="flex items-center gap-8">
+
+<h1 class="text-xl font-semibold tracking-tight text-slate-800 dark:text-slate-100">Planning de la Semaine</h1>
+
+<div class="flex items-center bg-slate-50 dark:bg-slate-900 rounded-full px-4 py-1.5 gap-2 border-none">
+
+<span class="material-symbols-outlined text-slate-400 text-lg" data-icon="search">search</span>
+
+<input class="bg-transparent border-none text-sm focus:ring-0 w-64 placeholder:text-slate-400" placeholder="Rechercher une activité..." type="text"/>
+
+</div>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<button class="p-2 text-slate-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-full transition-colors">
+
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+
+</button>
+
+<button class="p-2 text-slate-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-full transition-colors">
+
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+
+</button>
+
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+
+<div class="flex items-center gap-3">
+
+<div class="text-right">
+
+<p class="text-sm font-semibold text-slate-800">Mme. Valérie</p>
+
+<p class="text-[10px] text-slate-500">Responsable Animation</p>
+
+</div>
+
+<img alt="Manager Profile" class="w-10 h-10 rounded-full object-cover" data-alt="Professional portrait of a mature woman with a kind smile, natural lighting, soft background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc3mWVR9KzJ-Wbl1lGKcWu0bTqnIRyFWhaVj6TDoU0sGBE3fO9w43LNI5TttFp7CZqcjVA0fqbLDyOo6-626xejXNtBY8heZRvNgP1r6wqomAXewpg1BPpnEn9jJXx3ZHYWj8YIsrv0oa3iwzWQzQ1p4haCMu3PDIVPtcqZcJBrtpS2p0AIbqT7yJv9BX9SHztvo5OfNJgN-qr47tOcyoCGeI24RvmXgK8u5jM9Nz6F_ZOM-Sd-b_g46QtW1DnIk1cj1msNQorZu5l"/>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- Calendar Container -->
+
+<section class="mt-24 px-12 pb-20">
+
+<!-- Hero Header Section -->
+
+<div class="mb-12 flex justify-between items-end">
+
+<div>
+
+<h2 class="text-5xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">Février 2024</h2>
+
+<p class="text-on-surface-variant text-lg tracking-wide">Semaine du 12 au 18 • 14 activités programmées</p>
+
+</div>
+
+<div class="flex gap-4">
+
+<div class="flex bg-white shadow-md rounded-2xl p-1.5">
+
+<button class="px-6 py-2.5 rounded-xl bg-primary text-white font-semibold transition-all shadow-sm">Semaine</button>
+
+<button class="px-6 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all">Mois</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Calendar View: Grid Design (Editorial style) -->
+
+<div class="bg-white rounded-xl shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)] overflow-hidden">
+
+<div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] border-b border-surface-container-low">
+
+<div class="p-6 bg-surface-container-low"></div>
+
+<!-- Days -->
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Lun</span>
+
+<span class="text-2xl font-bold text-on-surface">12</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Mar</span>
+
+<span class="text-2xl font-bold text-on-surface">13</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low bg-primary-container/10">
+
+<span class="block text-xs font-bold text-primary uppercase tracking-widest mb-1">Mer</span>
+
+<span class="text-2xl font-bold text-primary">14</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Jeu</span>
+
+<span class="text-2xl font-bold text-on-surface">15</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Ven</span>
+
+<span class="text-2xl font-bold text-on-surface">16</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Sam</span>
+
+<span class="text-2xl font-bold text-on-surface">17</span>
+
+</div>
+
+<div class="p-6 text-center border-l border-surface-container-low">
+
+<span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Dim</span>
+
+<span class="text-2xl font-bold text-on-surface">18</span>
+
+</div>
+
+</div>
+
+<!-- Time Grid Body -->
+
+<div class="relative grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] h-[800px] overflow-y-auto custom-scrollbar">
+
+<!-- Hour Labels -->
+
+<div class="col-start-1 bg-surface-container-low/30 divide-y divide-surface-container-low">
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">10:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">11:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">12:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">13:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">14:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">15:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">16:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">17:00</div>
+
+<div class="h-24 px-4 flex justify-end items-start pt-4 text-xs font-medium text-slate-400">18:00</div>
+
+</div>
+
+<!-- Column Lines (Invisible Borders for layout) -->
+
+<div class="absolute inset-0 grid grid-cols-[80px_repeat(7,1fr)] pointer-events-none">
+
+<div class="col-start-1"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+<div class="border-l border-surface-container-low bg-primary-container/5"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+<div class="border-l border-surface-container-low"></div>
+
+</div>
+
+<!-- Event Grid Content -->
+
+<div class="col-span-7 col-start-2 relative">
+
+<!-- Monday -->
+
+<div class="absolute top-[24px] left-[0%] w-[14.28%] p-1">
+
+<div class="bg-secondary-container p-3 rounded-2xl shadow-sm border-l-4 border-primary h-20 transition-all hover:shadow-md cursor-pointer">
+
+<span class="material-symbols-outlined text-sm text-primary mb-1" data-icon="restaurant">restaurant</span>
+
+<h4 class="text-xs font-bold text-on-primary-container truncate">Atelier Cuisine</h4>
+
+<p class="text-[10px] text-on-secondary-container/70 font-medium">Salle Rez-de-Chaussée</p>
+
+</div>
+
+</div>
+
+<!-- Tuesday -->
+
+<div class="absolute top-[96px] left-[14.28%] w-[14.28%] p-1">
+
+<div class="bg-primary-container p-3 rounded-2xl shadow-sm border-l-4 border-primary h-32 transition-all hover:shadow-md cursor-pointer">
+
+<span class="material-symbols-outlined text-sm text-primary mb-1" data-icon="music_note">music_note</span>
+
+<h4 class="text-xs font-bold text-on-primary-container">Chant &amp; Mémoire</h4>
+
+<p class="text-[10px] text-on-secondary-container/70 font-medium">Grand Salon</p>
+
+<div class="mt-2 flex -space-x-1">
+
+<div class="w-5 h-5 rounded-full bg-primary-dim border border-white text-[8px] flex items-center justify-center text-white">+8</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Wednesday (Active Column) -->
+
+<div class="absolute top-[24px] left-[28.56%] w-[14.28%] p-1">
+
+<div class="bg-white border border-primary-container p-3 rounded-2xl shadow-md h-16 transition-all hover:shadow-lg cursor-pointer">
+
+<h4 class="text-xs font-bold text-primary truncate">Gym Douce</h4>
+
+<p class="text-[10px] text-slate-500">Unité 1</p>
+
+</div>
+
+</div>
+
+<div class="absolute top-[192px] left-[28.56%] w-[14.28%] p-1">
+
+<div class="bg-primary p-3 rounded-2xl shadow-xl h-48 flex flex-col justify-between transition-all hover:scale-[1.02] cursor-pointer">
+
+<div>
+
+<span class="material-symbols-outlined text-white mb-1" data-icon="celebration">celebration</span>
+
+<h4 class="text-sm font-bold text-white">Anniversaires du Mois</h4>
+
+<p class="text-[10px] text-white/70 font-medium">Patio Central</p>
+
+</div>
+
+<div class="bg-white/20 p-2 rounded-xl text-white text-[9px] backdrop-blur-sm">
+
+                                    Accompagnement Piano
+
+                                </div>
+
+</div>
+
+</div>
+
+<!-- Thursday -->
+
+<div class="absolute top-[384px] left-[42.84%] w-[14.28%] p-1">
+
+<div class="bg-tertiary-container p-3 rounded-2xl shadow-sm border-l-4 border-tertiary h-24 transition-all hover:shadow-md cursor-pointer">
+
+<span class="material-symbols-outlined text-sm text-tertiary mb-1" data-icon="pets">pets</span>
+
+<h4 class="text-xs font-bold text-on-tertiary-container">Médiation Animale</h4>
+
+<p class="text-[10px] text-on-tertiary-container/70">Jardin</p>
+
+</div>
+
+</div>
+
+<!-- Friday -->
+
+<div class="absolute top-[96px] left-[57.12%] w-[14.28%] p-1">
+
+<div class="bg-secondary-container p-3 rounded-2xl shadow-sm border-l-4 border-primary h-20 transition-all hover:shadow-md cursor-pointer">
+
+<span class="material-symbols-outlined text-sm text-primary mb-1" data-icon="menu_book">menu_book</span>
+
+<h4 class="text-xs font-bold text-on-primary-container truncate">Revue de Presse</h4>
+
+<p class="text-[10px] text-on-secondary-container/70 font-medium">Bibliothèque</p>
+
+</div>
+
+</div>
+
+<div class="absolute top-[384px] left-[57.12%] w-[14.28%] p-1">
+
+<div class="bg-primary-container p-3 rounded-2xl shadow-sm border-l-4 border-primary h-40 transition-all hover:shadow-md cursor-pointer">
+
+<span class="material-symbols-outlined text-sm text-primary mb-1" data-icon="videogame_asset">videogame_asset</span>
+
+<h4 class="text-xs font-bold text-on-primary-container">Jeux Wii</h4>
+
+<p class="text-[10px] text-on-secondary-container/70 font-medium">Espace TV</p>
+
+</div>
+
+</div>
+
+<!-- Weekend (Empty states for brevity) -->
+
+<div class="absolute top-[120px] left-[71.4%] w-[14.28%] p-2 opacity-30 flex flex-col items-center">
+
+<span class="material-symbols-outlined text-slate-300" data-icon="event_busy">event_busy</span>
+
+<span class="text-[10px] text-slate-400 mt-1">Libre</span>
+
+</div>
+
+<div class="absolute top-[120px] left-[85.68%] w-[14.28%] p-2 opacity-30 flex flex-col items-center">
+
+<span class="material-symbols-outlined text-slate-300" data-icon="event_busy">event_busy</span>
+
+<span class="text-[10px] text-slate-400 mt-1">Libre</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Dashboard Stats Bento Below Calendar -->
+
+<div class="mt-12 grid grid-cols-12 gap-8">
+
+<div class="col-span-4 bg-white p-8 rounded-xl shadow-md border-none">
+
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Taux d'Engagement</h3>
+
+<div class="flex items-center gap-6">
+
+<div class="relative w-24 h-24">
+
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+
+<path class="stroke-surface-container-low fill-none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-width="3"></path>
+
+<path class="stroke-primary fill-none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="78, 100" stroke-width="3"></path>
+
+</svg>
+
+<div class="absolute inset-0 flex items-center justify-center text-xl font-bold text-on-surface">78%</div>
+
+</div>
+
+<p class="text-sm text-on-surface-variant leading-relaxed">+12% par rapport à la semaine dernière. Les résidents sont plus réactifs aux ateliers créatifs.</p>
+
+</div>
+
+</div>
+
+<div class="col-span-8 bg-white p-8 rounded-xl shadow-md flex items-center justify-between overflow-hidden relative">
+
+<div class="z-10">
+
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Activité Star du Mois</h3>
+
+<p class="text-2xl font-bold text-on-surface mb-1">Médiation Animale</p>
+
+<p class="text-on-surface-variant text-sm mb-6">Prochaine séance prévue jeudi à 15h00.</p>
+
+<button class="px-6 py-2 bg-secondary-fixed text-on-secondary-fixed font-semibold rounded-full hover:bg-secondary-fixed-dim transition-colors">Voir les détails</button>
+
+</div>
+
+<img alt="Golden Retriever Therapy Dog" class="w-64 h-full object-cover rounded-2xl absolute -right-4 -bottom-4 opacity-40 mix-blend-multiply" data-alt="Close-up of a friendly golden retriever therapy dog resting its head on a table in a bright sunlit room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgAstAcM34ACApvkvXvH1n8wRXBf7Ocr7QRhf4DI3J9_l4GZjji_kC59N_FF1IPZLPeLtYcb95sC8_bJ6bcjiTm8GwDvdyWzyjDBODS5KLpj7N2Z5mKoge-X7nC23Nh4tFntlhEQPlrkUjw84bgxCHpDz73pM9nlPJofYssxTN7k2S_GPSz4_ARuRHC0m2_DEItura-1Yqw46tR2qJGPSVrq3Hmb-aQdla12AVEm9IfDNfZ92a5b6yb_VIQNyTWGYgUh4f6YDkI265"/>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FAB: Add Activity -->
+
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 z-50">
+
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+
+</button>
+
+</body></html>
+
+
+
+<!-- Planning - Clair & Structuré -->
+
+<!DOCTYPE html>
+
+
+
+<html class="light" lang="fr"><head>
+
+<meta charset="utf-8"/>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>Logistique &amp; Budget | Ethereal Atelier</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<script id="tailwind-config">
+
+      tailwind.config = {
+
+        darkMode: "class",
+
+        theme: {
+
+          extend: {
+
+            colors: {
+
+              "on-error-container": "#6e0523",
+
+              "primary-fixed-dim": "#ac9aef",
+
+              "surface-container-lowest": "#ffffff",
+
+              "secondary-fixed": "#e6deff",
+
+              "on-primary-fixed-variant": "#3f2d7b",
+
+              "on-surface": "#2d3335",
+
+              "secondary-fixed-dim": "#d9ceff",
+
+              "secondary-container": "#e6deff",
+
+              "on-primary-fixed": "#1e035a",
+
+              "outline-variant": "#adb3b5",
+
+              "inverse-on-surface": "#9b9d9e",
+
+              "surface-bright": "#f8f9fa",
+
+              "tertiary-fixed": "#fecbf1",
+
+              "surface-variant": "#dee3e6",
+
+              "error-dim": "#6b0221",
+
+              "tertiary-fixed-dim": "#efbde2",
+
+              "on-secondary-fixed-variant": "#5e548b",
+
+              "on-primary": "#fdf7ff",
+
+              "on-tertiary-fixed": "#512e4c",
+
+              "on-tertiary": "#fff7f9",
+
+              "on-primary-container": "#362472",
+
+              "error-container": "#f97386",
+
+              "on-secondary-container": "#544a80",
+
+              "inverse-surface": "#0c0f10",
+
+              "primary-dim": "#584695",
+
+              "surface-container-low": "#f1f4f5",
+
+              "secondary-dim": "#564b81",
+
+              "on-tertiary-container": "#66405f",
+
+              "on-error": "#fff7f7",
+
+              "tertiary-dim": "#6d4666",
+
+              "surface-container-highest": "#dee3e6",
+
+              "primary-container": "#baa7fe",
+
+              "outline": "#767c7e",
+
+              "on-background": "#2d3335",
+
+              "secondary": "#62578e",
+
+              "error": "#a8364b",
+
+              "surface-tint": "#6453a2",
+
+              "primary-fixed": "#baa7fe",
+
+              "on-tertiary-fixed-variant": "#704969",
+
+              "on-secondary-fixed": "#41376c",
+
+              "inverse-primary": "#baa7fe",
+
+              "on-secondary": "#fcf7ff",
+
+              "primary": "#6453a2",
+
+              "tertiary": "#7a5272",
+
+              "surface": "#f8f9fa",
+
+              "on-surface-variant": "#5a6062",
+
+              "background": "#f8f9fa",
+
+              "surface-dim": "#d5dbdd",
+
+              "surface-container": "#ebeef0",
+
+              "tertiary-container": "#fecbf1",
+
+              "surface-container-high": "#e5e9eb"
+
+            },
+
+            fontFamily: {
+
+              "headline": ["Public Sans"],
+
+              "body": ["Public Sans"],
+
+              "label": ["Public Sans"]
+
+            },
+
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+
+          },
+
+        },
+
+      }
+
+    </script>
+
+<style>
+
+      .material-symbols-outlined {
+
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+      }
+
+      body {
+
+        background-color: #f8f9fa;
+
+        color: #2d3335;
+
+      }
+
+    </style>
+
+</head>
+
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Sidebar Navigation -->
+
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-slate-50 dark:bg-slate-900 h-screen w-72 rounded-r-[32px] shadow-[0_12px_40px_-8px_rgba(100,83,162,0.08)]">
+
+<div class="px-8 mb-10">
+
+<div class="flex items-center gap-3">
+
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-lg">
+
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+
+</div>
+
+<div>
+
+<h2 class="text-lg font-bold text-purple-800 dark:text-purple-300 font-headline leading-none">Breathable Workspace</h2>
+
+<p class="text-[10px] tracking-[0.1em] uppercase text-slate-500 mt-1">Nursing Management</p>
+
+</div>
+
+</div>
+
+</div>
+
+<nav class="flex-1 space-y-2">
+
+<a class="flex items-center h-12 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300 px-4 group" href="#">
+
+<span class="material-symbols-outlined mr-3 text-slate-400 group-hover:text-primary" data-icon="dashboard">dashboard</span>
+
+<span class="font-medium">Dashboard</span>
+
+</a>
+
+<a class="flex items-center h-12 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300 px-4 group" href="#">
+
+<span class="material-symbols-outlined mr-3 text-slate-400 group-hover:text-primary" data-icon="calendar_month">calendar_month</span>
+
+<span class="font-medium">Planning</span>
+
+</a>
+
+<a class="flex items-center h-12 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300 px-4 group" href="#">
+
+<span class="material-symbols-outlined mr-3 text-slate-400 group-hover:text-primary" data-icon="local_library">local_library</span>
+
+<span class="font-medium">Activity Library</span>
+
+</a>
+
+<a class="flex items-center h-12 text-slate-600 dark:text-slate-400 mx-4 hover:bg-purple-100/50 dark:hover:bg-purple-900/30 rounded-2xl transition-all hover:translate-x-1 duration-300 px-4 group" href="#">
+
+<span class="material-symbols-outlined mr-3 text-slate-400 group-hover:text-primary" data-icon="analytics">analytics</span>
+
+<span class="font-medium">Reporting</span>
+
+</a>
+
+<!-- Active State -->
+
+<a class="flex items-center h-12 bg-white dark:bg-slate-800 text-purple-700 dark:text-purple-300 shadow-sm rounded-2xl mx-4 font-semibold px-4" href="#">
+
+<span class="material-symbols-outlined mr-3" data-icon="payments">payments</span>
+
+<span class="font-medium">Logistics</span>
+
+</a>
+
+</nav>
+
+<div class="px-8 mt-auto pt-8 border-t border-slate-100">
+
+<button class="w-full bg-gradient-to-br from-primary to-primary-dim text-white py-4 rounded-xl shadow-lg hover:shadow-primary/20 transition-all flex items-center justify-center gap-2 group">
+
+<span class="material-symbols-outlined" data-icon="add">add</span>
+
+<span class="font-semibold">New Animation</span>
+
+</button>
+
+</div>
+
+</aside>
+
+<!-- Main Content Area -->
+
+<main class="ml-72 min-h-screen pb-20">
+
+<!-- Top Navigation -->
+
+<header class="fixed top-0 right-0 left-72 z-50 flex justify-between items-center px-12 h-20 bg-white/80 backdrop-blur-xl dark:bg-slate-950/80 shadow-[0_4px_20px_-2px_rgba(100,83,162,0.04)]">
+
+<div class="flex items-center gap-4">
+
+<h1 class="text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100 font-headline">Logistique &amp; Budget</h1>
+
+</div>
+
+<div class="flex items-center gap-6">
+
+<div class="relative group">
+
+<span class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer transition-colors p-2 rounded-full hover:bg-purple-50" data-icon="notifications">notifications</span>
+
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+
+</div>
+
+<div class="flex items-center gap-3 pl-6 border-l border-slate-100">
+
+<div class="text-right">
+
+<p class="text-sm font-bold text-slate-800">Ethereal Atelier</p>
+
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Manager Profile</p>
+
+</div>
+
+<img alt="Manager Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container ring-offset-2" data-alt="professional woman in a modern office setting with warm natural lighting and clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcaVNLJsXhmrx86m5qOlLKjJpZYRAsYCOL7a22Jv7RZptkHvTbfPe_niudWDbwwA6EKRL0bkWi57C96stia47tVrGzpdrXbeXRxWVqwKaApukKBYeWTd1yWABvQeeWt_giD41DQ5rx9FC0mhUT69G7l_ikfzVXNQfr6DclaK7bQeXYRhuOOKIbX9lpcXGQYYRYS2AxiJDrnxsNKIHeLpYZfljOuPzjpdTrN3y66J4TNygyRG3ELMrNmO6j75A7i6I8mGd65dpKhsH4"/>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- Content Canvas -->
+
+<div class="pt-32 px-12 max-w-7xl mx-auto space-y-12">
+
+<!-- Hero Stats: Budget Tracker -->
+
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+<div class="md:col-span-2 bg-white rounded-xl p-8 shadow-md flex flex-col justify-between relative overflow-hidden">
+
+<div class="relative z-10">
+
+<span class="text-[11px] font-bold text-primary-dim uppercase tracking-[0.2em] mb-2 block">Suivi Budgétaire Annuel</span>
+
+<div class="flex items-baseline gap-4 mt-2">
+
+<h2 class="text-5xl font-extrabold text-on-surface tracking-tighter">12 450,00 €</h2>
+
+<span class="text-slate-400 font-medium italic">engagé sur 15 000,00 €</span>
+
+</div>
+
+<div class="mt-8 space-y-4">
+
+<div class="flex justify-between items-end">
+
+<span class="text-sm font-semibold text-slate-600">Progression du budget</span>
+
+<span class="text-sm font-bold text-primary">83%</span>
+
+</div>
+
+<div class="w-full h-3 bg-surface-container-low rounded-full overflow-hidden">
+
+<div class="h-full bg-gradient-to-r from-primary-container to-primary w-[83%] rounded-full shadow-sm"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl"></div>
+
+</div>
+
+<div class="bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-center text-center space-y-4">
+
+<div class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center text-primary">
+
+<span class="material-symbols-outlined text-3xl" data-icon="savings">savings</span>
+
+</div>
+
+<div>
+
+<h3 class="text-lg font-bold text-on-surface">Reste à allouer</h3>
+
+<p class="text-3xl font-extrabold text-primary mt-1">2 550,00 €</p>
+
+</div>
+
+<button class="text-primary text-sm font-bold flex items-center gap-2 hover:underline">
+
+                        Détails par service <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Inventory Section -->
+
+<section class="space-y-8">
+
+<div class="flex justify-between items-end">
+
+<div>
+
+<h2 class="text-3xl font-bold tracking-tight text-slate-800 font-headline">Inventaire du Stock</h2>
+
+<p class="text-slate-500 mt-1">Gestion des consommables et du matériel permanent.</p>
+
+</div>
+
+<div class="flex gap-4">
+
+<button class="bg-surface-container-highest px-6 py-3 rounded-full text-primary font-bold text-sm flex items-center gap-2 hover:bg-primary-container/20 transition-all">
+
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+
+                            Filtrer
+
+                        </button>
+
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 hover:scale-105 transition-all shadow-lg shadow-primary/20">
+
+<span class="material-symbols-outlined text-lg" data-icon="add_circle">add_circle</span>
+
+                            Ajouter un Matériel
+
+                        </button>
+
+</div>
+
+</div>
+
+<!-- Bento Grid for Inventory -->
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+<!-- Item Card 1 -->
+
+<div class="md:col-span-2 bg-white rounded-xl p-6 shadow-md border-b-4 border-primary/20 flex flex-col justify-between group">
+
+<div class="flex justify-between items-start">
+
+<div class="flex gap-4">
+
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-primary">
+
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+
+</div>
+
+<div>
+
+<input class="block w-full border-0 p-0 text-lg font-bold text-slate-800 focus:ring-0 bg-transparent" type="text" value="Kits Peinture Acrylique"/>
+
+<input class="block w-full border-0 p-0 text-xs text-slate-400 focus:ring-0 bg-transparent uppercase tracking-wider" type="text" value="Consommable - Art Thérapie"/>
+
+</div>
+
+</div>
+
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-slate-400 hover:text-primary">
+
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+
+</button>
+
+</div>
+
+<div class="mt-8 flex justify-between items-center">
+
+<div class="space-y-1">
+
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Stock Actuel</span>
+
+<p class="text-2xl font-bold text-on-surface">42 Unités</p>
+
+</div>
+
+<div class="bg-secondary-fixed-dim/30 px-4 py-1.5 rounded-full text-[10px] font-extrabold text-primary uppercase tracking-widest">
+
+                                En Stock
+
+                            </div>
+
+</div>
+
+</div>
+
+<!-- Item Card 2 -->
+
+<div class="bg-white rounded-xl p-6 shadow-md border-b-4 border-error/20 flex flex-col justify-between group">
+
+<div class="flex justify-between items-start">
+
+<div class="w-12 h-12 rounded-2xl bg-error-container/20 flex items-center justify-center text-error">
+
+<span class="material-symbols-outlined" data-icon="audio_file">audio_file</span>
+
+</div>
+
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-slate-400 hover:text-primary">
+
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+
+</button>
+
+</div>
+
+<div class="mt-4">
+
+<input class="block w-full border-0 p-0 text-md font-bold text-slate-800 focus:ring-0 bg-transparent" type="text" value="Enceintes Bluetooth"/>
+
+<div class="mt-4 flex flex-col">
+
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Alerte</span>
+
+<p class="text-lg font-bold text-error">1 Défectueuse</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Item Card 3 -->
+
+<div class="bg-white rounded-xl p-6 shadow-md border-b-4 border-tertiary/20 flex flex-col justify-between group">
+
+<div class="flex justify-between items-start">
+
+<div class="w-12 h-12 rounded-2xl bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+
+</div>
+
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-slate-400 hover:text-primary">
+
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+
+</button>
+
+</div>
+
+<div class="mt-4">
+
+<input class="block w-full border-0 p-0 text-md font-bold text-slate-800 focus:ring-0 bg-transparent" type="text" value="Sets de Pâtisserie"/>
+
+<div class="mt-4 flex flex-col">
+
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Localisation</span>
+
+<p class="text-lg font-bold text-on-surface">Placard B2</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Item Card 4 -->
+
+<div class="bg-white rounded-xl p-6 shadow-md flex flex-col justify-between group">
+
+<div class="flex justify-between items-start">
+
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-slate-500">
+
+<span class="material-symbols-outlined" data-icon="garden_cart">garden_cart</span>
+
+</div>
+
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-slate-400 hover:text-primary">
+
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+
+</button>
+
+</div>
+
+<div class="mt-4">
+
+<input class="block w-full border-0 p-0 text-md font-bold text-slate-800 focus:ring-0 bg-transparent" type="text" value="Outils Jardinage"/>
+
+<div class="mt-4 flex flex-col">
+
+<span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Stock</span>
+
+<p class="text-lg font-bold text-on-surface">Complet</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Item Card 5 -->
+
+<div class="md:col-span-2 bg-white rounded-xl p-6 shadow-md border-b-4 border-primary-container flex items-center gap-8 group">
+
+<div class="flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden shadow-inner bg-slate-100">
+
+<img alt="Art supplies" class="w-full h-full object-cover opacity-80" data-alt="colorful variety of artist brushes and acrylic paint tubes arranged neatly on a light wood surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCx7vkm5bjdKu34_Pf4czTe1360qBRR2QtzkLvoSsf0WQ_2uHDb3IJwVzt0oW6F5xkhyzZIjPGhG8MHtUs2pd6NWXjACk2mxjVaSPm0Sinev_6wnt8BkTzJISQeZcLe9VSfBFWVqTWtYE3I4iE3p3c_l5Zx68afk8F5tES2O87mMo9EpLDkypvgXJVnJb4QCwku4HvPt1dn0klnRMwMuAJ3lRAXaUy_o4T4z1uN91dJvtWA0yOOK7dZXqFquCdYt9x7z2uFYVmm46M"/>
+
+</div>
+
+<div class="flex-1">
+
+<div class="flex justify-between items-start">
+
+<div>
+
+<input class="block w-full border-0 p-0 text-lg font-bold text-slate-800 focus:ring-0 bg-transparent" type="text" value="Papier Canson A3"/>
+
+<p class="text-xs text-slate-400">Dernière commande : 12/03/2024</p>
+
+</div>
+
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-slate-400 hover:text-primary">
+
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+
+</button>
+
+</div>
+
+<div class="mt-4 flex items-center gap-4">
+
+<div class="flex-1 h-2 bg-surface-container-low rounded-full">
+
+<div class="h-full bg-primary-container w-[15%] rounded-full"></div>
+
+</div>
+
+<span class="text-xs font-bold text-error">Stock Critique</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Item Card 6 -->
+
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-center items-center border-2 border-dashed border-outline-variant/30 hover:bg-white hover:border-primary/50 transition-all cursor-pointer group">
+
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-2 shadow-sm group-hover:scale-110 transition-transform">
+
+<span class="material-symbols-outlined text-primary" data-icon="add">add</span>
+
+</div>
+
+<span class="text-sm font-bold text-slate-500">Nouveau Matériel</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Privacy & Actions Section -->
+
+<section class="flex flex-col md:flex-row gap-12 pt-12 border-t border-slate-100">
+
+<div class="flex-1 space-y-6">
+
+<div class="flex items-center gap-4 text-slate-400">
+
+<span class="material-symbols-outlined text-4xl" data-icon="shield_person">shield_person</span>
+
+<div>
+
+<h3 class="text-sm font-bold text-slate-700 uppercase tracking-widest">Confidentialité &amp; Sécurité</h3>
+
+<p class="text-sm leading-relaxed max-w-md">Cet outil respecte la vie privée. Aucune donnée personnelle de résident n'est stockée ici. Les informations sont limitées à la logistique et au budget de l'animation.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="flex flex-col gap-4">
+
+<button class="bg-white px-8 py-5 rounded-xl shadow-md flex items-center justify-between gap-12 group hover:bg-primary hover:text-on-primary transition-all">
+
+<div class="flex flex-col items-start">
+
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-primary-container">Exporter les données</span>
+
+<span class="text-lg font-extrabold tracking-tight">Télécharger ma Sauvegarde (JSON)</span>
+
+</div>
+
+<span class="material-symbols-outlined text-3xl group-hover:translate-y-1 transition-transform" data-icon="download">download</span>
+
+</button>
+
+<p class="text-[10px] text-center text-slate-400 italic">Dernière sauvegarde automatique effectuée il y a 5 min.</p>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+<!-- Floating Action Button (FAB) -->
+
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+
+<span class="material-symbols-outlined text-3xl" data-icon="help">help</span>
+
+</button>
+
+</body></html>

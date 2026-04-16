@@ -36,6 +36,7 @@ const fr: Translations = {
       "En alternance chez Orange, je participe au développement d'applications internes en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, contribuant à la conception et l'implémentation de fonctionnalités front et back.",
     imgAlt:
       "Développeur en alternance chez Orange travaillant sur Angular et NestJS, style pixel art",
+    cta: "Voir mes réalisations",
   },
   formation: {
     sectionLabel: "Formation",
@@ -49,6 +50,7 @@ const fr: Translations = {
     quality2: "passion",
     forCode: "pour le code.",
     imgAlt: "Étudiant en bootcamp O'clock apprenant HTML, CSS et JavaScript, style pixel art",
+    cta: "Découvrir mon parcours détaillé",
   },
   past: {
     sectionLabel: "Parcours précédent",
@@ -65,6 +67,7 @@ const fr: Translations = {
     prioritiesDesc: "Organisation rigoureuse et autonomie",
     teamwork: "Travail d'équipe",
     teamworkDesc: "Collaboration avec familles et professionnels",
+    cta: "Explorer mes compétences humaines",
   },
   projects: {
     sectionLabel: "Réalisations",
@@ -73,6 +76,8 @@ const fr: Translations = {
     personal: "Projets personnels",
     sourceCodeAria: "Code source de",
     viewProjectAria: "Voir le projet",
+    cta: "Voir tous les projets détaillés",
+    detailsCta: "Détails du projet",
     proProjects: {
       orangeTitle: "Application interne Orange",
       orangeDesc:
@@ -91,6 +96,7 @@ const fr: Translations = {
     title: "Stack Technique",
     core: "Stack principale",
     transversal: "Compétences transversales",
+    cta: "Explorer mes compétences techniques & humaines",
   },
   contact: {
     sectionLabel: "Échangeons",
