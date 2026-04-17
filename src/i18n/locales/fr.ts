@@ -112,7 +112,7 @@ const fr: Translations = {
     send: "Envoyer",
   },
   footer: {
-    copyright: "Quentin Buysschaert — Développeur Fullstack",
+    copyright: import.meta.env.VITE_FULL_NAME + " — Développeur Fullstack",
   },
   notFound: {
     title: "404",

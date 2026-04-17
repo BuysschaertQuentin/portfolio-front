@@ -15,7 +15,7 @@ const en: Translations = {
     parcours: "Career",
   },
   hero: {
-    subtitle: "Portfolio // 2026",
+    subtitle: "Portfolio 2026",
     title: "Developer",
     titleHighlight: "Fullstack",
     description: "From human support to code, I build web solutions with",
@@ -112,7 +112,7 @@ const en: Translations = {
     send: "Send",
   },
   footer: {
-    copyright: "Quentin Buysschaert — Fullstack Developer",
+    copyright: import.meta.env.VITE_FULL_NAME + " — Fullstack Developer",
   },
   notFound: {
     title: "404",
