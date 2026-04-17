@@ -129,7 +129,7 @@ const About = () => {
   );
 
   return (
-    <section className="section-container pt-24 space-y-16">
+    <section className="section-container pt-10 space-y-16">
       {/* Hero intro — values integrated */}
       <div className="flex flex-col md:flex-row items-center gap-8">
         <img

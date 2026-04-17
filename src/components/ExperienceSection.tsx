@@ -1,82 +1,101 @@
 import orangeImg from "@/assets/developpeur_alternance_orange.png";
 import orangeLogo from "@/assets/orange.png";
 import { useI18n } from "@/i18n";
+import { ArrowRight } from "lucide-react";
+import SectionChevron from "./SectionChevron";
+import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 
-const STACK = [
-  "Angular",
-  "NestJS",
-  "TypeScript",
-  "PostgreSQL",
-  "Git",
-  "Docker",
-] as const;
+import { EXPERIENCE_STACK } from "@/constants/home";
 
 const ExperienceSection = () => {
   const { t } = useI18n();
 
   return (
-    <section id="experience" className="relative">
+    <section
+      id="experience"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+    >
       {/* Orange subtle top gradient */}
-      <div className="absolute inset-0 bg-linear-to-b from-orange-muted/50 to-background pointer-events-none" />
+      <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container relative z-10">
-        <p className="text-orange font-mono text-sm tracking-widest uppercase mb-2">
-          {t("experience.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-orange">
-          {t("experience.title")}{" "}
-          <span className="text-orange">{t("experience.company")}</span>
-        </h2>
+      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-4">
+            <span className="text-orange font-mono text-xl opacity-50">03 /</span>
+            <p className="text-orange font-mono text-sm tracking-widest uppercase">
+              {t("experience.sectionLabel")}
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <Card className="rounded-xl p-8 border-orange/20 space-y-6">
+          <h2 className="text-glow-orange text-center text-2xl font-bold sm:text-3xl leading-tight">
+            {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
+          </h2>
+        </div>
+
+        <div className="grid items-center gap-6 md:grid-cols-2">
+          <Card className="border-orange/20 animate-fade-in order-2 space-y-4 rounded-xl p-5 md:order-1">
             {/* Logo + company name */}
             <div className="flex items-center gap-4">
-              <img
-                src={orangeLogo}
-                alt=""
-                className="w-10 h-10 object-contain"
-                width={40}
-                height={40}
-                loading="lazy"
-              />
+              <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
+                <img
+                  src={orangeLogo}
+                  alt=""
+                  className="h-10 w-10 object-contain"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                />
+              </div>
               <div>
-                <span className="text-foreground font-semibold">
+                <span className="text-foreground text-lg font-semibold">
                   {t("experience.company")}
                 </span>
-                <p className="text-xs text-muted-foreground font-mono">
-                  {t("experience.status")}
-                </p>
+                <p className="text-muted-foreground font-mono text-xs">{t("experience.status")}</p>
               </div>
             </div>
 
-            <p className="text-secondary-foreground leading-relaxed">
+            <p className="text-secondary-foreground text-sm leading-relaxed md:text-base">
               {t("experience.description")}
             </p>
+
             <div className="flex flex-wrap gap-2">
-              {STACK.map((tech) => (
+              {EXPERIENCE_STACK.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-mono rounded-full bg-orange-muted text-orange-foreground border border-orange/20"
+                  className="bg-orange-muted text-orange-foreground border-orange/20 rounded-full border px-3 py-1 font-mono text-[10px]"
                 >
                   {tech}
                 </span>
               ))}
             </div>
+
+            <div className="border-orange/20 border-t pt-4">
+              <Button
+                to="/realisations"
+                variant="secondary"
+                className="border-orange/20 hover:border-orange/40 hover:bg-orange/5"
+              >
+                {t("experience.cta")}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </Card>
-          <div className="flex justify-center">
+
+          <div className="order-1 flex justify-center md:order-2">
             <img
               src={orangeImg}
               alt={t("experience.imgAlt")}
-              className="pixel-image w-full max-w-md"
-              width={448}
-              height={448}
+              className="pixel-image w-full max-w-xs drop-shadow-[0_0_20px_hsla(var(--orange)/0.2)] sm:max-w-sm"
+              width={384}
+              height={384}
               loading="lazy"
             />
           </div>
         </div>
       </div>
+
+      <SectionChevron targetId="stack" label="Mes Compétences" />
     </section>
   );
 };

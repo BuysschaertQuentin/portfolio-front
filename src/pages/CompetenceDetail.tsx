@@ -88,7 +88,7 @@ const CompetenceDetail = () => {
   const base = `competences.skills.${i18nKey}`;
 
   return (
-    <section className="section-container pt-24 space-y-8">
+    <section className="section-container pt-10 space-y-8">
       {/* Back link */}
       <Link
         to="/competences"

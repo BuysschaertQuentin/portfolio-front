@@ -18,16 +18,14 @@ const fr: Translations = {
     subtitle: "Portfolio // 2026",
     title: "Développeur",
     titleHighlight: "Fullstack",
-    description:
-      "De l'accompagnement humain au code, je construis des solutions web avec",
+    description: "De l'accompagnement humain au code, je construis des solutions web avec",
     quality1: "rigueur",
     quality2: "empathie",
     quality3: "passion",
     and: "et",
     downloadCv: "Télécharger CV",
     discoverPath: "Découvrir mon parcours",
-    heroAlt:
-      "Développeur fullstack accueilli dans une entreprise, style pixel art",
+    heroAlt: "Développeur fullstack accueilli dans une entreprise, style pixel art",
   },
   experience: {
     sectionLabel: "Expérience actuelle",
@@ -38,6 +36,7 @@ const fr: Translations = {
       "En alternance chez Orange, je participe au développement d'applications internes en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, contribuant à la conception et l'implémentation de fonctionnalités front et back.",
     imgAlt:
       "Développeur en alternance chez Orange travaillant sur Angular et NestJS, style pixel art",
+    cta: "Voir mes réalisations",
   },
   formation: {
     sectionLabel: "Formation",
@@ -50,8 +49,8 @@ const fr: Translations = {
     and: "et confirmé ma",
     quality2: "passion",
     forCode: "pour le code.",
-    imgAlt:
-      "Étudiant en bootcamp O'clock apprenant HTML, CSS et JavaScript, style pixel art",
+    imgAlt: "Étudiant en bootcamp O'clock apprenant HTML, CSS et JavaScript, style pixel art",
+    cta: "Découvrir mon parcours détaillé",
   },
   past: {
     sectionLabel: "Parcours précédent",
@@ -68,6 +67,7 @@ const fr: Translations = {
     prioritiesDesc: "Organisation rigoureuse et autonomie",
     teamwork: "Travail d'équipe",
     teamworkDesc: "Collaboration avec familles et professionnels",
+    cta: "Explorer mes compétences humaines",
   },
   projects: {
     sectionLabel: "Réalisations",
@@ -76,6 +76,8 @@ const fr: Translations = {
     personal: "Projets personnels",
     sourceCodeAria: "Code source de",
     viewProjectAria: "Voir le projet",
+    cta: "Voir tous les projets détaillés",
+    detailsCta: "Détails du projet",
     proProjects: {
       orangeTitle: "Application interne Orange",
       orangeDesc:
@@ -86,8 +88,7 @@ const fr: Translations = {
       portfolioDesc:
         "Ce portfolio en React avec un design retro-futuriste, mode sombre et pixel art.",
       botTitle: "Bot Discord",
-      botDesc:
-        "Bot communautaire avec commandes personnalisées et intégration d'APIs externes.",
+      botDesc: "Bot communautaire avec commandes personnalisées et intégration d'APIs externes.",
     },
   },
   stack: {
@@ -95,6 +96,7 @@ const fr: Translations = {
     title: "Stack Technique",
     core: "Stack principale",
     transversal: "Compétences transversales",
+    cta: "Explorer mes compétences techniques & humaines",
   },
   contact: {
     sectionLabel: "Échangeons",
@@ -125,13 +127,11 @@ const fr: Translations = {
     intro:
       "[À RÉDIGER] — Courte introduction de présentation, intégrant tes valeurs clés (rigueur, empathie, engagement, curiosité).",
     proProjectTitle: "Projet professionnel",
-    proProjectDesc:
-      "[À RÉDIGER] — Quel poste tu vises, dans quel secteur, pourquoi.",
+    proProjectDesc: "[À RÉDIGER] — Quel poste tu vises, dans quel secteur, pourquoi.",
     persoProjectTitle: "Projet personnel",
     persoProjectDesc: "[À RÉDIGER] — Ce qui te motive au-delà du travail.",
     softSkillsTitle: "Qualités humaines",
-    softSkillsSubtitle:
-      "Aperçu de mes principales qualités — détails dans la page Compétences.",
+    softSkillsSubtitle: "Aperçu de mes principales qualités — détails dans la page Compétences.",
     seeMore: "En savoir plus →",
     interestsTitle: "Centres d'intérêt",
     interests: {
@@ -254,7 +254,7 @@ const fr: Translations = {
   },
   realisations: {
     title: "Réalisations",
-    subtitle: "5 projets clés — professionnels, personnels et de formation",
+    subtitle: "5 projets — professionnels, personnels et de formation",
     contextPro: "Projet professionnel",
     contextPerso: "Projet personnel",
     contextFormation: "Projet de formation",
@@ -268,9 +268,40 @@ const fr: Translations = {
       linkedSkillsTitle: "Compétences mobilisées",
     },
     items: {
-      orange: {
-        title: "[Nom évocateur — Orange]",
-        shortDesc: "[À RÉDIGER] — Court descriptif du projet Orange.",
+      portailRh: {
+        title: "Portail de redirection RH",
+        shortDesc:
+          "Portail centralisant les outils RH d'Orange via un système de redirection d'URL — Angular, NestJS, MySQL, CloudFoundry.",
+        definition: "[À RÉDIGER]",
+        framing: "[À RÉDIGER]",
+        action: "[À RÉDIGER]",
+        results: "[À RÉDIGER]",
+        critical: "[À RÉDIGER]",
+      },
+      reposComp: {
+        title: "Gestion des repos compensateurs",
+        shortDesc:
+          "Application de gestion des repos compensateurs pour l'ensemble des salariés d'Orange France — Angular, Java, microservices.",
+        definition: "[À RÉDIGER]",
+        framing: "[À RÉDIGER]",
+        action: "[À RÉDIGER]",
+        results: "[À RÉDIGER]",
+        critical: "[À RÉDIGER]",
+      },
+      mobileComp: {
+        title: "App mobile Compétences",
+        shortDesc:
+          "Application mobile et web de centralisation des compétences des équipes — Flutter, Dart, Supabase.",
+        definition: "[À RÉDIGER]",
+        framing: "[À RÉDIGER]",
+        action: "[À RÉDIGER]",
+        results: "[À RÉDIGER]",
+        critical: "[À RÉDIGER]",
+      },
+      ovoyage: {
+        title: "O'voyage",
+        shortDesc:
+          "Projet de fin de formation O'Clock — application de voyage réalisée en équipe avec Vue.js et NestJS.",
         definition: "[À RÉDIGER]",
         framing: "[À RÉDIGER]",
         action: "[À RÉDIGER]",
@@ -279,35 +310,7 @@ const fr: Translations = {
       },
       portfolio: {
         title: "Portfolio personnel",
-        shortDesc:
-          "Portfolio React avec design retro-futuriste, mode sombre et pixel art.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
-      bot: {
-        title: "[Nom évocateur — Bot Discord]",
-        shortDesc: "[À RÉDIGER] — Court descriptif du bot.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
-      formation1: {
-        title: "[Projet O'Clock #1]",
-        shortDesc: "[À RÉDIGER] — Court descriptif.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
-      formation2: {
-        title: "[Projet O'Clock #2]",
-        shortDesc: "[À RÉDIGER] — Court descriptif.",
+        shortDesc: "Portfolio React avec design retro-futuriste, mode sombre et pixel art.",
         definition: "[À RÉDIGER]",
         framing: "[À RÉDIGER]",
         action: "[À RÉDIGER]",
@@ -321,38 +324,57 @@ const fr: Translations = {
     subtitle: "Frise anti-chronologique — du plus récent au plus ancien",
     experienceTitle: "Expériences professionnelles",
     formationTitle: "Formations",
-    certificationTitle: "Certifications & tests",
+    certificationTitle: "Certifications & diplômes",
     showDetails: "Voir le détail",
     hideDetails: "Masquer le détail",
     entries: {
-      orange: {
-        period: "Nov. 2023 — Mars 2027",
-        title: "Développeur Fullstack",
-        place: "Orange",
-        status: "Alternance",
-        missions: "[À RÉDIGER] — Missions détaillées chez Orange.",
+      orange2: {
+        period: "Mars 2025 — Mars 2027",
+        title: "Développeur Fullstack — Master Ingénierie Logicielle",
+        place: "Orange Business Services",
+        status: "Alternance (2ème année)",
+        missions: "[À RÉDIGER] — Missions détaillées (app mobile Flutter, repos compensateurs).",
+        vision: "[À RÉDIGER] — Vision de l'entreprise.",
+      },
+      orange1: {
+        period: "Nov. 2023 — Déc. 2024",
+        title: "Développeur Fullstack — Bac+3 CDA",
+        place: "Orange Business Services",
+        status: "Alternance (1ère année)",
+        missions: "[À RÉDIGER] — Missions détaillées (portail RH).",
         vision: "[À RÉDIGER] — Vision de l'entreprise.",
       },
       oclock: {
         period: "Jan. 2023 — Juin 2023",
-        title: "Bootcamp Développeur Web Fullstack",
+        title: "Bootcamp Développeur Web Fullstack JavaScript",
         place: "O'clock",
-        presentation: "[À RÉDIGER] — Présentation de la formation.",
-        vision: "[À RÉDIGER] — Vision de la pédagogie.",
+        presentation:
+          "Formation intensive de 6 mois via Transitions Pro Hauts-de-France. Socle de 476h (HTML/CSS, JavaScript, Node.js, SQL, architecture MVC) suivi d'une spécialisation Data de 168h (SQL avancé, NoSQL, MongoDB, Redis, GraphQL, Data Science). Projet final « O'voyage » en équipe avec soutenance.",
+        vision: "[À RÉDIGER] — Vision de la pédagogie O'Clock.",
       },
       care: {
-        period: "Oct. 2014 — Sept. 2023",
-        title: "Auxiliaire de vie",
-        place: "[À RÉDIGER] — Lieu(x)",
+        period: "Oct. 2014 — Août 2023",
+        title: "Auxiliaire de vie à domicile",
+        place: "APF France Handicap — Villeneuve d'Ascq",
         status: "CDI",
-        missions: "[À RÉDIGER] — Missions détaillées.",
-        vision: "[À RÉDIGER] — Vision du métier.",
+        missions:
+          "Accompagnement quotidien de personnes en situation de handicap moteur et mental. Formation aux aspirations endotrachéales (2017) permettant la prise en charge de patients atteints de maladies neuromusculaires (Charcot). Planification autonome des interventions, collaboration avec familles et équipes soignantes.",
+        vision: "[À RÉDIGER] — Ce que cette expérience t'a apporté.",
       },
     },
     certifications: {
-      rncpDev: {
-        date: "[Date]",
-        title: "[À RÉDIGER] — Intitulé de la certification RNCP",
+      master: {
+        date: "Mars 2027 (prévu)",
+        title: "Master Ingénierie Logicielle — RNCP 35419 (Niv. 7) 🔄 En cours",
+      },
+      cda: {
+        date: "Déc. 2024",
+        title:
+          "Titre Professionnel « Concepteur Développeur d'Applications » — RNCP 31678 (Niv. 6)",
+      },
+      dwwm: {
+        date: "Juin 2023",
+        title: "Titre Professionnel « Développeur Web et Web Mobile » — RNCP 31114 (Niv. 5)",
       },
     },
   },

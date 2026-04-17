@@ -35,3 +35,13 @@ export interface Realization {
   readonly createdAt: string;
   readonly updatedAt: string;
 }
+
+export interface ProjectCardProps {
+  readonly slug: string;
+  readonly title: string;
+  readonly description: string;
+  readonly tags: readonly string[];
+  readonly context: string;
+  readonly detailsCta: string;
+}
+

@@ -28,20 +28,37 @@ export interface TimelineEntry {
  * Logos are passed as props from the page component (to avoid circular imports).
  */
 export const TIMELINE_ENTRIES: readonly Omit<TimelineEntry, "logo">[] = [
+  // --- 2ème alternance Orange (Master) ---
   {
-    id: "orange",
+    id: "orange2",
     type: "experience",
     icon: Briefcase,
-    periodKey: "parcours.entries.orange.period",
-    titleKey: "parcours.entries.orange.title",
-    placeKey: "parcours.entries.orange.place",
+    periodKey: "parcours.entries.orange2.period",
+    titleKey: "parcours.entries.orange2.title",
+    placeKey: "parcours.entries.orange2.place",
     externalLink: "https://www.orange.fr",
     detailKeys: {
-      status: "parcours.entries.orange.status",
-      missions: "parcours.entries.orange.missions",
-      vision: "parcours.entries.orange.vision",
+      status: "parcours.entries.orange2.status",
+      missions: "parcours.entries.orange2.missions",
+      vision: "parcours.entries.orange2.vision",
     },
   },
+  // --- 1ère alternance Orange (Bac+3) ---
+  {
+    id: "orange1",
+    type: "experience",
+    icon: Briefcase,
+    periodKey: "parcours.entries.orange1.period",
+    titleKey: "parcours.entries.orange1.title",
+    placeKey: "parcours.entries.orange1.place",
+    externalLink: "https://www.orange.fr",
+    detailKeys: {
+      status: "parcours.entries.orange1.status",
+      missions: "parcours.entries.orange1.missions",
+      vision: "parcours.entries.orange1.vision",
+    },
+  },
+  // --- O'Clock ---
   {
     id: "oclock",
     type: "formation",
@@ -55,6 +72,7 @@ export const TIMELINE_ENTRIES: readonly Omit<TimelineEntry, "logo">[] = [
       vision: "parcours.entries.oclock.vision",
     },
   },
+  // --- Auxiliaire de vie ---
   {
     id: "care",
     type: "experience",
@@ -81,9 +99,19 @@ export interface CertificationEntry {
 
 export const CERTIFICATIONS: readonly CertificationEntry[] = [
   {
-    id: "rncp-dev",
-    dateKey: "parcours.certifications.rncpDev.date",
-    titleKey: "parcours.certifications.rncpDev.title",
+    id: "master",
+    dateKey: "parcours.certifications.master.date",
+    titleKey: "parcours.certifications.master.title",
+  },
+  {
+    id: "cda",
+    dateKey: "parcours.certifications.cda.date",
+    titleKey: "parcours.certifications.cda.title",
+  },
+  {
+    id: "dwwm",
+    dateKey: "parcours.certifications.dwwm.date",
+    titleKey: "parcours.certifications.dwwm.title",
   },
 ] as const;
 

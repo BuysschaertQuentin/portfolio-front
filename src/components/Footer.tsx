@@ -33,8 +33,8 @@ const Footer = () => {
   );
 
   return (
-    <footer className="border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <footer className="z-10 border-t border-border bg-background">
+      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-sm text-muted-foreground font-mono">
             © {new Date().getFullYear()} {t("footer.copyright")}

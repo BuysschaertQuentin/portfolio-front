@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Bot, Code2, Globe, GraduationCap, Layers } from "lucide-react";
+import { Code2, Globe, GraduationCap, Layers, Smartphone } from "lucide-react";
 
 export type RealisationContext = "pro" | "perso" | "formation";
 
@@ -14,16 +14,15 @@ export interface Realisation {
 }
 
 /**
- * All 5 portfolio achievements.
- * Titles and descriptions are placeholders — user will provide real content.
+ * All 5 portfolio achievements — real projects only.
  */
 export const REALISATIONS: readonly Realisation[] = [
   {
-    slug: "application-orange",
+    slug: "portail-rh",
     context: "pro",
     icon: Layers,
-    titleKey: "realisations.items.orange.title",
-    shortDescKey: "realisations.items.orange.shortDesc",
+    titleKey: "realisations.items.portailRh.title",
+    shortDescKey: "realisations.items.portailRh.shortDesc",
     linkedSkills: [
       "angular-typescript",
       "nestjs-nodejs",
@@ -33,6 +32,30 @@ export const REALISATIONS: readonly Realisation[] = [
     ],
   },
   {
+    slug: "repos-compensateurs",
+    context: "pro",
+    icon: Code2,
+    titleKey: "realisations.items.reposComp.title",
+    shortDescKey: "realisations.items.reposComp.shortDesc",
+    linkedSkills: ["angular-typescript", "bases-de-donnees", "travail-equipe", "gestion-priorites"],
+  },
+  {
+    slug: "app-mobile-competences",
+    context: "pro",
+    icon: Smartphone,
+    titleKey: "realisations.items.mobileComp.title",
+    shortDescKey: "realisations.items.mobileComp.shortDesc",
+    linkedSkills: ["cicd-devops", "travail-equipe", "pedagogie"],
+  },
+  {
+    slug: "o-voyage",
+    context: "formation",
+    icon: GraduationCap,
+    titleKey: "realisations.items.ovoyage.title",
+    shortDescKey: "realisations.items.ovoyage.shortDesc",
+    linkedSkills: ["nestjs-nodejs", "travail-equipe", "gestion-priorites"],
+  },
+  {
     slug: "portfolio",
     context: "perso",
     icon: Globe,
@@ -40,31 +63,18 @@ export const REALISATIONS: readonly Realisation[] = [
     shortDescKey: "realisations.items.portfolio.shortDesc",
     linkedSkills: ["react", "cicd-devops"],
   },
-  {
-    slug: "bot-discord",
-    context: "perso",
-    icon: Bot,
-    titleKey: "realisations.items.bot.title",
-    shortDescKey: "realisations.items.bot.shortDesc",
-    linkedSkills: ["nestjs-nodejs", "bases-de-donnees"],
-  },
-  {
-    slug: "projet-formation-1",
-    context: "formation",
-    icon: GraduationCap,
-    titleKey: "realisations.items.formation1.title",
-    shortDescKey: "realisations.items.formation1.shortDesc",
-    linkedSkills: ["react", "gestion-priorites"],
-  },
-  {
-    slug: "projet-formation-2",
-    context: "formation",
-    icon: Code2,
-    titleKey: "realisations.items.formation2.title",
-    shortDescKey: "realisations.items.formation2.shortDesc",
-    linkedSkills: ["nestjs-nodejs", "travail-equipe", "pedagogie"],
-  },
 ] as const;
+
+/**
+ * Tech tags for each realization (used in home section).
+ */
+export const REALISATION_TAGS: Record<string, string[]> = {
+  "portail-rh": ["Angular", "NestJS", "MySQL", "CloudFoundry"],
+  "repos-compensateurs": ["Angular", "Java", "Spring Boot", "Microservices"],
+  "app-mobile-competences": ["Flutter", "Dart", "Supabase"],
+  "o-voyage": ["Vue.js", "NestJS", "SQL", "Teamwork"],
+  portfolio: ["React", "TypeScript", "Tailwind CSS"],
+};
 
 /** Helper to find a realisation by slug */
 export const findRealisationBySlug = (slug: string): Realisation | undefined =>

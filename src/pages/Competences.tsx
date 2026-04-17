@@ -6,10 +6,7 @@ import { Link } from "react-router-dom";
 
 // --- Skill card ---
 
-interface SkillCardProps {
-  readonly skill: Skill;
-  readonly t: (key: string) => string;
-}
+import { SkillCardProps, SkillGroupProps } from "@/types/competences";
 
 const SkillCard = memo(({ skill, t }: SkillCardProps) => {
   const Icon = skill.icon;
@@ -44,13 +41,6 @@ SkillCard.displayName = "SkillCard";
 
 // --- Skill group ---
 
-interface SkillGroupProps {
-  readonly title: string;
-  readonly skills: readonly Skill[];
-  readonly dotColor: string;
-  readonly t: (key: string) => string;
-}
-
 const SkillGroup = memo(({ title, skills, dotColor, t }: SkillGroupProps) => (
   <div className="mb-16 last:mb-0">
     <div className="flex items-center gap-3 mb-8">
@@ -84,7 +74,7 @@ const Competences = () => {
   }, []);
 
   return (
-    <section className="section-container pt-24">
+    <section className="section-container pt-10">
       <div className="text-center mb-16">
         <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2">
           {t("competences.subtitle")}

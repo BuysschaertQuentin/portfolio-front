@@ -1,13 +1,7 @@
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Mail, Send } from "lucide-react";
-import {
-  type ChangeEvent,
-  type FormEvent,
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
+import { type ChangeEvent, type FormEvent, useCallback, useMemo, useState } from "react";
 import { ExternalLink } from "./a11y/ExternalLink";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { Button } from "./ui/Button";
@@ -52,13 +46,10 @@ const ContactSection = () => {
     [],
   );
 
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    },
-    [],
-  );
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }, []);
 
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -69,19 +60,27 @@ const ContactSection = () => {
   );
 
   return (
-    <section id="contact" className="relative">
-      <div className="section-container">
-        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2 text-center">
-          {t("contact.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center text-glow-primary">
-          {t("contact.title")}
-        </h2>
+    <section
+      id="contact"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+    >
+      <div className="section-container scrollbar-styled mask-bottom-fade flex-1 overflow-x-hidden overflow-y-auto p-2">
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-4">
+            <span className="text-primary font-mono text-xl opacity-50">06 /</span>
+            <p className="text-primary font-mono text-sm tracking-widest uppercase">
+              {t("contact.sectionLabel")}
+            </p>
+          </div>
+          <h2 className="text-glow-primary text-center text-3xl font-bold sm:text-4xl">
+            {t("contact.title")}
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="mx-auto grid max-w-4xl gap-12 md:grid-cols-2">
           {/* Info */}
-          <div className="space-y-8">
-            <p className="text-muted-foreground leading-relaxed">
+          <div className="animate-fade-in space-y-8">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               {t("contact.description")}
             </p>
             <ul className="space-y-4" role="list">
@@ -91,12 +90,12 @@ const ContactSection = () => {
                   <li key={label}>
                     <LinkComponent
                       href={href}
-                      className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-primary group flex items-center gap-3 transition-all duration-300"
                     >
-                      <div className="p-2 rounded-md bg-secondary">
-                        <Icon className="w-4 h-4" aria-hidden="true" />
+                      <div className="bg-secondary group-hover:bg-primary/10 rounded-md p-2 transition-colors">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
-                      <span className="text-sm">{label}</span>
+                      <span className="font-mono text-sm">{label}</span>
                     </LinkComponent>
                   </li>
                 );
@@ -107,12 +106,12 @@ const ContactSection = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="glass-card rounded-xl p-6 border-primary/10 space-y-4"
+            className="glass-card border-primary/10 animate-fade-in space-y-4 rounded-xl p-8 shadow-xl"
           >
             <div>
               <label
                 htmlFor="contact-name"
-                className="text-sm font-mono text-muted-foreground mb-1 block"
+                className="text-muted-foreground mb-1 block font-mono text-xs tracking-wider uppercase"
               >
                 {t("contact.nameLabel")}
               </label>
@@ -123,14 +122,14 @@ const ContactSection = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full rounded-lg bg-secondary border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground focus:ring-primary/50 w-full rounded-lg border px-4 py-2.5 text-sm transition-all focus:ring-2 focus:outline-none"
                 placeholder={t("contact.namePlaceholder")}
               />
             </div>
             <div>
               <label
                 htmlFor="contact-email"
-                className="text-sm font-mono text-muted-foreground mb-1 block"
+                className="text-muted-foreground mb-1 block font-mono text-xs tracking-wider uppercase"
               >
                 {t("contact.emailLabel")}
               </label>
@@ -141,14 +140,14 @@ const ContactSection = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full rounded-lg bg-secondary border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground focus:ring-primary/50 w-full rounded-lg border px-4 py-2.5 text-sm transition-all focus:ring-2 focus:outline-none"
                 placeholder={t("contact.emailPlaceholder")}
               />
             </div>
             <div>
               <label
                 htmlFor="contact-message"
-                className="text-sm font-mono text-muted-foreground mb-1 block"
+                className="text-muted-foreground mb-1 block font-mono text-xs tracking-wider uppercase"
               >
                 {t("contact.messageLabel")}
               </label>
@@ -159,12 +158,16 @@ const ContactSection = () => {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full rounded-lg bg-secondary border border-border px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                className="bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground focus:ring-primary/50 w-full resize-none rounded-lg border px-4 py-2.5 text-sm transition-all focus:ring-2 focus:outline-none"
                 placeholder={t("contact.messagePlaceholder")}
               />
             </div>
-            <Button type="submit" variant="primary" className="w-full">
-              <Send className="w-4 h-4" aria-hidden="true" />
+            <Button
+              type="submit"
+              variant="primary"
+              className="h-12 w-full font-mono text-xs tracking-widest uppercase"
+            >
+              <Send className="h-4 w-4" aria-hidden="true" />
               {t("contact.send")}
             </Button>
           </form>
