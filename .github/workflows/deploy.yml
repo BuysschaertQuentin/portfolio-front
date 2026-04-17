@@ -44,6 +44,11 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          VITE_FULL_NAME: ${{ vars.VITE_FULL_NAME }}
+          VITE_EMAIL: ${{ vars.VITE_EMAIL }}
+          VITE_LINKEDIN_URL: ${{ vars.VITE_LINKEDIN_URL }}
+          VITE_GITHUB_URL: ${{ vars.VITE_GITHUB_URL }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
