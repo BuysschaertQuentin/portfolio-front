@@ -18,7 +18,7 @@ describe("Layout component", () => {
     );
 
     // Check if Navbar (via skip to content link) is present
-    expect(screen.getByRole("link", { name: /nav\.skipToContent/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Aller au contenu principal/i })).toBeInTheDocument();
     
     // Check if Footer is present (by checking for a copyright or similar, 
     // here we just check if the footer element exists)

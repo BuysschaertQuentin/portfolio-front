@@ -1,10 +1,10 @@
 import cvPdf from "@/assets/Quentin Buysschaert_CV_juillet_2023.pdf";
 
 export const PERSONAL = {
-  fullName: "Quentin Buysschaert",
-  email: "quentin.buysschaert@gmail.com",
-  linkedIn: "https://www.linkedin.com/in/quentin-buysschaert-1b3573218/",
-  github: "https://github.com/BuysschaertQuentin",
+  fullName: import.meta.env.VITE_FULL_NAME || "Quentin Buysschaert",
+  email: import.meta.env.VITE_EMAIL || "",
+  linkedIn: import.meta.env.VITE_LINKEDIN_URL || "",
+  github: import.meta.env.VITE_GITHUB_URL || "",
   cvPath: cvPdf,
 };
 
