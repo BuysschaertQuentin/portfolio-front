@@ -5,3 +5,5 @@
 - supprime bien tout les fichier en rapport avec shacdn et lovable
 - refaire le readme
 - remplacer la favicon.ico par le logo-portfolio
+- Mettre les linckedin et github en haut a droite
+- mettre la stack en 2e position et mletre dans l'ordre anti-chronologique

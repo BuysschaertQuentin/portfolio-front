@@ -1,23 +1,12 @@
 import auxImg from "@/assets/auxiliaire_de_vie.png";
 import { useI18n } from "@/i18n";
-import { type LucideIcon, ArrowRight, Clock, Heart, Shield, Users } from "lucide-react";
+import { type LucideIcon, ArrowRight } from "lucide-react";
 import { memo } from "react";
 import SectionChevron from "./SectionChevron";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 
-interface SoftSkill {
-  readonly icon: LucideIcon;
-  readonly labelKey: string;
-  readonly descKey: string;
-}
-
-const softSkillsDef: readonly SoftSkill[] = [
-  { icon: Heart, labelKey: "past.empathy", descKey: "past.empathyDesc" },
-  { icon: Shield, labelKey: "past.resilience", descKey: "past.resilienceDesc" },
-  { icon: Clock, labelKey: "past.priorities", descKey: "past.prioritiesDesc" },
-  { icon: Users, labelKey: "past.teamwork", descKey: "past.teamworkDesc" },
-];
+import { PAST_SOFT_SKILLS } from "@/constants/home";
 
 interface SoftSkillCardProps {
   readonly icon: LucideIcon;
@@ -45,14 +34,14 @@ const PastSection = () => {
   return (
     <section
       id="past"
-      className="relative flex h-dvh w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
     >
       <div
         className="from-background via-cyan-muted/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b"
         aria-hidden="true"
       />
 
-      <div className="section-container no-scrollbar relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
         <div className="mb-2 flex items-center gap-4">
           <span className="text-cyan font-mono text-xl opacity-50">01 /</span>
           <p className="text-cyan font-mono text-sm tracking-widest uppercase">
@@ -82,7 +71,7 @@ const PastSection = () => {
               </div>
             </Card>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {softSkillsDef.map((skill) => (
+              {PAST_SOFT_SKILLS.map((skill) => (
                 <SoftSkillCard
                   key={skill.labelKey}
                   icon={skill.icon}

@@ -22,10 +22,10 @@ const Layout = () => {
   }, [pathname]);
 
   return (
-    <>
+    <div className="flex h-dvh flex-col overflow-hidden">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:p-4 focus:bg-background focus:text-primary focus:font-bold focus:outline-none focus:ring-2 focus:ring-primary"
+        className="sr-only focus:not-sr-only focus:fixed focus:z-100 focus:bg-background focus:p-4 focus:font-bold focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
       >
         {t("nav.skipToContent")}
       </a>
@@ -33,15 +33,15 @@ const Layout = () => {
       <main
         ref={mainRef}
         id="main-content"
-        className="min-h-screen bg-background text-foreground overflow-x-hidden outline-none"
+        className="flex-1 overflow-y-auto overflow-x-hidden outline-none"
         tabIndex={-1}
       >
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+        <Suspense fallback={<div className="flex flex-1 items-center justify-center">Loading...</div>}>
           <Outlet />
         </Suspense>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

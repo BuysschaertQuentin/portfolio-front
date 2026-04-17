@@ -1,15 +1,11 @@
 import profileImg from "@/assets/photo_profil.jpg";
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
+import { NavItem } from "@/types/navigation";
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
-
-interface NavItem {
-  readonly label: string;
-  readonly to: string;
-}
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -44,7 +40,7 @@ const Navbar = () => {
   return (
     <nav
       aria-label="Main navigation"
-      className="glass-card border-border/50 fixed top-0 right-0 left-0 z-50 border-b"
+      className="glass-card border-border/50 sticky top-0 right-0 left-0 z-50 border-b"
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link

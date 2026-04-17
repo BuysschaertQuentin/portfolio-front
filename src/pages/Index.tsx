@@ -8,7 +8,9 @@ import ProjectsSection from "@/components/ProjectsSection";
 import StackSection from "@/components/StackSection";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const SECTION_IDS = ["hero", "past", "formation", "experience", "stack", "projects", "contact"];
+import { HOME_SECTIONS } from "@/constants/home";
+
+const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
 
 /**
  * Home page — one-page layout with a guided chronological narrative.
@@ -75,11 +77,12 @@ const Index = () => {
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       // Allow internal scrolling on elements with 'overflow-y-auto'
-      const target = e.target as HTMLElement;
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
       const isScrollableContainer = target.closest(".overflow-y-auto");
 
-      if (isScrollableContainer) {
-        const container = isScrollableContainer as HTMLElement;
+      if (isScrollableContainer instanceof HTMLElement) {
+        const container = isScrollableContainer;
         const isAtTop = container.scrollTop <= 0;
         const isAtBottom =
           container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
@@ -118,7 +121,7 @@ const Index = () => {
     <main
       ref={containerRef}
       id="scroll-container"
-      className="relative h-dvh w-full overflow-hidden"
+      className="relative h-full w-full overflow-hidden"
     >
       <HomeScrollNav activeSection={activeSection} onNavigate={scrollToSection} />
       <HeroSection />

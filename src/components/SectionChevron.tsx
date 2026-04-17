@@ -19,7 +19,7 @@ const SectionChevron = ({ targetId, label }: SectionChevronProps) => {
   };
 
   return (
-    <div className="animate-fade-in relative z-20 mt-4 flex flex-col items-center gap-4 pb-4">
+    <div className="animate-fade-in relative z-20 mt-4 flex flex-col items-center gap-4 md:pb-8">
       <span className="text-primary/80 font-mono text-[11px] font-medium tracking-[0.2em] uppercase drop-shadow-[0_0_8px_hsla(var(--primary)/0.3)]">
         {label}
       </span>

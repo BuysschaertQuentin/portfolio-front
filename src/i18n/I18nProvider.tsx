@@ -1,13 +1,13 @@
 import {
-    createContext,
     useCallback,
-    useContext,
     useMemo,
     useState,
     type ReactNode,
 } from "react";
 import { en, fr } from "./locales";
 import { DEFAULT_LOCALE, type Locale, type Translations } from "./types";
+
+import { I18nContext } from "./I18nContext";
 
 const LOCALE_STORAGE_KEY = "portfolio_locale";
 
@@ -22,7 +22,7 @@ const resolve = (obj: Translations, path: string): string => {
 
   for (const part of parts) {
     if (typeof current === "string") return path;
-    current = (current as Translations)[part];
+    current = current[part];
     if (current === undefined) return path;
   }
 
@@ -34,24 +34,13 @@ const resolve = (obj: Translations, path: string): string => {
  */
 const getInitialLocale = (): Locale => {
   try {
-    const stored = localStorage.getItem(LOCALE_STORAGE_KEY) as Locale | null;
-    if (stored && stored in localeMap) return stored;
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (stored === "fr" || stored === "en") return stored;
   } catch {
     // SSR or private browsing — ignore
   }
   return DEFAULT_LOCALE;
 };
-
-interface I18nContextValue {
-  /** Current active locale */
-  readonly locale: Locale;
-  /** Switch to a different locale */
-  readonly setLocale: (locale: Locale) => void;
-  /** Translate a key path, e.g. "hero.title" */
-  readonly t: (key: string) => string;
-}
-
-const I18nContext = createContext<I18nContextValue | null>(null);
 
 interface I18nProviderProps {
   readonly children: ReactNode;
@@ -85,16 +74,4 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
-};
-
-/**
- * Hook to access the i18n context.
- * Must be used within an I18nProvider.
- */
-export const useI18n = (): I18nContextValue => {
-  const ctx = useContext(I18nContext);
-  if (!ctx) {
-    throw new Error("useI18n must be used within an I18nProvider");
-  }
-  return ctx;
 };

@@ -12,12 +12,12 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex h-dvh w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
     >
       {/* Subtle gradient background */}
       <div className="from-secondary/50 to-background absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container no-scrollbar relative z-10 flex flex-1 flex-col justify-center overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex flex-1 flex-col justify-center overflow-x-hidden overflow-y-auto p-2">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="space-y-6 text-center md:text-left">
             {/* Profile photo + name */}

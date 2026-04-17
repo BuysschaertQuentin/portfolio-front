@@ -34,12 +34,7 @@ const TechCard = memo(({ name, logo, iconComponent: Icon }: TechItem) => (
 
 TechCard.displayName = "TechCard";
 
-interface StackGroupProps {
-  readonly title: string;
-  readonly items: readonly TechItem[];
-  readonly dotColor: string;
-  readonly titleColor?: string;
-}
+import { StackGroupProps } from "@/types/skill";
 
 const StackGroup = ({
   title,
@@ -69,9 +64,9 @@ const StackSection = () => {
   return (
     <section
       id="stack"
-      className="relative flex h-dvh w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
     >
-      <div className="section-container no-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container scrollbar-styled mask-bottom-fade flex-1 overflow-x-hidden overflow-y-auto p-2">
         <div className="mb-6 flex flex-col items-center">
           <div className="mb-2 flex items-center gap-4">
             <span className="text-primary font-mono text-xl opacity-50">04 /</span>

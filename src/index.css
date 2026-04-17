@@ -164,9 +164,30 @@ html {
 
 .no-scrollbar {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
+}
+
+/* Custom styled thin scrollbar */
+.scrollbar-styled {
+  scrollbar-width: thin;
+  scrollbar-color: hsla(var(--primary) / 0.3) transparent;
+}
+
+.scrollbar-styled::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-styled::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-styled::-webkit-scrollbar-thumb {
+  background-color: hsla(var(--primary) / 0.3);
+  border-radius: 10px;
+}
+
+.scrollbar-styled::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(var(--primary) / 0.5);
 }
 
 /* Base Accessibility / Keyboard Navigation */
@@ -222,6 +243,10 @@ h3 {
 
 @utility text-glow-cyan {
   text-shadow: 0 0 20px hsla(var(--cyan) / 0.4);
+}
+
+@utility mask-bottom-fade {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
 /* section-container as plain class (responsive padding requires @media, not supported in @utility) */

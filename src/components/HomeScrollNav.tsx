@@ -1,19 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-interface Section {
-  id: string;
-  label: string;
-}
-
-const sections: Section[] = [
-  { id: "hero", label: "Intro" },
-  { id: "past", label: "Origines" },
-  { id: "formation", label: "Transition" },
-  { id: "experience", label: "Aujourd'hui" },
-  { id: "stack", label: "Stack" },
-  { id: "projects", label: "Réalisations" },
-  { id: "contact", label: "Contact" },
-];
+import { HOME_SECTIONS } from "@/constants/home";
 
 interface HomeScrollNavProps {
   activeSection: string;
@@ -21,9 +8,9 @@ interface HomeScrollNavProps {
 }
 
 const HomeScrollNav = ({ activeSection, onNavigate }: HomeScrollNavProps) => {
-  const currentIndex = sections.findIndex((s) => s.id === activeSection);
+  const currentIndex = HOME_SECTIONS.findIndex((s) => s.id === activeSection);
   const prevIndex = currentIndex > 0 ? currentIndex - 1 : -1;
-  const nextIndex = currentIndex < sections.length - 1 ? currentIndex + 1 : -1;
+  const nextIndex = currentIndex < HOME_SECTIONS.length - 1 ? currentIndex + 1 : -1;
 
   return (
     <nav
@@ -40,7 +27,7 @@ const HomeScrollNav = ({ activeSection, onNavigate }: HomeScrollNavProps) => {
       </button>
 
       <div className="flex flex-col gap-5">
-        {sections.map(({ id, label }, index) => (
+        {HOME_SECTIONS.map(({ id, label }, index) => (
           <button
             key={id}
             onClick={() => onNavigate(index)}

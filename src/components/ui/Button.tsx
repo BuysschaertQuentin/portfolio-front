@@ -33,7 +33,7 @@ type ButtonProps = ButtonAsButtonProps | ButtonAsExternalLinkProps | ButtonAsRou
  * and renders as `<button>`, `<a>`, or React Router `<Link>` depending on props.
  */
 export const Button = memo(
-  ({ children, variant = "primary", className = "", ...props }: ButtonProps) => {
+  (props: ButtonProps) => {
     const baseStyles =
       "inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary";
 
@@ -42,26 +42,32 @@ export const Button = memo(
       secondary: "border border-border text-foreground hover:bg-secondary bg-transparent",
     };
 
-    const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`.trim();
+    const combinedClassName = `${baseStyles} ${variantStyles[props.variant ?? "primary"]} ${props.className ?? ""}`.trim();
 
     if ("to" in props && props.to !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { children, variant, className, ...restProps } = props;
       return (
-        <Link className={combinedClassName} {...(props as LinkProps)}>
+        <Link className={combinedClassName} {...restProps}>
           {children}
         </Link>
       );
     }
 
     if ("href" in props && props.href !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { children, variant, className, ...restProps } = props;
       return (
-        <a className={combinedClassName} {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+        <a className={combinedClassName} {...restProps}>
           {children}
         </a>
       );
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children, variant, className, ...restProps } = props;
     return (
-      <button className={combinedClassName} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
+      <button className={combinedClassName} {...restProps}>
         {children}
       </button>
     );

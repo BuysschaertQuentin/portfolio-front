@@ -65,6 +65,17 @@ export const REALISATIONS: readonly Realisation[] = [
   },
 ] as const;
 
+/**
+ * Tech tags for each realization (used in home section).
+ */
+export const REALISATION_TAGS: Record<string, string[]> = {
+  "portail-rh": ["Angular", "NestJS", "MySQL", "CloudFoundry"],
+  "repos-compensateurs": ["Angular", "Java", "Spring Boot", "Microservices"],
+  "app-mobile-competences": ["Flutter", "Dart", "Supabase"],
+  "o-voyage": ["Vue.js", "NestJS", "SQL", "Teamwork"],
+  portfolio: ["React", "TypeScript", "Tailwind CSS"],
+};
+
 /** Helper to find a realisation by slug */
 export const findRealisationBySlug = (slug: string): Realisation | undefined =>
   REALISATIONS.find((r) => r.slug === slug);

@@ -8,19 +8,7 @@ import SectionChevron from "./SectionChevron";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 
-const SKILLS = [
-  "HTML5",
-  "CSS3",
-  "JavaScript",
-  "React",
-  "Node.js",
-  "SQL",
-  "API REST",
-  "Git",
-  "TypeScript",
-  "GraphQL",
-  "Express",
-] as const;
+import { FORMATION_SKILLS } from "@/constants/home";
 
 const FormationSection = () => {
   const { t } = useI18n();
@@ -28,11 +16,11 @@ const FormationSection = () => {
   return (
     <section
       id="formation"
-      className="bg-violet-deep relative flex h-dvh w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
     >
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container no-scrollbar relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
         <div className="mb-2 flex items-center gap-4">
           <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
           <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase">
@@ -89,7 +77,7 @@ const FormationSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {SKILLS.map((skill) => (
+              {FORMATION_SKILLS.map((skill) => (
                 <span
                   key={skill}
                   className="bg-violet-muted text-violet-foreground border-violet/30 rounded-full border px-3 py-1 font-mono text-[10px]"

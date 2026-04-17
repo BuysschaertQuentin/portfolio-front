@@ -196,7 +196,7 @@ const Parcours = () => {
   const { t } = useI18n();
 
   return (
-    <section className="section-container pt-24">
+    <section className="section-container pt-10">
       <div className="text-center mb-16">
         <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2">
           {t("parcours.subtitle")}
