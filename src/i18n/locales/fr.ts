@@ -15,7 +15,7 @@ const fr: Translations = {
     parcours: "Parcours",
   },
   hero: {
-    subtitle: "Portfolio // 2026",
+    subtitle: "Portfolio 2026",
     title: "Développeur",
     titleHighlight: "Fullstack",
     description: "De l'accompagnement humain au code, je construis des solutions web avec",
@@ -57,7 +57,7 @@ const fr: Translations = {
     title: "Auxiliaire de vie —",
     titleHighlight: "9 ans d'humanité",
     description:
-      "D'octobre 2014 à septembre 2023, j'ai accompagné des personnes vulnérables au quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
+      "D'octobre 2014 à septembre 2023, j'ai accompagné des personnes vulnérables dans leurs quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
     imgAlt: "Auxiliaire de vie accompagnant une personne âgée, style pixel art",
     empathy: "Empathie",
     empathyDesc: "Écoute active et bienveillance au quotidien",
