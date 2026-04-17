@@ -30,12 +30,12 @@ const en: Translations = {
   experience: {
     sectionLabel: "Current experience",
     title: "Fullstack Developer —",
-    company: "Orange",
+    company: "Orange Business",
     status: "Work-study program — Nov. 2023 to Mar. 2027",
     description:
-      "On a work-study program at Orange, I participate in the development of internal applications using modern technologies. I work within an agile team, contributing to the design and implementation of front-end and back-end features.",
+      "On a work-study program at Orange Business, I participate in the development of internal applications using modern technologies. I work within an agile team, contributing to the design and implementation of front-end and back-end features.",
     imgAlt:
-      "Developer on a work-study program at Orange working on Angular and NestJS, pixel art style",
+      "Developer on a work-study program at Orange Business working on Angular and NestJS, pixel art style",
     cta: "View my achievements",
   },
   formation: {

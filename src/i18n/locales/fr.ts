@@ -30,12 +30,12 @@ const fr: Translations = {
   experience: {
     sectionLabel: "Expérience actuelle",
     title: "Développeur Fullstack —",
-    company: "Orange",
+    company: "Orange Business",
     status: "Alternance — Nov. 2023 à Mars 2027",
     description:
-      "En alternance chez Orange, je participe au développement d'applications internes en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, contribuant à la conception et l'implémentation de fonctionnalités front et back.",
+      "En alternance chez Orange Business, je participe au développement d'applications internes en utilisant des technologies modernes. Je travaille au sein d'une équipe agile, contribuant à la conception et l'implémentation de fonctionnalités front et back.",
     imgAlt:
-      "Développeur en alternance chez Orange travaillant sur Angular et NestJS, style pixel art",
+      "Développeur en alternance chez Orange Business travaillant sur Angular et NestJS, style pixel art",
     cta: "Voir mes réalisations",
   },
   formation: {

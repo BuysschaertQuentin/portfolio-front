@@ -4,19 +4,20 @@
 - utiliser lucidReact pour les icone si c'est pas déjà le cas.
 - supprime bien tout les fichier en rapport avec shacdn et lovable
 - refaire le readme
-- remplacer la favicon.ico par le logo-portfolio
-- Mettre les linckedin et github en haut a droite
+- remplacer la favicon.ico par le logo-portfolio 
+- Mettre FR/EN en haut a droite pour que ce soit + clair pour l'utilisateur
+- 
 
 retour flo :
 
-- mettres la stack dès le début
+- mettres la section stack dès le début au même niveau que la 1ere section
 - Mettre "Découvrir ma reconversion atypique"
 - de l'accompagnement medico-social au développement web a la passion du dev
-- origines ? a remplacer
-- Mette des ancres pour faciliter la navigation
+- Mes origines ? a completer pour que le recruteur comprenne le parcours
+- Mette des ancres pour faciliter la navigation (via des variables en sessionStorage)
 - Mettre des détails sur la transition pro entre auxi et o'clock (mettre une phrase sur le pourquoi)
 - simplifié les badges du bootcamps et mettre dans l'ordre de maitrise
-- Supprimé les contacts
+- Supprimé la section Contacts et mettre les boutons linkedin , github et mail en haut a droite
 - Orange Business a la place de juste Orange
 - Scindé l'expérience a orange en 2, la 1ere alternance bac + 3 et le renouvellement bac + 5
 - Mettre au début un "spoiler" disant que le parcours n'est pas commun

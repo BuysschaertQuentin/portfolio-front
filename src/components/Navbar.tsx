@@ -2,9 +2,11 @@ import profileImg from "@/assets/photo_profil.jpg";
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { NavItem } from "@/types/navigation";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ExternalLink } from "./a11y/ExternalLink";
+import { GithubIcon, LinkedinIcon } from "./icons";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
@@ -85,8 +87,29 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop language switcher — right */}
-        <div className="hidden md:block">
+        {/* Desktop right — social links + language switcher */}
+        <div className="hidden items-center gap-3 md:flex">
+          <ExternalLink
+            href={PERSONAL.linkedIn}
+            aria-label="LinkedIn"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            <LinkedinIcon className="h-4 w-4" aria-hidden="true" />
+          </ExternalLink>
+          <ExternalLink
+            href={PERSONAL.github}
+            aria-label="GitHub"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            <GithubIcon className="h-4 w-4" aria-hidden="true" />
+          </ExternalLink>
+          <a
+            href={`mailto:${PERSONAL.email}`}
+            aria-label="Envoyer un e-mail"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+          </a>
           <LanguageSwitcher />
         </div>
 
@@ -134,6 +157,30 @@ const Navbar = () => {
               </Link>
             );
           })}
+          {/* Social links — mobile */}
+          <div className="border-border/50 flex items-center gap-4 border-t pt-3">
+            <ExternalLink
+              href={PERSONAL.linkedIn}
+              aria-label="LinkedIn"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <LinkedinIcon className="h-4 w-4" aria-hidden="true" />
+            </ExternalLink>
+            <ExternalLink
+              href={PERSONAL.github}
+              aria-label="GitHub"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <GithubIcon className="h-4 w-4" aria-hidden="true" />
+            </ExternalLink>
+            <a
+              href={`mailto:${PERSONAL.email}`}
+              aria-label="Envoyer un e-mail"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       )}
     </nav>

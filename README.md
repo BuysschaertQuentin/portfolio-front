@@ -1,67 +1,91 @@
-# Portfolio — Frontend
+# Portfolio Front
 
-Portfolio de développeur Fullstack construit avec React, TypeScript et Tailwind CSS.
+Portfolio personnel de **Quentin Buysschaert**, développeur Fullstack.
 
-## Stack technique
+## Stack
 
-| Catégorie     | Technologies                                    |
-| ------------- | ----------------------------------------------- |
-| **Framework** | [React 18](https://react.dev/) + TypeScript     |
-| **Build**     | [Vite 5](https://vitejs.dev/)                   |
-| **Styling**   | [Tailwind CSS 3](https://tailwindcss.com/)      |
-| **Routing**   | [React Router 6](https://reactrouter.com/)      |
-| **Data**      | [TanStack Query](https://tanstack.com/query)    |
-| **Icônes**    | [Lucide React](https://lucide.dev/)             |
-| **Tests**     | [Vitest](https://vitest.dev/) + Testing Library |
+| Outil | Version |
+|---|---|
+| React | 19 |
+| Vite | 7 |
+| TailwindCSS | 4 |
+| TypeScript | 5 |
+| Vitest | 4 |
+| react-router-dom | 7 |
+| lucide-react | 0.574 |
 
 ## Prérequis
 
-- **Node.js** ≥ 18
-- **npm** ≥ 9
+- [Node.js](https://nodejs.org/) ≥ 20
+- [pnpm](https://pnpm.io/) ≥ 9
 
 ## Installation
 
 ```bash
-npm install
+pnpm install
 ```
 
-## Scripts disponibles
+Copier `.env.example` en `.env` et renseigner les variables :
 
-| Commande             | Description                          |
-| -------------------- | ------------------------------------ |
-| `npm run dev`        | Serveur de développement (port 8080) |
-| `npm run build`      | Build de production                  |
-| `npm run preview`    | Prévisualisation du build            |
-| `npm run lint`       | Lint ESLint                          |
-| `npm test`           | Exécution des tests (une fois)       |
-| `npm run test:watch` | Tests en mode watch                  |
+```bash
+cp .env.example .env
+```
 
-## Structure du projet
+| Variable | Description |
+|---|---|
+| `VITE_FULL_NAME` | Nom complet affiché dans la navbar et le titre |
+| `VITE_EMAIL` | Adresse mail pour le lien `mailto:` |
+| `VITE_LINKEDIN_URL` | URL du profil LinkedIn |
+| `VITE_GITHUB_URL` | URL du profil GitHub |
+
+## Scripts
+
+```bash
+pnpm dev          # Serveur de développement (http://localhost:5173)
+pnpm build        # Build de production dans dist/
+pnpm preview      # Prévisualiser le build de production
+pnpm test         # Lancer les tests (Vitest, run once)
+pnpm test:watch   # Lancer les tests en mode watch
+pnpm lint         # ESLint
+pnpm format       # Prettier
+```
+
+## Structure des dossiers
 
 ```
 src/
-├── assets/          # Images et ressources statiques
-├── components/      # Composants React (sections du portfolio)
-├── hooks/           # Hooks personnalisés (auth)
-├── pages/           # Pages (Index, NotFound)
-├── test/            # Configuration et fichiers de test
-├── App.tsx          # Composant racine + routing
-├── index.css        # Design tokens + styles globaux (Tailwind)
-└── main.tsx         # Point d'entrée
+├── assets/          # Images, PDF (CV), pixel art
+├── components/      # Composants React réutilisables
+│   ├── a11y/        # Composants d'accessibilité (ExternalLink, SkipToContent)
+│   ├── icons/       # Icônes SVG custom (GitHub, LinkedIn, CloudFoundry)
+│   └── ui/          # Composants de base (Button, Card) — Tailwind pur
+├── constants/       # Données statiques (sections, stack, personal info)
+├── hooks/           # Hooks personnalisés
+├── i18n/            # Internationalisation FR/EN
+│   └── locales/     # Fichiers de traduction (fr.ts, en.ts)
+├── layouts/         # Layout principal (Navbar, Footer)
+├── lib/             # Utilitaires divers (spa-redirect)
+├── pages/           # Pages React Router (Index, About, Parcours…)
+├── test/            # Setup Vitest + tests unitaires
+└── types/           # Types TypeScript partagés
 ```
 
-## Sections du portfolio
+## Tests
 
-- **Navbar** — Navigation fixe avec glassmorphism
-- **Hero** — Présentation + CTA
-- **Expérience** — Parcours professionnel (alternance Orange)
-- **Formation** — Bootcamp O'Clock
-- **Parcours** — Reconversion depuis auxiliaire de vie
-- **Projets** — Réalisations techniques
-- **Stack** — Technologies maîtrisées
-- **Contact** — Formulaire de contact
-- **Footer** — Liens sociaux
+Les tests utilisent [Vitest](https://vitest.dev/) + [@testing-library/react](https://testing-library.com/).
 
-## Licence
+```bash
+pnpm test
+```
 
-Projet privé.
+## Déploiement
+
+Le projet est déployé via GitLab CI/CD (`.github/` pour GitHub Actions si besoin). Le build `pnpm build` génère le dossier `dist/` prêt à être servi.
+
+> Le fichier `src/lib/spa-redirect.ts` gère la redirection SPA sur GitHub Pages (hash routing fallback).
+
+## Internationalisation
+
+Le portfolio supporte le français 🇫🇷 et l'anglais 🇬🇧. Le switcher est accessible depuis la navbar.
+
+Les traductions sont dans `src/i18n/locales/fr.ts` et `src/i18n/locales/en.ts`.

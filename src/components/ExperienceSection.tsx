@@ -1,12 +1,59 @@
 import orangeImg from "@/assets/developpeur_alternance_orange.png";
 import orangeLogo from "@/assets/orange.png";
+import { EXPERIENCE_STACK_BAC3, EXPERIENCE_STACK_BAC5 } from "@/constants/home";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
+import { memo } from "react";
 import SectionChevron from "./SectionChevron";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
 
-import { EXPERIENCE_STACK } from "@/constants/home";
+interface ExperienceEntryProps {
+  readonly period: string;
+  readonly title: string;
+  readonly status: string;
+  readonly description: string;
+  readonly stack: readonly string[];
+  readonly stackColor: string;
+}
+
+/** Single experience card (Bac+3 or Bac+5). */
+const ExperienceEntry = memo(
+  ({ period, title, status, description, stack, stackColor }: ExperienceEntryProps) => (
+    <Card className="border-orange/20 space-y-3 rounded-xl p-5">
+      <div className="flex items-center gap-4">
+        <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
+          <img
+            src={orangeLogo}
+            alt=""
+            className="h-8 w-8 object-contain"
+            width={32}
+            height={32}
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p className="text-foreground font-semibold">{title}</p>
+          <p className="text-muted-foreground font-mono text-xs">{status}</p>
+          <p className="text-orange font-mono text-[10px] opacity-70">{period}</p>
+        </div>
+      </div>
+      <p className="text-secondary-foreground text-sm leading-relaxed">{description}</p>
+      <div className="flex flex-wrap gap-2">
+        {stack.map((tech) => (
+          <span
+            key={tech}
+            className={`${stackColor} rounded-full border px-3 py-1 font-mono text-[10px]`}
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+    </Card>
+  ),
+);
+
+ExperienceEntry.displayName = "ExperienceEntry";
 
 const ExperienceSection = () => {
   const { t } = useI18n();
@@ -28,49 +75,32 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          <h2 className="text-glow-orange text-center text-2xl font-bold sm:text-3xl leading-tight">
-            {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
+          <h2 className="text-glow-orange text-center text-2xl font-bold leading-tight sm:text-3xl">
+            {t("experience.title")}{" "}
+            <span className="text-orange">{t("experience.company")}</span>
           </h2>
         </div>
 
-        <div className="grid items-center gap-6 md:grid-cols-2">
-          <Card className="border-orange/20 animate-fade-in order-2 space-y-4 rounded-xl p-5 md:order-1">
-            {/* Logo + company name */}
-            <div className="flex items-center gap-4">
-              <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
-                <img
-                  src={orangeLogo}
-                  alt=""
-                  className="h-10 w-10 object-contain"
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <span className="text-foreground text-lg font-semibold">
-                  {t("experience.company")}
-                </span>
-                <p className="text-muted-foreground font-mono text-xs">{t("experience.status")}</p>
-              </div>
-            </div>
-
-            <p className="text-secondary-foreground text-sm leading-relaxed md:text-base">
-              {t("experience.description")}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {EXPERIENCE_STACK.map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-orange-muted text-orange-foreground border-orange/20 rounded-full border px-3 py-1 font-mono text-[10px]"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="border-orange/20 border-t pt-4">
+        <div className="grid items-start gap-6 md:grid-cols-2">
+          {/* Left: 2 experience entries stacked */}
+          <div className="space-y-4">
+            <ExperienceEntry
+              period={t("parcours.entries.orange2.period")}
+              title={t("parcours.entries.orange2.title")}
+              status={t("parcours.entries.orange2.status")}
+              description={t("parcours.entries.orange2.missions")}
+              stack={EXPERIENCE_STACK_BAC5}
+              stackColor="bg-orange-muted text-orange-foreground border-orange/20"
+            />
+            <ExperienceEntry
+              period={t("parcours.entries.orange1.period")}
+              title={t("parcours.entries.orange1.title")}
+              status={t("parcours.entries.orange1.status")}
+              description={t("parcours.entries.orange1.missions")}
+              stack={EXPERIENCE_STACK_BAC3}
+              stackColor="bg-orange-muted text-orange-foreground border-orange/20"
+            />
+            <div className="pt-2">
               <Button
                 to="/realisations"
                 variant="secondary"
@@ -80,9 +110,10 @@ const ExperienceSection = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-          </Card>
+          </div>
 
-          <div className="order-1 flex justify-center md:order-2">
+          {/* Right: illustration */}
+          <div className="flex justify-center">
             <img
               src={orangeImg}
               alt={t("experience.imgAlt")}
@@ -95,7 +126,7 @@ const ExperienceSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="stack" label="Mes Compétences" />
+      <SectionChevron targetId="projects" label="Mes Réalisations" />
     </section>
   );
 };

@@ -1,4 +1,3 @@
-import ContactSection from "@/components/ContactSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import FormationSection from "@/components/FormationSection";
 import HeroSection from "@/components/HeroSection";
@@ -12,9 +11,20 @@ import { HOME_SECTIONS } from "@/constants/home";
 
 const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
 
+/** TTL in milliseconds for the stored last-visited section (15 minutes). */
+const SESSION_TTL_MS = 15 * 60 * 1000;
+const SESSION_KEY = "portfolio_last_section";
+
+interface StoredSection {
+  readonly id: string;
+  readonly timestamp: number;
+}
+
 /**
  * Home page — one-page layout with a guided chronological narrative.
  * Controlled smooth scrolling using wheel events and localized states.
+ * Persists the last visited section to sessionStorage (TTL: 15 min)
+ * so the browser "Back" button restores the correct position.
  */
 const Index = () => {
   const [activeSection, setActiveSection] = useState(SECTION_IDS[0]);
@@ -44,6 +54,26 @@ const Index = () => {
     }
   }, []);
 
+  // Restore last visited section on mount if within TTL
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(SESSION_KEY);
+      if (!raw) return;
+      const stored: StoredSection = JSON.parse(raw);
+      if (Date.now() - stored.timestamp > SESSION_TTL_MS) {
+        sessionStorage.removeItem(SESSION_KEY);
+        return;
+      }
+      const index = SECTION_IDS.indexOf(stored.id);
+      if (index > 0) {
+        // Slight delay to let the DOM render before scrolling
+        setTimeout(() => scrollToSection(index), 50);
+      }
+    } catch {
+      sessionStorage.removeItem(SESSION_KEY);
+    }
+  }, [scrollToSection]);
+
   // Single source of truth for the active section:
   // Watch what is actually visible on screen.
   useEffect(() => {
@@ -52,6 +82,9 @@ const Index = () => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
           history.replaceState(null, "", `#${entry.target.id}`);
+          // Persist to sessionStorage with current timestamp
+          const stored: StoredSection = { id: entry.target.id, timestamp: Date.now() };
+          sessionStorage.setItem(SESSION_KEY, JSON.stringify(stored));
         }
       });
     };
@@ -125,12 +158,11 @@ const Index = () => {
     >
       <HomeScrollNav activeSection={activeSection} onNavigate={scrollToSection} />
       <HeroSection />
+      <StackSection />
       <PastSection />
       <FormationSection />
       <ExperienceSection />
-      <StackSection />
       <ProjectsSection />
-      <ContactSection />
     </main>
   );
 };
