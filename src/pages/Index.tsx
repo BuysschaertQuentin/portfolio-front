@@ -35,10 +35,10 @@ const Index = () => {
         index === 0 ? "start" : index === SECTION_IDS.length - 1 ? "end" : "center";
       element.scrollIntoView({ behavior: "smooth", block: blockPosition });
 
-      // Unlock scrolling after animation completes (~800ms)
+      // Unlock scrolling after animation completes (~500ms)
       setTimeout(() => {
         isScrolling.current = false;
-      }, 800);
+      }, 400);
     } else {
       isScrolling.current = false;
     }

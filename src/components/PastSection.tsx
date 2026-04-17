@@ -42,19 +42,21 @@ const PastSection = () => {
       />
 
       <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-2 flex items-center gap-4">
-          <span className="text-cyan font-mono text-xl opacity-50">01 /</span>
-          <p className="text-cyan font-mono text-sm tracking-widest uppercase">
-            {t("past.sectionLabel")}
-          </p>
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-3">
+            <span className="text-cyan font-mono text-xl opacity-50">01 /</span>
+            <p className="text-cyan font-mono text-sm tracking-widest uppercase">
+              {t("past.sectionLabel")}
+            </p>
+          </div>
+
+          <h2 className="text-glow-cyan text-center text-2xl leading-tight font-bold sm:text-3xl">
+            {t("past.title")} <span className="text-cyan">{t("past.titleHighlight")}</span>
+          </h2>
         </div>
 
-        <h2 className="text-glow-cyan mb-4 text-2xl leading-tight font-bold sm:text-3xl">
-          {t("past.title")} <span className="text-cyan">{t("past.titleHighlight")}</span>
-        </h2>
-
         <div className="grid items-center gap-6 md:grid-cols-2">
-          <div className="space-y-4">
+          <div className="space-y-3">
             <Card className="border-cyan/20 space-y-3 rounded-xl p-5">
               <p className="text-secondary-foreground text-sm leading-relaxed md:text-base">
                 {t("past.description")}
@@ -70,7 +72,7 @@ const PastSection = () => {
                 </Button>
               </div>
             </Card>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {PAST_SOFT_SKILLS.map((skill) => (
                 <SoftSkillCard
                   key={skill.labelKey}

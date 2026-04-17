@@ -20,16 +20,18 @@ const ExperienceSection = () => {
       <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
       <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-2 flex items-center gap-4">
-          <span className="text-orange font-mono text-xl opacity-50">03 /</span>
-          <p className="text-orange font-mono text-sm tracking-widest uppercase">
-            {t("experience.sectionLabel")}
-          </p>
-        </div>
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-4">
+            <span className="text-orange font-mono text-xl opacity-50">03 /</span>
+            <p className="text-orange font-mono text-sm tracking-widest uppercase">
+              {t("experience.sectionLabel")}
+            </p>
+          </div>
 
-        <h2 className="text-glow-orange mb-4 text-2xl leading-tight font-bold sm:text-3xl">
-          {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
-        </h2>
+          <h2 className="text-glow-orange text-center text-2xl font-bold sm:text-3xl leading-tight">
+            {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
+          </h2>
+        </div>
 
         <div className="grid items-center gap-6 md:grid-cols-2">
           <Card className="border-orange/20 animate-fade-in order-2 space-y-4 rounded-xl p-5 md:order-1">

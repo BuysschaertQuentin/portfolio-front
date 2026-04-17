@@ -21,17 +21,19 @@ const FormationSection = () => {
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
       <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-2 flex items-center gap-4">
-          <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
-          <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase">
-            {t("formation.sectionLabel")}
-          </p>
-        </div>
+        <div className="mb-6 flex flex-col items-center">
+          <div className="mb-2 flex items-center gap-4">
+            <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
+            <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase">
+              {t("formation.sectionLabel")}
+            </p>
+          </div>
 
-        <h2 className="text-glow-violet mb-4 text-2xl leading-tight font-bold sm:text-3xl">
-          {t("formation.title")}{" "}
-          <span className="text-violet-foreground">{t("formation.school")}</span>
-        </h2>
+          <h2 className="text-glow-violet text-center text-2xl font-bold sm:text-3xl leading-tight">
+            {t("formation.title")}{" "}
+            <span className="text-violet-foreground">{t("formation.school")}</span>
+          </h2>
+        </div>
 
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="flex justify-center md:order-1">
