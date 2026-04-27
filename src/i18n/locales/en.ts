@@ -13,6 +13,7 @@ const en: Translations = {
     competences: "Skills",
     realisations: "Achievements",
     parcours: "Career",
+    sendEmail: "Send an email",
   },
   hero: {
     subtitle: "Portfolio 2026",
@@ -122,6 +123,9 @@ const en: Translations = {
   a11y: {
     newTab: "(opens in a new tab)",
   },
+  common: {
+    loading: "Loading...",
+  },
   about: {
     title: "Profile",
     intro:
@@ -158,6 +162,7 @@ const en: Translations = {
       hindsightTitle: "Hindsight",
       evolutionTitle: "Evolution",
       linkedRealisationsTitle: "Linked achievements",
+      noLinkedRealisations: "No linked achievements for now.",
     },
     skills: {
       empathy: {
@@ -327,6 +332,10 @@ const en: Translations = {
     certificationTitle: "Certifications & degrees",
     showDetails: "Show details",
     hideDetails: "Hide details",
+    status: "Status",
+    presentation: "Overview",
+    missions: "Missions",
+    vision: "Vision",
     entries: {
       orange2: {
         period: "Mar. 2025 — Mar. 2027",
@@ -376,6 +385,14 @@ const en: Translations = {
         title: "Professional Title 'Web and Mobile Web Developer' — RNCP 31114 (Level 5)",
       },
     },
+  },
+  chevrons: {
+    stack: "My stack",
+    past: "My background",
+    formation: "The transition",
+    experience: "Today",
+    projects: "My projects",
+    contact: "Contact",
   },
 };
 

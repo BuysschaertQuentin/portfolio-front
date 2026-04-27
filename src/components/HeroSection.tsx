@@ -69,7 +69,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="past" label="Mes origines" />
+      <SectionChevron targetId="stack" label={t("chevrons.stack")} />
     </section>
   );
 };

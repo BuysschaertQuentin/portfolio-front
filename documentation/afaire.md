@@ -1,12 +1,6 @@
-- supprimé tout les dépendances de lovable
-- remplacer tout les composant shacdn (D:\Mes_Documents\Dossier_Developeur\Mes Projets\Portfolio\portfolio-front\src\components\ui) par tailwindCSS
-- supprimé toutes les référence a shacdn
-- utiliser lucidReact pour les icone si c'est pas déjà le cas.
-- supprime bien tout les fichier en rapport avec shacdn et lovable
 - refaire le readme
 - remplacer la favicon.ico par le logo-portfolio 
 - Mettre FR/EN en haut a droite pour que ce soit + clair pour l'utilisateur
-- 
 
 retour flo :
 

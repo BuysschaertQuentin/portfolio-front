@@ -96,7 +96,7 @@ const PastSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="formation" label="La transition" />
+      <SectionChevron targetId="formation" label={t("chevrons.formation")} />
     </section>
   );
 };

@@ -13,6 +13,7 @@ const fr: Translations = {
     competences: "Compétences",
     realisations: "Réalisations",
     parcours: "Parcours",
+    sendEmail: "Envoyer un e-mail",
   },
   hero: {
     subtitle: "Portfolio 2026",
@@ -122,6 +123,9 @@ const fr: Translations = {
   a11y: {
     newTab: "(s'ouvre dans un nouvel onglet)",
   },
+  common: {
+    loading: "Chargement...",
+  },
   about: {
     title: "Profil",
     intro:
@@ -158,6 +162,7 @@ const fr: Translations = {
       hindsightTitle: "Recul",
       evolutionTitle: "Évolution",
       linkedRealisationsTitle: "Réalisations liées",
+      noLinkedRealisations: "Aucune réalisation liée pour le moment.",
     },
     skills: {
       empathy: {
@@ -327,6 +332,10 @@ const fr: Translations = {
     certificationTitle: "Certifications & diplômes",
     showDetails: "Voir le détail",
     hideDetails: "Masquer le détail",
+    status: "Statut",
+    presentation: "Présentation",
+    missions: "Missions",
+    vision: "Vision",
     entries: {
       orange2: {
         period: "Mars 2025 — Mars 2027",
@@ -377,6 +386,14 @@ const fr: Translations = {
         title: "Titre Professionnel « Développeur Web et Web Mobile » — RNCP 31114 (Niv. 5)",
       },
     },
+  },
+  chevrons: {
+    stack: "Ma stack",
+    past: "Mes origines",
+    formation: "La transition",
+    experience: "Aujourd'hui",
+    projects: "Mes réalisations",
+    contact: "Contact",
   },
 };
 

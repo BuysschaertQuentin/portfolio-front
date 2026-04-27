@@ -143,7 +143,7 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
               {entry.detailKeys.status && (
                 <div>
                   <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Statut
+                    {t("parcours.status")}
                   </p>
                   <p className="text-sm text-foreground">
                     {t(entry.detailKeys.status)}
@@ -153,7 +153,7 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
               {entry.detailKeys.presentation && (
                 <div>
                   <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Présentation
+                    {t("parcours.presentation")}
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {t(entry.detailKeys.presentation)}
@@ -163,7 +163,7 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
               {entry.detailKeys.missions && (
                 <div>
                   <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Missions
+                    {t("parcours.missions")}
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {t(entry.detailKeys.missions)}
@@ -173,7 +173,7 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
               {entry.detailKeys.vision && (
                 <div>
                   <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Vision
+                    {t("parcours.vision")}
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {t(entry.detailKeys.vision)}

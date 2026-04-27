@@ -126,7 +126,7 @@ const ExperienceSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="projects" label="Mes Réalisations" />
+      <SectionChevron targetId="projects" label={t("chevrons.projects")} />
     </section>
   );
 };

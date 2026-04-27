@@ -199,7 +199,7 @@ const CompetenceDetail = () => {
           </div>
         ) : (
           <p className="text-sm text-muted-foreground italic">
-            Aucune réalisation liée pour le moment.
+            {t("competences.detail.noLinkedRealisations")}
           </p>
         )}
       </div>

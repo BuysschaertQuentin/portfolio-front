@@ -36,7 +36,7 @@ const Layout = () => {
         className="flex-1 overflow-y-auto overflow-x-hidden outline-none"
         tabIndex={-1}
       >
-        <Suspense fallback={<div className="flex flex-1 items-center justify-center">Loading...</div>}>
+        <Suspense fallback={<div className="flex flex-1 items-center justify-center">{t("common.loading")}</div>}>
           <Outlet />
         </Suspense>
       </main>

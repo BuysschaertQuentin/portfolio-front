@@ -103,7 +103,7 @@ const FormationSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="experience" label="Aujourd'hui" />
+      <SectionChevron targetId="experience" label={t("chevrons.experience")} />
     </section>
   );
 };

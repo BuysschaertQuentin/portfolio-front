@@ -103,7 +103,7 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="contact" label={t("nav.contact") || "Contact"} />
+      <SectionChevron targetId="contact" label={t("chevrons.contact")} />
     </section>
   );
 };

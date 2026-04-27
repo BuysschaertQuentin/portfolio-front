@@ -53,7 +53,7 @@ Le projet est un portfolio React + Vite + TailwindCSS v4. Les composants shadcn/
 ### 2.2 Switcher FR/EN — clarté visuelle
 
 - Le `LanguageSwitcher` existe déjà. Évaluer s'il est assez visible (taille, contraste, position).
-- Si besoin, remplacer le texte par un badge type `FR | EN` avec le flag ou un style plus prononcé.
+- Si besoin, remplacer le texte par un badge type `FR | EN` avec le flag ou un style plus prononcé. Il faut que l'utilisateur sache si il est en FR ou en EN Et que le design indique clairement qu'il peut switcher.
 - **Ne pas dupliquer la logique i18n existante**.
 
 ### 2.3 Position de la section Stack

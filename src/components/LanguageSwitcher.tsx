@@ -1,5 +1,5 @@
 import { SUPPORTED_LOCALES, useI18n } from "@/i18n";
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback } from "react";
 
 /**
  * Compact language toggle button for the navbar.
@@ -14,19 +14,20 @@ const LanguageSwitcher = memo(() => {
     setLocale(SUPPORTED_LOCALES[nextIndex].code);
   }, [locale, setLocale]);
 
-  const currentLabel = useMemo(
-    () => SUPPORTED_LOCALES.find((l) => l.code === locale)?.label ?? locale,
-    [locale],
-  );
-
   return (
     <button
       onClick={handleToggle}
-      className="px-2 py-1 text-xs font-mono rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
-      aria-label={`Switch language (current: ${currentLabel})`}
+      className="flex items-center gap-2 px-2 py-1 text-sm font-mono rounded-md border border-border bg-background hover:bg-muted/50 hover:border-primary/50 transition-all shadow-sm cursor-pointer"
+      aria-label={`Changer de langue (actuelle: ${locale.toUpperCase()})`}
       type="button"
     >
-      {currentLabel}
+      <span className={`transition-colors ${locale === "fr" ? "text-primary font-bold" : "text-muted-foreground"}`}>
+        FR
+      </span>
+      <span className="text-border">|</span>
+      <span className={`transition-colors ${locale === "en" ? "text-primary font-bold" : "text-muted-foreground"}`}>
+        EN
+      </span>
     </button>
   );
 });

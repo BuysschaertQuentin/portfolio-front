@@ -105,7 +105,7 @@ const Navbar = () => {
           </ExternalLink>
           <a
             href={`mailto:${PERSONAL.email}`}
-            aria-label="Envoyer un e-mail"
+            aria-label={t("nav.sendEmail")}
             className="text-muted-foreground hover:text-primary transition-colors"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
@@ -175,7 +175,7 @@ const Navbar = () => {
             </ExternalLink>
             <a
               href={`mailto:${PERSONAL.email}`}
-              aria-label="Envoyer un e-mail"
+              aria-label={t("nav.sendEmail")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="h-4 w-4" aria-hidden="true" />

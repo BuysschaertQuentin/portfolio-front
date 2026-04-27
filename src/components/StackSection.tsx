@@ -99,7 +99,7 @@ const StackSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="projects" label="Mes réalisations" />
+      <SectionChevron targetId="past" label={t("chevrons.past")} />
     </section>
   );
 };
