@@ -4,7 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import HomeScrollNav from "@/components/HomeScrollNav";
 import PastSection from "@/components/PastSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import StackSection from "@/components/StackSection";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { HOME_SECTIONS } from "@/constants/home";
@@ -158,7 +157,6 @@ const Index = () => {
     >
       <HomeScrollNav activeSection={activeSection} onNavigate={scrollToSection} />
       <HeroSection />
-      <StackSection />
       <PastSection />
       <FormationSection />
       <ExperienceSection />

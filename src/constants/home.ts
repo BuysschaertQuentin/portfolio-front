@@ -7,7 +7,6 @@ export interface HomeSection {
 
 export const HOME_SECTIONS: readonly HomeSection[] = [
   { id: "hero", label: "Intro" },
-  { id: "stack", label: "Stack" },
   { id: "past", label: "Origines" },
   { id: "formation", label: "Transition" },
   { id: "experience", label: "Aujourd'hui" },

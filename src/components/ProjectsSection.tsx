@@ -62,9 +62,9 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
     >
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
         <div className="mb-6 flex flex-col items-center">
           <div className="mb-2 flex items-center gap-4">
             <span className="text-primary font-mono text-xl opacity-50">05 /</span>

@@ -34,14 +34,14 @@ const PastSection = () => {
   return (
     <section
       id="past"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
     >
       <div
         className="from-background via-cyan-muted/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b"
         aria-hidden="true"
       />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
         <div className="mb-6 flex flex-col items-center">
           <div className="mb-2 flex items-center gap-3">
             <span className="text-cyan font-mono text-xl opacity-50">01 /</span>

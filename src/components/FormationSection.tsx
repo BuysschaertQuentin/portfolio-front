@@ -16,11 +16,11 @@ const FormationSection = () => {
   return (
     <section
       id="formation"
-      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
     >
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
         <div className="mb-6 flex flex-col items-center">
           <div className="mb-2 flex items-center gap-4">
             <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
@@ -29,7 +29,7 @@ const FormationSection = () => {
             </p>
           </div>
 
-          <h2 className="text-glow-violet text-center text-2xl font-bold sm:text-3xl leading-tight">
+          <h2 className="text-glow-violet text-center text-2xl leading-tight font-bold sm:text-3xl">
             {t("formation.title")}{" "}
             <span className="text-violet-foreground">{t("formation.school")}</span>
           </h2>

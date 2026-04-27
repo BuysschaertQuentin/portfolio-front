@@ -61,12 +61,12 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
     >
       {/* Orange subtle top gradient */}
       <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
+      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
         <div className="mb-6 flex flex-col items-center">
           <div className="mb-2 flex items-center gap-4">
             <span className="text-orange font-mono text-xl opacity-50">03 /</span>
@@ -75,9 +75,8 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          <h2 className="text-glow-orange text-center text-2xl font-bold leading-tight sm:text-3xl">
-            {t("experience.title")}{" "}
-            <span className="text-orange">{t("experience.company")}</span>
+          <h2 className="text-glow-orange text-center text-2xl leading-tight font-bold sm:text-3xl">
+            {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
           </h2>
         </div>
 
