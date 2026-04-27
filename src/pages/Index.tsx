@@ -1,7 +1,7 @@
 import ExperienceSection from "@/components/ExperienceSection";
 import FormationSection from "@/components/FormationSection";
 import HeroSection from "@/components/HeroSection";
-import HomeScrollNav from "@/components/HomeScrollNav";
+import HomeScrollNav from "@/components/ui/navigation/HomeScrollNav";
 import PastSection from "@/components/PastSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import { useCallback, useEffect, useRef, useState } from "react";

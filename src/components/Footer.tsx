@@ -2,8 +2,8 @@ import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Mail } from "lucide-react";
 import { useMemo } from "react";
-import { ExternalLink } from "./a11y/ExternalLink";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { ExternalLink } from "./ui/a11y/ExternalLink";
+import { GithubIcon, LinkedinIcon } from "./ui/icons";
 
 const Footer = () => {
   const { t } = useI18n();

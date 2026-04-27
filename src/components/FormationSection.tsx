@@ -1,14 +1,15 @@
 import bootcampImg from "@/assets/bootcamp_o_clock.png";
 import oclockLogo from "@/assets/oclock.png";
+import { FORMATION_SKILLS } from "@/constants/home";
 import { EXTERNAL_LINKS } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
-import { ExternalLink } from "./a11y/ExternalLink";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
-
-import { FORMATION_SKILLS } from "@/constants/home";
+import { ExternalLink } from "./ui/a11y/ExternalLink";
+import SectionChevron from "./ui/navigation/SectionChevron";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import { SkillBadge } from "./ui/badges/SkillBadge";
 
 const FormationSection = () => {
   const { t } = useI18n();
@@ -21,19 +22,13 @@ const FormationSection = () => {
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
       <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center gap-4">
-            <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
-            <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase">
-              {t("formation.sectionLabel")}
-            </p>
-          </div>
-
-          <h2 className="text-glow-violet text-center text-2xl leading-tight font-bold sm:text-3xl">
-            {t("formation.title")}{" "}
-            <span className="text-violet-foreground">{t("formation.school")}</span>
-          </h2>
-        </div>
+        <SectionHeader
+          index="02"
+          label={t("formation.sectionLabel")}
+          title={t("formation.title")}
+          titleHighlight={t("formation.school")}
+          accentColor="violet"
+        />
 
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="flex justify-center md:order-1">
@@ -80,12 +75,11 @@ const FormationSection = () => {
 
             <div className="flex flex-wrap gap-2">
               {FORMATION_SKILLS.map((skill) => (
-                <span
+                <SkillBadge
                   key={skill}
-                  className="bg-violet-muted text-violet-foreground border-violet/30 rounded-full border px-3 py-1 font-mono text-[10px]"
-                >
-                  {skill}
-                </span>
+                  label={skill}
+                  colorClass="bg-violet-muted text-violet-foreground border-violet/30"
+                />
               ))}
             </div>
 

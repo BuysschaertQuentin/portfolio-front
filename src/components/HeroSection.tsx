@@ -1,77 +1,13 @@
 import profileImg from "@/assets/photo_profil.jpg";
+import { HERO_CORE_STACK, HERO_SECONDARY_STACK } from "@/constants/hero";
 import { PERSONAL } from "@/constants/personal";
-import { getTechItem } from "@/constants/stack";
 import { useI18n } from "@/i18n";
 import { Download } from "lucide-react";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
-
-// Reusable badge displaying icon + tech name
-const TechBadge = ({ name }: { readonly name: string }) => {
-  const tech = getTechItem(name);
-  if (!tech) return null;
-  const Icon = tech.iconComponent;
-  return (
-    <div className="bg-secondary/30 border-border/50 hover:border-primary/40 hover:bg-primary/5 flex cursor-default items-center gap-2 rounded-xl border px-3 py-2 transition-all duration-200 hover:scale-105">
-      {Icon ? (
-        <Icon className="h-5 w-5 shrink-0" />
-      ) : tech.logo ? (
-        <img src={tech.logo} alt="" className="h-5 w-5 shrink-0" loading="lazy" />
-      ) : null}
-      <span className="text-foreground font-mono text-sm whitespace-nowrap">{name}</span>
-    </div>
-  );
-};
-
-interface BentoTileProps {
-  readonly className?: string;
-  readonly title: string;
-  readonly accentClass?: string;
-  readonly techNames: readonly string[];
-}
-
-// Generic bento tile for a tech category
-const BentoTile = ({ className = "", title, accentClass = "", techNames }: BentoTileProps) => (
-  <Card className={`flex flex-col gap-3 p-4 ${className}`}>
-    <h3
-      className={`font-mono text-[10px] tracking-widest uppercase ${accentClass || "text-muted-foreground"}`}
-    >
-      {title}
-    </h3>
-    <div className="flex flex-wrap gap-2">
-      {techNames.map((name) => (
-        <TechBadge key={name} name={name} />
-      ))}
-    </div>
-  </Card>
-);
-
-// Core stack: main technologies
-const CORE_STACK = [
-  "Angular",
-  "NestJS",
-  "TypeScript",
-  "Node.js",
-  "Java",
-  "MySQL",
-  "PostgreSQL",
-  "Docker",
-  "Git",
-  "CloudFoundry",
-] as const;
-
-// Secondary stack: everything else
-const SECONDARY_STACK = [
-  "React",
-  "Vue.js",
-  "Flutter",
-  "HTML5",
-  "CSS3",
-  "Tailwind CSS",
-  "Supabase",
-  "Figma",
-] as const;
+import SectionChevron from "./ui/navigation/SectionChevron";
+import { BentoTile } from "./ui/tiles/BentoTile";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { TechBadge } from "./ui/badges/TechBadge";
 
 const HeroSection = () => {
   const { t } = useI18n();
@@ -140,10 +76,10 @@ const HeroSection = () => {
             {/* ── Core stack tile (2 cols × 2 rows) — visible impact ── */}
             <Card className="border-primary/30 bg-primary/5 flex flex-col gap-3 rounded-xl p-4 md:col-span-2 lg:col-span-2 lg:row-span-2">
               <h3 className="text-primary font-mono text-[10px] tracking-widest uppercase">
-                Stack principale
+                {t("hero.coreStackLabel")}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {CORE_STACK.map((name) => (
+                {HERO_CORE_STACK.map((name) => (
                   <TechBadge key={name} name={name} />
                 ))}
               </div>
@@ -152,8 +88,8 @@ const HeroSection = () => {
             {/* ── Secondary stack tile (5 cols × 1 row) ── */}
             <BentoTile
               className="border-border/30 bg-background/40 rounded-xl md:col-span-2 lg:col-span-5"
-              title="Maîtrisé · Utilisé en projet"
-              techNames={SECONDARY_STACK}
+              title={t("hero.secondaryStackLabel")}
+              techNames={HERO_SECONDARY_STACK}
             />
           </div>
         </div>

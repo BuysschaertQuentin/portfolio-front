@@ -1,32 +1,12 @@
 import auxImg from "@/assets/auxiliaire_de_vie.png";
-import { useI18n } from "@/i18n";
-import { type LucideIcon, ArrowRight } from "lucide-react";
-import { memo } from "react";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
-
 import { PAST_SOFT_SKILLS } from "@/constants/home";
-
-interface SoftSkillCardProps {
-  readonly icon: LucideIcon;
-  readonly label: string;
-  readonly desc: string;
-}
-
-const SoftSkillCard = memo(({ icon: Icon, label, desc }: SoftSkillCardProps) => (
-  <Card className="border-cyan/15 hover:border-cyan/30 flex items-start gap-3 rounded-lg p-4 transition-colors">
-    <div className="bg-cyan-muted rounded-md p-2">
-      <Icon className="text-cyan h-4 w-4" aria-hidden="true" />
-    </div>
-    <div>
-      <p className="text-foreground text-sm font-semibold">{label}</p>
-      <p className="text-muted-foreground text-xs leading-relaxed">{desc}</p>
-    </div>
-  </Card>
-));
-
-SoftSkillCard.displayName = "SoftSkillCard";
+import { useI18n } from "@/i18n";
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
+import { SoftSkillCard } from "./ui/cards/SoftSkillCard";
 
 const PastSection = () => {
   const { t } = useI18n();
@@ -42,18 +22,13 @@ const PastSection = () => {
       />
 
       <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center gap-3">
-            <span className="text-cyan font-mono text-xl opacity-50">01 /</span>
-            <p className="text-cyan font-mono text-sm tracking-widest uppercase">
-              {t("past.sectionLabel")}
-            </p>
-          </div>
-
-          <h2 className="text-glow-cyan text-center text-2xl leading-tight font-bold sm:text-3xl">
-            {t("past.title")} <span className="text-cyan">{t("past.titleHighlight")}</span>
-          </h2>
-        </div>
+        <SectionHeader
+          index="01"
+          label={t("past.sectionLabel")}
+          title={t("past.title")}
+          titleHighlight={t("past.titleHighlight")}
+          accentColor="cyan"
+        />
 
         <div className="grid items-center gap-6 md:grid-cols-2">
           <div className="space-y-3">

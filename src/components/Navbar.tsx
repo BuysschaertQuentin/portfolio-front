@@ -5,9 +5,9 @@ import { NavItem } from "@/types/navigation";
 import { Mail, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ExternalLink } from "./a11y/ExternalLink";
-import { GithubIcon, LinkedinIcon } from "./icons";
-import LanguageSwitcher from "./LanguageSwitcher";
+import { ExternalLink } from "./ui/a11y/ExternalLink";
+import { GithubIcon, LinkedinIcon } from "./ui/icons";
+import LanguageSwitcher from "./ui/navigation/LanguageSwitcher";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

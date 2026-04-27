@@ -27,6 +27,8 @@ const en: Translations = {
     downloadCv: "Download CV",
     discoverPath: "Discover my path",
     heroAlt: "Fullstack developer welcomed in a company, pixel art style",
+    coreStackLabel: "Core stack",
+    secondaryStackLabel: "Mastered · Used in projects",
   },
   experience: {
     sectionLabel: "Current experience",

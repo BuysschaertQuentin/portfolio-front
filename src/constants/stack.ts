@@ -1,4 +1,4 @@
-import { CloudFoundryIcon } from "@/components/icons";
+import { CloudFoundryIcon } from "@/components/ui/icons";
 import { type ComponentPropsWithoutRef, type ComponentType } from "react";
 
 export interface TechItem {
