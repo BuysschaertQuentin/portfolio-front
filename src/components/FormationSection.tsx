@@ -17,11 +17,11 @@ const FormationSection = () => {
   return (
     <section
       id="formation"
-      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
+      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
         <SectionHeader
           index="02"
           label={t("formation.sectionLabel")}
@@ -41,7 +41,7 @@ const FormationSection = () => {
               loading="lazy"
             />
           </div>
-          <Card className="border-violet/30 space-y-4 rounded-xl p-5 md:order-2">
+          <Card className="border-violet/30 space-y-4 rounded-lg p-6 md:order-2">
             {/* Logo + school name + link */}
             <div className="flex items-center gap-4">
               <ExternalLink href={EXTERNAL_LINKS.oclock} aria-label={t("formation.school")}>
@@ -65,7 +65,7 @@ const FormationSection = () => {
               </div>
             </div>
 
-            <p className="text-secondary-foreground text-lg leading-relaxed">
+            <p className="text-secondary-foreground text-base leading-relaxed">
               {t("formation.description")}{" "}
               <span className="text-violet-foreground font-medium">{t("formation.quality1")}</span>{" "}
               {t("formation.and")}{" "}
@@ -97,9 +97,12 @@ const FormationSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="experience" label={t("chevrons.experience")} />
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="experience" label={t("chevrons.experience")} />
+      </div>
     </section>
   );
 };
 
 export default FormationSection;
+

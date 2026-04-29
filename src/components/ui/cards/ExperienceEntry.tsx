@@ -31,7 +31,7 @@ export const ExperienceEntry = memo(
     logo,
     logoAlt = "",
   }: ExperienceEntryProps) => (
-    <Card className="border-orange/20 space-y-3 rounded-xl p-5">
+    <Card className="border-orange/20 space-y-3 rounded-lg p-5">
       <div className="flex items-center gap-4">
         <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
           <img

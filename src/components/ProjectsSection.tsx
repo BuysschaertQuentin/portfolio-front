@@ -1,9 +1,8 @@
 import { REALISATIONS, REALISATION_TAGS } from "@/constants/realisations";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
-import { ProjectCard } from "./ui/cards/ProjectCard";
-import SectionChevron from "./ui/navigation/SectionChevron";
 import { Button } from "./ui/buttons/Button";
+import { ProjectCard } from "./ui/cards/ProjectCard";
 import { SectionHeader } from "./ui/headers/SectionHeader";
 
 const ProjectsSection = () => {
@@ -12,11 +11,11 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
-      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
         <SectionHeader
-          index="05"
+          index="04"
           label={t("projects.sectionLabel")}
           title={t("projects.title")}
           accentColor="primary"
@@ -36,7 +35,7 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="mt-6 flex justify-center pb-2">
+        <div className="mt-4 flex justify-center pb-2">
           <Button
             to="/realisations"
             variant="secondary"
@@ -47,8 +46,6 @@ const ProjectsSection = () => {
           </Button>
         </div>
       </div>
-
-      <SectionChevron targetId="contact" label={t("chevrons.contact")} />
     </section>
   );
 };

@@ -21,15 +21,12 @@ const SectionChevron = ({ targetId, label, title }: SectionChevronProps) => {
   };
 
   return (
-    <div className="animate-fade-in relative z-20 flex flex-col items-center gap-2 pb-3">
+    <div className="animate-fade-in z-20 m-5 flex flex-col items-center gap-3">
       {title && (
         <span className="text-muted-foreground font-mono text-[10px] tracking-widest uppercase">
           {title}
         </span>
       )}
-      {/* <span className="text-primary/80 font-mono text-[11px] font-medium tracking-[0.2em] uppercase drop-shadow-[0_0_8px_hsla(var(--primary)/0.3)]">
-        {label}
-      </span> */}
       <a
         href={`#${targetId}`}
         onClick={scrollToTarget}

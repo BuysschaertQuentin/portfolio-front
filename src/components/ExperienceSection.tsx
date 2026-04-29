@@ -14,12 +14,12 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-8 md:pt-12"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       {/* Orange subtle top gradient */}
       <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container relative z-10 flex flex-1 flex-col justify-center overflow-hidden p-2">
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
         <SectionHeader
           index="03"
           label={t("experience.sectionLabel")}
@@ -28,7 +28,7 @@ const ExperienceSection = () => {
           accentColor="orange"
         />
 
-        <div className="grid items-start gap-6 md:grid-cols-2">
+        <div className="grid items-start gap-8 md:grid-cols-2">
           {/* Left: 2 experience entries stacked */}
           <div className="space-y-4">
             <ExperienceEntry
@@ -75,9 +75,12 @@ const ExperienceSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="projects" label={t("chevrons.projects")} />
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="projects" label={t("chevrons.projects")} />
+      </div>
     </section>
   );
 };
 
 export default ExperienceSection;
+

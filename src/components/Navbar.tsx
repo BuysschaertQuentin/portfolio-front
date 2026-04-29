@@ -5,9 +5,9 @@ import { NavItem } from "@/types/navigation";
 import { Mail, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ExternalLink } from "./ui/a11y/ExternalLink";
 import { GithubIcon, LinkedinIcon } from "./ui/icons";
 import LanguageSwitcher from "./ui/navigation/LanguageSwitcher";
+import { SocialButton } from "./ui/navigation/SocialButton";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -89,27 +89,25 @@ const Navbar = () => {
 
         {/* Desktop right — social links + language switcher */}
         <div className="hidden items-center gap-3 md:flex">
-          <ExternalLink
+          <SocialButton
             href={PERSONAL.linkedIn}
-            aria-label="LinkedIn"
-            className="text-muted-foreground hover:text-primary transition-colors"
-          >
-            <LinkedinIcon className="h-4 w-4" aria-hidden="true" />
-          </ExternalLink>
-          <ExternalLink
+            label="LinkedIn"
+            variant="blue"
+            icon={<LinkedinIcon />}
+          />
+          <SocialButton
             href={PERSONAL.github}
-            aria-label="GitHub"
-            className="text-muted-foreground hover:text-primary transition-colors"
-          >
-            <GithubIcon className="h-4 w-4" aria-hidden="true" />
-          </ExternalLink>
-          <a
+            label="GitHub"
+            variant="default"
+            icon={<GithubIcon />}
+          />
+          <SocialButton
             href={`mailto:${PERSONAL.email}`}
-            aria-label={t("nav.sendEmail")}
-            className="text-muted-foreground hover:text-primary transition-colors"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-          </a>
+            label={t("nav.sendEmail")}
+            variant="red"
+            icon={<Mail />}
+            isMail
+          />
           <LanguageSwitcher />
         </div>
 
@@ -159,27 +157,25 @@ const Navbar = () => {
           })}
           {/* Social links — mobile */}
           <div className="border-border/50 flex items-center gap-4 border-t pt-3">
-            <ExternalLink
+            <SocialButton
               href={PERSONAL.linkedIn}
-              aria-label="LinkedIn"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <LinkedinIcon className="h-4 w-4" aria-hidden="true" />
-            </ExternalLink>
-            <ExternalLink
+              label="LinkedIn"
+              variant="blue"
+              icon={<LinkedinIcon />}
+            />
+            <SocialButton
               href={PERSONAL.github}
-              aria-label="GitHub"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <GithubIcon className="h-4 w-4" aria-hidden="true" />
-            </ExternalLink>
-            <a
+              label="GitHub"
+              variant="default"
+              icon={<GithubIcon />}
+            />
+            <SocialButton
               href={`mailto:${PERSONAL.email}`}
-              aria-label={t("nav.sendEmail")}
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Mail className="h-4 w-4" aria-hidden="true" />
-            </a>
+              label={t("nav.sendEmail")}
+              variant="red"
+              icon={<Mail />}
+              isMail
+            />
           </div>
         </div>
       )}

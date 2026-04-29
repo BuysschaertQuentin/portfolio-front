@@ -28,7 +28,7 @@ const fr: Translations = {
     discoverPath: "Découvrir mon parcours",
     heroAlt: "Développeur fullstack accueilli dans une entreprise, style pixel art",
     coreStackLabel: "Stack principale",
-    secondaryStackLabel: "Maîtrisé · Utilisé en projet",
+    secondaryStackLabel: "Stack secondaire",
   },
   experience: {
     sectionLabel: "Expérience actuelle",

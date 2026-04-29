@@ -2,20 +2,10 @@ import { getTechItem } from "@/constants/stack";
 import { memo } from "react";
 
 interface TechBadgeProps {
-  /** Tech name — must match a key in constants/stack.ts */
   readonly name: string;
-  /**
-   * Visual size variant.
-   * - "md" (default): used in Hero bento tiles
-   * - "sm": compact variant used in ProjectCard tags
-   */
   readonly size?: "md" | "sm";
 }
 
-/**
- * Displays a technology badge with its icon and name.
- * Resolves the icon/logo automatically from the global stack registry.
- */
 export const TechBadge = memo(({ name, size = "md" }: TechBadgeProps) => {
   const tech = getTechItem(name);
   if (!tech) return null;
