@@ -28,7 +28,7 @@ export const ProjectCard = memo(
         </p>
         <div className="flex flex-wrap gap-1.5">
           {tags.map((tag) => (
-            <TechBadge key={tag} name={tag} />
+            <TechBadge key={tag} name={tag} size="medium" />
           ))}
         </div>
       </div>

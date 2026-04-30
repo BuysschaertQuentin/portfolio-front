@@ -9,7 +9,7 @@ import SectionChevron from "./ui/navigation/SectionChevron";
 import { Button } from "./ui/buttons/Button";
 import { Card } from "./ui/cards/Card";
 import { SectionHeader } from "./ui/headers/SectionHeader";
-import { SkillBadge } from "./ui/badges/SkillBadge";
+import { TechBadge } from "./ui/badges/TechBadge";
 
 const FormationSection = () => {
   const { t } = useI18n();
@@ -75,11 +75,7 @@ const FormationSection = () => {
 
             <div className="flex flex-wrap gap-2">
               {FORMATION_SKILLS.map((skill) => (
-                <SkillBadge
-                  key={skill}
-                  label={skill}
-                  colorClass="bg-violet-muted text-violet-foreground border-violet/30"
-                />
+                <TechBadge key={skill} name={skill} size="small" />
               ))}
             </div>
 

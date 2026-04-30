@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Card } from "./Card";
-import { SkillBadge } from "../badges/SkillBadge";
+import { TechBadge } from "../badges/TechBadge";
 
 export interface ExperienceEntryProps {
   readonly period: string;
@@ -8,8 +8,6 @@ export interface ExperienceEntryProps {
   readonly status: string;
   readonly description: string;
   readonly stack: readonly string[];
-  /** Tailwind classes for background, text and border applied to each SkillBadge */
-  readonly stackColorClass: string;
   /** Logo image to display for the company */
   readonly logo: string;
   /** Alt text for the company logo (leave empty string "" for decorative) */
@@ -27,7 +25,6 @@ export const ExperienceEntry = memo(
     status,
     description,
     stack,
-    stackColorClass,
     logo,
     logoAlt = "",
   }: ExperienceEntryProps) => (
@@ -52,7 +49,7 @@ export const ExperienceEntry = memo(
       <p className="text-secondary-foreground text-sm leading-relaxed">{description}</p>
       <div className="flex flex-wrap gap-2">
         {stack.map((tech) => (
-          <SkillBadge key={tech} label={tech} colorClass={stackColorClass} />
+          <TechBadge key={tech} name={tech} size="small" />
         ))}
       </div>
     </Card>
@@ -60,3 +57,4 @@ export const ExperienceEntry = memo(
 );
 
 ExperienceEntry.displayName = "ExperienceEntry";
+

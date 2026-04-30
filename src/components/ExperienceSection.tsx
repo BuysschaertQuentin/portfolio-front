@@ -37,7 +37,6 @@ const ExperienceSection = () => {
               status={t("parcours.entries.orange2.status")}
               description={t("parcours.entries.orange2.missions")}
               stack={EXPERIENCE_STACK_BAC5}
-              stackColorClass="bg-orange-muted text-orange-foreground border-orange/20"
               logo={orangeLogo}
             />
             <ExperienceEntry
@@ -46,7 +45,6 @@ const ExperienceSection = () => {
               status={t("parcours.entries.orange1.status")}
               description={t("parcours.entries.orange1.missions")}
               stack={EXPERIENCE_STACK_BAC3}
-              stackColorClass="bg-orange-muted text-orange-foreground border-orange/20"
               logo={orangeLogo}
             />
             <div className="pt-2">
