@@ -25,10 +25,10 @@ const en: Translations = {
     quality3: "passion",
     and: "and",
     downloadCv: "Download CV",
-    discoverPath: "Discover my path",
+    discoverPath: "Discover my atypical journey",
     heroAlt: "Fullstack developer welcomed in a company, pixel art style",
     coreStackLabel: "Core stack",
-    secondaryStackLabel: "Mastered · Used in projects",
+    secondaryStackLabel: "Transversal stack",
   },
   experience: {
     sectionLabel: "Current experience",
@@ -395,6 +395,16 @@ const en: Translations = {
     experience: "Today",
     projects: "My projects",
     contact: "Contact",
+  },
+  techTooltip: {
+    experience: {
+      yearsAndMonths: "{{years}} years and {{months}} months",
+      yearsOnly: "{{years}} years",
+      monthsOnly: "{{months}} months",
+      lessThanMonth: "Less than a month",
+      lessThanYear: "Less than a year",
+      ofExperience: "of experience",
+    },
   },
 };
 

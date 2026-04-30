@@ -1,5 +1,5 @@
 import profileImg from "@/assets/photo_profil.jpg";
-import { HERO_CORE_STACK, HERO_SECONDARY_STACK } from "@/constants/hero";
+import { MAIN_STACK, TRANSVERSAL_STACK } from "@/constants/stack";
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { Download } from "lucide-react";
@@ -75,7 +75,7 @@ const HeroSection = () => {
               {t("hero.coreStackLabel")}
             </h3>
             <div className="flex flex-wrap gap-2">
-              {HERO_CORE_STACK.map((name) => (
+              {MAIN_STACK.map((name) => (
                 <TechBadge key={name} name={name} />
               ))}
             </div>
@@ -86,7 +86,7 @@ const HeroSection = () => {
         <BentoTile
           className="w-full rounded-lg"
           title={t("hero.secondaryStackLabel")}
-          techNames={HERO_SECONDARY_STACK}
+          techNames={TRANSVERSAL_STACK}
         />
       </div>
 
