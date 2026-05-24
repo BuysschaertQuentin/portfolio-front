@@ -25,13 +25,15 @@ const fr: Translations = {
     quality3: "passion",
     and: "et",
     downloadCv: "Télécharger CV",
-    discoverPath: "Découvrir mon parcours atypique",
+    discoverPath: "Découvrir ma reconversion atypique",
     heroAlt: "Développeur fullstack accueilli dans une entreprise, style pixel art",
     coreStackLabel: "Stack principale",
     secondaryStackLabel: "Stack transversale",
   },
   experience: {
     sectionLabel: "Expérience actuelle",
+    bac3Label: "Expérience Bac+3",
+    bac5Label: "Expérience Bac+5",
     title: "Développeur Fullstack —",
     company: "Orange Business",
     status: "Alternance — Nov. 2023 à Mars 2027",
@@ -56,12 +58,12 @@ const fr: Translations = {
     cta: "Découvrir mon parcours détaillé",
   },
   past: {
-    sectionLabel: "Parcours précédent",
+    sectionLabel: "De l'accompagnement médico-social au développement web",
     title: "Auxiliaire de vie —",
     titleHighlight: "9 ans d'humanité",
     description:
-      "D'octobre 2014 à septembre 2023, j'ai accompagné des personnes vulnérables dans leurs quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
-    imgAlt: "Auxiliaire de vie accompagnant une personne âgée, style pixel art",
+      "D'octobre 2014 à septembre 2023, j'ai accompagné des personnes en situation de handicap dans leurs quotidien. Cette expérience profondément humaine m'a doté de compétences transversales qui font aujourd'hui ma force en tant que développeur.",
+    imgAlt: "Auxiliaire de vie accompagnant une personne en situation de handicap, style pixel art",
     empathy: "Empathie",
     empathyDesc: "Écoute active et bienveillance au quotidien",
     resilience: "Résilience",
@@ -156,7 +158,7 @@ const fr: Translations = {
     subtitle: "10 compétences clés — humaines et techniques",
     humanTitle: "Compétences humaines",
     technicalTitle: "Compétences techniques",
-    backToList: "← Retour aux compétences",
+    backToList: "Retour aux compétences",
     detail: {
       definitionTitle: "Définition",
       proofsTitle: "Mises en pratique",
@@ -265,7 +267,7 @@ const fr: Translations = {
     contextPro: "Projet professionnel",
     contextPerso: "Projet personnel",
     contextFormation: "Projet de formation",
-    backToList: "← Retour aux réalisations",
+    backToList: "Retour aux réalisations",
     detail: {
       definitionTitle: "Présentation",
       framingTitle: "Cadrage",
@@ -342,7 +344,7 @@ const fr: Translations = {
       orange2: {
         period: "Mars 2025 — Mars 2027",
         title: "Développeur Fullstack — Master Ingénierie Logicielle",
-        place: "Orange Business Services",
+        place: "Orange Business",
         status: "Alternance (2ème année)",
         missions: "[À RÉDIGER] — Missions détaillées (app mobile Flutter, repos compensateurs).",
         vision: "[À RÉDIGER] — Vision de l'entreprise.",
@@ -350,7 +352,7 @@ const fr: Translations = {
       orange1: {
         period: "Nov. 2023 — Déc. 2024",
         title: "Développeur Fullstack — Bac+3 CDA",
-        place: "Orange Business Services",
+        place: "Orange Business",
         status: "Alternance (1ère année)",
         missions: "[À RÉDIGER] — Missions détaillées (portail RH).",
         vision: "[À RÉDIGER] — Vision de l'entreprise.",

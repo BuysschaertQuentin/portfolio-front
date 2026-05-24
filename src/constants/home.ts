@@ -9,7 +9,8 @@ export const HOME_SECTIONS: readonly HomeSection[] = [
   { id: "hero", label: "Intro" },
   { id: "past", label: "Origines" },
   { id: "formation", label: "Transition" },
-  { id: "experience", label: "Aujourd'hui" },
+  { id: "experience-bac3", label: "Bac+3" },
+  { id: "experience-bac5", label: "Bac+5" },
   { id: "projects", label: "Réalisations" },
 ];
 
@@ -53,11 +54,11 @@ export const EXPERIENCE_STACK_BAC5 = [
   "Flutter",
   "Dart",
   "TypeScript",
+  "NestJS",
   "Java",
   "Docker",
   "Git",
 ] as const;
-
 
 export interface SoftSkill {
   readonly icon: LucideIcon;

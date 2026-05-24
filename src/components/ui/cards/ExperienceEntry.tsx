@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Card } from "./Card";
 import { TechBadge } from "../badges/TechBadge";
+import { Card } from "./Card";
 
 export interface ExperienceEntryProps {
   readonly period: string;
@@ -19,15 +19,7 @@ export interface ExperienceEntryProps {
  * Extracted from ExperienceSection for reuse and clarity.
  */
 export const ExperienceEntry = memo(
-  ({
-    period,
-    title,
-    status,
-    description,
-    stack,
-    logo,
-    logoAlt = "",
-  }: ExperienceEntryProps) => (
+  ({ period, title, status, description, stack, logo, logoAlt = "" }: ExperienceEntryProps) => (
     <Card className="border-orange/20 space-y-3 rounded-lg p-5">
       <div className="flex items-center gap-4">
         <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
@@ -55,6 +47,3 @@ export const ExperienceEntry = memo(
     </Card>
   ),
 );
-
-ExperienceEntry.displayName = "ExperienceEntry";
-

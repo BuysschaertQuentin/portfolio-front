@@ -1,19 +1,36 @@
 import orangeImg from "@/assets/developpeur_alternance_orange.png";
 import orangeLogo from "@/assets/orange.png";
-import { EXPERIENCE_STACK_BAC3, EXPERIENCE_STACK_BAC5 } from "@/constants/home";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
-import { ExperienceEntry } from "./ui/cards/ExperienceEntry";
-import SectionChevron from "./ui/navigation/SectionChevron";
 import { Button } from "./ui/buttons/Button";
+import { ExperienceEntry } from "./ui/cards/ExperienceEntry";
 import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
 
-const ExperienceSection = () => {
+interface ExperienceSectionProps {
+  readonly id: string;
+  readonly index: string;
+  readonly label: string;
+  readonly entryKey: "orange1" | "orange2";
+  readonly stack: readonly string[];
+  readonly nextSectionId: string;
+  readonly nextSectionLabel: string;
+}
+
+const ExperienceSection = ({
+  id,
+  index,
+  label,
+  entryKey,
+  stack,
+  nextSectionId,
+  nextSectionLabel,
+}: ExperienceSectionProps) => {
   const { t } = useI18n();
 
   return (
     <section
-      id="experience"
+      id={id}
       className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       {/* Orange subtle top gradient */}
@@ -21,30 +38,22 @@ const ExperienceSection = () => {
 
       <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
         <SectionHeader
-          index="03"
-          label={t("experience.sectionLabel")}
-          title={t("experience.title")}
+          index={index}
+          label={label}
+          title={t(`parcours.entries.${entryKey}.title`)}
           titleHighlight={t("experience.company")}
           accentColor="orange"
         />
 
         <div className="grid items-start gap-8 md:grid-cols-2">
-          {/* Left: 2 experience entries stacked */}
+          {/* Left: experience entry */}
           <div className="space-y-4">
             <ExperienceEntry
-              period={t("parcours.entries.orange2.period")}
-              title={t("parcours.entries.orange2.title")}
-              status={t("parcours.entries.orange2.status")}
-              description={t("parcours.entries.orange2.missions")}
-              stack={EXPERIENCE_STACK_BAC5}
-              logo={orangeLogo}
-            />
-            <ExperienceEntry
-              period={t("parcours.entries.orange1.period")}
-              title={t("parcours.entries.orange1.title")}
-              status={t("parcours.entries.orange1.status")}
-              description={t("parcours.entries.orange1.missions")}
-              stack={EXPERIENCE_STACK_BAC3}
+              period={t(`parcours.entries.${entryKey}.period`)}
+              title={t(`parcours.entries.${entryKey}.title`)}
+              status={t(`parcours.entries.${entryKey}.status`)}
+              description={t(`parcours.entries.${entryKey}.missions`)}
+              stack={stack}
               logo={orangeLogo}
             />
             <div className="pt-2">
@@ -74,11 +83,10 @@ const ExperienceSection = () => {
       </div>
 
       <div className="absolute right-0 bottom-4 left-0 flex justify-center">
-        <SectionChevron targetId="projects" label={t("chevrons.projects")} />
+        <SectionChevron targetId={nextSectionId} label={nextSectionLabel} />
       </div>
     </section>
   );
 };
 
 export default ExperienceSection;
-

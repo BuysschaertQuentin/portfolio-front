@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/cards/Card";
+import { ReturnButton } from "@/components/ui/buttons/ReturnButton";
 import { CONTEXT_COLORS, findRealisationBySlug } from "@/constants/realisations";
 import { findSkillBySlug } from "@/constants/skills";
 import { useI18n } from "@/i18n";
@@ -77,12 +78,7 @@ const RealisationDetail = () => {
   return (
     <section className="section-container space-y-8 pt-10">
       {/* Back link */}
-      <Link
-        to="/realisations"
-        className="text-muted-foreground hover:text-primary inline-flex items-center font-mono text-sm transition-colors"
-      >
-        {t("realisations.backToList")}
-      </Link>
+      <ReturnButton to="/realisations" label={t("realisations.backToList")} />
 
       {/* Header */}
       <div className="flex items-center gap-4">

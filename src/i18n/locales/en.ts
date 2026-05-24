@@ -32,6 +32,8 @@ const en: Translations = {
   },
   experience: {
     sectionLabel: "Current experience",
+    bac3Label: "Bac+3 Experience",
+    bac5Label: "Bac+5 Experience",
     title: "Fullstack Developer —",
     company: "Orange Business",
     status: "Work-study program — Nov. 2023 to Mar. 2027",
@@ -156,7 +158,7 @@ const en: Translations = {
     subtitle: "10 key skills — human and technical",
     humanTitle: "Human skills",
     technicalTitle: "Technical skills",
-    backToList: "← Back to skills",
+    backToList: "Back to skills",
     detail: {
       definitionTitle: "Definition",
       proofsTitle: "In practice",
@@ -265,7 +267,7 @@ const en: Translations = {
     contextPro: "Professional project",
     contextPerso: "Personal project",
     contextFormation: "Academic project",
-    backToList: "← Back to achievements",
+    backToList: "Back to achievements",
     detail: {
       definitionTitle: "Overview",
       framingTitle: "Context & objectives",
@@ -342,7 +344,7 @@ const en: Translations = {
       orange2: {
         period: "Mar. 2025 — Mar. 2027",
         title: "Fullstack Developer — Master's in Software Engineering",
-        place: "Orange Business Services",
+        place: "Orange Business",
         status: "Work-study program (2nd year)",
         missions: "[TO WRITE] — Detailed missions (Flutter mobile app, compensatory leave).",
         vision: "[TO WRITE] — Company vision.",
@@ -350,7 +352,7 @@ const en: Translations = {
       orange1: {
         period: "Nov. 2023 — Dec. 2024",
         title: "Fullstack Developer — Bachelor's in Application Design",
-        place: "Orange Business Services",
+        place: "Orange Business",
         status: "Work-study program (1st year)",
         missions: "[TO WRITE] — Detailed missions (HR portal).",
         vision: "[TO WRITE] — Company vision.",

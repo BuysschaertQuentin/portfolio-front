@@ -15,7 +15,7 @@ const ProjectsSection = () => {
     >
       <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
         <SectionHeader
-          index="04"
+          index="05"
           label={t("projects.sectionLabel")}
           title={t("projects.title")}
           accentColor="primary"

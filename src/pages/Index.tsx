@@ -6,7 +6,8 @@ import PastSection from "@/components/PastSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { HOME_SECTIONS } from "@/constants/home";
+import { EXPERIENCE_STACK_BAC3, EXPERIENCE_STACK_BAC5, HOME_SECTIONS } from "@/constants/home";
+import { useI18n } from "@/i18n";
 
 const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
 
@@ -26,6 +27,7 @@ interface StoredSection {
  * so the browser "Back" button restores the correct position.
  */
 const Index = () => {
+  const { t } = useI18n();
   const [activeSection, setActiveSection] = useState(SECTION_IDS[0]);
   const isScrolling = useRef(false);
   const containerRef = useRef<HTMLElement>(null);
@@ -159,7 +161,24 @@ const Index = () => {
       <HeroSection />
       <PastSection />
       <FormationSection />
-      <ExperienceSection />
+      <ExperienceSection
+        id="experience-bac3"
+        index="03"
+        label={t("experience.bac3Label")}
+        entryKey="orange1"
+        stack={EXPERIENCE_STACK_BAC3}
+        nextSectionId="experience-bac5"
+        nextSectionLabel={t("parcours.entries.orange2.title")}
+      />
+      <ExperienceSection
+        id="experience-bac5"
+        index="04"
+        label={t("experience.bac5Label")}
+        entryKey="orange2"
+        stack={EXPERIENCE_STACK_BAC5}
+        nextSectionId="projects"
+        nextSectionLabel={t("chevrons.projects")}
+      />
       <ProjectsSection />
     </main>
   );

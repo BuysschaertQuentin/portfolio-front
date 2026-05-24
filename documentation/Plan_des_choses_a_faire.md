@@ -92,6 +92,7 @@ Le projet est un portfolio React + Vite + TailwindCSS v4. Les composants shadcn/
 - Scinder l'expérience en **2 entrées distinctes** :
   1. Alternance Bac+3 (dates + description propre)
   2. Renouvellement Bac+5 (dates + description propre)
+Cela doit représenter 2 étapes dans la Home page, pour les images tu utilisera la même pour les deux parties. 
 
 ---
 

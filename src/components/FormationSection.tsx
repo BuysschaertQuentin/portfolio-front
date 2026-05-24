@@ -94,7 +94,7 @@ const FormationSection = () => {
       </div>
 
       <div className="absolute right-0 bottom-4 left-0 flex justify-center">
-        <SectionChevron targetId="experience" label={t("chevrons.experience")} />
+        <SectionChevron targetId="experience-bac3" label={t("chevrons.experience")} />
       </div>
     </section>
   );
