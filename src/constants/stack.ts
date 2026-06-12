@@ -19,6 +19,14 @@ export interface TechItem {
   readonly showInMain?: boolean;
   /** Display in the transversal stack? */
   readonly showInTransversal?: boolean;
+  /** Category of the technology */
+  readonly category: "front-end" | "back-end" | "devops" | "transversale" | "cloud";
+  /** Is this technology a specialty? */
+  readonly specialty?: boolean;
+  /** Is this technology something I would like to do? */
+  readonly wish?: boolean;
+  /** Is this technology clickable? */
+  readonly clickable?: boolean;
 }
 
 export const TECH_STACK: readonly TechItem[] = [
@@ -31,6 +39,8 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
+    category: "front-end",
+    specialty: true,
   },
   {
     name: "TypeScript",
@@ -41,6 +51,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
+    category: "front-end",
   },
   {
     name: "NestJS",
@@ -51,6 +62,8 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
+    category: "back-end",
+    specialty: true,
   },
   {
     name: "Docker",
@@ -61,6 +74,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-01",
     showInMain: true,
+    category: "devops",
   },
   {
     name: "MySQL",
@@ -71,6 +85,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-01",
     showInMain: true,
+    category: "back-end",
   },
   {
     name: "PostgreSQL",
@@ -81,6 +96,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
+    category: "back-end",
   },
   {
     name: "Node.js",
@@ -91,6 +107,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-03",
     showInMain: true,
+    category: "back-end",
   },
   {
     name: "Java",
@@ -101,6 +118,8 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2025-03",
     showInMain: true,
+    category: "back-end",
+    wish: true,
   },
   {
     name: "CloudFoundry",
@@ -111,6 +130,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-06",
     showInMain: true,
+    category: "cloud",
   },
   {
     name: "SQL",
@@ -121,6 +141,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
+    category: "back-end",
   },
   {
     name: "Express",
@@ -131,6 +152,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-02",
     showInTransversal: true,
+    category: "back-end",
   },
   {
     name: "Git",
@@ -141,6 +163,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2021-01",
     showInMain: true,
+    category: "transversale",
   },
   {
     name: "HTML5",
@@ -151,6 +174,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2022-10",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "CSS3",
@@ -161,6 +185,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2022-10",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "Tailwind CSS",
@@ -171,6 +196,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-06",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "JavaScript",
@@ -181,6 +207,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-01",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "React",
@@ -191,6 +218,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-01",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "Vue.js",
@@ -201,6 +229,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2025-06",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "Flutter",
@@ -211,6 +240,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-06",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "Supabase",
@@ -221,6 +251,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2025-04",
     showInTransversal: true,
+    category: "cloud",
   },
   {
     name: "VS Code",
@@ -231,6 +262,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2022-10",
     showInTransversal: true,
+    category: "transversale",
   },
   {
     name: "Figma",
@@ -241,6 +273,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-01",
     showInTransversal: true,
+    category: "transversale",
   },
   {
     name: "Dart",
@@ -251,16 +284,62 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-06",
     showInTransversal: true,
+    category: "front-end",
   },
   {
     name: "API REST",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", // Fallback, wait in view it was nodejs icon, let's keep it as is
     description: {
       fr: "Style d'architecture standard pour concevoir des services web en réseau simples et scalables.",
       en: "Standard architectural style for designing simple and scalable networked web services.",
     },
     since: "2023-02",
     showInTransversal: true,
+    category: "back-end",
+  },
+  {
+    name: "Kubernetes",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg",
+    description: {
+      fr: "Orchestrateur de conteneurs pour automatiser le déploiement et la mise à l'échelle d'applications.",
+      en: "Container orchestrator for automating deployment and scaling of applications.",
+    },
+    category: "devops",
+    wish: true,
+    clickable: false,
+  },
+  {
+    name: "Next.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    description: {
+      fr: "Framework React pour la production avec rendu côté serveur et génération de sites statiques.",
+      en: "React framework for production with server-side rendering and static site generation.",
+    },
+    category: "front-end",
+    wish: true,
+    clickable: false,
+  },
+  {
+    name: "GCP",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    description: {
+      fr: "Google Cloud Platform pour l'hébergement et les services cloud managés.",
+      en: "Google Cloud Platform for hosting and managed cloud services.",
+    },
+    category: "cloud",
+    wish: true,
+    clickable: false,
+  },
+  {
+    name: "AWS",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    description: {
+      fr: "Amazon Web Services, leader mondial des solutions cloud d'infrastructure.",
+      en: "Amazon Web Services, global leader in cloud infrastructure solutions.",
+    },
+    category: "cloud",
+    wish: true,
+    clickable: false,
   },
 ];
 

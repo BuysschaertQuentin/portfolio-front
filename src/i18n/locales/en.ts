@@ -158,6 +158,18 @@ const en: Translations = {
     subtitle: "10 key skills — human and technical",
     humanTitle: "Human skills",
     technicalTitle: "Technical skills",
+    categories: {
+      "front-end": "Front-end",
+      "back-end": "Back-end",
+      "devops": "DevOps",
+      "cloud": "Cloud",
+      "transversale": "Transversal",
+    },
+    legend: {
+      filterTitle: "Filter by tag:",
+      specialty: "Specialty",
+      wish: "What I would like to do",
+    },
     backToList: "Back to skills",
     detail: {
       definitionTitle: "Definition",
@@ -169,6 +181,15 @@ const en: Translations = {
       noLinkedRealisations: "No linked achievements for now.",
     },
     skills: {
+      autonome: {
+        title: "Autonomous",
+        shortDesc: "Ability to work independently and proactively",
+        definition: "[TO WRITE]",
+        proofs: "[TO WRITE]",
+        selfCritique: "[TO WRITE]",
+        hindsight: "[TO WRITE]",
+        evolution: "[TO WRITE]",
+      },
       empathy: {
         title: "Empathy",
         shortDesc: "Active listening and understanding needs",

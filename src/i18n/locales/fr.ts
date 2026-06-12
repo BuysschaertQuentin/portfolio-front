@@ -155,9 +155,21 @@ const fr: Translations = {
   },
   competences: {
     title: "Compétences",
-    subtitle: "10 compétences clés — humaines et techniques",
+    subtitle: "Mes compétences clés — humaines et techniques",
     humanTitle: "Compétences humaines",
     technicalTitle: "Compétences techniques",
+    categories: {
+      "front-end": "Front-end",
+      "back-end": "Back-end",
+      devops: "DevOps",
+      cloud: "Cloud",
+      transversale: "Transversale",
+    },
+    legend: {
+      filterTitle: "Filtrer par tag :",
+      specialty: "Spécialité",
+      wish: "Ce que je voudrais faire",
+    },
     backToList: "Retour aux compétences",
     detail: {
       definitionTitle: "Définition",
@@ -169,6 +181,15 @@ const fr: Translations = {
       noLinkedRealisations: "Aucune réalisation liée pour le moment.",
     },
     skills: {
+      autonome: {
+        title: "Autonome",
+        shortDesc: "Capacité à travailler de manière indépendante et proactive",
+        definition: "[À RÉDIGER]",
+        proofs: "[À RÉDIGER]",
+        selfCritique: "[À RÉDIGER]",
+        hindsight: "[À RÉDIGER]",
+        evolution: "[À RÉDIGER]",
+      },
       empathy: {
         title: "Empathie",
         shortDesc: "Écoute active et compréhension des besoins",

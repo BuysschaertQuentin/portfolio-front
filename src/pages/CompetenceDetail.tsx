@@ -43,16 +43,12 @@ DetailBlock.displayName = "DetailBlock";
 // --- Slug to i18n key mapping ---
 
 const SLUG_TO_KEY: Record<string, string> = {
+  autonome: "autonome",
   empathie: "empathy",
   resilience: "resilience",
   "gestion-priorites": "priorities",
   "travail-equipe": "teamwork",
   pedagogie: "pedagogy",
-  "angular-typescript": "angular",
-  "nestjs-nodejs": "nestjs",
-  "bases-de-donnees": "database",
-  "cicd-devops": "devops",
-  react: "react",
 };
 
 // --- Main page ---
@@ -77,7 +73,8 @@ const CompetenceDetail = () => {
   }
 
   const Icon = skill.icon;
-  const base = `competences.skills.${i18nKey}`;
+  const CustomIcon = skill.customIcon;
+  const base = i18nKey ? `competences.skills.${i18nKey}` : undefined;
 
   return (
     <section className="section-container space-y-8 pt-10">
@@ -86,17 +83,32 @@ const CompetenceDetail = () => {
 
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className={`rounded-xl p-3 ${skill.type === "human" ? "bg-cyan/10" : "bg-orange/10"}`}>
-          <Icon
-            className={`h-8 w-8 ${skill.type === "human" ? "text-cyan" : "text-orange"}`}
-            aria-hidden="true"
-          />
+        <div className={`rounded-xl p-3 flex items-center justify-center ${skill.type === "human" ? "bg-cyan/10" : "bg-orange/10"}`}>
+          {Icon && (
+            <Icon
+              className={`h-8 w-8 ${skill.type === "human" ? "text-cyan" : "text-orange"}`}
+              aria-hidden="true"
+            />
+          )}
+          {skill.logoUrl && (
+            <img 
+              src={skill.logoUrl} 
+              alt={skill.techName} 
+              className="h-8 w-8 object-contain" 
+            />
+          )}
+          {CustomIcon && (
+            <CustomIcon
+              className={`h-8 w-8 ${skill.type === "human" ? "text-cyan" : "text-orange"}`}
+              aria-hidden="true"
+            />
+          )}
         </div>
         <div>
           <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
             {skill.type === "human" ? t("competences.humanTitle") : t("competences.technicalTitle")}
           </p>
-          <h1 className="text-glow-primary text-3xl font-bold sm:text-4xl">{t(skill.titleKey)}</h1>
+          <h1 className="text-glow-primary text-3xl font-bold sm:text-4xl">{skill.titleKey ? t(skill.titleKey) : skill.techName}</h1>
         </div>
       </div>
 
@@ -105,31 +117,31 @@ const CompetenceDetail = () => {
         <DetailBlock
           icon={BookOpen}
           title={t("competences.detail.definitionTitle")}
-          content={t(`${base}.definition`)}
+          content={base ? t(`${base}.definition`) : "[À RÉDIGER]"}
           accentColor="primary"
         />
         <DetailBlock
           icon={Target}
           title={t("competences.detail.proofsTitle")}
-          content={t(`${base}.proofs`)}
+          content={base ? t(`${base}.proofs`) : "[À RÉDIGER]"}
           accentColor={skill.type === "human" ? "cyan" : "orange"}
         />
         <DetailBlock
           icon={Eye}
           title={t("competences.detail.selfCritiqueTitle")}
-          content={t(`${base}.selfCritique`)}
+          content={base ? t(`${base}.selfCritique`) : "[À RÉDIGER]"}
           accentColor="violet-foreground"
         />
         <DetailBlock
           icon={MessageSquare}
           title={t("competences.detail.hindsightTitle")}
-          content={t(`${base}.hindsight`)}
+          content={base ? t(`${base}.hindsight`) : "[À RÉDIGER]"}
           accentColor="primary"
         />
         <DetailBlock
           icon={TrendingUp}
           title={t("competences.detail.evolutionTitle")}
-          content={t(`${base}.evolution`)}
+          content={base ? t(`${base}.evolution`) : "[À RÉDIGER]"}
           accentColor={skill.type === "human" ? "cyan" : "orange"}
         />
       </div>
