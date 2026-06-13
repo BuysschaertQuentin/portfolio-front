@@ -33,10 +33,24 @@
     "jsdom": "^28.1.0",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
-  }
+  },
+  "description": "Portfolio personnel développé avec une approche **retro-futuriste** et **pixel-art**, mettant en avant mon parcours de reconversion et mes compétences de développeur Fullstack.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuysschaertQuentin/portfolio-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuysschaertQuentin/portfolio-front/issues"
+  },
+  "homepage": "https://github.com/BuysschaertQuentin/portfolio-front#readme"
 }

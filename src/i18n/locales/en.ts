@@ -161,9 +161,9 @@ const en: Translations = {
     categories: {
       "front-end": "Front-end",
       "back-end": "Back-end",
-      "devops": "DevOps",
-      "cloud": "Cloud",
-      "transversale": "Transversal",
+      devops: "DevOps",
+      cloud: "Cloud",
+      transversale: "Transversal",
     },
     legend: {
       filterTitle: "Filter by tag:",
@@ -284,7 +284,7 @@ const en: Translations = {
   },
   realisations: {
     title: "Achievements",
-    subtitle: "5 key projects — professional, personal and academic",
+    subtitle: "Projects — professional, personal and academic",
     contextPro: "Professional project",
     contextPerso: "Personal project",
     contextFormation: "Academic project",
@@ -408,6 +408,10 @@ const en: Translations = {
       dwwm: {
         date: "Jun. 2023",
         title: "Professional Title 'Web and Mobile Web Developer' — RNCP 31114 (Level 5)",
+      },
+      assp: {
+        date: "Jun. 2013",
+        title: "Vocational Baccalaureate ASSP (Accompanying, Care and Services to People)",
       },
     },
   },

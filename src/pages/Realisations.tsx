@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/cards/Card";
+import { TechBadge } from "@/components/ui/badges/TechBadge";
 import {
   CONTEXT_COLORS,
   REALISATIONS,
+  REALISATION_TAGS,
   type Realisation,
   type RealisationContext,
 } from "@/constants/realisations";
@@ -27,41 +29,52 @@ interface RealisationCardProps {
 const RealisationCard = memo(({ realisation, t }: RealisationCardProps) => {
   const Icon = realisation.icon;
   const color = CONTEXT_COLORS[realisation.context];
+  const tags = REALISATION_TAGS[realisation.slug] || [];
 
   return (
     <Link
       to={`/realisations/${realisation.slug}`}
-      className="group block"
+      className="group block h-full"
       aria-label={t(realisation.titleKey)}
     >
       <Card
-        className={`rounded-xl p-6 border-${color}/10 space-y-4 hover:border-${color}/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_hsla(var(--primary)/0.1)]`}
+        className={`rounded-xl p-6 border-${color}/10 space-y-4 hover:border-${color}/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_hsla(var(--primary)/0.1)] flex flex-col justify-between h-full`}
       >
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            <div
-              className={`rounded-lg p-2 bg-${color}/10 group-hover:bg-${color}/20 transition-colors`}
-            >
-              <Icon
-                className={`h-5 w-5 text-${color} transition-transform group-hover:scale-110`}
-                aria-hidden="true"
-              />
-            </div>
-            <div>
-              <h3
-                className={`text-foreground text-base font-semibold group-hover:text-${color} transition-colors`}
+        <div className="space-y-4">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className={`rounded-lg p-2 bg-${color}/10 group-hover:bg-${color}/20 transition-colors`}
               >
-                {t(realisation.titleKey)}
-              </h3>
-              <span className={`font-mono text-xs text-${color}`}>
-                {t(CONTEXT_KEYS[realisation.context])}
-              </span>
+                <Icon
+                  className={`h-5 w-5 text-${color} transition-transform group-hover:scale-110`}
+                  aria-hidden="true"
+                />
+              </div>
+              <div>
+                <h3
+                  className={`text-foreground text-base font-semibold group-hover:text-${color} transition-colors`}
+                >
+                  {t(realisation.titleKey)}
+                </h3>
+                <span className={`font-mono text-xs text-${color}`}>
+                  {t(CONTEXT_KEYS[realisation.context])}
+                </span>
+              </div>
             </div>
           </div>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {t(realisation.shortDescKey)}
+          </p>
         </div>
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          {t(realisation.shortDescKey)}
-        </p>
+
+        {tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-4 border-t border-border/20">
+            {tags.map((name) => (
+              <TechBadge key={name} name={name} size="small" />
+            ))}
+          </div>
+        )}
       </Card>
     </Link>
   );

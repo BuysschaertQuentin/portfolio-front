@@ -113,6 +113,11 @@ export const CERTIFICATIONS: readonly CertificationEntry[] = [
     dateKey: "parcours.certifications.dwwm.date",
     titleKey: "parcours.certifications.dwwm.title",
   },
+  {
+    id: "assp",
+    dateKey: "parcours.certifications.assp.date",
+    titleKey: "parcours.certifications.assp.title",
+  },
 ] as const;
 
 /** Colors per entry type */

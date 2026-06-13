@@ -284,7 +284,7 @@ const fr: Translations = {
   },
   realisations: {
     title: "Réalisations",
-    subtitle: "5 projets — professionnels, personnels et de formation",
+    subtitle: "Projets — professionnels, personnels et de formation",
     contextPro: "Projet professionnel",
     contextPerso: "Projet personnel",
     contextFormation: "Projet de formation",
@@ -392,23 +392,26 @@ const fr: Translations = {
         place: "APF France Handicap — Villeneuve d'Ascq",
         status: "CDI",
         missions:
-          "Accompagnement quotidien de personnes en situation de handicap moteur et mental. Formation aux aspirations endotrachéales (2017) permettant la prise en charge de patients atteints de maladies neuromusculaires (Charcot). Planification autonome des interventions, collaboration avec familles et équipes soignantes.",
+          "Accompagnement quotidien de personnes en situation de handicap moteur et mental. Formation aux aspirations endotrachéales (2017) permettant la prise en charge de patients ayant une trachéotomie. Planification autonome des interventions, collaboration avec familles et équipes soignantes.",
         vision: "[À RÉDIGER] — Ce que cette expérience t'a apporté.",
       },
     },
     certifications: {
       master: {
-        date: "Mars 2027 (prévu)",
-        title: "Master Ingénierie Logicielle — RNCP 35419 (Niv. 7) 🔄 En cours",
+        date: "Mars 2025 - Mars 2027",
+        title: "Master Ingénierie Logicielle - RNCP 35419",
       },
       cda: {
         date: "Déc. 2024",
-        title:
-          "Titre Professionnel « Concepteur Développeur d'Applications » — RNCP 31678 (Niv. 6)",
+        title: "Titre Professionnel « Concepteur Développeur d'Applications » - RNCP 31678",
       },
       dwwm: {
         date: "Juin 2023",
-        title: "Titre Professionnel « Développeur Web et Web Mobile » — RNCP 31114 (Niv. 5)",
+        title: "Titre Professionnel « Développeur Web et Web Mobile » - RNCP 31114",
+      },
+      assp: {
+        date: "Juin 2013",
+        title: "Bac Pro ASSP (Accompagnement, Soins et Services aux Personnes)",
       },
     },
   },
