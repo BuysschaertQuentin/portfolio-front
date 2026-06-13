@@ -55,11 +55,11 @@ const SLUG_TO_KEY: Record<string, string> = {
 
 const CompetenceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
 
   const skill = useMemo(() => (slug ? findSkillBySlug(slug) : undefined), [slug]);
 
-  const i18nKey = slug ? SLUG_TO_KEY[slug] : undefined;
+  const i18nKey = slug ? (SLUG_TO_KEY[slug] || slug) : undefined;
 
   // Find all realisations that reference this skill
   const linkedRealisations = useMemo(
@@ -75,6 +75,13 @@ const CompetenceDetail = () => {
   const Icon = skill.icon;
   const CustomIcon = skill.customIcon;
   const base = i18nKey ? `competences.skills.${i18nKey}` : undefined;
+
+  const fallback = locale === "fr" ? "[À RÉDIGER]" : "[TO WRITE]";
+
+  const getTranslation = (key: string): string => {
+    const val = t(key);
+    return val === key ? fallback : val;
+  };
 
   return (
     <section className="section-container space-y-8 pt-10">
@@ -117,31 +124,31 @@ const CompetenceDetail = () => {
         <DetailBlock
           icon={BookOpen}
           title={t("competences.detail.definitionTitle")}
-          content={base ? t(`${base}.definition`) : "[À RÉDIGER]"}
+          content={base ? getTranslation(`${base}.definition`) : fallback}
           accentColor="primary"
         />
         <DetailBlock
           icon={Target}
           title={t("competences.detail.proofsTitle")}
-          content={base ? t(`${base}.proofs`) : "[À RÉDIGER]"}
+          content={base ? getTranslation(`${base}.proofs`) : fallback}
           accentColor={skill.type === "human" ? "cyan" : "orange"}
         />
         <DetailBlock
           icon={Eye}
           title={t("competences.detail.selfCritiqueTitle")}
-          content={base ? t(`${base}.selfCritique`) : "[À RÉDIGER]"}
+          content={base ? getTranslation(`${base}.selfCritique`) : fallback}
           accentColor="violet-foreground"
         />
         <DetailBlock
           icon={MessageSquare}
           title={t("competences.detail.hindsightTitle")}
-          content={base ? t(`${base}.hindsight`) : "[À RÉDIGER]"}
+          content={base ? getTranslation(`${base}.hindsight`) : fallback}
           accentColor="primary"
         />
         <DetailBlock
           icon={TrendingUp}
           title={t("competences.detail.evolutionTitle")}
-          content={base ? t(`${base}.evolution`) : "[À RÉDIGER]"}
+          content={base ? getTranslation(`${base}.evolution`) : fallback}
           accentColor={skill.type === "human" ? "cyan" : "orange"}
         />
       </div>

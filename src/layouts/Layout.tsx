@@ -13,12 +13,32 @@ const Layout = () => {
   const { t } = useI18n();
   const { pathname } = useLocation();
   const mainRef = useRef<HTMLElement>(null);
+  const scrollPositions = useRef<Record<string, number>>({});
 
-  // Reset scroll and focus on route change for accessibility
+  // Save scroll position for the current path
+  const handleScroll = () => {
+    if (mainRef.current) {
+      scrollPositions.current[pathname] = mainRef.current.scrollTop;
+    }
+  };
+
+  // Restore scroll position on route change
   useEffect(() => {
-    window.scrollTo(0, 0);
-    // Focus the main content area for screen readers
-    mainRef.current?.focus();
+    const savedPosition = scrollPositions.current[pathname] || 0;
+    
+    if (mainRef.current) {
+      mainRef.current.scrollTop = savedPosition;
+      mainRef.current.focus();
+    }
+
+    // Defer in case of lazy-load/suspense layout stabilization delay
+    const timer = setTimeout(() => {
+      if (mainRef.current) {
+        mainRef.current.scrollTop = savedPosition;
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (
@@ -35,6 +55,7 @@ const Layout = () => {
         id="main-content"
         className="flex-1 overflow-y-auto overflow-x-hidden outline-none"
         tabIndex={-1}
+        onScroll={handleScroll}
       >
         <Suspense fallback={<div className="flex flex-1 items-center justify-center">{t("common.loading")}</div>}>
           <Outlet />
