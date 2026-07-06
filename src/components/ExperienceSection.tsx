@@ -1,4 +1,5 @@
-import orangeImg from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac3 from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac5 from "@/assets/developpeur_alternance_orange_bac5.png";
 import orangeLogo from "@/assets/orange.png";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
@@ -11,7 +12,12 @@ interface ExperienceSectionProps {
   readonly id: string;
   readonly index: string;
   readonly label: string;
-  readonly entryKey: "orange1" | "orange2";
+  /**
+   * Key mapping to translation entries under `parcours.entries` for Orange:
+   * - "orangeBac3": 1st year apprenticeship (Bac+3 / CDA)
+   * - "orangeBac5": 2-year apprenticeship (Bac+5 / Master)
+   */
+  readonly entryKey: "orangeBac3" | "orangeBac5";
   readonly stack: readonly string[];
   readonly nextSectionId: string;
   readonly nextSectionLabel: string;
@@ -27,6 +33,8 @@ const ExperienceSection = ({
   nextSectionLabel,
 }: ExperienceSectionProps) => {
   const { t } = useI18n();
+  // Select image based on the academic year: Bac+3 (orangeBac3) vs Bac+5 (orangeBac5)
+  const orangeImg = entryKey === "orangeBac3" ? orangeImgBac3 : orangeImgBac5;
 
   return (
     <section

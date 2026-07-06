@@ -26,6 +26,7 @@ export const FORMATION_SKILLS = [
   "Git",
   "TypeScript",
   "Express",
+  "PostgreSQL",
 ] as const;
 
 export const EXPERIENCE_STACK = [

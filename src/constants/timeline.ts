@@ -30,32 +30,32 @@ export interface TimelineEntry {
 export const TIMELINE_ENTRIES: readonly Omit<TimelineEntry, "logo">[] = [
   // --- 2ème alternance Orange (Master) ---
   {
-    id: "orange2",
+    id: "orangeBac5",
     type: "experience",
     icon: Briefcase,
-    periodKey: "parcours.entries.orange2.period",
-    titleKey: "parcours.entries.orange2.title",
-    placeKey: "parcours.entries.orange2.place",
+    periodKey: "parcours.entries.orangeBac5.period",
+    titleKey: "parcours.entries.orangeBac5.title",
+    placeKey: "parcours.entries.orangeBac5.place",
     externalLink: "https://www.orange.fr",
     detailKeys: {
-      status: "parcours.entries.orange2.status",
-      missions: "parcours.entries.orange2.missions",
-      vision: "parcours.entries.orange2.vision",
+      status: "parcours.entries.orangeBac5.status",
+      missions: "parcours.entries.orangeBac5.missions",
+      vision: "parcours.entries.orangeBac5.vision",
     },
   },
   // --- 1ère alternance Orange (Bac+3) ---
   {
-    id: "orange1",
+    id: "orangeBac3",
     type: "experience",
     icon: Briefcase,
-    periodKey: "parcours.entries.orange1.period",
-    titleKey: "parcours.entries.orange1.title",
-    placeKey: "parcours.entries.orange1.place",
+    periodKey: "parcours.entries.orangeBac3.period",
+    titleKey: "parcours.entries.orangeBac3.title",
+    placeKey: "parcours.entries.orangeBac3.place",
     externalLink: "https://www.orange.fr",
     detailKeys: {
-      status: "parcours.entries.orange1.status",
-      missions: "parcours.entries.orange1.missions",
-      vision: "parcours.entries.orange1.vision",
+      status: "parcours.entries.orangeBac3.status",
+      missions: "parcours.entries.orangeBac3.missions",
+      vision: "parcours.entries.orangeBac3.vision",
     },
   },
   // --- O'Clock ---

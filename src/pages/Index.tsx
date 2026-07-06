@@ -165,16 +165,16 @@ const Index = () => {
         id="experience-bac3"
         index="03"
         label={t("experience.bac3Label")}
-        entryKey="orange1"
+        entryKey="orangeBac3"
         stack={EXPERIENCE_STACK_BAC3}
         nextSectionId="experience-bac5"
-        nextSectionLabel={t("parcours.entries.orange2.title")}
+        nextSectionLabel={t("parcours.entries.orangeBac5.title")}
       />
       <ExperienceSection
         id="experience-bac5"
         index="04"
         label={t("experience.bac5Label")}
-        entryKey="orange2"
+        entryKey="orangeBac5"
         stack={EXPERIENCE_STACK_BAC5}
         nextSectionId="projects"
         nextSectionLabel={t("chevrons.projects")}

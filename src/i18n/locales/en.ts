@@ -362,7 +362,7 @@ const en: Translations = {
     missions: "Missions",
     vision: "Vision",
     entries: {
-      orange2: {
+      orangeBac5: {
         period: "Mar. 2025 — Mar. 2027",
         title: "Fullstack Developer — Master's in Software Engineering",
         place: "Orange Business",
@@ -370,7 +370,7 @@ const en: Translations = {
         missions: "[TO WRITE] — Detailed missions (Flutter mobile app, compensatory leave).",
         vision: "[TO WRITE] — Company vision.",
       },
-      orange1: {
+      orangeBac3: {
         period: "Nov. 2023 — Dec. 2024",
         title: "Fullstack Developer — Bachelor's in Application Design",
         place: "Orange Business",
