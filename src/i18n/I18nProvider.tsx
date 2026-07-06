@@ -16,14 +16,17 @@ const localeMap: Record<Locale, Translations> = { fr, en };
 /**
  * Resolve a dot-separated key path in a nested translations object.
  */
-const resolve = (obj: Translations, path: string): string => {
+const resolve = (obj: Translations, path: string | undefined): string => {
+  if (!path) return "";
   const parts = path.split(".");
   let current: string | Translations = obj;
 
   for (const part of parts) {
     if (typeof current === "string") return path;
-    current = current[part];
-    if (current === undefined) return path;
+    if (current === null || typeof current !== "object") return path;
+    const next = (current as Record<string, unknown>)[part];
+    if (next === undefined) return path;
+    current = next as string | Translations;
   }
 
   return typeof current === "string" ? current : path;
@@ -64,7 +67,7 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
   }, []);
 
   const t = useCallback(
-    (key: string): string => resolve(localeMap[locale], key),
+    (key: string | undefined): string => resolve(localeMap[locale], key),
     [locale],
   );
 

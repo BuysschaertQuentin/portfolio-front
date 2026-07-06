@@ -169,7 +169,12 @@ const CompetenceDetail = () => {
               const RIcon = r.icon;
               const color = CONTEXT_COLORS[r.context];
               return (
-                <Link key={r.slug} to={`/realisations/${r.slug}`} className="group">
+                <Link
+                  key={r.slug}
+                  to={`/realisations/${r.slug}`}
+                  state={{ from: `/competences/${slug}` }}
+                  className="group"
+                >
                   <Card
                     className={`rounded-lg px-4 py-2 border-${color}/10 flex items-center gap-2 hover:border-${color}/30 transition-all duration-200`}
                     focusable={false}

@@ -7,7 +7,7 @@ export interface I18nContextValue {
   /** Switch to a different locale */
   readonly setLocale: (locale: Locale) => void;
   /** Translate a key path, e.g. "hero.title" */
-  readonly t: (key: string) => string;
+  readonly t: (key: string | undefined) => string;
 }
 
 export const I18nContext = createContext<I18nContextValue | null>(null);

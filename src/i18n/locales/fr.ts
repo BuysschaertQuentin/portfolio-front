@@ -372,7 +372,7 @@ const fr: Translations = {
       },
       orangeBac3: {
         period: "Nov. 2023 — Déc. 2024",
-        title: "Développeur Fullstack — Bac+3 CDA",
+        title: "Alternance — Bac+3 Concepteur Développeur d'Applications",
         place: "Orange Business",
         status: "Alternance (1ère année)",
         missions: "[À RÉDIGER] — Missions détaillées (portail RH).",

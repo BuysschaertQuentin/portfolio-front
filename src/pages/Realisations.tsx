@@ -34,6 +34,7 @@ const RealisationCard = memo(({ realisation, t }: RealisationCardProps) => {
   return (
     <Link
       to={`/realisations/${realisation.slug}`}
+      state={{ from: "/realisations" }}
       className="group block h-full"
       aria-label={t(realisation.titleKey)}
     >

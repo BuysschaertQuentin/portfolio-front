@@ -33,7 +33,12 @@ export const ProjectCard = memo(
         </div>
       </div>
       <div className="flex justify-end">
-        <Button to={`/realisations/${slug}`} variant="secondary" className="h-10 px-2 text-sm">
+        <Button
+          to={`/realisations/${slug}`}
+          state={{ from: "/" }}
+          variant="secondary"
+          className="h-10 px-2 text-sm"
+        >
           {detailsCta}
           <ArrowRight className="ml-1 h-4 w-4" />
         </Button>

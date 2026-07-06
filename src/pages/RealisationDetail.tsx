@@ -13,7 +13,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { memo, useMemo } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useLocation } from "react-router-dom";
 
 // --- Detail block ---
 
@@ -43,11 +43,11 @@ DetailBlock.displayName = "DetailBlock";
 // --- Slug to i18n key mapping ---
 
 const SLUG_TO_KEY: Record<string, string> = {
-  "application-orange": "orange",
+  "portail-rh": "portailRh",
+  "repos-compensateurs": "reposComp",
+  "app-mobile-competences": "mobileComp",
+  "o-voyage": "ovoyage",
   portfolio: "portfolio",
-  "bot-discord": "bot",
-  "projet-formation-1": "formation1",
-  "projet-formation-2": "formation2",
 };
 
 // --- Main page ---
@@ -55,10 +55,20 @@ const SLUG_TO_KEY: Record<string, string> = {
 const RealisationDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useI18n();
+  const location = useLocation();
 
   const realisation = useMemo(() => (slug ? findRealisationBySlug(slug) : undefined), [slug]);
 
   const i18nKey = slug ? SLUG_TO_KEY[slug] : undefined;
+
+  const backTo = (location.state as { from?: string } | null)?.from ?? "/realisations";
+
+  const backLabel =
+    backTo === "/"
+      ? t("notFound.backHome")
+      : backTo.startsWith("/competences/")
+        ? t("competences.backToList")
+        : t("realisations.backToList");
 
   if (!realisation || !i18nKey) {
     return <Navigate to="/realisations" replace />;
@@ -78,7 +88,7 @@ const RealisationDetail = () => {
   return (
     <section className="section-container space-y-8 pt-10">
       {/* Back link */}
-      <ReturnButton to="/realisations" label={t("realisations.backToList")} />
+      <ReturnButton to={backTo} label={backLabel} />
 
       {/* Header */}
       <div className="flex items-center gap-4">
@@ -143,19 +153,35 @@ const RealisationDetail = () => {
           {realisation.linkedSkills.map((skillSlug) => {
             const skill = findSkillBySlug(skillSlug);
             if (!skill) return null;
-            const SkillIcon = skill.icon;
+            const Icon = skill.icon;
+            const CustomIcon = skill.customIcon;
             return (
               <Link key={skillSlug} to={`/competences/${skillSlug}`} className="group">
                 <Card
                   className="border-primary/10 hover:border-primary/30 flex items-center gap-2 rounded-lg px-4 py-2 transition-all duration-200"
                   focusable={false}
                 >
-                  <SkillIcon
-                    className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
-                    aria-hidden="true"
-                  />
+                  {Icon && (
+                    <Icon
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
+                      aria-hidden="true"
+                    />
+                  )}
+                  {skill.logoUrl && (
+                    <img
+                      src={skill.logoUrl}
+                      alt=""
+                      className="h-4 w-4 object-contain"
+                    />
+                  )}
+                  {CustomIcon && (
+                    <CustomIcon
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors"
+                      aria-hidden="true"
+                    />
+                  )}
                   <span className="text-muted-foreground group-hover:text-primary font-mono text-sm transition-colors">
-                    {t(skill.titleKey)}
+                    {skill.titleKey ? t(skill.titleKey) : skill.techName}
                   </span>
                 </Card>
               </Link>

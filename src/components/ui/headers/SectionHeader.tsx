@@ -17,14 +17,11 @@ interface SectionHeaderProps {
 }
 
 /** Map accent color to Tailwind classes */
-const COLOR_MAP: Record<
-  SectionAccentColor,
-  { text: string; glow: string }
-> = {
+const COLOR_MAP: Record<SectionAccentColor, { text: string; glow: string }> = {
   primary: { text: "text-primary", glow: "text-glow-primary" },
-  cyan:    { text: "text-cyan",    glow: "text-glow-cyan"    },
-  violet:  { text: "text-violet-foreground", glow: "text-glow-violet" },
-  orange:  { text: "text-orange",  glow: "text-glow-orange"  },
+  cyan: { text: "text-cyan", glow: "text-glow-cyan" },
+  violet: { text: "text-violet-foreground", glow: "text-glow-violet" },
+  orange: { text: "text-orange", glow: "text-glow-orange" },
 };
 
 /**
@@ -32,13 +29,7 @@ const COLOR_MAP: Record<
  * Renders: index number · label · h2 title (+ optional highlight).
  */
 export const SectionHeader = memo(
-  ({
-    index,
-    label,
-    title,
-    titleHighlight,
-    accentColor = "primary",
-  }: SectionHeaderProps) => {
+  ({ index, label, title, titleHighlight, accentColor = "primary" }: SectionHeaderProps) => {
     const { text, glow } = COLOR_MAP[accentColor];
 
     return (
@@ -47,8 +38,8 @@ export const SectionHeader = memo(
           <span className={`${text} font-mono text-xl opacity-50`}>{index} /</span>
           <p className={`${text} font-mono text-sm tracking-widest uppercase`}>{label}</p>
         </div>
-        <h2 className={`${glow} text-center text-2xl leading-tight font-bold sm:text-3xl`}>
-          {title}{" "}
+        <h2 className={`${glow} flex flex-col items-center text-center text-2xl leading-tight font-bold sm:text-3xl`}>
+          <span>{title}</span>
           {titleHighlight && <span className={text}>{titleHighlight}</span>}
         </h2>
       </div>
