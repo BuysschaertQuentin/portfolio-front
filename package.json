@@ -52,5 +52,12 @@
   "bugs": {
     "url": "https://github.com/BuysschaertQuentin/portfolio-front/issues"
   },
-  "homepage": "https://github.com/BuysschaertQuentin/portfolio-front#readme"
+  "homepage": "https://github.com/BuysschaertQuentin/portfolio-front#readme",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild",
+      "sharp"
+    ]
+  }
 }
