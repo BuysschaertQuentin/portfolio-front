@@ -152,7 +152,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-02",
     showInTransversal: true,
-    category: "back-end",
+    category: "transversale",
   },
   {
     name: "Git",
@@ -174,7 +174,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2022-10",
     showInTransversal: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "CSS3",
@@ -185,7 +185,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2022-10",
     showInTransversal: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "Tailwind CSS",
@@ -196,7 +196,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-06",
     showInTransversal: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "JavaScript",
@@ -207,7 +207,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-01",
     showInTransversal: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "React",
@@ -295,7 +295,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-02",
     showInTransversal: true,
-    category: "back-end",
+    category: "transversale",
   },
   {
     name: "Kubernetes",

@@ -24,6 +24,20 @@ interface DetailBlockProps {
   readonly accentColor?: string;
 }
 
+const renderFormattedText = (text: string) => {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-semibold text-foreground">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
 const DetailBlock = memo(
   ({ icon: Icon, title, content, accentColor = "primary" }: DetailBlockProps) => (
     <Card className={`rounded-xl p-6 border-${accentColor}/15 space-y-3`}>
@@ -33,7 +47,9 @@ const DetailBlock = memo(
         </div>
         <h2 className="text-foreground font-semibold">{title}</h2>
       </div>
-      <p className="text-muted-foreground leading-relaxed">{content}</p>
+      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+        {renderFormattedText(content)}
+      </p>
     </Card>
   ),
 );
@@ -46,7 +62,7 @@ const SLUG_TO_KEY: Record<string, string> = {
   autonome: "autonome",
   empathie: "empathy",
   resilience: "resilience",
-  "gestion-priorites": "priorities",
+  communication: "communication",
   "travail-equipe": "teamwork",
   pedagogie: "pedagogy",
 };

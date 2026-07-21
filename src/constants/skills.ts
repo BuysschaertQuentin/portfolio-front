@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Clock,
   Eye,
   Heart,
+  MessageSquare,
   Shield,
   UserRoundCheckIcon,
   Users
@@ -58,11 +58,11 @@ const HUMAN_SKILLS: readonly Skill[] = [
     shortDescKey: "competences.skills.resilience.shortDesc",
   },
   {
-    slug: "gestion-priorites",
+    slug: "communication",
     type: "human",
-    icon: Clock,
-    titleKey: "competences.skills.priorities.title",
-    shortDescKey: "competences.skills.priorities.shortDesc",
+    icon: MessageSquare,
+    titleKey: "competences.skills.communication.title",
+    shortDescKey: "competences.skills.communication.shortDesc",
   },
   {
     slug: "travail-equipe",
