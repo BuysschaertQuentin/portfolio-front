@@ -1,5 +1,4 @@
 import profileImg from "@/assets/photo_profil.jpg";
-import { Card } from "@/components/ui/Card";
 import { PERSONAL } from "@/constants/personal";
 import { SKILLS } from "@/constants/skills";
 import { useI18n } from "@/i18n";
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "../components/ui/cards/Card";
 
 // --- Section header ---
 
@@ -143,7 +143,7 @@ const About = () => {
           <h1 className="text-3xl sm:text-4xl font-bold text-glow-primary">
             {t("about.title")}
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
             {t("about.intro")}
           </p>
         </div>

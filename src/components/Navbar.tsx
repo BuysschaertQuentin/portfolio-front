@@ -2,10 +2,12 @@ import profileImg from "@/assets/photo_profil.jpg";
 import { PERSONAL } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { NavItem } from "@/types/navigation";
-import { Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LanguageSwitcher from "./LanguageSwitcher";
+import { GithubIcon, LinkedinIcon } from "./ui/icons";
+import LanguageSwitcher from "./ui/navigation/LanguageSwitcher";
+import { SocialButton } from "./ui/navigation/SocialButton";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -85,8 +87,27 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop language switcher — right */}
-        <div className="hidden md:block">
+        {/* Desktop right — social links + language switcher */}
+        <div className="hidden items-center gap-3 md:flex">
+          <SocialButton
+            href={PERSONAL.linkedIn}
+            label="LinkedIn"
+            variant="blue"
+            icon={<LinkedinIcon />}
+          />
+          <SocialButton
+            href={PERSONAL.github}
+            label="GitHub"
+            variant="default"
+            icon={<GithubIcon />}
+          />
+          <SocialButton
+            href={`mailto:${PERSONAL.email}`}
+            label={t("nav.sendEmail")}
+            variant="red"
+            icon={<Mail />}
+            isMail
+          />
           <LanguageSwitcher />
         </div>
 
@@ -134,6 +155,28 @@ const Navbar = () => {
               </Link>
             );
           })}
+          {/* Social links — mobile */}
+          <div className="border-border/50 flex items-center gap-4 border-t pt-3">
+            <SocialButton
+              href={PERSONAL.linkedIn}
+              label="LinkedIn"
+              variant="blue"
+              icon={<LinkedinIcon />}
+            />
+            <SocialButton
+              href={PERSONAL.github}
+              label="GitHub"
+              variant="default"
+              icon={<GithubIcon />}
+            />
+            <SocialButton
+              href={`mailto:${PERSONAL.email}`}
+              label={t("nav.sendEmail")}
+              variant="red"
+              icon={<Mail />}
+              isMail
+            />
+          </div>
         </div>
       )}
     </nav>

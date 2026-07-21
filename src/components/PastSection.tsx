@@ -1,32 +1,12 @@
 import auxImg from "@/assets/auxiliaire_de_vie.png";
-import { useI18n } from "@/i18n";
-import { type LucideIcon, ArrowRight } from "lucide-react";
-import { memo } from "react";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
-
 import { PAST_SOFT_SKILLS } from "@/constants/home";
-
-interface SoftSkillCardProps {
-  readonly icon: LucideIcon;
-  readonly label: string;
-  readonly desc: string;
-}
-
-const SoftSkillCard = memo(({ icon: Icon, label, desc }: SoftSkillCardProps) => (
-  <Card className="border-cyan/15 hover:border-cyan/30 flex items-start gap-3 rounded-lg p-4 transition-colors">
-    <div className="bg-cyan-muted rounded-md p-2">
-      <Icon className="text-cyan h-4 w-4" aria-hidden="true" />
-    </div>
-    <div>
-      <p className="text-foreground text-sm font-semibold">{label}</p>
-      <p className="text-muted-foreground text-xs leading-relaxed">{desc}</p>
-    </div>
-  </Card>
-));
-
-SoftSkillCard.displayName = "SoftSkillCard";
+import { useI18n } from "@/i18n";
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SoftSkillCard } from "./ui/cards/SoftSkillCard";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
 
 const PastSection = () => {
   const { t } = useI18n();
@@ -34,34 +14,29 @@ const PastSection = () => {
   return (
     <section
       id="past"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       <div
         className="from-background via-cyan-muted/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b"
         aria-hidden="true"
       />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center gap-3">
-            <span className="text-cyan font-mono text-xl opacity-50">01 /</span>
-            <p className="text-cyan font-mono text-sm tracking-widest uppercase">
-              {t("past.sectionLabel")}
-            </p>
-          </div>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index="01"
+          label={t("past.sectionLabel")}
+          title={t("past.title")}
+          titleHighlight={t("past.titleHighlight")}
+          accentColor="cyan"
+        />
 
-          <h2 className="text-glow-cyan text-center text-2xl leading-tight font-bold sm:text-3xl">
-            {t("past.title")} <span className="text-cyan">{t("past.titleHighlight")}</span>
-          </h2>
-        </div>
-
-        <div className="grid items-center gap-6 md:grid-cols-2">
-          <div className="space-y-3">
-            <Card className="border-cyan/20 space-y-3 rounded-xl p-5">
-              <p className="text-secondary-foreground text-sm leading-relaxed md:text-base">
+        <div className="grid items-center gap-8 md:grid-cols-2">
+          <div className="space-y-6">
+            <Card className="border-cyan/20 space-y-4 rounded-lg p-6">
+              <p className="text-secondary-foreground text-base leading-relaxed">
                 {t("past.description")}
               </p>
-              <div className="pt-4">
+              <div className="pt-2">
                 <Button
                   to="/competences"
                   variant="secondary"
@@ -72,7 +47,7 @@ const PastSection = () => {
                 </Button>
               </div>
             </Card>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {PAST_SOFT_SKILLS.map((skill) => (
                 <SoftSkillCard
                   key={skill.labelKey}
@@ -96,7 +71,9 @@ const PastSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="formation" label="La transition" />
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="formation" label={t("chevrons.formation")} />
+      </div>
     </section>
   );
 };

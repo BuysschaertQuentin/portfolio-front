@@ -14,29 +14,43 @@
   },
   "dependencies": {
     "lucide-react": "^0.574.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.3",
-    "@tailwindcss/postcss": "^4.2.1",
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/postcss": "^4.3.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react-swc": "^4.2.3",
-    "eslint": "^9.39.3",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
+    "@vitejs/plugin-react-swc": "^4.3.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
     "jsdom": "^28.1.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.9.4",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "tailwindcss": "^4.2.1",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1",
-    "vite": "^7.3.1",
-    "vitest": "^4.0.18"
-  }
+    "typescript-eslint": "^8.62.1",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.10"
+  },
+  "description": "Portfolio personnel développé avec une approche **retro-futuriste** et **pixel-art**, mettant en avant mon parcours de reconversion et mes compétences de développeur Fullstack.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuysschaertQuentin/portfolio-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuysschaertQuentin/portfolio-front/issues"
+  },
+  "homepage": "https://github.com/BuysschaertQuentin/portfolio-front#readme"
 }

@@ -1,12 +1,13 @@
 import oclockLogo from "@/assets/oclock.png";
 import orangeLogo from "@/assets/orange.png";
-import { ExternalLink } from "@/components/a11y/ExternalLink";
-import { Card } from "@/components/ui/Card";
+import { ExternalLink } from "@/components/ui/a11y/ExternalLink";
+
+import { Card } from "@/components/ui/cards/Card";
 import {
-    CERTIFICATIONS,
-    TIMELINE_COLORS,
-    TIMELINE_ENTRIES,
-    type TimelineEntry,
+  CERTIFICATIONS,
+  TIMELINE_COLORS,
+  TIMELINE_ENTRIES,
+  type TimelineEntry,
 } from "@/constants/timeline";
 import { useI18n } from "@/i18n";
 import { Award, ChevronDown, ChevronUp } from "lucide-react";
@@ -43,30 +44,25 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
       {/* Vertical line + dot */}
       <div className="flex flex-col items-center">
         <div
-          className={`w-4 h-4 rounded-full bg-${color} border-2 border-background z-10 shrink-0 mt-1`}
+          className={`h-4 w-4 rounded-full bg-${color} border-background z-10 mt-1 shrink-0 border-2`}
           aria-hidden="true"
         />
-        {!isLast && (
-          <div className="w-0.5 flex-1 bg-border" aria-hidden="true" />
-        )}
+        {!isLast && <div className="bg-border w-0.5 flex-1" aria-hidden="true" />}
       </div>
 
       {/* Content */}
-      <div className="pb-12 flex-1 min-w-0">
-        <Card className="rounded-xl p-6 border-border/50 space-y-4">
+      <div className="min-w-0 flex-1 pb-12">
+        <Card className="border-border/50 space-y-4 rounded-xl p-6">
           {/* Level 1 — always visible */}
           <div className="flex items-start gap-4">
             {logo && (
               <div className="shrink-0">
                 {entry.externalLink ? (
-                  <ExternalLink
-                    href={entry.externalLink}
-                    aria-label={t(entry.placeKey)}
-                  >
+                  <ExternalLink href={entry.externalLink} aria-label={t(entry.placeKey)}>
                     <img
                       src={logo}
                       alt=""
-                      className="w-10 h-10 object-contain rounded"
+                      className="h-10 w-10 rounded object-contain"
                       width={40}
                       height={40}
                       loading="lazy"
@@ -76,7 +72,7 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
                   <img
                     src={logo}
                     alt=""
-                    className="w-10 h-10 object-contain rounded"
+                    className="h-10 w-10 rounded object-contain"
                     width={40}
                     height={40}
                     loading="lazy"
@@ -85,18 +81,14 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
               </div>
             )}
             {!logo && (
-              <div className={`p-2 rounded-lg bg-${color}/10 shrink-0`}>
-                <Icon className={`w-5 h-5 text-${color}`} aria-hidden="true" />
+              <div className={`rounded-lg p-2 bg-${color}/10 shrink-0`}>
+                <Icon className={`h-5 w-5 text-${color}`} aria-hidden="true" />
               </div>
             )}
-            <div className="flex-1 min-w-0">
-              <p className={`text-xs font-mono text-${color} mb-1`}>
-                {t(entry.periodKey)}
-              </p>
-              <h3 className="text-base font-semibold text-foreground">
-                {t(entry.titleKey)}
-              </h3>
-              <p className="text-sm text-muted-foreground">
+            <div className="min-w-0 flex-1">
+              <p className={`font-mono text-xs text-${color} mb-1`}>{t(entry.periodKey)}</p>
+              <h3 className="text-foreground text-base font-semibold">{t(entry.titleKey)}</h3>
+              <p className="text-muted-foreground text-sm">
                 {entry.externalLink ? (
                   <ExternalLink
                     href={entry.externalLink}
@@ -116,18 +108,18 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
             <button
               type="button"
               onClick={toggle}
-              className="flex items-center gap-1 text-xs font-mono text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-muted-foreground hover:text-primary flex cursor-pointer items-center gap-1 font-mono text-xs transition-colors"
               aria-expanded={expanded}
               aria-controls={detailId}
             >
               {expanded ? (
                 <>
-                  <ChevronUp className="w-3 h-3" aria-hidden="true" />
+                  <ChevronUp className="h-3 w-3" aria-hidden="true" />
                   {t("parcours.hideDetails")}
                 </>
               ) : (
                 <>
-                  <ChevronDown className="w-3 h-3" aria-hidden="true" />
+                  <ChevronDown className="h-3 w-3" aria-hidden="true" />
                   {t("parcours.showDetails")}
                 </>
               )}
@@ -136,46 +128,41 @@ const TimelineItem = memo(({ entry, t, isLast }: TimelineItemProps) => {
 
           {/* Level 2 — expandable */}
           {expanded && (
-            <div
-              id={detailId}
-              className="space-y-3 border-t border-border/50 pt-4"
-            >
+            <div id={detailId} className="border-border/50 space-y-3 border-t pt-4">
               {entry.detailKeys.status && (
                 <div>
-                  <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Statut
+                  <p className="text-muted-foreground mb-1 font-mono text-xs tracking-wider uppercase">
+                    {t("parcours.status")}
                   </p>
-                  <p className="text-sm text-foreground">
-                    {t(entry.detailKeys.status)}
-                  </p>
+                  <p className="text-foreground text-sm">{t(entry.detailKeys.status)}</p>
                 </div>
               )}
               {entry.detailKeys.presentation && (
                 <div>
-                  <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Présentation
+                  <p className="text-muted-foreground mb-1 font-mono text-xs tracking-wider uppercase">
+                    {t("parcours.presentation")}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {t(entry.detailKeys.presentation)}
                   </p>
                 </div>
               )}
               {entry.detailKeys.missions && (
                 <div>
-                  <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Missions
+                  <p className="text-muted-foreground mb-1 font-mono text-xs tracking-wider uppercase">
+                    {t("parcours.missions")}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {t(entry.detailKeys.missions)}
                   </p>
                 </div>
               )}
               {entry.detailKeys.vision && (
                 <div>
-                  <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-1">
-                    Vision
+                  <p className="text-muted-foreground mb-1 font-mono text-xs tracking-wider uppercase">
+                    {t("parcours.vision")}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {t(entry.detailKeys.vision)}
                   </p>
                 </div>
@@ -197,17 +184,15 @@ const Parcours = () => {
 
   return (
     <section className="section-container pt-10">
-      <div className="text-center mb-16">
-        <p className="text-primary font-mono text-sm tracking-widest uppercase mb-2">
+      <div className="mb-16 text-center">
+        <p className="text-primary mb-2 font-mono text-sm tracking-widest uppercase">
           {t("parcours.subtitle")}
         </p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-glow-primary">
-          {t("parcours.title")}
-        </h1>
+        <h1 className="text-glow-primary text-3xl font-bold sm:text-4xl">{t("parcours.title")}</h1>
       </div>
 
       {/* Timeline */}
-      <div className="max-w-2xl mx-auto">
+      <div className="mx-auto max-w-2xl">
         {TIMELINE_ENTRIES.map((entry, index) => (
           <TimelineItem
             key={entry.id}
@@ -220,30 +205,23 @@ const Parcours = () => {
 
       {/* Certifications */}
       {CERTIFICATIONS.length > 0 && (
-        <div className="max-w-2xl mx-auto mt-16">
-          <div className="flex items-center gap-3 mb-8">
-            <div
-              className="w-2 h-2 rounded-full bg-primary"
-              aria-hidden="true"
-            />
-            <Award className="w-5 h-5 text-primary" aria-hidden="true" />
-            <h2 className="text-lg font-mono font-semibold text-foreground">
+        <div className="mx-auto mt-16 max-w-2xl">
+          <div className="mb-8 flex items-center gap-3">
+            <div className="bg-primary h-2 w-2 rounded-full" aria-hidden="true" />
+            <Award className="text-primary h-5 w-5" aria-hidden="true" />
+            <h2 className="text-foreground font-mono font-semibold">
               {t("parcours.certificationTitle")}
             </h2>
-            <div className="flex-1 h-px bg-border" aria-hidden="true" />
+            <div className="bg-border h-px flex-1" aria-hidden="true" />
           </div>
           <div className="space-y-3">
             {CERTIFICATIONS.map((cert) => (
               <Card
                 key={cert.id}
-                className="rounded-lg px-5 py-3 border-primary/10 flex items-center justify-between"
+                className="border-primary/10 flex items-center justify-between rounded-lg px-5 py-3"
               >
-                <span className="text-sm text-foreground">
-                  {t(cert.titleKey)}
-                </span>
-                <span className="text-xs font-mono text-muted-foreground">
-                  {t(cert.dateKey)}
-                </span>
+                <span className="text-foreground text-sm">{t(cert.titleKey)}</span>
+                <span className="text-muted-foreground font-mono text-xs">{t(cert.dateKey)}</span>
               </Card>
             ))}
           </div>

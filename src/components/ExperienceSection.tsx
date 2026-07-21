@@ -1,76 +1,70 @@
-import orangeImg from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac3 from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac5 from "@/assets/developpeur_alternance_orange_bac5.png";
 import orangeLogo from "@/assets/orange.png";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
+import { Button } from "./ui/buttons/Button";
+import { ExperienceEntry } from "./ui/cards/ExperienceEntry";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
 
-import { EXPERIENCE_STACK } from "@/constants/home";
+interface ExperienceSectionProps {
+  readonly id: string;
+  readonly index: string;
+  readonly label: string;
+  /**
+   * Key mapping to translation entries under `parcours.entries` for Orange:
+   * - "orangeBac3": 1st year apprenticeship (Bac+3 / CDA)
+   * - "orangeBac5": 2-year apprenticeship (Bac+5 / Master)
+   */
+  readonly entryKey: "orangeBac3" | "orangeBac5";
+  readonly stack: readonly string[];
+  readonly nextSectionId: string;
+  readonly nextSectionLabel: string;
+}
 
-const ExperienceSection = () => {
+const ExperienceSection = ({
+  id,
+  index,
+  label,
+  entryKey,
+  stack,
+  nextSectionId,
+  nextSectionLabel,
+}: ExperienceSectionProps) => {
   const { t } = useI18n();
+  // Select image based on the academic year: Bac+3 (orangeBac3) vs Bac+5 (orangeBac5)
+  const orangeImg = entryKey === "orangeBac3" ? orangeImgBac3 : orangeImgBac5;
 
   return (
     <section
-      id="experience"
-      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      id={id}
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       {/* Orange subtle top gradient */}
       <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center gap-4">
-            <span className="text-orange font-mono text-xl opacity-50">03 /</span>
-            <p className="text-orange font-mono text-sm tracking-widest uppercase">
-              {t("experience.sectionLabel")}
-            </p>
-          </div>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index={index}
+          label={label}
+          title={t(`parcours.entries.${entryKey}.title`)}
+          titleHighlight={t("experience.company")}
+          accentColor="orange"
+        />
 
-          <h2 className="text-glow-orange text-center text-2xl font-bold sm:text-3xl leading-tight">
-            {t("experience.title")} <span className="text-orange">{t("experience.company")}</span>
-          </h2>
-        </div>
-
-        <div className="grid items-center gap-6 md:grid-cols-2">
-          <Card className="border-orange/20 animate-fade-in order-2 space-y-4 rounded-xl p-5 md:order-1">
-            {/* Logo + company name */}
-            <div className="flex items-center gap-4">
-              <div className="bg-orange/5 border-orange/10 rounded-lg border p-2">
-                <img
-                  src={orangeLogo}
-                  alt=""
-                  className="h-10 w-10 object-contain"
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <span className="text-foreground text-lg font-semibold">
-                  {t("experience.company")}
-                </span>
-                <p className="text-muted-foreground font-mono text-xs">{t("experience.status")}</p>
-              </div>
-            </div>
-
-            <p className="text-secondary-foreground text-sm leading-relaxed md:text-base">
-              {t("experience.description")}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {EXPERIENCE_STACK.map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-orange-muted text-orange-foreground border-orange/20 rounded-full border px-3 py-1 font-mono text-[10px]"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="border-orange/20 border-t pt-4">
+        <div className="grid items-start gap-8 md:grid-cols-2">
+          {/* Left: experience entry */}
+          <div className="space-y-4">
+            <ExperienceEntry
+              period={t(`parcours.entries.${entryKey}.period`)}
+              title={t(`parcours.entries.${entryKey}.title`)}
+              status={t(`parcours.entries.${entryKey}.status`)}
+              description={t(`parcours.entries.${entryKey}.missions`)}
+              stack={stack}
+              logo={orangeLogo}
+            />
+            <div className="pt-2">
               <Button
                 to="/realisations"
                 variant="secondary"
@@ -80,9 +74,10 @@ const ExperienceSection = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-          </Card>
+          </div>
 
-          <div className="order-1 flex justify-center md:order-2">
+          {/* Right: illustration */}
+          <div className="flex justify-center">
             <img
               src={orangeImg}
               alt={t("experience.imgAlt")}
@@ -95,7 +90,9 @@ const ExperienceSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="stack" label="Mes Compétences" />
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId={nextSectionId} label={nextSectionLabel} />
+      </div>
     </section>
   );
 };

@@ -9,24 +9,24 @@ export const HOME_SECTIONS: readonly HomeSection[] = [
   { id: "hero", label: "Intro" },
   { id: "past", label: "Origines" },
   { id: "formation", label: "Transition" },
-  { id: "experience", label: "Aujourd'hui" },
-  { id: "stack", label: "Stack" },
+  { id: "experience-bac3", label: "Bac+3" },
+  { id: "experience-bac5", label: "Bac+5" },
   { id: "projects", label: "Réalisations" },
-  { id: "contact", label: "Contact" },
 ];
 
+// Sorted by descending mastery level
 export const FORMATION_SKILLS = [
+  "JavaScript",
   "HTML5",
   "CSS3",
-  "JavaScript",
-  "React",
   "Node.js",
+  "React",
   "SQL",
   "API REST",
   "Git",
   "TypeScript",
-  "GraphQL",
   "Express",
+  "PostgreSQL",
 ] as const;
 
 export const EXPERIENCE_STACK = [
@@ -39,6 +39,26 @@ export const EXPERIENCE_STACK = [
   "CloudFoundry",
   "Java",
   "Flutter",
+] as const;
+
+export const EXPERIENCE_STACK_BAC3 = [
+  "Angular",
+  "NestJS",
+  "TypeScript",
+  "MySQL",
+  "Git",
+  "CloudFoundry",
+] as const;
+
+export const EXPERIENCE_STACK_BAC5 = [
+  "Angular",
+  "Flutter",
+  "Dart",
+  "TypeScript",
+  "NestJS",
+  "Java",
+  "Docker",
+  "Git",
 ] as const;
 
 export interface SoftSkill {

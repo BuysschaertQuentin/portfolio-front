@@ -124,10 +124,10 @@ La frise doit maintenant refléter le **vrai parcours** :
 
 - [ ] Orange — 2ème alternance (Mars 2025 → Mars 2027) — Master Ingénierie Logicielle
   - Missions détaillées, vision de l'entreprise
-  - _Clés : `parcours.entries.orange2.missions` / `.vision`_
+  - _Clés : `parcours.entries.orangeBac5.missions` / `.vision`_
 - [ ] Orange — 1ère alternance (Nov. 2023 → Déc. 2024) — Bac+3 CDA
   - Missions détaillées
-  - _Clés : `parcours.entries.orange1.missions` / `.vision`_
+  - _Clés : `parcours.entries.orangeBac3.missions` / `.vision`_
 - [ ] Auxiliaire de vie — APF France Handicap, Villeneuve d'Ascq (Oct. 2014 → Août 2023)
   - Missions principales, formation aspirations endotrachéales (2017)
   - _Clés : `parcours.entries.care.missions` / `.vision`_

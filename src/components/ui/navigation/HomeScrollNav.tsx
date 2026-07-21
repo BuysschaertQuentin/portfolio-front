@@ -1,5 +1,3 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
-
 import { HOME_SECTIONS } from "@/constants/home";
 
 interface HomeScrollNavProps {
@@ -8,24 +6,11 @@ interface HomeScrollNavProps {
 }
 
 const HomeScrollNav = ({ activeSection, onNavigate }: HomeScrollNavProps) => {
-  const currentIndex = HOME_SECTIONS.findIndex((s) => s.id === activeSection);
-  const prevIndex = currentIndex > 0 ? currentIndex - 1 : -1;
-  const nextIndex = currentIndex < HOME_SECTIONS.length - 1 ? currentIndex + 1 : -1;
-
   return (
     <nav
       className="fixed top-1/2 left-6 z-40 hidden -translate-y-1/2 flex-col items-center gap-5 xl:flex"
       aria-label="Table des matières de la page"
     >
-      <button
-        onClick={() => onNavigate(prevIndex)}
-        disabled={prevIndex === -1}
-        className="text-muted-foreground hover:text-primary disabled:hover:text-muted-foreground p-1 transition-colors focus:outline-none disabled:opacity-30"
-        aria-label="Section précédente"
-      >
-        <ChevronUp className="h-5 w-5" aria-hidden="true" />
-      </button>
-
       <div className="flex flex-col gap-5">
         {HOME_SECTIONS.map(({ id, label }, index) => (
           <button
@@ -53,15 +38,6 @@ const HomeScrollNav = ({ activeSection, onNavigate }: HomeScrollNavProps) => {
           </button>
         ))}
       </div>
-
-      <button
-        onClick={() => onNavigate(nextIndex)}
-        disabled={nextIndex === -1}
-        className="text-muted-foreground hover:text-primary disabled:hover:text-muted-foreground p-1 transition-colors focus:outline-none disabled:opacity-30"
-        aria-label="Section suivante"
-      >
-        <ChevronDown className="h-5 w-5" aria-hidden="true" />
-      </button>
     </nav>
   );
 };

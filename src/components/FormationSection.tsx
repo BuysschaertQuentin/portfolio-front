@@ -1,14 +1,15 @@
 import bootcampImg from "@/assets/bootcamp_o_clock.png";
 import oclockLogo from "@/assets/oclock.png";
+import { FORMATION_SKILLS } from "@/constants/home";
 import { EXTERNAL_LINKS } from "@/constants/personal";
 import { useI18n } from "@/i18n";
 import { ArrowRight } from "lucide-react";
-import { ExternalLink } from "./a11y/ExternalLink";
-import SectionChevron from "./SectionChevron";
-import { Button } from "./ui/Button";
-import { Card } from "./ui/Card";
-
-import { FORMATION_SKILLS } from "@/constants/home";
+import { ExternalLink } from "./ui/a11y/ExternalLink";
+import SectionChevron from "./ui/navigation/SectionChevron";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import { TechBadge } from "./ui/badges/TechBadge";
 
 const FormationSection = () => {
   const { t } = useI18n();
@@ -16,24 +17,18 @@ const FormationSection = () => {
   return (
     <section
       id="formation"
-      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col justify-between overflow-hidden pt-12 md:pt-16"
+      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
     >
       <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container scrollbar-styled mask-bottom-fade relative z-10 flex-1 overflow-x-hidden overflow-y-auto p-2">
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center gap-4">
-            <span className="text-violet-foreground font-mono text-xl opacity-50">02 /</span>
-            <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase">
-              {t("formation.sectionLabel")}
-            </p>
-          </div>
-
-          <h2 className="text-glow-violet text-center text-2xl font-bold sm:text-3xl leading-tight">
-            {t("formation.title")}{" "}
-            <span className="text-violet-foreground">{t("formation.school")}</span>
-          </h2>
-        </div>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index="02"
+          label={t("formation.sectionLabel")}
+          title={t("formation.title")}
+          titleHighlight={t("formation.school")}
+          accentColor="violet"
+        />
 
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="flex justify-center md:order-1">
@@ -46,7 +41,7 @@ const FormationSection = () => {
               loading="lazy"
             />
           </div>
-          <Card className="border-violet/30 space-y-4 rounded-xl p-5 md:order-2">
+          <Card className="border-violet/30 space-y-4 rounded-lg p-6 md:order-2">
             {/* Logo + school name + link */}
             <div className="flex items-center gap-4">
               <ExternalLink href={EXTERNAL_LINKS.oclock} aria-label={t("formation.school")}>
@@ -70,7 +65,7 @@ const FormationSection = () => {
               </div>
             </div>
 
-            <p className="text-secondary-foreground text-lg leading-relaxed">
+            <p className="text-secondary-foreground text-base leading-relaxed">
               {t("formation.description")}{" "}
               <span className="text-violet-foreground font-medium">{t("formation.quality1")}</span>{" "}
               {t("formation.and")}{" "}
@@ -80,12 +75,7 @@ const FormationSection = () => {
 
             <div className="flex flex-wrap gap-2">
               {FORMATION_SKILLS.map((skill) => (
-                <span
-                  key={skill}
-                  className="bg-violet-muted text-violet-foreground border-violet/30 rounded-full border px-3 py-1 font-mono text-[10px]"
-                >
-                  {skill}
-                </span>
+                <TechBadge key={skill} name={skill} size="small" />
               ))}
             </div>
 
@@ -103,9 +93,12 @@ const FormationSection = () => {
         </div>
       </div>
 
-      <SectionChevron targetId="experience" label="Aujourd'hui" />
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="experience-bac3" label={t("chevrons.experience")} />
+      </div>
     </section>
   );
 };
 
 export default FormationSection;
+

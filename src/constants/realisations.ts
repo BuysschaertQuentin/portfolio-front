@@ -24,11 +24,14 @@ export const REALISATIONS: readonly Realisation[] = [
     titleKey: "realisations.items.portailRh.title",
     shortDescKey: "realisations.items.portailRh.shortDesc",
     linkedSkills: [
-      "angular-typescript",
-      "nestjs-nodejs",
-      "bases-de-donnees",
-      "cicd-devops",
+      "angular",
+      "typescript",
+      "nestjs",
+      "node-js",
+      "mysql",
+      "cloudfoundry",
       "travail-equipe",
+      "autonome",
     ],
   },
   {
@@ -37,7 +40,14 @@ export const REALISATIONS: readonly Realisation[] = [
     icon: Code2,
     titleKey: "realisations.items.reposComp.title",
     shortDescKey: "realisations.items.reposComp.shortDesc",
-    linkedSkills: ["angular-typescript", "bases-de-donnees", "travail-equipe", "gestion-priorites"],
+    linkedSkills: [
+      "angular",
+      "typescript",
+      "java",
+      "sql",
+      "travail-equipe",
+      "communication",
+    ],
   },
   {
     slug: "app-mobile-competences",
@@ -45,7 +55,11 @@ export const REALISATIONS: readonly Realisation[] = [
     icon: Smartphone,
     titleKey: "realisations.items.mobileComp.title",
     shortDescKey: "realisations.items.mobileComp.shortDesc",
-    linkedSkills: ["cicd-devops", "travail-equipe", "pedagogie"],
+    linkedSkills: [
+      "flutter",
+      "dart",
+      "supabase",
+    ],
   },
   {
     slug: "o-voyage",
@@ -53,7 +67,13 @@ export const REALISATIONS: readonly Realisation[] = [
     icon: GraduationCap,
     titleKey: "realisations.items.ovoyage.title",
     shortDescKey: "realisations.items.ovoyage.shortDesc",
-    linkedSkills: ["nestjs-nodejs", "travail-equipe", "gestion-priorites"],
+    linkedSkills: [
+      "vue-js",
+      "nestjs",
+      "node-js",
+      "travail-equipe",
+      "communication",
+    ],
   },
   {
     slug: "portfolio",
@@ -61,7 +81,12 @@ export const REALISATIONS: readonly Realisation[] = [
     icon: Globe,
     titleKey: "realisations.items.portfolio.title",
     shortDescKey: "realisations.items.portfolio.shortDesc",
-    linkedSkills: ["react", "cicd-devops"],
+    linkedSkills: [
+      "react",
+      "typescript",
+      "tailwind-css",
+      "git",
+    ],
   },
 ] as const;
 

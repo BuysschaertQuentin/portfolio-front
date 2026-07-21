@@ -1,33 +1,48 @@
 import type { LucideIcon } from "lucide-react";
 import {
-    Brain,
-    Clock,
-    Code2,
-    Container,
-    Database,
-    Eye,
-    Heart,
-    Layers,
-    Shield,
-    Users,
+  Eye,
+  Heart,
+  MessageSquare,
+  Shield,
+  UserRoundCheckIcon,
+  Users
 } from "lucide-react";
+import type { ComponentPropsWithoutRef, ComponentType } from "react";
+import { TECH_STACK } from "./stack";
 
 export type SkillType = "human" | "technical";
 
 export interface Skill {
   readonly slug: string;
   readonly type: SkillType;
-  readonly icon: LucideIcon;
-  readonly titleKey: string;
-  readonly shortDescKey: string;
+  readonly icon?: LucideIcon;
+  readonly logoUrl?: string;
+  readonly customIcon?: ComponentType<ComponentPropsWithoutRef<"svg">>;
+  readonly titleKey?: string;
+  readonly shortDescKey?: string;
+  readonly techName?: string;
+  readonly techDescription?: {
+    readonly fr: string;
+    readonly en: string;
+  };
+  readonly category?: "front-end" | "back-end" | "devops" | "transversale" | "cloud";
+  readonly specialty?: boolean;
+  readonly wish?: boolean;
+  readonly clickable?: boolean;
 }
 
 /**
- * All 10 portfolio skills — 5 human + 5 technical.
+ * All portfolio skills — human + technical (generated dynamically).
  * Order determines display order on the overview page.
  */
-export const SKILLS: readonly Skill[] = [
-  // Human skills
+const HUMAN_SKILLS: readonly Skill[] = [
+  {
+    slug: "autonome",
+    type: "human",
+    icon: UserRoundCheckIcon,
+    titleKey: "competences.skills.autonome.title",
+    shortDescKey: "competences.skills.autonome.shortDesc",
+  },
   {
     slug: "empathie",
     type: "human",
@@ -43,11 +58,11 @@ export const SKILLS: readonly Skill[] = [
     shortDescKey: "competences.skills.resilience.shortDesc",
   },
   {
-    slug: "gestion-priorites",
+    slug: "communication",
     type: "human",
-    icon: Clock,
-    titleKey: "competences.skills.priorities.title",
-    shortDescKey: "competences.skills.priorities.shortDesc",
+    icon: MessageSquare,
+    titleKey: "competences.skills.communication.title",
+    shortDescKey: "competences.skills.communication.shortDesc",
   },
   {
     slug: "travail-equipe",
@@ -63,44 +78,24 @@ export const SKILLS: readonly Skill[] = [
     titleKey: "competences.skills.pedagogy.title",
     shortDescKey: "competences.skills.pedagogy.shortDesc",
   },
+];
 
-  // Technical skills
-  {
-    slug: "angular-typescript",
+const TECHNICAL_SKILLS: readonly Skill[] = TECH_STACK
+  .filter((tech) => tech.showInMain || tech.showInTransversal || tech.wish)
+  .map((tech) => ({
+    slug: tech.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
     type: "technical",
-    icon: Code2,
-    titleKey: "competences.skills.angular.title",
-    shortDescKey: "competences.skills.angular.shortDesc",
-  },
-  {
-    slug: "nestjs-nodejs",
-    type: "technical",
-    icon: Layers,
-    titleKey: "competences.skills.nestjs.title",
-    shortDescKey: "competences.skills.nestjs.shortDesc",
-  },
-  {
-    slug: "bases-de-donnees",
-    type: "technical",
-    icon: Database,
-    titleKey: "competences.skills.database.title",
-    shortDescKey: "competences.skills.database.shortDesc",
-  },
-  {
-    slug: "cicd-devops",
-    type: "technical",
-    icon: Container,
-    titleKey: "competences.skills.devops.title",
-    shortDescKey: "competences.skills.devops.shortDesc",
-  },
-  {
-    slug: "react",
-    type: "technical",
-    icon: Brain,
-    titleKey: "competences.skills.react.title",
-    shortDescKey: "competences.skills.react.shortDesc",
-  },
-] as const;
+    logoUrl: tech.logo,
+    customIcon: tech.iconComponent,
+    techName: tech.name,
+    techDescription: tech.description,
+    category: tech.category,
+    specialty: tech.specialty,
+    wish: tech.wish,
+    clickable: tech.clickable,
+  }));
+
+export const SKILLS: readonly Skill[] = [...HUMAN_SKILLS, ...TECHNICAL_SKILLS];
 
 /** Helper to find a skill by slug */
 export const findSkillBySlug = (slug: string): Skill | undefined =>

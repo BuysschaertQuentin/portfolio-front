@@ -36,10 +36,3 @@ export interface Skill {
   readonly updatedAt: string;
 }
 
-export interface StackGroupProps {
-  readonly title: string;
-  readonly items: readonly import("@/constants/stack").TechItem[];
-  readonly dotColor: string;
-  readonly titleColor?: string;
-}
-
