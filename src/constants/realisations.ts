@@ -26,6 +26,8 @@ export const REALISATIONS: readonly Realisation[] = [
     linkedSkills: [
       "angular",
       "typescript",
+      "html5",
+      "css3",
       "nestjs",
       "node-js",
       "mysql",
@@ -43,6 +45,8 @@ export const REALISATIONS: readonly Realisation[] = [
     linkedSkills: [
       "angular",
       "typescript",
+      "html5",
+      "css3",
       "java",
       "sql",
       "travail-equipe",
@@ -69,6 +73,10 @@ export const REALISATIONS: readonly Realisation[] = [
     shortDescKey: "realisations.items.ovoyage.shortDesc",
     linkedSkills: [
       "vue-js",
+      "html5",
+      "css3",
+      "tailwind-css",
+      "javascript",
       "nestjs",
       "node-js",
       "travail-equipe",
@@ -84,7 +92,10 @@ export const REALISATIONS: readonly Realisation[] = [
     linkedSkills: [
       "react",
       "typescript",
+      "html5",
+      "css3",
       "tailwind-css",
+      "javascript",
       "git",
     ],
   },

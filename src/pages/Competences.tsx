@@ -138,13 +138,14 @@ const SkillGroup = memo(({ title, skills, dotColor, t }: SkillGroupProps) => (
 
 SkillGroup.displayName = "SkillGroup";
 
-const CATEGORY_ORDER = ["front-end", "back-end", "devops", "cloud", "transversale"] as const;
+const CATEGORY_ORDER = ["front-end", "back-end", "devops", "cloud", "ia", "transversale"] as const;
 
 const CATEGORY_COLORS: Record<string, string> = {
   "front-end": "bg-primary",
   "back-end": "bg-orange",
   devops: "bg-violet",
   cloud: "bg-sky-500",
+  ia: "bg-purple-500",
   transversale: "bg-emerald-500",
 };
 
@@ -159,6 +160,7 @@ const Competences = () => {
       "back-end": [],
       devops: [],
       cloud: [],
+      ia: [],
       transversale: [],
     };
 

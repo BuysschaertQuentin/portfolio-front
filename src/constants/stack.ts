@@ -20,7 +20,7 @@ export interface TechItem {
   /** Display in the transversal stack? */
   readonly showInTransversal?: boolean;
   /** Category of the technology */
-  readonly category: "front-end" | "back-end" | "devops" | "transversale" | "cloud";
+  readonly category: "front-end" | "back-end" | "devops" | "transversale" | "cloud" | "ia";
   /** Is this technology a specialty? */
   readonly specialty?: boolean;
   /** Is this technology something I would like to do? */
@@ -51,7 +51,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2023-04",
     showInMain: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "NestJS",
@@ -254,7 +254,7 @@ export const TECH_STACK: readonly TechItem[] = [
     category: "cloud",
   },
   {
-    name: "VS Code",
+    name: "VS Code & IDEs",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
     description: {
       fr: "Éditeur de code léger, performant et hautement extensible développé par Microsoft.",
@@ -284,7 +284,7 @@ export const TECH_STACK: readonly TechItem[] = [
     },
     since: "2024-06",
     showInTransversal: true,
-    category: "front-end",
+    category: "transversale",
   },
   {
     name: "API REST",
@@ -340,6 +340,28 @@ export const TECH_STACK: readonly TechItem[] = [
     category: "cloud",
     wish: true,
     clickable: false,
+  },
+  {
+    name: "MCP Server",
+    description: {
+      fr: "Standard Model Context Protocol pour interconnecter les agents IA aux outils et données.",
+      en: "Standard Model Context Protocol connecting AI agents to tools and data sources.",
+    },
+    since: "2025-01",
+    showInMain: true,
+    category: "ia",
+    clickable: true,
+  },
+  {
+    name: "Antigravity IDE",
+    description: {
+      fr: "Environnement de développement assisté par agents IA autonomes (Google DeepMind).",
+      en: "Autonomous AI agent-assisted development environment (Google DeepMind).",
+    },
+    since: "2025-01",
+    showInMain: true,
+    category: "ia",
+    clickable: true,
   },
 ];
 

@@ -25,7 +25,7 @@ export interface Skill {
     readonly fr: string;
     readonly en: string;
   };
-  readonly category?: "front-end" | "back-end" | "devops" | "transversale" | "cloud";
+  readonly category?: "front-end" | "back-end" | "devops" | "transversale" | "cloud" | "ia";
   readonly specialty?: boolean;
   readonly wish?: boolean;
   readonly clickable?: boolean;

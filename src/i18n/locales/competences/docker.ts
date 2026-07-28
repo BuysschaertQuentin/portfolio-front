@@ -1,0 +1,29 @@
+export const dockerFr = {
+  title: "Docker",
+  shortDesc: "Conteneurisation d'applications et orchestration d'environnements",
+  definition:
+    "Pour moi, **Docker** est la technologie de conteneurisation de référence pour empaqueter une application et ses dépendances dans un environnement isolé, léger et portable (le conteneur).\n\nEn éliminant définitivement le problème classique du « ça marche sur ma machine », Docker garantit une parité stricte entre les environnements de développement, de test et de production. Il permet de standardiser l'exécution de services complexes (bases de données, APIs, microservices) et de simplifier leur orchestration.",
+  proofs:
+    "J'utilise quotidiennement Docker chez Orange Business pour l'orchestration de microservices d'entreprise et l'intégration des équipes de développement :\n\n- **Orchestration d'une architecture à 8 microservices (Repos Compensateurs)** : L'application des Repos Compensateurs s'inscrit dans un écosystème d'entreprise composé de **8 microservices distincts** (API Gateway, service Amazon SSO/S3, microservices métiers Front/Back, et mon composant dédié aux repos compensateurs). Pour faire tourner cet environnement complexe en local, un dépôt parent orchestre le tirage (*pull*) automatique de l'ensemble des dépôts. J'exécute ensuite la commande `docker compose up -d --build` pour compiler et démarrer simultanément l'intégralité de la pile de microservices isolés en arrière-plan.\n\n- **Facilitation du travail d'équipe et onboarding (Portail RH)** : Sur le portail RH, j'ai conçu les fichiers `Dockerfile` et `docker-compose.yml` pour simplifier l'intégration d'une collègue arrivant du mobile (Flutter) dont c'était le premier projet web. En conteneurisant le Back-End NestJS et la base de données MySQL, je lui ai permis de démarrer l'ensemble de l'environnement serveur en un clic via l'interface graphique **Docker Desktop**. Elle a pu se concentrer immédiatement sur le développement Front-End sans subir la complexité d'installation des dépendances locales.\n\n- **Conteneurisation TMA sur My Resume** : Lors de la maintenance corrective de l'application *My Resume*, j'ai configuré la conteneurisation Docker pour encapsuler l'outil de génération PDF Puppeteer et déployer des conteneurs sécurisés.",
+  selfCritique:
+    "Lancer simultanément 8 microservices et leurs bases de données via Docker Compose exige de suivre attentivement la consommation des ressources système (allocation CPU/RAM dans Docker Desktop) pour ne pas ralentir le poste de travail. J'ai appris à optimiser les dépendances de démarrage (`depends_on` avec *healthchecks*) pour limiter l'empreinte mémoire.",
+  hindsight:
+    "La conteneurisation avec Docker est une compétence pivot pour la culture DevOps. Offrir un environnement Docker prêt à l'emploi à un collaborateur réduit considérablement le temps d'onboarding et garantit la reproductibilité des builds.",
+  evolution:
+    "Je souhaite continuer à perfectionner mes pratiques Docker (réduction de la taille des images via des *multi-stage builds*, sécurisation des images de base) et explorer l'orchestration à grande échelle avec **Kubernetes**.",
+};
+
+export const dockerEn = {
+  title: "Docker",
+  shortDesc: "Application containerization and environment orchestration",
+  definition:
+    "For me, **Docker** is the benchmark containerization technology for packaging applications and their dependencies into lightweight, isolated, and portable environments (containers).\n\nBy eliminating the 'works on my machine' issue, Docker guarantees strict parity across development, staging, and production environments. It standardizes the execution of complex services (databases, APIs, microservices) and simplifies orchestration.",
+  proofs:
+    "I daily utilize Docker at Orange Business for enterprise microservice orchestration and team onboarding:\n\n- **Orchestrating an 8-Microservice Architecture (Compensatory Leave)**: The Compensatory Leave app operates within an enterprise ecosystem comprising **8 distinct microservices** (API Gateway, Amazon SSO/S3 service, Front/Back business microservices, and my dedicated leave management module). To run this complex environment locally, a parent repository automates pulling all project repositories. I execute `docker compose up -d --build` to compile and launch the entire multi-service stack seamlessly in the background.\n\n- **Team Collaboration & Onboarding (HR Portal)**: On the HR portal, I created custom `Dockerfile` and `docker-compose.yml` configurations to facilitate the onboarding of a colleague transitioning from mobile (Flutter) to her first web project. By containerizing the NestJS Back-End and MySQL database, she could spin up the full server environment with one click via **Docker Desktop**, allowing her to focus immediately on Front-End development without local environment installation hurdles.\n\n- **Maintenance Containerization on My Resume**: During corrective maintenance on *My Resume*, I configured Docker containerization to encapsulate the Puppeteer PDF generation service and deploy secure containers.",
+  selfCritique:
+    "Running 8 microservices concurrently via Docker Compose requires monitoring system resource consumption (CPU/RAM limits in Docker Desktop) to avoid host machine slowdowns. I learned to optimize startup dependencies (`depends_on` with health checks) to streamline memory footprints.",
+  hindsight:
+    "Containerization with Docker is a pivotal DevOps skill. Providing a turnkey Docker environment for team members significantly reduces onboarding friction and guarantees build reproducibility.",
+  evolution:
+    "I aim to continue refining my Docker practices (reducing image footprints using multi-stage builds, hardening base image security) and explore large-scale orchestration with **Kubernetes**.",
+};

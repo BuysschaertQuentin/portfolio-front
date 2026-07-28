@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/cards/Card";
 import { ReturnButton } from "@/components/ui/buttons/ReturnButton";
+import { Card } from "@/components/ui/cards/Card";
 import { CONTEXT_COLORS, REALISATIONS } from "@/constants/realisations";
 import { findSkillBySlug } from "@/constants/skills";
 import { useI18n } from "@/i18n";
@@ -24,8 +24,140 @@ interface DetailBlockProps {
   readonly accentColor?: string;
 }
 
-const renderFormattedText = (text: string) => {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+// --- Native Lightweight Syntax Highlighter ---
+
+const highlightLine = (line: string, lineIdx: number) => {
+  if (line.trim().startsWith("//")) {
+    return (
+      <div key={lineIdx} className="text-slate-500 italic">
+        {line}
+      </div>
+    );
+  }
+
+  const tokenRegex =
+    /(\/\/.+$|"[^"]*"|'[^']*'|`[^`]*`|\b(?:export|import|from|const|let|var|function|return|default|type|interface|readonly|if|else|new|try|catch|async|await)\b|\b(?:true|false|null|undefined)\b|\b(?:string|number|boolean|any|void|ReactNode|Locale|Translations|Record|FC)\b|<\/?[A-Za-z0-9.]*>|\b[A-Za-z0-9_]+(?=\s*\())/g;
+
+  const parts: React.ReactNode[] = [];
+  let lastPos = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = tokenRegex.exec(line)) !== null) {
+    const matchedText = match[0];
+    const matchPos = match.index;
+
+    if (matchPos > lastPos) {
+      parts.push(line.slice(lastPos, matchPos));
+    }
+
+    if (matchedText.startsWith("//")) {
+      parts.push(
+        <span key={matchPos} className="text-slate-500 italic">
+          {matchedText}
+        </span>,
+      );
+    } else if (
+      matchedText.startsWith('"') ||
+      matchedText.startsWith("'") ||
+      matchedText.startsWith("`")
+    ) {
+      parts.push(
+        <span key={matchPos} className="text-amber-300">
+          {matchedText}
+        </span>,
+      );
+    } else if (
+      /^(export|import|from|const|let|var|function|return|default|type|interface|readonly|if|else|new|try|catch|async|await)$/.test(
+        matchedText,
+      )
+    ) {
+      parts.push(
+        <span key={matchPos} className="font-semibold text-purple-400">
+          {matchedText}
+        </span>,
+      );
+    } else if (/^(true|false|null|undefined)$/.test(matchedText)) {
+      parts.push(
+        <span key={matchPos} className="font-semibold text-rose-400">
+          {matchedText}
+        </span>,
+      );
+    } else if (
+      /^(string|number|boolean|any|void|ReactNode|Locale|Translations|Record|FC)$/.test(
+        matchedText,
+      )
+    ) {
+      parts.push(
+        <span key={matchPos} className="text-cyan-400">
+          {matchedText}
+        </span>,
+      );
+    } else if (/^<\/?[A-Za-z]/.test(matchedText)) {
+      parts.push(
+        <span key={matchPos} className="font-medium text-sky-300">
+          {matchedText}
+        </span>,
+      );
+    } else {
+      parts.push(
+        <span key={matchPos} className="text-blue-300">
+          {matchedText}
+        </span>,
+      );
+    }
+
+    lastPos = matchPos + matchedText.length;
+  }
+
+  if (lastPos < line.length) {
+    parts.push(line.slice(lastPos));
+  }
+
+  return (
+    <div key={lineIdx} className="leading-relaxed">
+      {parts}
+    </div>
+  );
+};
+
+// --- Code Block Component (Carbon.sh Style with Syntax Highlighting) ---
+
+const CodeSnippetBlock = memo(
+  ({ lang, code }: { readonly lang: string; readonly code: string }) => {
+    const lines = code.split("\n");
+    return (
+      <div className="my-4 overflow-hidden rounded-xl border border-border/40 bg-slate-950/95 font-mono text-xs shadow-2xl sm:text-sm">
+        <div className="flex items-center justify-between border-b border-border/20 bg-slate-900/80 px-4 py-2">
+          <div className="flex items-center gap-1.5">
+            <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+            <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
+          </div>
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            {lang}
+          </span>
+        </div>
+        <div className="overflow-x-auto p-4 flex gap-4">
+          <div className="select-none text-right font-mono text-slate-600 text-xs leading-relaxed border-r border-border/20 pr-3">
+            {lines.map((_, i) => (
+              <div key={i}>{i + 1}</div>
+            ))}
+          </div>
+          <div className="flex-1 font-mono text-slate-200">
+            {lines.map((line, idx) => highlightLine(line, idx))}
+          </div>
+        </div>
+      </div>
+    );
+  },
+);
+
+CodeSnippetBlock.displayName = "CodeSnippetBlock";
+
+// --- Formatted text parser ---
+
+const renderInlineFormatting = (text: string) => {
+  const parts = text.split(/(\*\*[\s\S]+?\*\*|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
@@ -34,8 +166,65 @@ const renderFormattedText = (text: string) => {
         </strong>
       );
     }
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, label, url] = linkMatch;
+      return (
+        <a
+          key={index}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+        >
+          {label}
+        </a>
+      );
+    }
     return part;
   });
+};
+
+const renderFormattedText = (text: string) => {
+  const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = codeBlockRegex.exec(text)) !== null) {
+    const [fullMatch, lang, code] = match;
+    const matchIndex = match.index;
+
+    if (matchIndex > lastIndex) {
+      const prose = text.slice(lastIndex, matchIndex);
+      elements.push(
+        <span key={`prose-${lastIndex}`} className="whitespace-pre-line">
+          {renderInlineFormatting(prose)}
+        </span>,
+      );
+    }
+
+    elements.push(
+      <CodeSnippetBlock
+        key={`code-${matchIndex}`}
+        lang={lang || "code"}
+        code={code.trim()}
+      />,
+    );
+
+    lastIndex = matchIndex + fullMatch.length;
+  }
+
+  if (lastIndex < text.length) {
+    const prose = text.slice(lastIndex);
+    elements.push(
+      <span key={`prose-${lastIndex}`} className="whitespace-pre-line">
+        {renderInlineFormatting(prose)}
+      </span>,
+    );
+  }
+
+  return elements;
 };
 
 const DetailBlock = memo(
@@ -45,11 +234,11 @@ const DetailBlock = memo(
         <div className={`rounded-lg p-2 bg-${accentColor}/10`}>
           <Icon className={`h-5 w-5 text-${accentColor}`} aria-hidden="true" />
         </div>
-        <h2 className="text-foreground font-semibold">{title}</h2>
+        <h2 className="font-semibold text-foreground">{title}</h2>
       </div>
-      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+      <div className="leading-relaxed text-muted-foreground">
         {renderFormattedText(content)}
-      </p>
+      </div>
     </Card>
   ),
 );
@@ -75,7 +264,7 @@ const CompetenceDetail = () => {
 
   const skill = useMemo(() => (slug ? findSkillBySlug(slug) : undefined), [slug]);
 
-  const i18nKey = slug ? (SLUG_TO_KEY[slug] || slug) : undefined;
+  const i18nKey = slug ? SLUG_TO_KEY[slug] || slug : undefined;
 
   // Find all realisations that reference this skill
   const linkedRealisations = useMemo(
@@ -106,7 +295,9 @@ const CompetenceDetail = () => {
 
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className={`rounded-xl p-3 flex items-center justify-center ${skill.type === "human" ? "bg-cyan/10" : "bg-orange/10"}`}>
+        <div
+          className={`flex items-center justify-center rounded-xl p-3 ${skill.type === "human" ? "bg-cyan/10" : "bg-orange/10"}`}
+        >
           {Icon && (
             <Icon
               className={`h-8 w-8 ${skill.type === "human" ? "text-cyan" : "text-orange"}`}
@@ -114,11 +305,7 @@ const CompetenceDetail = () => {
             />
           )}
           {skill.logoUrl && (
-            <img 
-              src={skill.logoUrl} 
-              alt={skill.techName} 
-              className="h-8 w-8 object-contain" 
-            />
+            <img src={skill.logoUrl} alt={skill.techName} className="h-8 w-8 object-contain" />
           )}
           {CustomIcon && (
             <CustomIcon
@@ -131,7 +318,9 @@ const CompetenceDetail = () => {
           <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
             {skill.type === "human" ? t("competences.humanTitle") : t("competences.technicalTitle")}
           </p>
-          <h1 className="text-glow-primary text-3xl font-bold sm:text-4xl">{skill.titleKey ? t(skill.titleKey) : skill.techName}</h1>
+          <h1 className="text-glow-primary text-3xl font-bold sm:text-4xl">
+            {skill.titleKey ? t(skill.titleKey) : skill.techName}
+          </h1>
         </div>
       </div>
 
