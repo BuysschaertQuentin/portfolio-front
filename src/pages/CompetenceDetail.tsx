@@ -154,78 +154,7 @@ const CodeSnippetBlock = memo(
 
 CodeSnippetBlock.displayName = "CodeSnippetBlock";
 
-// --- Formatted text parser ---
-
-const renderInlineFormatting = (text: string) => {
-  const parts = text.split(/(\*\*[\s\S]+?\*\*|\[[^\]]+\]\([^)]+\))/g);
-  return parts.map((part, index) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong key={index} className="font-semibold text-foreground">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (linkMatch) {
-      const [, label, url] = linkMatch;
-      return (
-        <a
-          key={index}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
-        >
-          {label}
-        </a>
-      );
-    }
-    return part;
-  });
-};
-
-const renderFormattedText = (text: string) => {
-  const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
-  const elements: React.ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = codeBlockRegex.exec(text)) !== null) {
-    const [fullMatch, lang, code] = match;
-    const matchIndex = match.index;
-
-    if (matchIndex > lastIndex) {
-      const prose = text.slice(lastIndex, matchIndex);
-      elements.push(
-        <span key={`prose-${lastIndex}`} className="whitespace-pre-line">
-          {renderInlineFormatting(prose)}
-        </span>,
-      );
-    }
-
-    elements.push(
-      <CodeSnippetBlock
-        key={`code-${matchIndex}`}
-        lang={lang || "code"}
-        code={code.trim()}
-      />,
-    );
-
-    lastIndex = matchIndex + fullMatch.length;
-  }
-
-  if (lastIndex < text.length) {
-    const prose = text.slice(lastIndex);
-    elements.push(
-      <span key={`prose-${lastIndex}`} className="whitespace-pre-line">
-        {renderInlineFormatting(prose)}
-      </span>,
-    );
-  }
-
-  return elements;
-};
+import { renderFormattedText } from "@/lib/formatText";
 
 const DetailBlock = memo(
   ({ icon: Icon, title, content, accentColor = "primary" }: DetailBlockProps) => (
@@ -236,8 +165,10 @@ const DetailBlock = memo(
         </div>
         <h2 className="font-semibold text-foreground">{title}</h2>
       </div>
-      <div className="leading-relaxed text-muted-foreground">
-        {renderFormattedText(content)}
+      <div className="leading-relaxed text-muted-foreground space-y-2">
+        {renderFormattedText(content, (lang, code, key) => (
+          <CodeSnippetBlock key={key} lang={lang} code={code} />
+        ))}
       </div>
     </Card>
   ),

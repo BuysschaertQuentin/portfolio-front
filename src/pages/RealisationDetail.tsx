@@ -3,6 +3,7 @@ import { ReturnButton } from "@/components/ui/buttons/ReturnButton";
 import { CONTEXT_COLORS, findRealisationBySlug } from "@/constants/realisations";
 import { findSkillBySlug } from "@/constants/skills";
 import { useI18n } from "@/i18n";
+import { renderFormattedText } from "@/lib/formatText";
 import {
   type LucideIcon,
   BookOpen,
@@ -33,7 +34,9 @@ const DetailBlock = memo(
         </div>
         <h2 className="text-foreground font-semibold">{title}</h2>
       </div>
-      <p className="text-muted-foreground leading-relaxed">{content}</p>
+      <div className="text-muted-foreground leading-relaxed space-y-2">
+        {renderFormattedText(content)}
+      </div>
     </Card>
   ),
 );

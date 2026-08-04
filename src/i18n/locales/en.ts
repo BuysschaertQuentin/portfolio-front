@@ -1,5 +1,6 @@
 import type { Translations } from "../types";
 import { skillsEn } from "./competences";
+import { realisationsEn } from "./realisations";
 
 const en: Translations = {
   nav: {
@@ -204,11 +205,7 @@ const en: Translations = {
         title: "HR Redirection Portal",
         shortDesc:
           "Portal centralizing Orange HR tools via a URL redirection system — Angular, NestJS, MySQL, CloudFoundry.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
+        ...realisationsEn.portailRh,
       },
       reposComp: {
         title: "Compensatory Leave Management",

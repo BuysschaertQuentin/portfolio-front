@@ -1,7 +1,9 @@
-/**
- * Realisations i18n modules placeholder
- * Ready for future modular project descriptions (portail-rh, repos-compensateurs, mobile-comp, o-voyage, portfolio-front)
- */
+import { portailRhEn, portailRhFr } from "./portail-rh";
 
-export const realisationsFr = {};
-export const realisationsEn = {};
+export const realisationsFr = {
+  portailRh: portailRhFr,
+};
+
+export const realisationsEn = {
+  portailRh: portailRhEn,
+};

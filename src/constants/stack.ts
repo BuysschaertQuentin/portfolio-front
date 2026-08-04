@@ -1,5 +1,7 @@
 // constants/stack.ts
 
+import antigravitySvg from "@/assets/antigravity.svg";
+import mcpSvg from "@/assets/mcp.svg";
 import { CloudFoundryIcon, ExpressIcon } from "@/components/ui/icons";
 import { Database } from "lucide-react";
 import { type ComponentPropsWithoutRef, type ComponentType } from "react";
@@ -343,17 +345,19 @@ export const TECH_STACK: readonly TechItem[] = [
   },
   {
     name: "MCP Server",
+    logo: mcpSvg,
     description: {
       fr: "Standard Model Context Protocol pour interconnecter les agents IA aux outils et données.",
       en: "Standard Model Context Protocol connecting AI agents to tools and data sources.",
     },
     since: "2025-01",
-    showInMain: true,
+    showInTransversal: true,
     category: "ia",
     clickable: true,
   },
   {
     name: "Antigravity IDE",
+    logo: antigravitySvg,
     description: {
       fr: "Environnement de développement assisté par agents IA autonomes (Google DeepMind).",
       en: "Autonomous AI agent-assisted development environment (Google DeepMind).",
