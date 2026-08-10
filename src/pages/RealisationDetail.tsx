@@ -8,12 +8,14 @@ import {
   type LucideIcon,
   BookOpen,
   ClipboardList,
+  Code2,
   Eye,
+  Layers,
   Lightbulb,
   Target,
   TrendingUp,
 } from "lucide-react";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 import { Link, Navigate, useParams, useLocation } from "react-router-dom";
 
 // --- Detail block ---
@@ -53,15 +55,34 @@ const SLUG_TO_KEY: Record<string, string> = {
   portfolio: "portfolio",
 };
 
+// --- Portail RH Tabs Configuration ---
+
+interface TabConfig {
+  readonly id: string;
+  readonly icon: LucideIcon;
+  readonly accentColor: string;
+  readonly isSituation?: boolean;
+}
+
+const PORTAIL_RH_TABS: readonly TabConfig[] = [
+  { id: "project", icon: BookOpen, accentColor: "primary" },
+  { id: "situation1", icon: Layers, accentColor: "cyan", isSituation: true },
+  { id: "situation2", icon: Code2, accentColor: "orange", isSituation: true },
+  { id: "situation3", icon: Target, accentColor: "violet-foreground", isSituation: true },
+  { id: "situation4", icon: ClipboardList, accentColor: "primary", isSituation: true },
+  { id: "situation5", icon: TrendingUp, accentColor: "cyan", isSituation: true },
+  { id: "synthesis", icon: Eye, accentColor: "primary" },
+];
+
 // --- Main page ---
 
 const RealisationDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useI18n();
   const location = useLocation();
+  const [activeTabId, setActiveTabId] = useState<string>("project");
 
   const realisation = useMemo(() => (slug ? findRealisationBySlug(slug) : undefined), [slug]);
-
   const i18nKey = slug ? SLUG_TO_KEY[slug] : undefined;
 
   const backTo = (location.state as { from?: string } | null)?.from ?? "/realisations";
@@ -88,6 +109,9 @@ const RealisationDetail = () => {
         ? "realisations.contextPerso"
         : "realisations.contextFormation";
 
+  const isTabbed = slug === "portail-rh";
+  const currentTab = PORTAIL_RH_TABS.find((tab) => tab.id === activeTabId) ?? PORTAIL_RH_TABS[0];
+
   return (
     <section className="section-container space-y-8 pt-10">
       {/* Back link */}
@@ -108,39 +132,110 @@ const RealisationDetail = () => {
         </div>
       </div>
 
-      {/* Detail blocks */}
-      <div className="grid gap-6">
-        <DetailBlock
-          icon={BookOpen}
-          title={t("realisations.detail.definitionTitle")}
-          content={t(`${base}.definition`)}
-          accentColor="primary"
-        />
-        <DetailBlock
-          icon={Target}
-          title={t("realisations.detail.framingTitle")}
-          content={t(`${base}.framing`)}
-          accentColor={color}
-        />
-        <DetailBlock
-          icon={ClipboardList}
-          title={t("realisations.detail.actionTitle")}
-          content={t(`${base}.action`)}
-          accentColor="cyan"
-        />
-        <DetailBlock
-          icon={TrendingUp}
-          title={t("realisations.detail.resultsTitle")}
-          content={t(`${base}.results`)}
-          accentColor={color}
-        />
-        <DetailBlock
-          icon={Eye}
-          title={t("realisations.detail.criticalTitle")}
-          content={t(`${base}.critical`)}
-          accentColor="violet-foreground"
-        />
-      </div>
+      {/* Tabbed view for Portail RH */}
+      {isTabbed ? (
+        <div className="space-y-6">
+          {/* Tabs Navigation Bar */}
+          <div className="flex flex-wrap gap-2 border-b border-border/40 pb-4">
+            {PORTAIL_RH_TABS.map((tab) => {
+              const TabIcon = tab.icon;
+              const isActive = tab.id === activeTabId;
+              const label = t(`${base}.tabs.${tab.id}.label`);
+
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTabId(tab.id)}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-2 font-mono text-xs sm:text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-primary/20 text-primary border border-primary/40 shadow-sm"
+                      : "bg-secondary/40 text-muted-foreground hover:bg-secondary/80 hover:text-foreground border border-transparent"
+                  }`}
+                >
+                  <TabIcon className="h-4 w-4" aria-hidden="true" />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Tab Header */}
+          <div className="flex flex-col gap-1">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+              {t(`${base}.tabs.${currentTab.id}.badge`)}
+            </span>
+            <h2 className="text-xl font-bold text-foreground sm:text-2xl">
+              {t(`${base}.tabs.${currentTab.id}.title`)}
+            </h2>
+          </div>
+
+          {/* Active Tab Content */}
+          {currentTab.isSituation ? (
+            <div className="grid gap-6">
+              <DetailBlock
+                icon={Target}
+                title={t("realisations.detail.framingTitle")}
+                content={t(`${base}.tabs.${currentTab.id}.framing`)}
+                accentColor={color}
+              />
+              <DetailBlock
+                icon={ClipboardList}
+                title={t("realisations.detail.actionTitle")}
+                content={t(`${base}.tabs.${currentTab.id}.action`)}
+                accentColor="cyan"
+              />
+              <DetailBlock
+                icon={TrendingUp}
+                title={t("realisations.detail.resultsTitle")}
+                content={t(`${base}.tabs.${currentTab.id}.results`)}
+                accentColor={color}
+              />
+            </div>
+          ) : (
+            <DetailBlock
+              icon={currentTab.icon}
+              title={t(`${base}.tabs.${currentTab.id}.title`)}
+              content={t(`${base}.tabs.${currentTab.id}.content`)}
+              accentColor={currentTab.accentColor}
+            />
+          )}
+        </div>
+      ) : (
+        /* Classic Grid View for other achievements */
+        <div className="grid gap-6">
+          <DetailBlock
+            icon={BookOpen}
+            title={t("realisations.detail.definitionTitle")}
+            content={t(`${base}.definition`)}
+            accentColor="primary"
+          />
+          <DetailBlock
+            icon={Target}
+            title={t("realisations.detail.framingTitle")}
+            content={t(`${base}.framing`)}
+            accentColor={color}
+          />
+          <DetailBlock
+            icon={ClipboardList}
+            title={t("realisations.detail.actionTitle")}
+            content={t(`${base}.action`)}
+            accentColor="cyan"
+          />
+          <DetailBlock
+            icon={TrendingUp}
+            title={t("realisations.detail.resultsTitle")}
+            content={t(`${base}.results`)}
+            accentColor={color}
+          />
+          <DetailBlock
+            icon={Eye}
+            title={t("realisations.detail.criticalTitle")}
+            content={t(`${base}.critical`)}
+            accentColor="violet-foreground"
+          />
+        </div>
+      )}
 
       {/* Linked skills */}
       <div>

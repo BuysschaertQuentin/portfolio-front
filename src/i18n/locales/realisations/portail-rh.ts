@@ -3,15 +3,93 @@ export const portailRhFr = {
   shortDesc:
     "Application web d'entreprise centralisant les outils RH d'Orange — Angular 18, NestJS, MariaDB, Docker & Analytics Power BI.",
   definition:
-    "Le **Portail RH** est une application web d'entreprise stratégique chez Orange Business. Il centralise l'accès à l'ensemble des outils, applications et ressources RH pour les collaborateurs, avec un système de redirection dynamique et un back-office d'administration.\n\nMon intervention sur ce projet s'est structurée autour de **5 phases chronologiques majeures** au cours de ma 2ème année d'alternance (Titre Pro CDA Bac+3) :\n1. **Reprise & assainissement** du projet suite à la démission du développeur initial.\n2. **Onboarding & formation d'un collaborateur** pour faire face à un fort pic de demandes client.\n3. **Gestion de crise & rattrapage Front-End** au retour de vacances suite aux dérives de code du collaborateur isolé.\n4. **Consolidation TMA & enrichissement du Back-Office** (module News, bordereau d'alerte, traçabilité RGPD et export CSV).\n5. **Conception & déploiement autonome d'un module d'Analytics maison** dédié à l'alimentation de tableaux de bord Power BI.",
+    "Le **Portail RH** est une application web d'entreprise développée chez Orange Business. Il sert de point d'entrée unique et centralisé pour l'ensemble des collaborateurs d'Orange France, leur permettant d'accéder rapidement à leurs outils métiers et ressources RH via des redirections dynamiques.",
   framing:
-    "Chaque étape chronologique du projet a posé des contraintes d'architecture spécifiques qui ont dicté mes choix techniques :\n\n- **Phase 1 — Assainissement BDD & Pattern DTO** : L'application initiale souffrait d'une absence de relations d'intégrité référentielle en BDD (MariaDB) et d'une manipulation directe des entités par les services NestJS. J'ai reconstruit les clés étrangères sous TypeORM, instauré un découpage strict par **DTO (Data Transfer Objects)** avec mappers dédiés, et supprimé les scripts JS pur qui contournaient NestJS et Angular.\n- **Phase 1 — Environnement Dockerisé sur-mesure** : Afin de simplifier l'installation locale, j'ai conçu une architecture **Docker multi-stage** (NestJS + MariaDB + PHPMyAdmin) orchestrée par `docker compose up -d --build`, offrant un environnement de développement 1-click.\n- **Phase 2 — Cadrage de l'onboarding** : Face à l'augmentation des demandes du client, le Chef de Projet a affecté un collaborateur (spécialiste mobile/Flutter) sur le projet. J'ai cadré un plan de montée en compétences ciblé sur Angular 18, les flux HTTP et les principes d'architecture Web.\n- **Phase 5 — Cadrage du module Analytics** : Pour mesurer les usages collaborateurs, j'ai étudié plusieurs options (dont Grafana) avant de faire valider une **architecture Analytics maison**. Ce choix permettait de capturer les événements d'usage au plus près de la BDD et de formater nativement les données pour les restitutions Power BI.",
+    "Application stratégique d'entreprise basée sur Angular 18, NestJS, MariaDB (TypeORM) et conteneurisée sous Docker pour un déploiement CloudFoundry.",
   action:
-    "Voici le déroulement détaillé de mes actions à travers les 5 phases du projet :\n\n- **Étape 1 : Reprise du projet & TMA (Début d'alternance)**\nAprès le départ du développeur précédent, j'ai travaillé en binôme avec mon Lead Dev pour prendre en main le code. J'ai assuré la Tierce Maintenance Applicative (TMA) tout en réarchitecturant le Back-End NestJS (mise en place des DTOs et des relations MariaDB).\n\n- **Étape 2 : Accélération des demandes & Mentorat d'un collaborateur**\nLe client ayant demandé un volume important de nouvelles fonctionnalités avec une refonte graphique, le Chef de Projet m'a confié l'onboarding d'un collaborateur en intercontrat. J'ai animé des sessions quotidiennes de formation sur Angular 18 et les requêtes HTTP. Identifiant des lacunes fondamentales sur l'architecture Web chez ce collaborateur, j'ai émis une alerte préventive auprès du Chef de Projet avant de partir pour 3 semaines de vacances afin de prévoir un accompagnement.\n\n- **Étape 3 : Absence du Lead Dev, crise & rattrapage Front-End post-vacances**\nPendant mes vacances, le Lead Dev a été absent de manière imprévue, laissant le collaborateur seul. À mon retour, j'ai constaté un code Front-End très dégradé par des copier-coller bruts d'IA générative sans contrôle d'architecture. J'ai gardé mon sang-froid, réorganisé le planning des tickets restants et consacré plusieurs jours à réécrire et restructurer la partie Front (composants Angular isolés, typage strict, gestion d'erreurs).\n\n- **Étape 4 : Pérennisation & Évolutions Back-Office**\nLe calme revenu, j'ai poursuivi la TMA en autonomie (avec revues de code du Lead Dev). J'ai réalisé la refonte graphique de plusieurs pages, corrigé les redirections et les styles CSS, puis développé les modules d'administration : gestion des articles RH (News), **bordereau d'alerte d'urgence en temps réel**, export CSV des utilisateurs et traçabilité du consentement RGPD.\n\n- **Étape 5 : Développement autonome du module Analytics (Période récente)**\nJ'ai conçu et développé à 100% la brique d'Analytics maison. Elle capture les parcours utilisateurs, les pages les plus consultées, l'utilisation de la recherche et des favoris, ainsi que les tops applications RH. Développé seul puis validé par le Lead Dev, le module a été poussé en Préproduction sans aucune régression et attend le Go Prod final.",
+    "Répartition des interventions en 5 situations clés : de la reprise du projet et du refactoring de BDD, à l'onboarding d'un collaborateur via Docker, la résolution d'une crise Front-End, l'enrichissement du Back-Office et la conception d'un module Analytics pour Power BI.",
   results:
-    "Les résultats obtenus reflètent la résolution progressive de chaque phase du projet :\n\n- **Après la Phase 1 (Assainissement)** : Suppression complète des fuites de données et des anomalies d'intégrité grâce à la refonte MariaDB/NestJS en DTOs.\n- **Après les Phases 2 & 3 (Crise & Rattrapage)** : L'application a été livrée dans les temps réajustés avec une entière satisfaction du client. Un REX d'équipe a permis d'adapter les modalités d'encadrement des collaborateurs et l'usage des IA de code.\n- **Après la Phase 4 (Back-Office)** : Les administrateurs RH disposent d'outils autonomes pour diffuser des alertes urgentes et exporter les preuves de conformité RGPD.\n- **Après la Phase 5 (Analytics)** : Le système de suivi de trafic est 100% opérationnel en Préproduction, prêt à alimenter les tableaux de bord Power BI de la direction.",
+    "Application livrée à terme avec succès et grande satisfaction client. Module Analytics déployé en Préproduction sans régression.",
   critical:
-    "Chaque étape de ce projet m'a apporté des enseignements ciblés sur ma pratique professionnelle :\n\n- **Lien avec la Phase 3 (Gestion de crise)** : Cette épreuve a prouvé mon sang-froid et ma capacité à réorganiser un sprint sous pression. Elle m'a également sensibilisé aux risques des IA génératives : sans relecture critique et sans maîtrise de l'architecture, l'IA génère de la dette technique instantanée.\n- **Lien avec la Phase 2 (Mentorat)** : J'ai appris l'importance d'un suivi continu lors du changement de stack d'un collaborateur (du mobile vers le web) et la nécessité d'adapter la charge aux compétences réelles.\n- **Lien avec les Phases 4 & 5 (Autonomie)** : Ma progression sur ce projet illustre mon passage d'une reprise de code guidée à la conception autonome d'architectures critiques (module Analytics pour Power BI) validées dès le premier déploiement.",
+    "Une expérience majeure qui a forgé ma rigueur d'architecture, mon sang-froid en situation de crise, mon esprit critique sur l'IA et mon autonomie de conception.",
+
+  tabs: {
+    project: {
+      label: "Le Projet",
+      title: "Présentation générale du Portail RH",
+      badge: "Contexte Applicatif & Métier",
+      content:
+        "### Qu'est-ce que le Portail RH ?\nLe **Portail RH** est une application web d'entreprise développée au sein d'Orange Business. Il constitue le point d'entrée centralisé pour l'ensemble des salariés d'Orange France afin de consulter et naviguer vers les différents outils, services et actualités RH de l'entreprise.\n\n### Fonctionnalités principales\n- **Moteur de recherche & Favoris** : Recherche rapide parmi des dizaines d'outils RH et personnalisation de l'espace de travail.\n- **Système de redirection d'URL** : Routage dynamique vers les plateformes internes d'Orange.\n- **Espace Administrateur** : Back-office complet pour la gestion des actualités RH (News), la diffusion de bandeaux d'alerte urgente en temps réel et la gestion des utilisateurs.\n\n### Stack Technique Globale\n- **Front-End** : Angular 18, TypeScript, RxJS, HTML5 / CSS3.\n- **Back-End** : NestJS (Node.js framework), TypeScript.\n- **Base de données** : MariaDB / MySQL managée via l'ORM TypeORM.\n- **DevOps & Infrastructure** : Docker multi-stage, Docker Compose, plateforme CloudFoundry.\n\n### Mon Rôle & Période\nJ'ai travaillé sur ce projet en tant que **Développeur Fullstack alternant** pendant ma 2ème année de Titre Pro CDA (Bac+3). J'ai d'abord repris la Tierce Maintenance Applicative (TMA) avant d'assumer la responsabilité complète des évolutions majeures et de l'architecture.",
+    },
+
+    situation1: {
+      label: "1. Reprise & BDD",
+      title: "Situation 1 — Reprise du projet & Refactoring BDD/NestJS",
+      badge: "Dette Technique & Architecture",
+      framing:
+        "Après la démission du développeur initial, j'ai pris en main le projet en binôme avec mon Lead Dev.\n\n**Constat initial & Problématiques** :\n- **Absence d'intégrité référentielle** : La base de données MariaDB ne comportait aucune clé étrangère ni relation définie entre les tables.\n- **Manipulation directe des entités** : Les services du backend NestJS exposaient et modifiaient directement les entités BDD sans validation de données (absence de DTOs).\n- **Bypass du framework** : Présence de scripts en JavaScript pur contournant le contexte de NestJS et le cycle de vie d'Angular.",
+      action:
+        "**Actions réalisées par Quentin** :\n1. **Modélisation BDD & TypeORM** : Reconstitution des relations d'entités, ajout des clés étrangères et des contraintes d'intégrité sous MariaDB.\n2. **Pattern DTO (Data Transfer Objects)** : Implémentation systématique de DTOs avec `class-validator` pour étanchéifier les APIs et conversion dans les services NestJS.\n3. **Nettoyage d'architecture** : Élimination du code JS brut au profit des mécanismes natifs du framework.",
+      results:
+        "**Bilan & Résultats** :\n- Éradication des fuites de données et des comportements instables de l'API.\n- Validation stricte des entrées utilisateurs au niveau NestJS.\n- Socle back-end assaini et maintenable pour les futures fonctionnalités.",
+    },
+
+    situation2: {
+      label: "2. Onboarding & Docker",
+      title: "Situation 2 — Onboarding d'un collaborateur & Dockerisation",
+      badge: "Mentorat & DevOps",
+      framing:
+        "Face à un fort pic de demandes de fonctionnalités et d'exigences graphiques de la part du client, le Chef de Projet a affecté un collaborateur de l'équipe (spécialiste mobile/Flutter) pour me prêter main-forte et monter en compétences sur le web.\n\n**Enjeux & Défis** :\n- Permettre au collaborateur de travailler en local immédiatement sans qu'il n'ait à installer manuellement MariaDB ou PHPMyAdmin.\n- Transmettre les fondamentaux d'Angular 18, de TypeScript et des requêtes HTTP REST dans un délai très court.",
+      action:
+        "**Actions réalisées par Quentin** :\n1. **Dockerisation 1-click sur-mesure** : Création d'un environnement **Docker multi-stage** (NestJS + MariaDB + PHPMyAdmin) orchestré par `docker compose up -d --build` pour automatiser le lancement du backend en local.\n2. **Formations matinales & Documentation** : Organisation de sessions de formation quotidiennes sur Angular 18 et les flux d'API.\n3. **Alerte préventive au Chef de Projet** : Ayant identifié des difficultés importantes sur les concepts web chez ce collaborateur, j'ai émis une alerte auprès du CP avant mon départ en vacances de 3 semaines pour anticiper le besoin d'accompagnement.",
+      results:
+        "**Bilan & Résultats** :\n- Environnement de dev local 1-click opérationnel via Docker.\n- Plan de montée en compétences formalisé et transmission transparente des risques de planning au management.",
+    },
+
+    situation3: {
+      label: "3. Gestion de crise",
+      title: "Situation 3 — Gestion de crise & Restructuration Front-End",
+      badge: "Résilience & Sang-froid",
+      framing:
+        "Pendant mes 3 semaines de vacances, mon Lead Dev a été absent de façon imprévue, laissant le collaborateur sans accompagnement.\n\n**Constat au retour de vacances** :\n- Le code Front-End produit était très dégradé (pages sans architecture Angular, absence de typage, composants monolithiques).\n- Découverte de copier-coller bruts de réponses d'IA générative non relues ni vérifiées.\n- Risque immédiat de retard de livraison et de dépassement de budget.",
+      action:
+        "**Actions réalisées par Quentin** :\n1. **Garder son sang-froid & Diagnostic** : Analyse à froid des dégâts avec le Lead Dev et réorganisation du backlog des tickets restants.\n2. **Réécriture & Refactoring Front-End** : Réallocation de plusieurs jours pour réécrire la couche Front défaillante (découpage en composants réutilisables, typage TypeScript strict, gestion des erreurs HTTP).\n3. **Sécurisation du Sprint** : Prise en charge des tickets les plus complexes pour garantir la date de livraison.",
+      results:
+        "**Bilan & Résultats** :\n- Projet livré à terme avec une grande satisfaction du client malgré le léger réajustement budgétaire.\n- Retours d'expérience (REX) d'équipe formalisés sur l'accompagnement des juniors et l'utilisation encadrée des outils d'IA.",
+    },
+
+    situation4: {
+      label: "4. Back-Office & RGPD",
+      title: "Situation 4 — Back-Office, Traçabilité RGPD & Export CSV",
+      badge: "Fonctionnalités Métier & Administration",
+      framing:
+        "La crise résolue, le calme est revenu sur le projet. J'ai continué la TMA en autonomie complète (revu par le Lead Dev) et le client a sollicité de nouvelles fonctionnalités d'administration RH et de conformité légale.",
+      action:
+        "**Actions réalisées par Quentin** :\n1. **Refonte du module News RH** : Refonte complète de la gestion des articles d'actualités RH destinés aux collaborateurs.\n2. **Bandeau d'alerte d'urgence en temps réel** : Création d'un composant d'alerte à la main de l'administrateur pour notifier immédiatement les utilisateurs en cas d'incident technique.\n3. **Conformité RGPD & Export CSV** : Implémentation du système de suivi et de consentement RGPD avec génération et téléchargement d'exports CSV auditables.",
+      results:
+        "**Bilan & Résultats** :\n- Back-office RH enrichi et autonomie totale des administrateurs pour la communication d'urgence.\n- Auditabilité RGPD garantie avec génération d'exports CSV performants.",
+    },
+
+    situation5: {
+      label: "5. Analytics Power BI",
+      title: "Situation 5 — Module Analytics sur-mesure pour Power BI",
+      badge: "Innovation & Autonomie",
+      framing:
+        "Récemment, le client a souhaité mesurer l'audience et les parcours utilisateurs (outils RH les plus consultés, fréquence des recherches et des favoris) pour alimenter des tableaux de bord Power BI de la direction.",
+      action:
+        "**Actions réalisées par Quentin** :\n1. **Étude & Choix d'architecture** : Proposition et validation d'une **solution Analytics maison** intégrée (préférée à Grafana pour sa légèreté).\n2. **Développement 100% Autonome** : Conception de l'API de tracking sous NestJS, capture des événements utilisateurs et stockage structuré des métriques en BDD MariaDB.\n3. **Validation & Préproduction** : Développement réalisé seul, relu par le Lead Dev, et poussé en Préproduction avec zéro bug (en attente du Go Prod).",
+      results:
+        "**Bilan & Résultats** :\n- Module d'Analytics 100% opérationnel en Préproduction.\n- Flux de données prêt à alimenter les dashboards Power BI de la direction RH.",
+    },
+
+    synthesis: {
+      label: "Mon Bilan",
+      title: "Bilan global & Regard critique de l'expérience",
+      badge: "Auto-Évaluation & Posture Professionnelle",
+      content:
+        "### Synthèse de mon approche\nMon aventure sur le Portail RH chez Orange Business m'a fait passer du statut de développeur en reprise de code à celui de **référent technique autonome** capable de cadrer, sécuriser et innover sur une application critique d'entreprise.\n\n### Ce qui m'a le plus stimulé\n- **L'autonomie technique** : Concevoir à 100% le module d'Analytics pour Power BI et restructurer l'architecture BDD/NestJS.\n- **Le mentorat & la pédagogie** : Transmettre mes connaissances et préparer des outils d'onboarding (environnement Docker).\n\n### Les défis et aspects formateurs\n- **La gestion de crise (Post-vacances)** : Être confronté aux dérives du copier-coller d'IA non relu m'a appris à conserver mon sang-froid sous pression, à réorganiser un sprint et à défendre la qualité logicielle.\n\n### Valeur ajoutée pour les recruteurs & le jury RNCP\n1. **Rigueur d'Ingénierie** (Clean Code, DTOs, Docker, Angular 18, NestJS).\n2. **Résilience & Gestion des Imprévus** (capacité à résoudre une crise de livraison).\n3. **Esprit Critique sur l'IA** (maîtrise du code généré et revues rigoureuses).\n4. **Posture de Mentor & Communication** (alertes préventives, onboarding).",
+    },
+  },
 };
 
 export const portailRhEn = {
@@ -19,13 +97,91 @@ export const portailRhEn = {
   shortDesc:
     "Enterprise web app centralizing Orange HR tools — Angular 18, NestJS, MariaDB, Docker & Power BI Analytics.",
   definition:
-    "The **HR Portal** is a strategic enterprise web application at Orange Business. It centralizes access to all HR tools, applications, and resources for employees through a dynamic redirection system and an administrative back-office.\n\nMy involvement in this project unfolded across **5 major chronological phases** during my 2nd year of work-study (Bachelor's degree in Application Design):\n1. **Project takeover & sanitization** following the initial developer's resignation.\n2. **Onboarding & training of a team member** to handle a peak in client feature requests.\n3. **Crisis management & Front-End refactoring** upon return from vacation following degraded code from the isolated team member.\n4. **Maintenance consolidation & Back-Office enrichment** (News module, emergency alert banner, GDPR consent tracking, and CSV export).\n5. **Autonomous design & deployment of an in-house Analytics module** dedicated to feeding Power BI dashboards.",
+    "The **HR Portal** is an enterprise web application built at Orange Business. It serves as a single, centralized entry point for all Orange France employees to quickly access HR tools and resources via dynamic redirections.",
   framing:
-    "Each chronological step presented specific architectural constraints that governed my technical decisions:\n\n- **Phase 1 — BDD Sanitization & DTO Pattern**: The legacy app suffered from a lack of relational database integrity in MariaDB and direct entity manipulation by NestJS services. I rebuilt foreign keys using TypeORM, introduced strict **DTO (Data Transfer Objects)** separation with dedicated mappers, and removed raw JS scripts bypassing NestJS and Angular.\n- **Phase 1 — Custom Dockerized Environment**: To simplify local setup, I designed a **multi-stage Docker** architecture (NestJS + MariaDB + PHPMyAdmin) orchestrated by `docker compose up -d --build`, offering a 1-click dev environment.\n- **Phase 2 — Onboarding Framing**: Facing an influx of client requests, the Project Manager assigned a team member (Flutter mobile specialist) to the project. I structured a training plan focused on Angular 18, HTTP streams, and Web architecture.\n- **Phase 5 — Analytics Module Framing**: To measure user engagement, I evaluated several options (including Grafana) before securing approval for an **in-house Analytics architecture**. This choice enabled event capture directly at the BDD layer and native data formatting for Power BI reports.",
+    "Enterprise application built on Angular 18, NestJS, MariaDB (TypeORM), containerized using Docker for CloudFoundry cloud deployment.",
   action:
-    "Here is the detailed progression of my actions across the 5 project phases:\n\n- **Step 1: Project Takeover & Maintenance (Start of work-study)**\nFollowing the departure of the previous developer, I paired with my Lead Dev to take ownership of the codebase. I managed application maintenance while refactoring the NestJS Back-End (implementing DTOs and MariaDB relations).\n\n- **Step 2: Accelerated Requests & Team Member Mentorship**\nWith the client requesting a large volume of new features alongside a UI redesign, the Project Manager entrusted me with onboarding a team member on inter-contract. I conducted daily training sessions on Angular 18 and HTTP requests. Identifying fundamental web architecture gaps, I issued a preventive alert to the Project Manager before leaving for a 3-week vacation to ensure support was arranged.\n\n- **Step 3: Lead Dev Absence, Crisis & Post-Vacation Front-End Rework**\nDuring my vacation, the Lead Dev was unexpectedly absent, leaving the team member unassisted. Upon return, I discovered severely degraded Front-End code resulting from unverified generative AI copy-pasting. Staying composed, I restructured the remaining sprint backlog and dedicated several days to rewriting and restructuring the Front-End (isolated Angular components, strict typing, error handling).\n\n- **Step 4: Consolidation & Back-Office Features**\nOnce stability was restored, I continued maintenance independently (with Lead Dev code reviews). I completed UI redesigns across several pages, fixed CSS/redirection bugs, and developed admin modules: HR News management, a **real-time emergency alert banner**, CSV user export, and GDPR consent auditability.\n\n- **Step 5: Autonomous Analytics Module Development (Recent Period)**\nI independently designed and built the in-house Analytics engine from scratch. It tracks user journeys, top-visited pages, search and favorite feature usage, and top HR tools. Developed solo and reviewed by the Lead Dev, the module was pushed to Preproduction with zero regressions and awaits final Production Go-Live.",
+    "Work structured around 5 key situations: from project takeover and DB refactoring, to team member onboarding via Docker, Front-End crisis resolution, Back-Office enhancement, and designing an Analytics engine for Power BI.",
   results:
-    "The results achieved demonstrate the progressive resolution of each project phase:\n\n- **Post-Phase 1 (Sanitization)**: Complete elimination of data leaks and integrity issues thanks to the MariaDB/NestJS DTO refactoring.\n- **Post-Phases 2 & 3 (Crisis & Recovery)**: Delivered the app within adjusted timelines with full client satisfaction. Team retrospective formalized onboarding protocols and AI code assistance governance.\n- **Post-Phase 4 (Back-Office)**: HR admins gained autonomous tools to broadcast emergency alerts and export audit-ready GDPR compliance proofs.\n- **Post-Phase 5 (Analytics)**: The audience tracking system is 100% operational in Preproduction, ready to supply usage data to executive Power BI dashboards.",
+    "Application successfully delivered on time with high client satisfaction. Analytics module deployed to Preproduction without regressions.",
   critical:
-    "Each phase of this project yielded targeted insights for my professional development:\n\n- **Link to Phase 3 (Crisis Management)**: Proved my composure and ability to reorganize a sprint under pressure. Highlighted the risks of generative AI: without human review and architectural mastery, AI generates immediate technical debt.\n- **Link to Phase 2 (Mentorship)**: Taught me the importance of continuous guidance when a team member shifts technology stacks (from mobile to web) and matching workloads to actual skill levels.\n- **Link to Phases 4 & 5 (Autonomie)**: My progression on this project illustrates my evolution from guided code maintenance to the autonomous design of critical architecture (Power BI Analytics engine) validated on initial deployment.",
+    "A major experience that forged my architectural discipline, crisis management composure, critical stance on AI, and design autonomy.",
+
+  tabs: {
+    project: {
+      label: "The Project",
+      title: "General HR Portal Overview",
+      badge: "Business Context & Application Scope",
+      content:
+        "### What is the HR Portal?\nThe **HR Portal** is an enterprise web application developed at Orange Business. It serves as the centralized gateway for all Orange France employees to discover and navigate to HR tools, services, and corporate news.\n\n### Core Features\n- **Search Engine & Favorites**: Quick search across dozens of HR tools with personalized workspace shortcuts.\n- **URL Redirection System**: Dynamic routing to internal Orange platforms.\n- **Admin Space**: Complete back-office for managing HR news, broadcasting real-time emergency alert banners, and user management.\n\n### Global Tech Stack\n- **Front-End**: Angular 18, TypeScript, RxJS, HTML5 / CSS3.\n- **Back-End**: NestJS (Node.js framework), TypeScript.\n- **Database**: MariaDB / MySQL managed via TypeORM.\n- **DevOps & Infrastructure**: Multi-stage Docker, Docker Compose, CloudFoundry platform.\n\n### My Role & Period\nI worked on this project as a **Fullstack Work-Study Developer** during my 2nd year of Bachelor's degree (Application Designer). I initially took over maintenance before assuming full ownership of major evolutions and architecture.",
+    },
+
+    situation1: {
+      label: "1. Takeover & DB",
+      title: "Situation 1 — Project Takeover & BDD/NestJS Refactoring",
+      badge: "Technical Debt & Architecture",
+      framing:
+        "Following the resignation of the initial developer, I took over the project paired with my Lead Dev.\n\n**Initial Assessment & Issues**:\n- **No Relational Integrity**: The MariaDB database lacked foreign keys and defined table relationships.\n- **Direct Entity Manipulation**: NestJS backend services exposed and modified BDD entities directly without data validation (lack of DTOs).\n- **Framework Bypasses**: Presence of raw JavaScript scripts bypassing NestJS context and Angular lifecycle.",
+      action:
+        "**Actions Performed by Quentin**:\n1. **DB Modeling & TypeORM**: Reconstructed entity relationships, added foreign keys and relational integrity constraints in MariaDB.\n2. **DTO Pattern**: Systematically implemented DTOs with `class-validator` to seal APIs, incorporating conversion mappers in NestJS services.\n3. **Architecture Cleanup**: Replaced raw JS scripts with native framework mechanisms.",
+      results:
+        "**Results & Key Outcomes**:\n- Complete elimination of data leaks and unstable API behaviors.\n- Strict user input validation enforced at the NestJS layer.\n- Sanitized and maintainable back-end codebase for future features.",
+    },
+
+    situation2: {
+      label: "2. Onboarding & Docker",
+      title: "Situation 2 — Team Member Onboarding & Dockerization",
+      badge: "Mentorship & DevOps",
+      framing:
+        "Facing a high influx of client feature requests and UI redesign demands, the Project Manager assigned a team member (Flutter mobile specialist) to assist me and build web skills.\n\n**Challenges**:\n- Enable the team member to work locally immediately without requiring manual MariaDB or PHPMyAdmin setup.\n- Teach core Angular 18, TypeScript, and HTTP REST API concepts within a tight timeframe.",
+      action:
+        "**Actions Performed by Quentin**:\n1. **1-Click Custom Dockerization**: Designed a **multi-stage Docker** environment (NestJS + MariaDB + PHPMyAdmin) orchestrated via `docker compose up -d --build` to automate local backend startup.\n2. **Morning Training & Documentation**: Organized daily training sessions on Angular 18 and API flows.\n3. **Preventive Alert to PM**: Identifying fundamental web concept gaps, I alerted the Project Manager before my 3-week vacation to arrange necessary support.",
+      results:
+        "**Results & Key Outcomes**:\n- Operational 1-click local dev environment via Docker.\n- Formalized skill development plan and transparent risk communication to management.",
+    },
+
+    situation3: {
+      label: "3. Crisis Management",
+      title: "Situation 3 — Crisis Management & Front-End Rework",
+      badge: "Resilience & Composure",
+      framing:
+        "During my 3-week vacation, my Lead Dev was unexpectedly absent, leaving the team member unassisted.\n\n**Assessment Upon Return**:\n- Front-End code produced was degraded (pages missing Angular architecture, no typing, monolithic components).\n- Discovered unverified, raw AI copy-pasted code snippets.\n- Immediate risk of delivery delay and budget overflow.",
+      action:
+        "**Actions Performed by Quentin**:\n1. **Composure & Diagnosis**: Analyzed damages calmly with the Lead Dev and restructured the remaining ticket backlog.\n2. **Front-End Rewriting & Refactoring**: Reallocated several days to rewrite the failing Front layer (modular Angular components, strict TypeScript typing, HTTP error handling).\n3. **Sprint Securing**: Took charge of complex tickets to guarantee delivery date.",
+      results:
+        "**Results & Key Outcomes**:\n- Delivered the project on time with high client satisfaction despite minor budget adjustment.\n- Formalized team retrospectives on junior onboarding and governed AI coding assistant usage.",
+    },
+
+    situation4: {
+      label: "4. Back-Office & GDPR",
+      title: "Situation 4 — Back-Office, GDPR Auditability & CSV Export",
+      badge: "Business Features & Admin",
+      framing:
+        "With the crisis resolved and stability restored, I continued maintenance independently (reviewed by Lead Dev). The client requested advanced HR administration and legal compliance features.",
+      action:
+        "**Actions Performed by Quentin**:\n1. **HR News Module Redesign**: Complete overhaul of corporate news management for employees.\n2. **Real-Time Emergency Alert Banner**: Built an admin-controlled alert component to instantly notify users during technical incidents.\n3. **GDPR Compliance & CSV Export**: Implemented GDPR consent tracking with auditable CSV export generation and download.",
+      results:
+        "**Results & Key Outcomes**:\n- Enriched HR back-office and full admin autonomy for emergency communications.\n- Guaranteed GDPR auditability with high-performance CSV exports.",
+    },
+
+    situation5: {
+      label: "5. Power BI Analytics",
+      title: "Situation 5 — Custom Analytics Engine for Power BI",
+      badge: "Innovation & Autonomy",
+      framing:
+        "Recently, executive HR management sought to track user engagement and navigation journeys (most consulted tools, search and favorite usage) to feed Power BI dashboards.",
+      action:
+        "**Actions Performed by Quentin**:\n1. **Study & Architectural Choice**: Proposed and validated a lightweight **in-house Analytics engine** (preferred over Grafana).\n2. **100% Autonomous Development**: Designed the NestJS tracking API, user event capture, and structured metric storage in MariaDB.\n3. **Validation & Preproduction**: Built solo, reviewed by Lead Dev, pushed to Preproduction with zero bugs (awaiting Production Go-Live).",
+      results:
+        "**Results & Key Outcomes**:\n- 100% operational Analytics module in Preproduction.\n- Data stream ready to feed executive HR Power BI dashboards.",
+    },
+
+    synthesis: {
+      label: "My Summary",
+      title: "Overall Summary & Critical Retrospective",
+      badge: "Self-Evaluation & Professional Growth",
+      content:
+        "### Approach Summary\nMy journey on the HR Portal evolved from maintaining legacy code to becoming an **autonomous technical reference** capable of framing, securing, and innovating on critical enterprise applications.\n\n### What Stimulated Me Most\n- **Technical Autonomy**: Designing the Power BI Analytics module 100% from scratch and refactoring the DB/NestJS architecture.\n- **Mentorship & Pedagogy**: Sharing knowledge and preparing onboarding tooling (Docker environment).\n\n### Challenges & Learning Moments\n- **Crisis Management (Post-Vacation)**: Facing unverified AI copy-pasted debt taught me composure under pressure, sprint reorganization, and defending software quality.\n\n### Key Value for Recruiters & Certification Jury\n1. **Engineering Discipline** (Clean Code, DTOs, Docker, Angular 18, NestJS).\n2. **Resilience & Crisis Handling** (resolving delivery bottlenecks).\n3. **Critical Stance on AI** (strict code review and governance).\n4. **Mentorship & Communication** (preventive alerts, structured onboarding).",
+    },
+  },
 };
