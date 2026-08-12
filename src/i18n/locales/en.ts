@@ -201,42 +201,10 @@ const en: Translations = {
       linkedSkillsTitle: "Skills involved",
     },
     items: {
-      portailRh: {
-        title: "HR Redirection Portal",
-        shortDesc:
-          "Portal centralizing Orange HR tools via a URL redirection system — Angular, NestJS, MySQL, CloudFoundry.",
-        ...realisationsEn.portailRh,
-      },
-      reposComp: {
-        title: "Compensatory Leave Management",
-        shortDesc:
-          "Compensatory leave management application for all Orange France employees — Angular, Java, microservices.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
-      mobileComp: {
-        title: "Skills Mobile App",
-        shortDesc:
-          "Mobile and web application for centralizing team skills — Flutter, Dart, Supabase.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
-      ovoyage: {
-        title: "O'voyage",
-        shortDesc:
-          "O'Clock bootcamp final project — travel application built as a team with Vue.js and NestJS.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
+      portailRh: realisationsEn.portailRh,
+      reposComp: realisationsEn.reposComp,
+      mobileComp: realisationsEn.mylab,
+      ovoyage: realisationsEn.ovoyage,
       portfolio: {
         title: "Personal portfolio",
         shortDesc: "React portfolio with retro-futuristic design, dark mode and pixel art.",

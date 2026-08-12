@@ -64,15 +64,37 @@ interface TabConfig {
   readonly isSituation?: boolean;
 }
 
-const PORTAIL_RH_TABS: readonly TabConfig[] = [
-  { id: "project", icon: BookOpen, accentColor: "primary" },
-  { id: "situation1", icon: Layers, accentColor: "cyan", isSituation: true },
-  { id: "situation2", icon: Code2, accentColor: "orange", isSituation: true },
-  { id: "situation3", icon: Target, accentColor: "violet-foreground", isSituation: true },
-  { id: "situation4", icon: ClipboardList, accentColor: "primary", isSituation: true },
-  { id: "situation5", icon: TrendingUp, accentColor: "cyan", isSituation: true },
-  { id: "synthesis", icon: Eye, accentColor: "primary" },
-];
+const PROJECT_TABS: Record<string, readonly TabConfig[]> = {
+  "portail-rh": [
+    { id: "project", icon: BookOpen, accentColor: "primary" },
+    { id: "situation1", icon: Layers, accentColor: "cyan", isSituation: true },
+    { id: "situation2", icon: Code2, accentColor: "orange", isSituation: true },
+    { id: "situation3", icon: Target, accentColor: "violet-foreground", isSituation: true },
+    { id: "situation4", icon: ClipboardList, accentColor: "primary", isSituation: true },
+    { id: "situation5", icon: TrendingUp, accentColor: "cyan", isSituation: true },
+    { id: "synthesis", icon: Eye, accentColor: "primary" },
+  ],
+  "repos-compensateurs": [
+    { id: "project", icon: BookOpen, accentColor: "primary" },
+    { id: "situation1", icon: Code2, accentColor: "cyan", isSituation: true },
+    { id: "situation2", icon: Target, accentColor: "violet-foreground", isSituation: true },
+    { id: "synthesis", icon: Eye, accentColor: "primary" },
+  ],
+  "app-mobile-competences": [
+    { id: "project", icon: BookOpen, accentColor: "primary" },
+    { id: "situation1", icon: Layers, accentColor: "cyan", isSituation: true },
+    { id: "situation2", icon: Code2, accentColor: "orange", isSituation: true },
+    { id: "situation3", icon: TrendingUp, accentColor: "violet-foreground", isSituation: true },
+    { id: "synthesis", icon: Eye, accentColor: "primary" },
+  ],
+  "o-voyage": [
+    { id: "project", icon: BookOpen, accentColor: "primary" },
+    { id: "situation1", icon: Layers, accentColor: "cyan", isSituation: true },
+    { id: "situation2", icon: Code2, accentColor: "orange", isSituation: true },
+    { id: "situation3", icon: TrendingUp, accentColor: "violet-foreground", isSituation: true },
+    { id: "synthesis", icon: Eye, accentColor: "primary" },
+  ],
+};
 
 // --- Main page ---
 
@@ -109,8 +131,9 @@ const RealisationDetail = () => {
         ? "realisations.contextPerso"
         : "realisations.contextFormation";
 
-  const isTabbed = slug === "portail-rh";
-  const currentTab = PORTAIL_RH_TABS.find((tab) => tab.id === activeTabId) ?? PORTAIL_RH_TABS[0];
+  const activeTabs = slug ? PROJECT_TABS[slug] : undefined;
+  const isTabbed = !!activeTabs;
+  const currentTab = activeTabs ? (activeTabs.find((tab) => tab.id === activeTabId) ?? activeTabs[0]) : undefined;
 
   return (
     <section className="section-container space-y-8 pt-10">
@@ -132,12 +155,12 @@ const RealisationDetail = () => {
         </div>
       </div>
 
-      {/* Tabbed view for Portail RH */}
-      {isTabbed ? (
+      {/* Tabbed view for tabbed projects */}
+      {isTabbed && currentTab && activeTabs ? (
         <div className="space-y-6">
           {/* Tabs Navigation Bar */}
           <div className="flex flex-wrap gap-2 border-b border-border/40 pb-4">
-            {PORTAIL_RH_TABS.map((tab) => {
+            {activeTabs.map((tab) => {
               const TabIcon = tab.icon;
               const isActive = tab.id === activeTabId;
               const label = t(`${base}.tabs.${tab.id}.label`);
@@ -195,7 +218,7 @@ const RealisationDetail = () => {
           ) : (
             <DetailBlock
               icon={currentTab.icon}
-              title={t(`${base}.tabs.${currentTab.id}.title`)}
+              title={currentTab.id === "project" ? t("realisations.detail.definitionTitle") : t("realisations.detail.criticalTitle")}
               content={t(`${base}.tabs.${currentTab.id}.content`)}
               accentColor={currentTab.accentColor}
             />

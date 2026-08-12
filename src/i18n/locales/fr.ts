@@ -201,42 +201,10 @@ const fr: Translations = {
       linkedSkillsTitle: "Compétences mobilisées",
     },
     items: {
-      portailRh: {
-        title: "Portail de redirection RH",
-        shortDesc:
-          "Portail centralisant les outils RH d'Orange via un système de redirection d'URL — Angular, NestJS, MySQL, CloudFoundry.",
-        ...realisationsFr.portailRh,
-      },
-      reposComp: {
-        title: "Gestion des repos compensateurs",
-        shortDesc:
-          "Application de gestion des repos compensateurs pour l'ensemble des salariés d'Orange France — Angular, Java, microservices.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
-      mobileComp: {
-        title: "App mobile Compétences",
-        shortDesc:
-          "Application mobile et web de centralisation des compétences des équipes — Flutter, Dart, Supabase.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
-      ovoyage: {
-        title: "O'voyage",
-        shortDesc:
-          "Projet de fin de formation O'Clock — application de voyage réalisée en équipe avec Vue.js et NestJS.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
+      portailRh: realisationsFr.portailRh,
+      reposComp: realisationsFr.reposComp,
+      mobileComp: realisationsFr.mylab,
+      ovoyage: realisationsFr.ovoyage,
       portfolio: {
         title: "Portfolio personnel",
         shortDesc: "Portfolio React avec design retro-futuriste, mode sombre et pixel art.",

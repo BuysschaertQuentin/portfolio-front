@@ -3,7 +3,7 @@ import React from "react";
 /**
  * Parses inline formatting like **bold** text and [links](url).
  */
-export const renderInlineFormatting = (text: string): React.ReactNode => {
+export const parseInlineSpans = (text: string): React.ReactNode => {
   const parts = text.split(/(\*\*[\s\S]+?\*\*|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
@@ -29,6 +29,57 @@ export const renderInlineFormatting = (text: string): React.ReactNode => {
       );
     }
     return part;
+  });
+};
+
+/**
+ * Parses inline formatting, markdown headers (#, ##, ###), and bullet lists.
+ */
+export const renderInlineFormatting = (text: string): React.ReactNode => {
+  const lines = text.split("\n");
+  return lines.map((line, lineIdx) => {
+    const trimmed = line.trim();
+
+    if (trimmed.startsWith("### ")) {
+      return (
+        <h3 key={lineIdx} className="text-base font-bold text-foreground mt-4 mb-2 border-b border-border/20 pb-1">
+          {parseInlineSpans(trimmed.slice(4))}
+        </h3>
+      );
+    }
+    if (trimmed.startsWith("## ")) {
+      return (
+        <h2 key={lineIdx} className="text-lg font-bold text-foreground mt-5 mb-2 border-b border-border/30 pb-1">
+          {parseInlineSpans(trimmed.slice(3))}
+        </h2>
+      );
+    }
+    if (trimmed.startsWith("# ")) {
+      return (
+        <h1 key={lineIdx} className="text-xl font-bold text-foreground mt-6 mb-3">
+          {parseInlineSpans(trimmed.slice(2))}
+        </h1>
+      );
+    }
+
+    const lineContent = parseInlineSpans(line);
+
+    if (trimmed.startsWith("- ")) {
+      const contentWithoutDash = trimmed.slice(2);
+      return (
+        <div key={lineIdx} className="flex items-start gap-2 my-1.5 pl-2">
+          <span className="text-primary font-bold select-none">•</span>
+          <span className="flex-1">{parseInlineSpans(contentWithoutDash)}</span>
+        </div>
+      );
+    }
+
+    return (
+      <React.Fragment key={lineIdx}>
+        {lineContent}
+        {lineIdx < lines.length - 1 && <br />}
+      </React.Fragment>
+    );
   });
 };
 
