@@ -205,15 +205,7 @@ const en: Translations = {
       reposComp: realisationsEn.reposComp,
       mobileComp: realisationsEn.mylab,
       ovoyage: realisationsEn.ovoyage,
-      portfolio: {
-        title: "Personal portfolio",
-        shortDesc: "React portfolio with retro-futuristic design, dark mode and pixel art.",
-        definition: "[TO WRITE]",
-        framing: "[TO WRITE]",
-        action: "[TO WRITE]",
-        results: "[TO WRITE]",
-        critical: "[TO WRITE]",
-      },
+      portfolio: realisationsEn.portfolio,
     },
   },
   parcours: {

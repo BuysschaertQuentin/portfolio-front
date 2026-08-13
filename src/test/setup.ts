@@ -16,16 +16,9 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 
-// Mock lucide-react icons to avoid SVG rendering issues in JSDOM
-vi.mock("lucide-react", () => ({
-  // Add common icons used in the project or a proxy
-  Menu: () => "MenuIcon",
-  X: () => "XIcon",
-  ChevronRight: () => "ChevronRightIcon",
-  Github: () => "GithubIcon",
-  Linkedin: () => "LinkedinIcon",
-  Mail: () => "MailIcon",
-  ExternalLink: () => "ExternalLinkIcon",
-  // Fallback for any other icon
-  ...new Proxy({}, { get: () => () => "LucideIcon" }),
-}));
+vi.mock("lucide-react", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("lucide-react")>();
+  return new Proxy(actual, {
+    get: (target, prop) => (prop in target ? target[prop as keyof typeof target] : () => "LucideIcon"),
+  });
+});

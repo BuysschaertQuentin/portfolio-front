@@ -205,15 +205,7 @@ const fr: Translations = {
       reposComp: realisationsFr.reposComp,
       mobileComp: realisationsFr.mylab,
       ovoyage: realisationsFr.ovoyage,
-      portfolio: {
-        title: "Portfolio personnel",
-        shortDesc: "Portfolio React avec design retro-futuriste, mode sombre et pixel art.",
-        definition: "[À RÉDIGER]",
-        framing: "[À RÉDIGER]",
-        action: "[À RÉDIGER]",
-        results: "[À RÉDIGER]",
-        critical: "[À RÉDIGER]",
-      },
+      portfolio: realisationsFr.portfolio,
     },
   },
   parcours: {

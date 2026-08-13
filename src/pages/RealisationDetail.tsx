@@ -94,6 +94,12 @@ const PROJECT_TABS: Record<string, readonly TabConfig[]> = {
     { id: "situation3", icon: TrendingUp, accentColor: "violet-foreground", isSituation: true },
     { id: "synthesis", icon: Eye, accentColor: "primary" },
   ],
+  "portfolio": [
+    { id: "project", icon: BookOpen, accentColor: "primary" },
+    { id: "situation1", icon: Code2, accentColor: "cyan", isSituation: true },
+    { id: "situation2", icon: Target, accentColor: "violet-foreground", isSituation: true },
+    { id: "synthesis", icon: Eye, accentColor: "primary" },
+  ],
 };
 
 // --- Main page ---
