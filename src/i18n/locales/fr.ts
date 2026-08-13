@@ -135,24 +135,28 @@ const fr: Translations = {
   about: {
     title: "Profil",
     intro:
-      "[À RÉDIGER] — Courte introduction de présentation, intégrant tes valeurs clés (rigueur, empathie, engagement, curiosité).",
+      "Développeur Fullstack passionné et rigoureux chez Orange Business, j'allie une solide expertise technique (React, Angular, NestJS, Flutter, Java) à de fortes qualités humaines forgées par 8 ans d'expérience dans le soin. Mon approche est axée sur la qualité logicielle, la curiosité permanente et l'engagement d'équipe.",
     proProjectTitle: "Projet professionnel",
-    proProjectDesc: "[À RÉDIGER] — Quel poste tu vises, dans quel secteur, pourquoi.",
+    proProjectDesc:
+      "Valider mon Titre Pro Expert en Ingénierie du Logiciel (Bac +5 EIL) et évoluer en tant qu'Ingénieur / Architecte Logiciel Fullstack au sein d'une entreprise innovante portée par des défis d'architecture ambitieux.",
     persoProjectTitle: "Projet personnel",
-    persoProjectDesc: "[À RÉDIGER] — Ce qui te motive au-delà du travail.",
+    persoProjectDesc:
+      "Concevoir des jeux vidéo indépendants sur navigateur web avec Phaser.js, tout en explorant les avancées des agents IA autonomes et de l'écosystème open-source.",
     softSkillsTitle: "Qualités humaines",
     softSkillsSubtitle: "Aperçu de mes principales qualités — détails dans la page Compétences.",
     seeMore: "En savoir plus →",
     interestsTitle: "Centres d'intérêt",
     interests: {
-      interest1: "[Intérêt 1]",
-      interest1Desc: "[À RÉDIGER]",
-      interest2: "[Intérêt 2]",
-      interest2Desc: "[À RÉDIGER]",
-      interest3: "[Intérêt 3]",
-      interest3Desc: "[À RÉDIGER]",
-      interest4: "[Intérêt 4]",
-      interest4Desc: "[À RÉDIGER]",
+      interest1: "Développement de Jeux Vidéo",
+      interest1Desc: "Création de mécaniques réactives et de jeux web sous Phaser.js et Flutter.",
+      interest2: "Technologies IA & Agents",
+      interest2Desc:
+        "Exploration des serveurs MCP, de l'IA générative et de l'ingénierie assistée.",
+      interest3: "Hardware & DevOps",
+      interest3Desc: "Passion pour les conteneurs Docker, les architectures serveurs et le cloud.",
+      interest4: "Veille & Auto-formation",
+      interest4Desc:
+        "Apprentissage continu de nouveaux frameworks (Java 17, Spring Boot 3, Vue 3).",
     },
   },
   competences: {
@@ -223,36 +227,42 @@ const fr: Translations = {
     entries: {
       orangeBac5: {
         period: "Mars 2025 — Mars 2027",
-        title: "Développeur Fullstack — Master Ingénierie Logicielle",
+        title: "Développeur Fullstack — Master Ingénierie Logicielle (Bac +5)",
         place: "Orange Business",
-        status: "Alternance (2ème année)",
-        missions: "[À RÉDIGER] — Missions détaillées (app mobile Flutter, repos compensateurs).",
-        vision: "[À RÉDIGER] — Vision de l'entreprise.",
+        status: "Alternance (2ème année - Titre Pro EIL)",
+        missions:
+          "Développement du microservice MS-TP-RC (Angular 18, Java 17 / Spring Boot 3), Tierce Maintenance Applicative (TMA) et évolutions du Portail RH, et conception d'architectures web modernes.",
+        vision:
+          "La vision d'Orange Business s'articule autour de l'excellence opérationnelle, de la sécurité renforcée des SI d'entreprise et de l'innovation continue au service de la transformation digitale.",
       },
       orangeBac3: {
         period: "Nov. 2023 — Déc. 2024",
-        title: "Alternance — Bac+3 Concepteur Développeur d'Applications",
+        title: "Développeur Fullstack — Concepteur Développeur d'Applications (Bac +3)",
         place: "Orange Business",
-        status: "Alternance (1ère année)",
-        missions: "[À RÉDIGER] — Missions détaillées (portail RH).",
-        vision: "[À RÉDIGER] — Vision de l'entreprise.",
+        status: "Alternance (1ère année - Titre Pro CDA)",
+        missions:
+          "Refactoring complet du Portail de Redirection RH (Angular 18, NestJS, TypeORM, MySQL, Docker Compose, CloudFoundry) et participation au projet mobile MyLab.",
+        vision:
+          "Une immersion au cœur d'une entité d'ingénierie d'entreprise valorisant la rigueur méthodologique, l'agilité SCRUM, les revues de code systématiques et le déploiement continu.",
       },
       oclock: {
-        period: "Jan. 2023 — Juin 2023",
-        title: "Bootcamp Développeur Web Fullstack JavaScript",
+        period: "Janv. 2023 — Juin 2023",
+        title: "Bootcamp Développeur Web Fullstack JavaScript (Bac +2)",
         place: "O'clock",
         presentation:
-          "Formation intensive de 6 mois via Transitions Pro Hauts-de-France. Socle de 476h (HTML/CSS, JavaScript, Node.js, SQL, architecture MVC) suivi d'une spécialisation Data de 168h (SQL avancé, NoSQL, MongoDB, Redis, GraphQL, Data Science). Projet final « O'voyage » en équipe avec soutenance.",
-        vision: "[À RÉDIGER] — Vision de la pédagogie O'Clock.",
+          "Formation intensive de 6 mois en téléprésentiel (644h via Transitions Pro). Socle de 476h (HTML/CSS, JavaScript, Node.js, SQL, MVC) suivi d'une spécialisation Data de 168h (SQL avancé, GraphQL, ORM, PostgreSQL).",
+        vision:
+          "Une pédagogie active basée sur la pratique quotidienne, le travail en équipe agile et la réalisation d'un projet d'apothéose collaboratif (O'Voyage).",
       },
       care: {
         period: "Oct. 2014 — Août 2023",
         title: "Auxiliaire de vie à domicile",
         place: "APF France Handicap — Villeneuve d'Ascq",
-        status: "CDI",
+        status: "CDI (8 ans d'expérience)",
         missions:
-          "Accompagnement quotidien de personnes en situation de handicap moteur et mental. Formation aux aspirations endotrachéales (2017) permettant la prise en charge de patients ayant une trachéotomie. Planification autonome des interventions, collaboration avec familles et équipes soignantes.",
-        vision: "[À RÉDIGER] — Ce que cette expérience t'a apporté.",
+          "Accompagnement quotidien de personnes en situation de handicap. Organisation autonome des plannings, gestion des priorités et interventions de soin complexes (aspirations endotrachéales).",
+        vision:
+          "L'expérience humaine fondatrice qui a forgé mes compétences humaines : l'empathie, l'écoute active, la résilience et l'organisation rigoureuse.",
       },
     },
     certifications: {

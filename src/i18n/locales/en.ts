@@ -135,24 +135,26 @@ const en: Translations = {
   about: {
     title: "Profile",
     intro:
-      "[TO WRITE] — Short introduction integrating your key values (rigor, empathy, commitment, curiosity).",
+      "Passionate and rigorous Fullstack Developer at Orange Business, combining strong technical expertise (React, Angular, NestJS, Flutter, Java) with solid human soft skills forged through 8 years in home care. My approach centers on software quality, continuous curiosity, and team engagement.",
     proProjectTitle: "Professional project",
-    proProjectDesc: "[TO WRITE]",
+    proProjectDesc:
+      "Validate my Master's Degree in Software Engineering (Bac +5 EIL) and grow as a Fullstack Software Engineer / Architect within an innovative company tackling ambitious software challenges.",
     persoProjectTitle: "Personal project",
-    persoProjectDesc: "[TO WRITE]",
+    persoProjectDesc:
+      "Design independent web browser games using Phaser.js, while exploring advances in autonomous AI agents and open-source ecosystems.",
     softSkillsTitle: "Human qualities",
     softSkillsSubtitle: "Overview of my main qualities — details on the Skills page.",
     seeMore: "Learn more →",
     interestsTitle: "Interests",
     interests: {
-      interest1: "[Interest 1]",
-      interest1Desc: "[TO WRITE]",
-      interest2: "[Interest 2]",
-      interest2Desc: "[TO WRITE]",
-      interest3: "[Interest 3]",
-      interest3Desc: "[TO WRITE]",
-      interest4: "[Interest 4]",
-      interest4Desc: "[TO WRITE]",
+      interest1: "Game Development",
+      interest1Desc: "Building reactive mechanics and web games with Phaser.js and Flutter.",
+      interest2: "AI Tech & Autonomous Agents",
+      interest2Desc: "Exploring MCP servers, generative AI, and agentic coding tools.",
+      interest3: "Hardware & DevOps",
+      interest3Desc: "Passion for Docker containers, server architectures, and cloud platforms.",
+      interest4: "Tech Watch & Self-Learning",
+      interest4Desc: "Continuous learning of new frameworks (Java 17, Spring Boot 3, Vue 3).",
     },
   },
   competences: {
@@ -223,36 +225,42 @@ const en: Translations = {
     entries: {
       orangeBac5: {
         period: "Mar. 2025 — Mar. 2027",
-        title: "Fullstack Developer — Master's in Software Engineering",
+        title: "Fullstack Developer — Master's in Software Engineering (Bac +5)",
         place: "Orange Business",
-        status: "Work-study program (2nd year)",
-        missions: "[TO WRITE] — Detailed missions (Flutter mobile app, compensatory leave).",
-        vision: "[TO WRITE] — Company vision.",
+        status: "Work-study program (2nd year - EIL Title)",
+        missions:
+          "MS-TP-RC microservice development (Angular 18, Java 17 / Spring Boot 3), HR Portal Third-Party Maintenance (TMA) and feature evolutions, and modern web architecture design.",
+        vision:
+          "Orange Business vision centers on operational excellence, robust enterprise IT security, and continuous innovation driving B2B digital transformation.",
       },
       orangeBac3: {
         period: "Nov. 2023 — Dec. 2024",
-        title: "Fullstack Developer — Bachelor's in Application Design",
+        title: "Fullstack Developer — Application Designer & Developer (Bac +3)",
         place: "Orange Business",
-        status: "Work-study program (1st year)",
-        missions: "[TO WRITE] — Detailed missions (HR portal).",
-        vision: "[TO WRITE] — Company vision.",
+        status: "Work-study program (1st year - CDA Title)",
+        missions:
+          "Complete refactoring of the HR Redirection Portal (Angular 18, NestJS, TypeORM, MySQL, Docker Compose, CloudFoundry) and contribution to the MyLab mobile project.",
+        vision:
+          "Hands-on immersion within an enterprise software engineering unit emphasizing methodological rigor, SCRUM agility, systematic code reviews, and continuous deployment.",
       },
       oclock: {
         period: "Jan. 2023 — Jun. 2023",
-        title: "Fullstack JavaScript Web Developer Bootcamp",
+        title: "Fullstack JavaScript Web Developer Bootcamp (Bac +2)",
         place: "O'clock",
         presentation:
-          "Intensive 6-month training via Transitions Pro Hauts-de-France. 476h core curriculum (HTML/CSS, JavaScript, Node.js, SQL, MVC architecture) followed by a 168h Data specialization (advanced SQL, NoSQL, MongoDB, Redis, GraphQL, Data Science). Final team project 'O'voyage' with defense.",
-        vision: "[TO WRITE] — O'Clock pedagogy vision.",
+          "Intensive 6-month remote training (644h via Transitions Pro). 476h core curriculum (HTML/CSS, JavaScript, Node.js, SQL, MVC) followed by a 168h Data specialization (advanced SQL, GraphQL, ORM, PostgreSQL).",
+        vision:
+          "Active pedagogy based on daily practice, agile teamwork, and a collaborative apotheosis project (O'Voyage).",
       },
       care: {
         period: "Oct. 2014 — Aug. 2023",
         title: "Home Care Assistant",
         place: "APF France Handicap — Villeneuve d'Ascq",
-        status: "Permanent contract",
+        status: "Permanent contract (8 years experience)",
         missions:
-          "Daily support for people with motor and cognitive disabilities. Endotracheal aspiration training (2017) enabling care for patients with neuromuscular diseases (ALS). Autonomous planning of interventions, collaboration with families and healthcare teams.",
-        vision: "[TO WRITE] — What this experience brought you.",
+          "Daily support for individuals with disabilities. Autonomous schedule planning, priority management, and complex care interventions (endotracheal aspiration certification).",
+        vision:
+          "The foundational human experience that forged my key soft skills: empathy, active listening, resilience, and rigorous organization.",
       },
     },
     certifications: {

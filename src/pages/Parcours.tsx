@@ -16,7 +16,8 @@ import { memo, useCallback, useState } from "react";
 // --- Logo lookup ---
 
 const LOGOS: Record<string, string> = {
-  orange: orangeLogo,
+  orangeBac5: orangeLogo,
+  orangeBac3: orangeLogo,
   oclock: oclockLogo,
 };
 
