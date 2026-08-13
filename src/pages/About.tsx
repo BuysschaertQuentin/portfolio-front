@@ -14,6 +14,8 @@ import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../components/ui/cards/Card";
 
+import { renderFormattedText } from "@/lib/formatText";
+
 // --- Section header ---
 
 interface SectionHeaderProps {
@@ -55,7 +57,7 @@ SectionHeader.displayName = "SectionHeader";
 
 interface SoftSkillLinkProps {
   readonly slug: string;
-  readonly icon: LucideIcon;
+  readonly icon?: LucideIcon;
   readonly title: string;
   readonly shortDesc: string;
   readonly seeMoreLabel: string;
@@ -73,10 +75,12 @@ const SoftSkillLink = memo(
       <Card className="rounded-lg p-4 border-violet/15 space-y-2 hover:border-violet/40 transition-all duration-300">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-md bg-violet-muted">
-            <Icon
-              className="w-4 h-4 text-violet-foreground"
-              aria-hidden="true"
-            />
+            {Icon && (
+              <Icon
+                className="w-4 h-4 text-violet-foreground"
+                aria-hidden="true"
+              />
+            )}
           </div>
           <p className="text-sm font-semibold text-foreground">{title}</p>
         </div>
@@ -158,9 +162,9 @@ const About = () => {
             accentColor="orange"
           />
           <Card className="rounded-xl p-6 border-orange/20">
-            <p className="text-muted-foreground leading-relaxed">
-              {t("about.proProjectDesc")}
-            </p>
+            <div className="text-muted-foreground leading-relaxed text-sm">
+              {renderFormattedText(t("about.proProjectDesc"))}
+            </div>
           </Card>
         </div>
         <div>
@@ -170,9 +174,9 @@ const About = () => {
             accentColor="cyan"
           />
           <Card className="rounded-xl p-6 border-cyan/20">
-            <p className="text-muted-foreground leading-relaxed">
-              {t("about.persoProjectDesc")}
-            </p>
+            <div className="text-muted-foreground leading-relaxed text-sm">
+              {renderFormattedText(t("about.persoProjectDesc"))}
+            </div>
           </Card>
         </div>
       </div>

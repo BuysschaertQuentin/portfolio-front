@@ -138,7 +138,7 @@ const fr: Translations = {
       "Développeur Fullstack passionné et rigoureux chez Orange Business, j'allie une solide expertise technique (React, Angular, NestJS, Flutter, Java) à de fortes qualités humaines forgées par 8 ans d'expérience dans le soin. Mon approche est axée sur la qualité logicielle, la curiosité permanente et l'engagement d'équipe.",
     proProjectTitle: "Projet professionnel",
     proProjectDesc:
-      "Valider mon Titre Pro Expert en Ingénierie du Logiciel (Bac +5 EIL) et évoluer en tant qu'Ingénieur / Architecte Logiciel Fullstack au sein d'une entreprise innovante portée par des défis d'architecture ambitieux.",
+      "Valider mon **Titre Pro Expert en Ingénierie du Logiciel (Bac +5 EIL)** et évoluer en tant qu'**Ingénieur / Architecte Logiciel Fullstack**, si possible au sein de mon entreprise actuelle chez **Orange Business**.\n\n- **Stack de prédilection** : Continuer à approfondir et pratiquer **Angular** et **Java / Spring Boot**.\n- **Compétences DevOps** : Développer mon expertise sur l'orchestration de conteneurs (**Kubernetes**).\n- **Écosystème Cloud** : Évoluer vers les solutions Cloud majeures (**AWS**, **GCP**).",
     persoProjectTitle: "Projet personnel",
     persoProjectDesc:
       "Concevoir des jeux vidéo indépendants sur navigateur web avec Phaser.js, tout en explorant les avancées des agents IA autonomes et de l'écosystème open-source.",

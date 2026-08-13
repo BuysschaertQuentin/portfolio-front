@@ -138,7 +138,7 @@ const en: Translations = {
       "Passionate and rigorous Fullstack Developer at Orange Business, combining strong technical expertise (React, Angular, NestJS, Flutter, Java) with solid human soft skills forged through 8 years in home care. My approach centers on software quality, continuous curiosity, and team engagement.",
     proProjectTitle: "Professional project",
     proProjectDesc:
-      "Validate my Master's Degree in Software Engineering (Bac +5 EIL) and grow as a Fullstack Software Engineer / Architect within an innovative company tackling ambitious software challenges.",
+      "Validate my **Master's Degree in Software Engineering (Bac +5 EIL)** and grow as a **Fullstack Software Engineer / Architect**, ideally within my current company at **Orange Business**.\n\n- **Core Stack**: Continue deepening my expertise in **Angular** and **Java / Spring Boot**.\n- **DevOps Skills**: Expand my expertise in container orchestration (**Kubernetes**).\n- **Cloud Ecosystem**: Evolve toward major Cloud solutions (**AWS**, **GCP**).",
     persoProjectTitle: "Personal project",
     persoProjectDesc:
       "Design independent web browser games using Phaser.js, while exploring advances in autonomous AI agents and open-source ecosystems.",
