@@ -229,7 +229,7 @@ const en: Translations = {
         place: "Orange Business",
         status: "Work-study program (2nd year - EIL Title)",
         missions:
-          "MS-TP-RC microservice development (Angular 18, Java 17 / Spring Boot 3), HR Portal Third-Party Maintenance (TMA) and feature evolutions, and modern web architecture design.",
+          "Development of the HR Microservice Module (Part-Time Regimes & Compensatory Leave — Angular 18, Java 17 / Spring Boot 3), HR Portal Third-Party Maintenance (TMA) and feature evolutions, and modern web architecture design.",
         vision:
           "Orange Business vision centers on operational excellence, robust enterprise IT security, and continuous innovation driving B2B digital transformation.",
       },

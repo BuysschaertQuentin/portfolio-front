@@ -231,7 +231,7 @@ const fr: Translations = {
         place: "Orange Business",
         status: "Alternance (2ème année - Titre Pro EIL)",
         missions:
-          "Développement du microservice MS-TP-RC (Angular 18, Java 17 / Spring Boot 3), Tierce Maintenance Applicative (TMA) et évolutions du Portail RH, et conception d'architectures web modernes.",
+          "Développement du Module Microservice RH (Temps Partiels & Repos Compensateurs — Angular 18, Java 17 / Spring Boot 3), Tierce Maintenance Applicative (TMA) et évolutions du Portail RH, et conception d'architectures web modernes.",
         vision:
           "La vision d'Orange Business s'articule autour de l'excellence opérationnelle, de la sécurité renforcée des SI d'entreprise et de l'innovation continue au service de la transformation digitale.",
       },
