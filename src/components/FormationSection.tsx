@@ -1,79 +1,104 @@
 import bootcampImg from "@/assets/bootcamp_o_clock.png";
+import oclockLogo from "@/assets/oclock.png";
+import { FORMATION_SKILLS } from "@/constants/home";
+import { EXTERNAL_LINKS } from "@/constants/personal";
 import { useI18n } from "@/i18n";
+import { ArrowRight } from "lucide-react";
+import { ExternalLink } from "./ui/a11y/ExternalLink";
+import SectionChevron from "./ui/navigation/SectionChevron";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import { TechBadge } from "./ui/badges/TechBadge";
 
 const FormationSection = () => {
   const { t } = useI18n();
 
-  const skills = [
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "React",
-    "Node.js",
-    "SQL",
-    "API REST",
-    "Git",
-  ];
-
   return (
-    <section id="formation" className="relative bg-violet-deep">
-      <div className="absolute inset-0 bg-linear-to-b from-background via-violet-deep to-background pointer-events-none" />
+    <section
+      id="formation"
+      className="bg-violet-deep relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
+    >
+      <div className="from-background via-violet-deep/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container relative z-10">
-        <p className="text-violet-foreground font-mono text-sm tracking-widest uppercase mb-2">
-          {t("formation.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-violet">
-          {t("formation.title")}{" "}
-          <span className="text-violet-foreground">
-            {t("formation.school")}
-          </span>
-        </h2>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index="02"
+          label={t("formation.sectionLabel")}
+          title={t("formation.title")}
+          titleHighlight={t("formation.school")}
+          accentColor="violet"
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="flex justify-center md:order-1">
             <img
               src={bootcampImg}
               alt={t("formation.imgAlt")}
-              className="pixel-image w-full max-w-md"
-              width={448}
-              height={448}
+              className="pixel-image w-full max-w-xs drop-shadow-[0_0_20px_hsla(var(--violet)/0.15)] sm:max-w-sm"
+              width={384}
+              height={384}
               loading="lazy"
             />
           </div>
-          <div className="glass-card rounded-xl p-8 border-violet/30 space-y-6 md:order-2">
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-violet-foreground animate-pulse" />
-              <span className="text-sm text-muted-foreground font-mono">
-                {t("formation.duration")}
-              </span>
+          <Card className="border-violet/30 space-y-4 rounded-lg p-6 md:order-2">
+            {/* Logo + school name + link */}
+            <div className="flex items-center gap-4">
+              <ExternalLink href={EXTERNAL_LINKS.oclock} aria-label={t("formation.school")}>
+                <img
+                  src={oclockLogo}
+                  alt=""
+                  className="h-10 w-10 object-contain transition-transform hover:scale-110"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                />
+              </ExternalLink>
+              <div>
+                <ExternalLink
+                  href={EXTERNAL_LINKS.oclock}
+                  className="text-foreground hover:text-violet-foreground font-semibold transition-colors"
+                >
+                  {t("formation.school")}
+                </ExternalLink>
+                <p className="text-muted-foreground font-mono text-xs">{t("formation.duration")}</p>
+              </div>
             </div>
-            <p className="text-secondary-foreground leading-relaxed">
+
+            <p className="text-secondary-foreground text-base leading-relaxed">
               {t("formation.description")}{" "}
-              <span className="text-violet-foreground font-medium">
-                {t("formation.quality1")}
-              </span>{" "}
+              <span className="text-violet-foreground font-medium">{t("formation.quality1")}</span>{" "}
               {t("formation.and")}{" "}
-              <span className="text-violet-foreground font-medium">
-                {t("formation.quality2")}
-              </span>{" "}
+              <span className="text-violet-foreground font-medium">{t("formation.quality2")}</span>{" "}
               {t("formation.forCode")}
             </p>
+
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 text-xs font-mono rounded-full bg-violet-muted text-violet-foreground border border-violet/30"
-                >
-                  {skill}
-                </span>
+              {FORMATION_SKILLS.map((skill) => (
+                <TechBadge key={skill} name={skill} size="small" />
               ))}
             </div>
-          </div>
+
+            <div className="border-violet/20 border-t pt-4">
+              <Button
+                to="/parcours"
+                variant="secondary"
+                className="border-violet/20 hover:border-violet/40 hover:bg-violet/5"
+              >
+                {t("formation.cta")}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </Card>
         </div>
+      </div>
+
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="experience-bac3" label={t("chevrons.experience")} />
       </div>
     </section>
   );
 };
 
 export default FormationSection;
+

@@ -1,67 +1,112 @@
-# Portfolio — Frontend
+# 🚀 Portfolio — Quentin Buysschaert
 
-Portfolio de développeur Fullstack construit avec React, TypeScript et Tailwind CSS.
+Portfolio personnel développé avec une approche **retro-futuriste** et **pixel-art**, mettant en avant mon parcours de reconversion et mes compétences de développeur Fullstack.
 
-## Stack technique
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-v7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-v5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vitest](https://img.shields.io/badge/Vitest-v4-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 
-| Catégorie     | Technologies                                    |
-| ------------- | ----------------------------------------------- |
-| **Framework** | [React 18](https://react.dev/) + TypeScript     |
-| **Build**     | [Vite 5](https://vitejs.dev/)                   |
-| **Styling**   | [Tailwind CSS 3](https://tailwindcss.com/)      |
-| **Routing**   | [React Router 6](https://reactrouter.com/)      |
-| **Data**      | [TanStack Query](https://tanstack.com/query)    |
-| **Icônes**    | [Lucide React](https://lucide.dev/)             |
-| **Tests**     | [Vitest](https://vitest.dev/) + Testing Library |
+---
 
-## Prérequis
+## ✨ Caractéristiques
 
-- **Node.js** ≥ 18
-- **npm** ≥ 9
+- 🌑 **Mode sombre natif** avec design retro-futuriste.
+- 🎨 **Esthétique Pixel Art** pour les illustrations et le branding.
+- 🌍 **Internationalisation (i18n)** complète (Français / Anglais).
+- 🖱️ **Navigation Fluide** : Système de scroll snap chronologique.
+- 📱 **Responsive Design** : Optimisé pour tous les écrans.
+- ♿ **Accessibilité** : Respect des standards WCAG.
 
-## Installation
+---
+
+## 🛠️ Stack Technique
+
+- **Core** : React 19 + TypeScript 5
+- **Build Tool** : Vite 7
+- **Styling** : Tailwind CSS v4 (utilisant `@theme` et les variables CSS natives)
+- **Navigation** : React Router 7
+- **Icônes** : Lucide React + Icônes personnalisées
+- **Tests** : Vitest + React Testing Library
+- **Linting/Formatting** : ESLint + Prettier
+
+---
+
+## 📂 Structure du projet
 
 ```bash
-npm install
-```
-
-## Scripts disponibles
-
-| Commande             | Description                          |
-| -------------------- | ------------------------------------ |
-| `npm run dev`        | Serveur de développement (port 8080) |
-| `npm run build`      | Build de production                  |
-| `npm run preview`    | Prévisualisation du build            |
-| `npm run lint`       | Lint ESLint                          |
-| `npm test`           | Exécution des tests (une fois)       |
-| `npm run test:watch` | Tests en mode watch                  |
-
-## Structure du projet
-
-```
 src/
-├── assets/          # Images et ressources statiques
-├── components/      # Composants React (sections du portfolio)
-├── hooks/           # Hooks personnalisés (auth)
-├── pages/           # Pages (Index, NotFound)
-├── test/            # Configuration et fichiers de test
-├── App.tsx          # Composant racine + routing
-├── index.css        # Design tokens + styles globaux (Tailwind)
-└── main.tsx         # Point d'entrée
+├── assets/          # Images, logos, et illustrations pixel art
+├── components/      # Composants atomiques et moléculaires
+│   ├── ui/          # Composants de base (Button, Card, Badges...)
+│   ├── navigation/  # Navigation (Navbar, ScrollNav, Chevrons)
+│   └── a11y/        # Utilitaires d'accessibilité
+├── constants/       # Données statiques et configuration des sections
+├── hooks/           # Hooks React personnalisés (scroll, i18n...)
+├── i18n/            # Configuration i18n (locales fr/en)
+├── layouts/         # Templates de mise en page (MainLayout)
+├── pages/           # Composants de pages (Home, Realisations, Parcours...)
+├── services/        # Logique métier et services (TechService...)
+├── test/            # Configuration et utilitaires de test
+└── types/           # Définitions TypeScript globales
 ```
 
-## Sections du portfolio
+---
 
-- **Navbar** — Navigation fixe avec glassmorphism
-- **Hero** — Présentation + CTA
-- **Expérience** — Parcours professionnel (alternance Orange)
-- **Formation** — Bootcamp O'Clock
-- **Parcours** — Reconversion depuis auxiliaire de vie
-- **Projets** — Réalisations techniques
-- **Stack** — Technologies maîtrisées
-- **Contact** — Formulaire de contact
-- **Footer** — Liens sociaux
+## 🚀 Installation & Utilisation
 
-## Licence
+### Prérequis
 
-Projet privé.
+- [Node.js](https://nodejs.org/) (v20+)
+- [pnpm](https://pnpm.io/) (v9+)
+
+### Installation
+
+1. Clonez le dépôt :
+   ```bash
+   git clone <url-du-repo>
+   cd portfolio-front
+   ```
+
+2. Installez les dépendances :
+   ```bash
+   pnpm install
+   ```
+
+3. Configurez les variables d'environnement :
+   Copiez le fichier `.env.example` vers `.env` et remplissez vos informations.
+
+### Scripts Disponibles
+
+| Commande | Description |
+| :--- | :--- |
+| `pnpm dev` | Lance le serveur de développement (`http://localhost:5173`) |
+| `pnpm build` | Génère le build de production dans le dossier `dist/` |
+| `pnpm preview` | Prévisualise localement le build de production |
+| `pnpm test` | Exécute les tests unitaires via Vitest |
+| `pnpm test:watch` | Exécute les tests en mode interactif |
+| `pnpm lint` | Analyse le code pour détecter des erreurs |
+| `pnpm format` | Formate le code avec Prettier |
+
+---
+
+## 🧪 Tests
+
+Le projet utilise **Vitest** comme moteur de test. Les tests sont situés à côté des composants ou dans le dossier `src/test`.
+
+```bash
+pnpm test
+```
+
+---
+
+## 🌐 Déploiement
+
+Le projet est configuré pour un déploiement continu. Le build généré est optimisé pour les plateformes de hosting statiques (Vercel, Netlify, GitHub Pages).
+
+---
+
+## 📝 Licence
+
+© 2026 Quentin Buysschaert — Tous droits réservés.

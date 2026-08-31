@@ -35,3 +35,4 @@ export interface Skill {
   readonly createdAt: string;
   readonly updatedAt: string;
 }
+

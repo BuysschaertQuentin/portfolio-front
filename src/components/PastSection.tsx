@@ -1,63 +1,54 @@
 import auxImg from "@/assets/auxiliaire_de_vie.png";
+import { PAST_SOFT_SKILLS } from "@/constants/home";
 import { useI18n } from "@/i18n";
-import { type LucideIcon, Clock, Heart, Shield, Users } from "lucide-react";
-
-interface SoftSkill {
-  readonly icon: LucideIcon;
-  readonly labelKey: string;
-  readonly descKey: string;
-}
-
-const softSkillsDef: readonly SoftSkill[] = [
-  { icon: Heart, labelKey: "past.empathy", descKey: "past.empathyDesc" },
-  { icon: Shield, labelKey: "past.resilience", descKey: "past.resilienceDesc" },
-  { icon: Clock, labelKey: "past.priorities", descKey: "past.prioritiesDesc" },
-  { icon: Users, labelKey: "past.teamwork", descKey: "past.teamworkDesc" },
-];
-
-interface SoftSkillCardProps {
-  readonly icon: LucideIcon;
-  readonly label: string;
-  readonly desc: string;
-}
-
-const SoftSkillCard = ({ icon: Icon, label, desc }: SoftSkillCardProps) => (
-  <div className="glass-card rounded-lg p-4 border-cyan/15 flex gap-3 items-start">
-    <div className="p-2 rounded-md bg-cyan-muted">
-      <Icon className="w-4 h-4 text-cyan" />
-    </div>
-    <div>
-      <p className="text-sm font-semibold text-foreground">{label}</p>
-      <p className="text-xs text-muted-foreground">{desc}</p>
-    </div>
-  </div>
-);
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/buttons/Button";
+import { Card } from "./ui/cards/Card";
+import { SoftSkillCard } from "./ui/cards/SoftSkillCard";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
 
 const PastSection = () => {
   const { t } = useI18n();
 
   return (
-    <section id="past" className="relative">
-      <div className="absolute inset-0 bg-linear-to-b from-background via-cyan-muted/30 to-background pointer-events-none" />
+    <section
+      id="past"
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
+    >
+      <div
+        className="from-background via-cyan-muted/10 to-background pointer-events-none absolute inset-0 bg-linear-to-b"
+        aria-hidden="true"
+      />
 
-      <div className="section-container relative z-10">
-        <p className="text-cyan font-mono text-sm tracking-widest uppercase mb-2">
-          {t("past.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-cyan">
-          {t("past.title")}{" "}
-          <span className="text-cyan">{t("past.titleHighlight")}</span>
-        </h2>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index="01"
+          label={t("past.sectionLabel")}
+          title={t("past.title")}
+          titleHighlight={t("past.titleHighlight")}
+          accentColor="cyan"
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="space-y-6">
-            <div className="glass-card rounded-xl p-8 border-cyan/20 space-y-4">
-              <p className="text-secondary-foreground leading-relaxed">
+            <Card className="border-cyan/20 space-y-4 rounded-lg p-6">
+              <p className="text-secondary-foreground text-base leading-relaxed">
                 {t("past.description")}
               </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {softSkillsDef.map((skill) => (
+              <div className="pt-2">
+                <Button
+                  to="/competences"
+                  variant="secondary"
+                  className="border-cyan/20 hover:border-cyan/40 hover:bg-cyan/5"
+                >
+                  {t("past.cta")}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </Card>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {PAST_SOFT_SKILLS.map((skill) => (
                 <SoftSkillCard
                   key={skill.labelKey}
                   icon={skill.icon}
@@ -71,13 +62,17 @@ const PastSection = () => {
             <img
               src={auxImg}
               alt={t("past.imgAlt")}
-              className="pixel-image w-full max-w-md"
-              width={448}
-              height={448}
+              className="pixel-image w-full max-w-xs drop-shadow-[0_0_20px_hsla(var(--cyan)/0.15)] sm:max-w-sm"
+              width={384}
+              height={384}
               loading="lazy"
             />
           </div>
         </div>
+      </div>
+
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId="formation" label={t("chevrons.formation")} />
       </div>
     </section>
   );

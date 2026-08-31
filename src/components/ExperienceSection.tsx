@@ -1,65 +1,97 @@
-import orangeImg from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac3 from "@/assets/developpeur_alternance_orange.png";
+import orangeImgBac5 from "@/assets/developpeur_alternance_orange_bac5.png";
+import orangeLogo from "@/assets/orange.png";
 import { useI18n } from "@/i18n";
+import { ArrowRight } from "lucide-react";
+import { Button } from "./ui/buttons/Button";
+import { ExperienceEntry } from "./ui/cards/ExperienceEntry";
+import { SectionHeader } from "./ui/headers/SectionHeader";
+import SectionChevron from "./ui/navigation/SectionChevron";
 
-const ExperienceSection = () => {
+interface ExperienceSectionProps {
+  readonly id: string;
+  readonly index: string;
+  readonly label: string;
+  /**
+   * Key mapping to translation entries under `parcours.entries` for Orange:
+   * - "orangeBac3": 1st year apprenticeship (Bac+3 / CDA)
+   * - "orangeBac5": 2-year apprenticeship (Bac+5 / Master)
+   */
+  readonly entryKey: "orangeBac3" | "orangeBac5";
+  readonly stack: readonly string[];
+  readonly nextSectionId: string;
+  readonly nextSectionLabel: string;
+}
+
+const ExperienceSection = ({
+  id,
+  index,
+  label,
+  entryKey,
+  stack,
+  nextSectionId,
+  nextSectionLabel,
+}: ExperienceSectionProps) => {
   const { t } = useI18n();
-
-  const stack = [
-    "Angular",
-    "NestJS",
-    "TypeScript",
-    "PostgreSQL",
-    "Git",
-    "Docker",
-  ];
+  // Select image based on the academic year: Bac+3 (orangeBac3) vs Bac+5 (orangeBac5)
+  const orangeImg = entryKey === "orangeBac3" ? orangeImgBac3 : orangeImgBac5;
 
   return (
-    <section id="experience" className="relative">
+    <section
+      id={id}
+      className="relative flex h-full w-full shrink-0 snap-center snap-always flex-col items-center justify-center overflow-hidden px-4 py-8 md:px-6"
+    >
       {/* Orange subtle top gradient */}
-      <div className="absolute inset-0 bg-linear-to-b from-orange-muted/50 to-background pointer-events-none" />
+      <div className="from-orange-muted/20 to-background pointer-events-none absolute inset-0 bg-linear-to-b" />
 
-      <div className="section-container relative z-10">
-        <p className="text-orange font-mono text-sm tracking-widest uppercase mb-2">
-          {t("experience.sectionLabel")}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-glow-orange">
-          {t("experience.title")}{" "}
-          <span className="text-orange">{t("experience.company")}</span>
-        </h2>
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-8">
+        <SectionHeader
+          index={index}
+          label={label}
+          title={t(`parcours.entries.${entryKey}.title`)}
+          titleHighlight={t("experience.company")}
+          accentColor="orange"
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="glass-card rounded-xl p-8 border-orange/20 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-orange animate-pulse" />
-              <span className="text-sm text-muted-foreground font-mono">
-                {t("experience.status")}
-              </span>
-            </div>
-            <p className="text-secondary-foreground leading-relaxed">
-              {t("experience.description")}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 text-xs font-mono rounded-full bg-orange-muted text-orange-foreground border border-orange/20"
-                >
-                  {tech}
-                </span>
-              ))}
+        <div className="grid items-start gap-8 md:grid-cols-2">
+          {/* Left: experience entry */}
+          <div className="space-y-4">
+            <ExperienceEntry
+              period={t(`parcours.entries.${entryKey}.period`)}
+              title={t(`parcours.entries.${entryKey}.title`)}
+              status={t(`parcours.entries.${entryKey}.status`)}
+              description={t(`parcours.entries.${entryKey}.missions`)}
+              stack={stack}
+              logo={orangeLogo}
+            />
+            <div className="pt-2">
+              <Button
+                to="/realisations"
+                variant="secondary"
+                className="border-orange/20 hover:border-orange/40 hover:bg-orange/5"
+              >
+                {t("experience.cta")}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
+
+          {/* Right: illustration */}
           <div className="flex justify-center">
             <img
               src={orangeImg}
               alt={t("experience.imgAlt")}
-              className="pixel-image w-full max-w-md"
-              width={448}
-              height={448}
+              className="pixel-image w-full max-w-xs drop-shadow-[0_0_20px_hsla(var(--orange)/0.2)] sm:max-w-sm"
+              width={384}
+              height={384}
               loading="lazy"
             />
           </div>
         </div>
+      </div>
+
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center">
+        <SectionChevron targetId={nextSectionId} label={nextSectionLabel} />
       </div>
     </section>
   );

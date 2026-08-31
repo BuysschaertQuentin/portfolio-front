@@ -2,31 +2,19 @@
 <html lang="fr" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo-portfolio.png" />
+    <link rel="icon" type="image/png" href="./src/assets/logo-portfolio.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Développeur Fullstack — Portfolio</title>
+    <title>%VITE_FULL_NAME% — Développeur Fullstack | Portfolio</title>
     <meta
       name="description"
-      content="Portfolio d'un développeur Fullstack spécialisé en Angular, NestJS et React."
+      content="Portfolio de %VITE_FULL_NAME%, développeur Fullstack spécialisé en Angular, NestJS et React."
     />
-    <meta property="og:title" content="Développeur Fullstack — Portfolio" />
+    <meta property="og:title" content="%VITE_FULL_NAME% — Développeur Fullstack" />
     <meta
       property="og:description"
-      content="De l'accompagnement humain au code."
+      content="De l'accompagnement humain au code — portfolio d'un développeur Fullstack."
     />
     <meta property="og:type" content="website" />
-
-    <!-- SPA fallback: restore the path encoded by 404.html for React Router -->
-    <script>
-      (function () {
-        var params = new URLSearchParams(window.location.search);
-        var p = params.get("p");
-        if (p) {
-          var decoded = decodeURIComponent(p).replace(/~/, "?");
-          window.history.replaceState(null, "", decoded);
-        }
-      })();
-    </script>
 
     <!-- Preconnect to Google Fonts (breaks critical chain) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

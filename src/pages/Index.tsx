@@ -1,25 +1,185 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import FormationSection from "@/components/FormationSection";
+import HeroSection from "@/components/HeroSection";
+import HomeScrollNav from "@/components/ui/navigation/HomeScrollNav";
 import PastSection from "@/components/PastSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import StackSection from "@/components/StackSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+import { EXPERIENCE_STACK_BAC3, EXPERIENCE_STACK_BAC5, HOME_SECTIONS } from "@/constants/home";
+import { useI18n } from "@/i18n";
+
+const SECTION_IDS = HOME_SECTIONS.map((s) => s.id);
+
+/** TTL in milliseconds for the stored last-visited section (15 minutes). */
+const SESSION_TTL_MS = 15 * 60 * 1000;
+const SESSION_KEY = "portfolio_last_section";
+
+interface StoredSection {
+  readonly id: string;
+  readonly timestamp: number;
+}
+
+/**
+ * Home page — one-page layout with a guided chronological narrative.
+ * Controlled smooth scrolling using wheel events and localized states.
+ * Persists the last visited section to sessionStorage (TTL: 15 min)
+ * so the browser "Back" button restores the correct position.
+ */
 const Index = () => {
+  const { t } = useI18n();
+  const [activeSection, setActiveSection] = useState(SECTION_IDS[0]);
+  const isScrolling = useRef(false);
+  const containerRef = useRef<HTMLElement>(null);
+
+  const scrollToSection = useCallback((index: number) => {
+    if (index < 0 || index >= SECTION_IDS.length) return;
+
+    isScrolling.current = true;
+    const targetId = SECTION_IDS[index];
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      // For the first and last sections, ensure they align to the very edges
+      // of the container to prevent awkward centering cuts on smaller screens.
+      const blockPosition =
+        index === 0 ? "start" : index === SECTION_IDS.length - 1 ? "end" : "center";
+      element.scrollIntoView({ behavior: "smooth", block: blockPosition });
+
+      // Unlock scrolling after animation completes (~500ms)
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, 400);
+    } else {
+      isScrolling.current = false;
+    }
+  }, []);
+
+  // Restore last visited section on mount if within TTL
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(SESSION_KEY);
+      if (!raw) return;
+      const stored: StoredSection = JSON.parse(raw);
+      if (Date.now() - stored.timestamp > SESSION_TTL_MS) {
+        sessionStorage.removeItem(SESSION_KEY);
+        return;
+      }
+      const index = SECTION_IDS.indexOf(stored.id);
+      if (index > 0) {
+        // Slight delay to let the DOM render before scrolling
+        setTimeout(() => scrollToSection(index), 50);
+      }
+    } catch {
+      sessionStorage.removeItem(SESSION_KEY);
+    }
+  }, [scrollToSection]);
+
+  // Single source of truth for the active section:
+  // Watch what is actually visible on screen.
+  useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+          history.replaceState(null, "", `#${entry.target.id}`);
+          // Persist to sessionStorage with current timestamp
+          const stored: StoredSection = { id: entry.target.id, timestamp: Date.now() };
+          sessionStorage.setItem(SESSION_KEY, JSON.stringify(stored));
+        }
+      });
+    };
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Use a precise threshold and negative margins to ensure only
+    // the most visible section triggers the update when crossing thresholds.
+    const observer = new IntersectionObserver(observerCallback, {
+      root: container,
+      threshold: 0.4,
+    });
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      // Allow internal scrolling on elements with 'overflow-y-auto'
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
+      const isScrollableContainer = target.closest(".overflow-y-auto");
+
+      if (isScrollableContainer instanceof HTMLElement) {
+        const container = isScrollableContainer;
+        const isAtTop = container.scrollTop <= 0;
+        const isAtBottom =
+          container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
+
+        // Only hijack if we're at the very boundaries of the internal scroll
+        if (!(isAtTop && e.deltaY < 0) && !(isAtBottom && e.deltaY > 0)) {
+          return; // Let native internal scroll happen
+        }
+      }
+
+      e.preventDefault();
+
+      if (isScrolling.current) return;
+
+      const currentIndex = SECTION_IDS.indexOf(activeSection);
+      if (e.deltaY > 0) {
+        scrollToSection(currentIndex + 1);
+      } else if (e.deltaY < 0) {
+        scrollToSection(currentIndex - 1);
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, [activeSection, scrollToSection]);
+
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Navbar />
+    <main
+      ref={containerRef}
+      id="scroll-container"
+      className="relative h-full w-full overflow-hidden"
+    >
+      <HomeScrollNav activeSection={activeSection} onNavigate={scrollToSection} />
       <HeroSection />
-      <ExperienceSection />
-      <FormationSection />
       <PastSection />
+      <FormationSection />
+      <ExperienceSection
+        id="experience-bac3"
+        index="03"
+        label={t("experience.bac3Label")}
+        entryKey="orangeBac3"
+        stack={EXPERIENCE_STACK_BAC3}
+        nextSectionId="experience-bac5"
+        nextSectionLabel={t("parcours.entries.orangeBac5.title")}
+      />
+      <ExperienceSection
+        id="experience-bac5"
+        index="04"
+        label={t("experience.bac5Label")}
+        entryKey="orangeBac5"
+        stack={EXPERIENCE_STACK_BAC5}
+        nextSectionId="projects"
+        nextSectionLabel={t("chevrons.projects")}
+      />
       <ProjectsSection />
-      <StackSection />
-      <ContactSection />
-      <Footer />
     </main>
   );
 };

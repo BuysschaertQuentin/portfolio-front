@@ -1,0 +1,29 @@
+export const mysqlFr = {
+  title: "MySQL",
+  shortDesc: "Système de gestion de base de données relationnelle d'entreprise populaire",
+  definition:
+    "Pour moi, **MySQL** est le SGBDR relationnel le plus courant et éprouvé en entreprise. Reposant sur le moteur de stockage **InnoDB** qui garantit la conformité ACID et la gestion des transactions, MySQL est apprécié pour sa simplicité, ses performances en lecture et sa compatibilité globale.\n\nL'utilisation de MySQL permet de bâtir des schémas relationnels solides, d'assurer l'intégrité référentielle entre les tables et de sécuriser l'accès aux données.",
+  proofs:
+    "J'utilise **MySQL** quotidiennement en entreprise chez Orange Business, où il constitue la base de données historique de plusieurs applications majeures, notamment le **portail de redirection RH** :\n\n- **Administration et requêtage avec phpMyAdmin** : Pendant mes phases de développement, j'utilise l'interface web **phpMyAdmin** pour administrer la base de données, tester directement mes requêtes SQL, vérifier la structure des tables et inspecter le résultat de mes manipulations de données.\n\n- **Refactoring et migrations TypeORM (Portail RH)** : Sur le Back-End NestJS du portail RH, j'ai géré les interactions MySQL via **TypeORM**. J'ai mené un travail d'assainissement de la dette technique (10 à 15 jours de refactoring) pour ajouter les contraintes de clés étrangères manquantes et sécuriser les requêtes contre les injections SQL. Pour les faire évoluer, j'utilise la CLI TypeORM (`npx typeorm migration:generate src/migrations/Name -d src/data-source.ts`), en veillant à relire et nettoyer les scripts DDL générés automatiquement.\n\n- **Vues SQL pour exports CSV & QueryBuilder** : J'ai créé des **Vues SQL** (`CREATE VIEW`) pour agréger les données de plusieurs tables d'administration et permettre au Front-End Angular d'exporter des bilans au format CSV. Lorsque des requêtes nécessitent de manipuler de multiples critères simultanément, j'utilise le `QueryBuilder` de TypeORM et j'optimise l'exécution asynchrone avec `Promise.all()`.\n\n- **Sauvegardes préventives (mysqldump)** : Lors des déploiements critiques en production (notamment lors de l'intervention autonome sur le portail RH), j'applique une procédure systématique de dump préventif (`mysqldump`) pour garantir un *rollback* complet de la base sous 2 minutes en cas d'anomalie.",
+  selfCritique:
+    "La génération automatique de migrations par TypeORM sous MySQL produit parfois du DDL verbeux sur les index et clés étrangères. J'ai pris l'habitude de contrôler et corriger systématiquement ces scripts pour m'assurer que la base MySQL reste propre et optimisée.",
+  hindsight:
+    "La maîtrise de MySQL et de ses outils d'administration comme phpMyAdmin est une compétence indispensable en entreprise. Cela permet d'intervenir sereinement sur des bases existantes et d'aligner la qualité du code applicatif sur celle du stockage.",
+  evolution:
+    "Je souhaite continuer à consolider ma maîtrise de MySQL en entreprise, en explorant l'optimisation des index et la lecture du *slow query log* pour détecter et accélérer les requêtes lentes.",
+};
+
+export const mysqlEn = {
+  title: "MySQL",
+  shortDesc: "Popular enterprise relational database management system",
+  definition:
+    "For me, **MySQL** is the most common and proven relational RDBMS in enterprise environments. Powered by the **InnoDB** storage engine which guarantees ACID compliance and transaction handling, MySQL is valued for its simplicity, read performance, and broad compatibility.\n\nUsing MySQL enables building solid relational schemas, enforcing referential integrity, and securing data access.",
+  proofs:
+    "I use **MySQL** daily at Orange Business, where it serves as the legacy database standard for key applications, notably the **HR redirection portal**:\n\n- **Administration and Querying with phpMyAdmin**: During development, I use the **phpMyAdmin** web interface to administer the database, test SQL queries directly, inspect table structures, and verify data manipulation results.\n\n- **Refactoring and TypeORM Migrations (HR Portal)**: On the HR portal NestJS backend, I managed MySQL interactions via **TypeORM**. I led technical debt cleanup (10 to 15 refactoring days) to add missing foreign key constraints and secure queries against SQL injection. I manage schema evolutions using the TypeORM CLI (`npx typeorm migration:generate src/migrations/Name -d src/data-source.ts`), reviewing and cleaning auto-generated DDL scripts manually.\n\n- **SQL Views for CSV Exports & QueryBuilder**: I designed **SQL Views** (`CREATE VIEW`) to aggregate data across administrative tables, enabling the Angular Front-End to export CSV summaries. When queries require handling multiple criteria simultaneously, I use TypeORM's `QueryBuilder` and optimize concurrent async calls with `Promise.all()`.\n\n- **Preventive Dumps (mysqldump)**: During critical production releases (such as the autonomous HR portal deployment), I execute a systematic preventive dump (`mysqldump`) to guarantee a full database rollback capability within 2 minutes.",
+  selfCritique:
+    "Automatic migration generation by TypeORM on MySQL can produce verbose DDL regarding indexes and foreign keys. I systematically review and refine these generated scripts to keep the MySQL database clean and optimized.",
+  hindsight:
+    "Mastering MySQL and administration tools like phpMyAdmin is an essential enterprise skill. It enables working confidently on existing legacy databases and aligning application code quality with storage standards.",
+  evolution:
+    "I aim to continue consolidating my MySQL expertise in enterprise environments, exploring index optimization and analyzing the *slow query log* to detect and speed up slow queries.",
+};
